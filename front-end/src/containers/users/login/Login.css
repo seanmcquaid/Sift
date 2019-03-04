@@ -1,0 +1,38 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+}
+
+.login-header-image{
+    width: 100vw;
+    height: 20rem;
+}
+
+.header-image {
+    width: 100vw;
+    height: 20rem;
+    object-fit : cover;
+}
+
+.login-title{
+    font-family: 'Bad Script', cursive;
+    font-size: 1.5rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+}
+
+.login-form input {
+    width: 100%;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    box-shadow: none;
+    margin: 0.5rem;
+}
