@@ -19,10 +19,15 @@
     object-fit : cover;
 }
 
-.login-title{
+.title{
     font-family: 'Bad Script', cursive;
-    font-size: 1.5rem;
+    font-size: 2rem;
     color : #333745;
+}
+
+.instructions{
+    color: #333745;
+    font-size: 0.8rem;
 }
 
 .login-form {
@@ -35,7 +40,7 @@
 
 .login-form input {
     width: 100%;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     border-radius: 20px;
     border: 1px solid rgb(165, 165, 165);
@@ -49,6 +54,6 @@
     font-family: 'Montserrat', sans-serif;
     border: 1px solid rgb(165, 165, 165);
     margin: 1rem;
-    padding: 0.5rem 1.25rem;
-    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
 }
