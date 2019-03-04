@@ -3,6 +3,8 @@ import './App.css';
 
 import Layout from "./components/layout/Layout";
 
+import Splash from "./components/splash/Splash"
+
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class App extends Component {
@@ -10,8 +12,8 @@ class App extends Component {
     return (
       <Router>
          <Layout>
-          {/* <Route exact path="/" component={Splash}/>
-          <Route exact path="/login" component={Login}/>
+          <Route exact path="/" component={Splash}/>
+          {/* <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
           <Route exact path="/userHome" component={Home}/> */}
         </Layout>
