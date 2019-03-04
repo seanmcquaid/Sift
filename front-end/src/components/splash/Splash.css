@@ -1,0 +1,13 @@
+.carouselRow{
+    margin-top:3.1875rem;
+    display:flex;
+    flex-direction: row;
+}
+
+.carouselRow IMG{
+    width:100%;
+    
+
+  
+
+}
