@@ -12,11 +12,11 @@
 }
 
 .logo {
-    width: 80%;
+    width: 50%;
 }
 
 .login-register {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: row;
     align-items: center;
