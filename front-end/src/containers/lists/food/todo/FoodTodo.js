@@ -1,13 +1,38 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class FoodToDo extends Component {
     constructor() {
         super()
         this.state = {
+            foodList: [],
             place: '',
             type: '',
 
         }
+    }
+
+    componentDidMount() {
+        axios({
+            method: 'GET',
+            url: `http://localhost:3000/getFoodList`
+        })
+    }
+
+    addNewFood = (event) => {
+
+    }
+
+    changeFood = (event) => {
+        this.setState({
+            place: event.target.value
+        })
+    }
+
+    changeFoodType = (event) => {
+        this.setState({
+            type: event.target.value
+        })
     }
 
     render() {
@@ -19,10 +44,10 @@ class FoodToDo extends Component {
                 <div className="Search">
                     <form onSubmit={this.addNewFood} className="TodoForm">
                         <input onChange={this.changeFood} type="text" id="NewActive" placeholder="Add Place" value={this.state.place} />
-                        <select className="Dropdown FoodType">
-                            <option default value="Restaurant" onClick={}>Restaurant</option>
-                            <option value="Cafe" onClick={}>Cafe</option>
-                            <option value="Bar" onClick={}>Bar</option>
+                        <select className="Dropdown FoodType" onChange={this.changeFoodType}>
+                            <option default value="Restaurant" onClick={this.changeFoodType}>Restaurant</option>
+                            <option value="Cafe" onClick={this.changeFoodType}>Cafe</option>
+                            <option value="Bar" onClick={this.changeFoodType}>Bar</option>
                         </select>
                     </form>
                 </div>
