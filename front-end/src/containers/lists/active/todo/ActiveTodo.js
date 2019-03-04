@@ -33,8 +33,8 @@ class ActiveTodo extends Component {
                             <tr>
                                 <th>Activity</th>
                                 <th>Type</th>
-                                <th>Remove</th>
                                 <th>Favorite</th>
+                                <th>Remove</th>
                             </tr>
                         </thead>
                         <tbody>
