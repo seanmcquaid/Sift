@@ -1,0 +1,40 @@
+.nav {
+    width: 100%;
+    top: 0;
+    background-color: #ffa094;
+    padding: 1rem;
+    box-shadow:0 1px 6px rgba(2, 15, 7, 0.502);
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #333745;
+}
+
+.logo {
+    width: 80%;
+}
+
+.login-register {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+.login-register div {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.login-link a{
+    text-decoration: none;
+    color: #333745;
+}
+
+.register-link a {
+    text-decoration: none;
+    color: #333745;
+}
