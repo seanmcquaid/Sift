@@ -16,11 +16,28 @@ class FoodToDo extends Component {
         axios({
             method: 'GET',
             url: `http://localhost:3000/getFoodList`
+        }).then((foodListFromDB)=>{
+            console.log(foodListFromDB)
+            this.setState({
+                foodList: foodListFromDB
+            })
         })
     }
 
-    addNewFood = (event) => {
-
+    addNewFood = (place, type) => {
+        console.log(place, type)
+        axios({
+            method: 'POST',
+            url: 'http://localhost:3000/addFood',
+            data: {
+                place: place,
+                type: type
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                foodList: backEndResponse.data
+            })
+        })
     }
 
     changeFood = (event) => {
@@ -38,6 +55,7 @@ class FoodToDo extends Component {
     render() {
         // in the logic for mapping through the data to make the table, we need to be SURE that the favorites button can be clicked to add the item
         // to the favorites and remove it from this table
+        // const foodArray = 
 
         return (
             <div className="FoodToDo">
@@ -70,9 +88,6 @@ class FoodToDo extends Component {
         )
     }
 }
-
-
-
 
 
 export default FoodToDo;

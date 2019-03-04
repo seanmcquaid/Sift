@@ -5,6 +5,7 @@ import './App.css';
 import Layout from "./components/layout/Layout";
 import Splash from "./components/splash/Splash"
 import Login from "./containers/users/login/Login"
+import FoodTodo from "./containers/lists/food/todo/FoodTodo";
 
 class App extends Component {
   render() {
@@ -15,8 +16,9 @@ class App extends Component {
           <Route exact path="/" component={Splash}/>
           <Route exact path="/login" component={Login}/>
           {/* <Route exact path="/register" component={Register}/>
-        
           <Route exact path="/userHome" component={Home}/> */}
+          {/* <Route exact path="/food" component={Food} /> */}
+          <Route exact path="/food/todo" component={FoodTodo} />
         </Layout>
       </Router>
     );
