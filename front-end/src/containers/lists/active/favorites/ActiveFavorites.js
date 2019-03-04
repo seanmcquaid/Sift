@@ -4,7 +4,9 @@ class ActiveFavorites extends Component {
     constructor() {
         super()
         this.state = {
-
+            favorite: '',
+            type: '',
+            note: ''
         }
     }
     render() {
@@ -12,9 +14,9 @@ class ActiveFavorites extends Component {
             <div className="ActiveFavorites">
                 <div>
                     <form onSubmit={this.addActiveFavorite} className="FavoriteForm">
-                        <input onChange={this.changeActivityFave} type="text" id="NewActiveFave" placeholder="Add favorite activity" value={this.state.favoriteActivity} />
-                        <input onChange={this.changeActiveNote} type="text" id="ActiveNote" placeholder="Remember for next time..." value={this.state.note} />
-                        <select className="ActiveType">
+                        <input onChange={this.changeActiveFave} type="text" id="NewFave" placeholder="Add favorite activity" value={this.state.favorite} />
+                        <input onChange={this.changeActiveNote} type="text" id="Note" placeholder="Remember for next time..." value={this.state.note} />
+                        <select className="Dropdown ActivityType">
                             <option default value="Outdoors" onClick={}>Outdoors</option>
                             <option value="Fitness" onClick={}>Fitness</option>
                             <option value="Sports" onClick={}>Sports</option>

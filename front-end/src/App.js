@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import './App.css';
 
 import Layout from "./components/layout/Layout";
-
 import Splash from "./components/splash/Splash"
-
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import Login from "./containers/users/login/Login"
 
 class App extends Component {
   render() {
     return (
       <Router>
          <Layout>
+
           <Route exact path="/" component={Splash}/>
-          {/* <Route exact path="/login" component={Login}/>
-          <Route exact path="/register" component={Register}/>
+          <Route exact path="/login" component={Login}/>
+          {/* <Route exact path="/register" component={Register}/>
+        
           <Route exact path="/userHome" component={Home}/> */}
         </Layout>
       </Router>
