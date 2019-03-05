@@ -17,14 +17,14 @@
     font-size: 3rem;
     font-weight: 1200;
     color: white;
-    margin: auto 1rem;
+    text-shadow:3px 4px 5px #ffa094;
     position: absolute;
     margin-top: 10rem;
     z-index: 3;
 }
 
 .carouselImageRow{
-    margin-top:3.1875rem;
+    /* margin-top:3.1875rem; */
     display:flex;
     flex-direction: row;
     z-index:0;
@@ -107,14 +107,17 @@
 
 /* =====CAROUSEL*/
 
-@media screen and (min-width:700px) and (max-width:1000px){
-
+@media screen and (min-width:1000px) and (max-width:1150px){
+    .carouselText h1{
+        font-size: 9rem;
+        margin-top: 11rem;
+      }
 }
 
-@media screen and (min-width:1000px) and (max-width:1250px){
+@media screen and (min-width:1150px) and (max-width:1250px){
     .carouselText h1{
         font-size: 10rem;
-        margin-top: 15rem;
+        margin-top: 14rem;
       }
 
 }
@@ -122,13 +125,13 @@
 @media screen and (min-width:1250px) and (max-width:1360px){
     .carouselText h1{
         font-size: 10rem;
-        margin-top: 18rem;
+        margin-top: 15rem;
       }
 }
 
 @media screen and (min-width:1360px) and (max-width:1500px){
   .carouselText h1{
     font-size: 12rem;
-    margin-top: 18rem;
+    margin-top: 16rem;
   }
 }
