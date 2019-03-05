@@ -6,6 +6,7 @@ import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css'
 
 function Splash(props){
+
     return(
         <div>
             <div>

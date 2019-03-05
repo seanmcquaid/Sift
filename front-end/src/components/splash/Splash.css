@@ -1,13 +1,40 @@
-.carouselRow{
+/* ========================================= CAROUSEL */
+
+.carouselWrapper{
+    position:relative;
+}
+
+.carouselText{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.carouselText h1{
+    font-family: "Bad Script", cursive;
+    font-size: 3rem;
+    font-weight: 1200;
+    color: white;
+    margin: auto 1rem;
+    position: absolute;
+    margin-top: 10rem;
+    z-index: 3;
+}
+
+.carouselImageRow{
     margin-top:3.1875rem;
     display:flex;
     flex-direction: row;
+    z-index:0;
 }
 
-
-.carouselRow IMG{
+.carouselImageRow IMG{
     width:100%;
 }
+
+/* ========================================= SPLASH*/
 
 .splashTextContent{
     margin:3rem auto 0;
@@ -74,4 +101,34 @@
         width: 200px;
     height:200px;
     }
+}
+
+/* ========================================= MEDIA QUERIES */
+
+/* =====CAROUSEL*/
+
+@media screen and (min-width:700px) and (max-width:1000px){
+
+}
+
+@media screen and (min-width:1000px) and (max-width:1250px){
+    .carouselText h1{
+        font-size: 10rem;
+        margin-top: 15rem;
+      }
+
+}
+
+@media screen and (min-width:1250px) and (max-width:1360px){
+    .carouselText h1{
+        font-size: 10rem;
+        margin-top: 18rem;
+      }
+}
+
+@media screen and (min-width:1360px) and (max-width:1500px){
+  .carouselText h1{
+    font-size: 12rem;
+    margin-top: 18rem;
+  }
 }
