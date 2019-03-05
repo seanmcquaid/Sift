@@ -16,6 +16,7 @@ router.get('/getFoodList', (req, res, next)=>{
 router.post('/addFood', (req, res, next)=>{
     const place = req.body.placename
     const type = req.body.type
+
     // console.log(place, type)
     const insertFoodQuery = `INSERT INTO food (uid, placename, type, todo) VALUES
     ($1, $2, $3, $4);`;
