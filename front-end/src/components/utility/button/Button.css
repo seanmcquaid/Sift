@@ -1,0 +1,8 @@
+.submitButton{
+    background-color: #ffa094;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}

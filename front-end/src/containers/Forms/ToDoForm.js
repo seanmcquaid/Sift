@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import option from '../../components/utility/option/option'
+import Button from '../../components/utility/button/Button'
 
 
 class ToDoForm extends Component {
@@ -18,6 +19,7 @@ class ToDoForm extends Component {
         event.preventDefault(event)
         console.log("someone added!")
         this.props.addNewPlace(this.state.place, this.state.type)
+        console.log(this.state.place, this.state.type)
     }
 
     changePlace = (event) => {
@@ -42,15 +44,15 @@ class ToDoForm extends Component {
         return(
             <div className="SearchAdd">
                 <form onSubmit={this.addNew} className="TodoForm">
-                    <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeHolder} value={this.state.place} />
+                    <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
                     <select className="Dropdown Type" onChange={this.changeType}> 
                         {/* may need handlers on all dropdown options??  instea of just above??*/}
-                        <option default value={this.props.defaultType} />
-                        <option value={this.props.type2} />
-                        <option value={this.props.type3} />
-                        <option value={this.props.type4} />
+                        <option default value={this.props.defaultType}>{this.props.defaultType}</option>
+                        <option value={this.props.type2}>{this.props.type2}</option>
+                        <option value={this.props.type3}>{this.props.type3}</option>
+                        <option value={this.props.type4}>{this.props.type4}</option>
                     </select>
-                    <button type="submit" className="submitButton">Add</button>
+                    <Button type="submit" className="submitButton">Add</Button>
                 </form>
             </div>
         )

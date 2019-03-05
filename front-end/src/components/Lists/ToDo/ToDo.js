@@ -10,10 +10,10 @@ class ToDo extends Component {
                 <table className="Table">
                     <thead>
                         <tr>
-                            <th col1={this.props.col1}>props.children</th>
-                            <th col2={this.props.col2}>props.children</th>
-                            <th col3={this.props.col3}>props.children</th>
-                            <th col4={this.props.col4}>props.children</th>
+                            <th col1={this.props.col1}>{this.props.col1}</th>
+                            <th col2={this.props.col2}>{this.props.col2}</th>
+                            <th col3={this.props.col3}>{this.props.col3}</th>
+                            <th col4={this.props.col4}>{this.props.col4}</th>
                         </tr>
                     </thead>
                     <tbody>
