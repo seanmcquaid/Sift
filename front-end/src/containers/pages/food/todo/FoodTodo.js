@@ -7,21 +7,20 @@ class FoodToDo extends Component {
     constructor() {
         super()
         this.state = {
-            list: [],
-            place: '',
-            type: '',
-
+            list: []
+            
         }
     }
 
     componentDidMount() {
+        console.log('component did mount')
         axios({
             method: 'GET',
             url: `http://localhost:3000/food/getFoodList`
         }).then((foodListFromDB)=>{
             console.log(foodListFromDB)
             this.setState({
-                foodList: foodListFromDB
+                list: foodListFromDB
             })
         })  
     }
@@ -30,15 +29,15 @@ class FoodToDo extends Component {
         console.log(place, type)
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/addFood',
+            url: `http://localhost:3000/food/addFood`,
             data: {
-                place: this.state.place,
-                type: this.state.type
+                placename: place,
+                type: type
             }
         }).then((backEndResponse) => {
             console.log(backEndResponse)
             this.setState({
-                foodList: backEndResponse.data
+                list: backEndResponse.data
             })
         })
     }
@@ -56,24 +55,31 @@ class FoodToDo extends Component {
 
     render() {
         // IDK WHY I WAS HAVING SO MUCH TROUBLE GETTING THIS TO WORK!? SAYS IT'S NOT A FUNCTION!?
-        // const foodList = {...this.state.list}
-        // const foodToDo = foodList.map((food, i)=>{
-        //     return(
-        //         <tr key={i}>
-        //             <td>food.place</td>
-        //             <td>food.type</td>
-        //             <td><button className="favorite">Favorite</button></td> //THIS BUTTON WILL HAVE
-                // A CLICK HANDLER FOR THE ADD TO FAVES FUNCTION ABOVE!
-        //             <td><button className="remove">Remove</button></td> //CLICK HANDLER FOR DELETING FROM DB
-        //         </tr>
-        //     )
-        // })
+        // const foodToDo = this.state.list.data
+        // console.log(foodToDo)
+        // console.log(foodToDo.length)
+        if(this.state.list.data !== undefined){
+            var foodToDo = this.state.list.data.map((food, i) => {
+                console.log(food.placename)
+                return (
+                    <tr key={i}>
+                        <td>{food.placename}</td>
+                        <td>{food.type}</td>
+                        <td><button className="favorite">*</button></td>
+                        {/* //THIS BUTTON WILL HAVE A CLICK HANDLER FOR THE ADD TO FAVES FUNCTION ABOVE! */}
+                        <td><button className="remove">-</button></td>
+                        {/* //CLICK HANDLER FOR DELETING FROM DB */}
+                    </tr>
+                )
+            })       
+        }
+        
         
 
         return (
             <div className="FoodToDo">
                 <ToDoForm 
-                    submitted={this.addNewFood}
+                    addNewPlace={this.addNewPlace}
                     placeholder="Add new..."
                     defaultType="Restaurant"
                     type2="Cafe"
@@ -86,7 +92,7 @@ class FoodToDo extends Component {
                     col2="Type"
                     col3="Favorite"
                     col4="Remove"
-                    // toDoList={foodToDo}
+                    toDoList={foodToDo}
                     // can't get the map function to work so i can't see if this passing of props works
                 />
             </div>
