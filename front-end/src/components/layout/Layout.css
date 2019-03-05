@@ -4,3 +4,7 @@ body {
     padding: 0;
     background-color: #ffebaf;
 }
+
+.content-margin{
+    margin-top: 70px;
+}

@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "bcrypt": "^3.0.4",
+    "bcrypt-nodejs": "0.0.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
@@ -15,6 +16,7 @@
     "moment": "^2.24.0",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
-    "pg-promise": "^8.5.6"
+    "pg-promise": "^8.5.6",
+    "rand-token": "^0.4.0"
   }
 }
