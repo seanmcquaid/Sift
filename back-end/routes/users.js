@@ -40,7 +40,29 @@ router.post('/login', function(req, res, next) {
   const password = req.body.userPassword;
   const selectUserQuery = `SELECT * from users WHERE email = $1;`;
   db.query(selectUserQuery,[email]).then((results)=>{
-
+    if(results.length === 0){
+      res.json({
+        msg : "badUser"
+      })
+    } else {
+      const checkHash = bcrypt.compareSync(password, results[0].hash);
+      if(checkHash === true){
+        const token = randToken.uid(50);
+        const updateUserQuery = `UPDATE users SET token = $1 where email = $2;`;
+        db.query(updateUserQuery,[token, email]).catch((error)=>{
+          if(error){throw error};
+        });
+        res.json({
+          msg : "loginSuccess",
+          token,
+          email
+        })
+      } else {
+        res.json({
+          msg : "badPassword"
+        })
+      }
+    }
   }).catch((error)=>{
     if(error){throw error}
   })

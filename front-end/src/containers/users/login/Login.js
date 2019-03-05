@@ -17,6 +17,21 @@ class Login extends Component {
         }
     }
 
+    componentWillReceiveProps(newProps){
+        if(newProps.login.msg === "badUser"){
+            this.setState({
+                msg : "Incorrect email, please try again!",
+                showAlert: true
+            })
+        } else if(newProps.login.msg === "badPassword"){
+            this.setState({
+                msg : "Incorrect password, please try again!"
+            })
+        } else if (newProps.login.msg === "loginSuccess"){
+            this.props.history.push('/userHome');
+        }
+    }
+
     inputEmail = (event) =>{
         this.setState({
             email : event.target.value
@@ -49,6 +64,12 @@ class Login extends Component {
                     <h1 className="title">Login</h1>
                     <p className="instructions">Please enter your email and password below!</p>
                 </div>
+                <SweetAlert
+                        show={this.state.showAlert}
+                        title="Whoopsie Daisies"
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <div className="login-box">
                     <form onSubmit={this.handleLogin} className="login-form">
                         <input onChange={this.inputEmail} id="email-input" type="email" placeholder="Email"/>
@@ -61,10 +82,17 @@ class Login extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return{
+        login: state.login
+    }
+}
+
+
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
         loginAction : loginAction
     }, dispatcher)
 }
 
-export default connect(null,mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(Login);
