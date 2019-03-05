@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css'
-// import {Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css'
 
@@ -29,7 +29,7 @@ function Home(props){
             </div>
             <div className="categoryCircleContainer">
                     <div className="circleSpacing">
-                        <div className="food"><p>Dining</p></div>
+                    <Link to="/food/todo"><div className="food"><p>Dining</p></div></Link>
                         <div className="active"><p>Active</p></div>
                     </div>
                     <div>

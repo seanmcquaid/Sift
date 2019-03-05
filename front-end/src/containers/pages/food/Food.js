@@ -4,25 +4,25 @@ import axios from 'axios';
 class Food extends React, Component {
     constructor(){
         super()
-        this.state = {
-            foodTodo: {
-                list: [],
-                place: '',
-                type: ''
-            },
-            foodFavorites: {
-                list: [],
-                place: '',
-                type:'',
-                note: ''
-            },
-            foodReviews: {
-                list: [],
-                place: '',
-                stars: 0,
-                review: ''
-            }
-        }
+        // this.state = {
+        //     foodTodo: {
+        //         list: [],
+        //         place: '',
+        //         type: ''
+        //     },
+        //     foodFavorites: {
+        //         list: [],
+        //         place: '',
+        //         type:'',
+        //         note: ''
+        //     },
+        //     foodReviews: {
+        //         list: [],
+        //         place: '',
+        //         stars: 0,
+        //         review: ''
+        //     }
+        // }
     }
 
 
