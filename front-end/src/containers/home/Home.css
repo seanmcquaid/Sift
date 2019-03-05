@@ -1,0 +1,97 @@
+.welcomeTextContent{
+    margin:3rem auto 0;
+    width:80%;
+    margin-top:5rem;
+    font-family:'Montserrat',sans-serif;
+    font-size:1.25rem;
+    font-style:italic;
+    font-weight: 100;
+    text-align: center;
+    color: #333745;
+}
+
+
+.categoryCircleContainer{
+    margin-bottom:3rem;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* .lineBlocks{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+} */
+
+.food, .active, .culture, .events{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    height:250px;
+    width:250px;
+    margin:2rem;
+    border-radius:100%;
+    background-color: #87cab0;
+    /* background-repeat: no-repeat;
+    background-position: center; */
+    border-color: white;
+    border-width:9px;
+    border-style:solid;
+    text-align:center;
+    vertical-align: middle;
+    font-family:'Bad Script',cursive;
+    font-size:3rem;
+    font-weight: 800;
+ 
+}
+
+.food p, .active p, .culture p, .events p{
+    opacity: 0;
+    color: #333745;
+}
+
+.food{
+    background-image: url('/images/icons/foodIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.active{
+    background-image: url('/images/icons/activeIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.culture{
+    background-image: url('/images/icons/cultureIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.events{
+    background-image: url('/images/icons/eventsIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.food:hover, .active:hover, .culture:hover, .events:hover {
+    transform:scale(.75);
+    transition: 2s all;
+}
+
+.food:hover p, .active:hover p, .culture:hover p, .events:hover p{
+   opacity: 1;
+    transition: 2s all;
+}
+
+
+
+

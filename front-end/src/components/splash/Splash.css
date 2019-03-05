@@ -4,10 +4,74 @@
     flex-direction: row;
 }
 
+
 .carouselRow IMG{
     width:100%;
-    
+}
 
-  
+.splashTextContent{
+    margin:3rem auto 0;
+    width:80%;
+}
 
+.splashTextContent h1{
+    text-align: center;
+    font-family: 'Bad Script', cursive;
+    font-size: 	3.125rem;
+    font-weight: 700;
+    color: #87cab0;
+    margin-bottom:.15rem;
+    padding-bottom:.15rem;
+}
+
+@media screen and (max-width: 500px) {
+    .splashTextContent h1 {
+        font-size: 2rem;
+    }
+}
+
+.questionMark{
+    letter-spacing:.4rem;
+}
+
+.splashTextContent p{
+    margin-top:.15rem;
+    padding-top:.15rem;
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-weight:300;
+    font-size:1.125rem;
+    line-height:2rem;
+    margin-bottom:2rem;
+    padding-bottom:2rem;
+    color: #333745;
+}
+
+.boxContainer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box{
+    width: 250px;
+    height:250px;
+    border-radius:25px;
+    background-color:red;
+    margin:1rem;
+}
+
+@media screen and (max-width: 1059px) {
+    .box {
+        width: 225px;
+    height:225px;
+    }
+}
+
+@media screen and (max-width: 1059px) {
+    .box {
+        width: 200px;
+    height:200px;
+    }
 }

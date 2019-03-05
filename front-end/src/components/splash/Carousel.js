@@ -17,26 +17,27 @@ function Carousel(props){
     }
 
     return(
-       <Slider {...settings} className="carouselRow">
-            <div className="slick-image">
-                <img src="/images/carousel/1.jpg"/>
-            </div>
-            <div className="slick-image">
-                <img src="/images/carousel/2.jpg"/>
-            </div>
-            <div className="slick-image">
-                <img src="/images/carousel/3.jpg"/>
-            </div>
-            <div className="slick-image">
-                <img src="/images/carousel/4.jpg"/>
-            </div>
-            <div className="slick-image">
-                <img src="/images/carousel/5.jpg"/>
-            </div>
-            <div className="slick-image">
-                <img src="/images/carousel/6.jpg"/>
-            </div>
-       </Slider>
+        <Slider {...settings} className="carouselRow" >
+                <div className="slick-image">
+                    <img src="/images/carousel/1.jpg"/>
+                </div>
+                <div className="slick-image">
+                    <img src="/images/carousel/2.jpg"/>
+                </div>
+                <div className="slick-image">
+                    <img src="/images/carousel/3.jpg"/>
+                </div>
+                <div className="slick-image">
+                    <img src="/images/carousel/4.jpg"/>
+                </div>
+                <div className="slick-image">
+                    <img src="/images/carousel/5.jpg"/>
+                </div>
+                <div className="slick-image">
+                    <img src="/images/carousel/6.jpg"/>
+                </div>
+        </Slider>
+      
     )
 }
 
