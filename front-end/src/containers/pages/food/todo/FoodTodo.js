@@ -37,7 +37,7 @@ class FoodToDo extends Component {
         }).then((backEndResponse) => {
             console.log(backEndResponse)
             this.setState({
-                list: backEndResponse.data
+                list: backEndResponse
             })
         })
     }
@@ -73,8 +73,6 @@ class FoodToDo extends Component {
                 )
             })       
         }
-        
-        
 
         return (
             <div className="FoodToDo">
