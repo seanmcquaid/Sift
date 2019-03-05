@@ -47,7 +47,8 @@ class ToDoForm extends Component {
                     <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
                     <select className="Dropdown Type" onChange={this.changeType}> 
                         {/* may need handlers on all dropdown options??  instea of just above??*/}
-                        <option default value={this.props.defaultType}>{this.props.defaultType}</option>
+                        <option value="">Choose type!</option>
+                        <option value={this.props.defaultType}>{this.props.defaultType}</option>
                         <option value={this.props.type2}>{this.props.type2}</option>
                         <option value={this.props.type3}>{this.props.type3}</option>
                         <option value={this.props.type4}>{this.props.type4}</option>

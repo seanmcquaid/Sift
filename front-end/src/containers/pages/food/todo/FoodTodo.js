@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {connect} from "react-redux";
 import ToDoForm from '../../../Forms/ToDoForm';
 import ToDo from '../../../../components/Lists/ToDo/ToDo'
+import Button from '../../../../components/utility/button/Button'
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 class FoodToDo extends Component {
     constructor() {
         super()
         this.state = {
-            list: []
-            
+            list: [],
+            msg: "",
+            showAlert: false,  
         }
     }
 
     componentDidMount() {
-        console.log('component did mount')
+        // console.log('component did mount')
         axios({
-            method: 'GET',
-            url: `http://localhost:3000/food/getFoodList`
+            method: 'POST',
+            url: `${window.apiHost}/food/getFoodList`,
+            data : {
+                email : this.props.login.email
+            }
         }).then((foodListFromDB)=>{
-            console.log(foodListFromDB)
+            // console.log(foodListFromDB)
             this.setState({
                 list: foodListFromDB
             })
@@ -26,16 +34,18 @@ class FoodToDo extends Component {
     }
 
     addNewPlace = (place, type) => {
-        console.log(place, type)
+        //api call will go here with autocomplete to add name, location to DB
+        // console.log(place, type)
         axios({
             method: 'POST',
-            url: `http://localhost:3000/food/addFood`,
+            url: `${window.apiHost}/food/addFood`,
             data: {
                 placename: place,
-                type: type
+                type: type,
+                email : this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
+            // console.log(backEndResponse)
             this.setState({
 
                 list: backEndResponse
@@ -44,33 +54,51 @@ class FoodToDo extends Component {
         })
     }
 
-    addToFavorites(){
-        //function to remove from todo list and add to favorites list (will turn 'favorite' boolean to 'true' in db)
-        //we will have to think of how to conditionally render the favorites list, and todo (like: if favorites
-        // == false, render in to, if favorites == true, render in favorites) because we're not actually deleting
-        // this item from the DB, just preventing it from being displayed HERE
+    addToFavorites= (placename)=>{
+        axios({
+            method: "POST",
+            url: `${window.apiHost}/food/addFave/${placename}`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            console.log(backEndResponse)
+            this.setState({
+                list: backEndResponse,
+                msg: "Success! Added to favorites",
+                showAlert: true
+            })
+        })
     }
 
-    removePlace(){
+    removePlace = (placename)=>{
         //easy, just delete from DB!
+        console.log(this.props.login.email)
+        axios({
+            method : "POST",
+            url : `${window.apiHost}/food/deletePlace/${placename}`,
+            data : {
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            console.log(backEndResponse)
+            this.setState({
+                list: backEndResponse
+            })
+        })
     }
 
     render() {
-        // IDK WHY I WAS HAVING SO MUCH TROUBLE GETTING THIS TO WORK!? SAYS IT'S NOT A FUNCTION!?
-        // const foodToDo = this.state.list.data
-        // console.log(foodToDo)
-        // console.log(foodToDo.length)
+        console.log(this.props)
         if(this.state.list.data !== undefined){
             var foodToDo = this.state.list.data.map((food, i) => {
-                console.log(food.placename)
+                // console.log(food.placename)
                 return (
                     <tr key={i}>
                         <td>{food.placename}</td>
                         <td>{food.type}</td>
-                        <td><button className="favorite">*</button></td>
-                        {/* //THIS BUTTON WILL HAVE A CLICK HANDLER FOR THE ADD TO FAVES FUNCTION ABOVE! */}
-                        <td><button className="remove">-</button></td>
-                        {/* //CLICK HANDLER FOR DELETING FROM DB */}
+                        <td><Button clicked={()=>this.addToFavorites(food.placename)} className="faveButton">*</Button></td>
+                        <td><Button clicked={()=>this.removePlace(food.placename)} className="deleteButton">-</Button></td>
                     </tr>
                 )
             })       
@@ -79,6 +107,12 @@ class FoodToDo extends Component {
 
         return (
             <div className="FoodToDo">
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Add to Faves"
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <ToDoForm 
                     addNewPlace={this.addNewPlace}
                     placeholder="Add new..."
@@ -101,5 +135,10 @@ class FoodToDo extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return {
+        login : state.login
+    }
+}
 
-export default FoodToDo;
+export default connect(mapStateToProps,null)(FoodToDo);
