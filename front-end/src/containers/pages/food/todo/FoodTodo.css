@@ -1,0 +1,15 @@
+.FoodToDo {
+    margin-top: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    width: 100%;
+}
+
+.test{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+}
