@@ -65,6 +65,33 @@ router.post('/addFood', (req, res, next)=>{
     })
 })
 
+router.post('/addFaveInFavorites', (req, res, next)=>{
+    console.log(req.body)
+    const place = req.body.placename;
+    const type = req.body.type;
+    const note = req.body.note;
+    const email = req.body.email;
+    // console.log(place, type)
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        // console.log(results)
+        const uid = results[0].id;
+        const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite) VALUES
+        ($1, $2, $3, $4, $5, $6);`;
+        db.query(insertFoodQuery, [uid, place, type, note, false, true]).then(() => {
+            const getFoodToDoQuery = `SELECT placename, note FROM food WHERE favorite = true AND uid = $1;`;
+            db.query(getFoodToDoQuery, [uid]).then((results2) => {
+                res.json(results2)
+                // console.log(results2)
+            })
+        }).catch((error2) => {
+            if (error2) { throw error2 }
+        })
+    }).catch((error)=>{
+        if(error){throw error};
+    })
+})
+
 router.post('/addFave/:placename', (req, res, next)=>{
     const placename = req.params.placename;
     const email = req.body.email

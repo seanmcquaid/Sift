@@ -38,7 +38,7 @@ class FoodFavorites extends Component {
             // console.log(place, type)
             axios({
                 method: 'POST',
-                url: `${window.apiHost}/food/addFood`,
+                url: `${window.apiHost}/food/addFaveInFavorites`,
                 data: {
                     placename: place,
                     type: type,
@@ -53,22 +53,7 @@ class FoodFavorites extends Component {
             })
         }
     
-        addToFavorites = (placename) => {
-            axios({
-                method: "POST",
-                url: `${window.apiHost}/food/addFave/${placename}`,
-                data: {
-                    email: this.props.login.email
-                }
-            }).then((backEndResponse) => {
-                console.log(backEndResponse)
-                this.setState({
-                    list: backEndResponse,
-                    msg: "Success! Added to favorites",
-                    showAlert: true
-                })
-            })
-        }
+
     
         removePlace = (placename) => {
             //easy, just delete from DB!
