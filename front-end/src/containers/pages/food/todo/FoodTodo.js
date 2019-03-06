@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import AddForm from '../../../Forms/AddForm';
 
-import PlaceCards from '../../../../components/Lists/ToDo/PlaceCards';
+import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from '../../../../components/utility/button/Button';
 
 import SweetAlert from 'sweetalert-react';

@@ -26,9 +26,9 @@ class App extends Component {
 
           <Route exact path="/userHome" component={Home}/>
 
-          <Route exact path="/food" component={Food} />
-          <Route exact path="/food/todo" component={FoodTodo}/>
-          <Route exact path="/food/favorites" component={FoodFavorites}/>
+          <Route exact path="/userHome/food" component={Food} />
+          <Route exact path="/userHome/food/todo" component={FoodTodo}/>
+          <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
 
           <Route exact path="/register" component={Register}/>
 

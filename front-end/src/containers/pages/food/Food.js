@@ -7,8 +7,8 @@ class Food extends Component {
         return(
             <div className="FoodHome">
                 <Link to="/userHome/food/todo">To Do</Link>
-                <Link to="userHome/food/">Favorites</Link>
-                <Link>Reviews</Link>
+                <Link to="/userHome/food/favorites">Favorites</Link>
+                <Link to="/userHome/food">Reviews</Link>
             </div>
         )
     }
