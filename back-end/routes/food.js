@@ -56,7 +56,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
         AND placename = $2;`
         db.query(updateQuery, [uid, placename]).then((results)=>{
             const selectFoodToDoQuery = ` SELECT placename, type FROM food WHERE uid =$1 AND 
-            todo = true AND favorite = false`
+            todo = true AND favorite = false;`;
             db.query(selectFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             }).catch((error2) => {
@@ -82,7 +82,8 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
         }).catch((error) => {
             if (error) { throw error };
         })
-        const selectFoodToDoQuery = `SELECT * FROM food where uid = $1;`;
+        const selectFoodToDoQuery = `SELECT placename, type FROM food WHERE uid =$1 AND 
+        todo = true AND favorite = false`;
         db.query(selectFoodToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)
