@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from "react-redux";
-import SearchAddForm from '../../../Forms/ToDoForm';
-import List from '../../../../components/Lists/ToDo/ToDo'
+import SearchAddForm from '../../../Forms/SearchAddForm';
+import List from '../../../../components/Lists/ToDo/List'
 import Button from '../../../../components/utility/button/Button'
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
