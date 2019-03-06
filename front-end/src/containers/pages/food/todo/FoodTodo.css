@@ -47,3 +47,11 @@ p {
     flex-direction: column;
     justify-content: center;
 }
+
+button {
+    margin-bottom: 2px;
+}
+
+button:hover{
+    color: #fff6dd;
+}

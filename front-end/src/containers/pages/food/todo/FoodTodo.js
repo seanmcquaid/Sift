@@ -109,8 +109,8 @@ class FoodToDo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(food.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.removePlace(food.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.editPlace(food.placename)} className="deleteButton">Remove</Button>
+                            <Button clicked={() => this.editPlace(food.placename)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                         </div>
                         
                     </div>
@@ -132,7 +132,8 @@ class FoodToDo extends Component {
                     addNewPlace={this.addNewPlace}
                     placeholder="Add new place to eat..."
                     textType="Add note..."
-                    defaultType="Restaurant"
+                    defaultType="Choose type!"
+                    type1="Restaurant"
                     type2="Cafe"
                     type3="Bar"
                     type4="Diner"
