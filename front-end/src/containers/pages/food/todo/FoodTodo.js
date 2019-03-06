@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
-import AddForm from '../../../Forms/AddForm';
-import PlaceCards from '../../../../components/Lists/ToDo/PlaceCards'
-import Button from '../../../../components/utility/button/Button'
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+
+import AddForm from '../../../Forms/AddForm';
+import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
+import Button from '../../../../components/utility/button/Button'
+import './FoodTodo.css'
+
+
 
 class FoodToDo extends Component {
     constructor() {
@@ -111,6 +115,7 @@ class FoodToDo extends Component {
 
         return (
             <div className="FoodToDo">
+                <h2>Food To Do!</h2>
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Add to Faves"
@@ -119,7 +124,7 @@ class FoodToDo extends Component {
                 />
                 <AddForm
                     addNewPlace={this.addNewPlace}
-                    placeholder="Add new..."
+                    placeholder="Add new place to eat..."
                     textType="Add note..."
                     defaultType="Restaurant"
                     type2="Cafe"
