@@ -142,6 +142,34 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
     })
 })
 
+router.post("/deleteFavePlace/:placename", (req,res,next)=>{
+    const placename = req.params.placename;
+    const email = req.body.email;
+    console.log(req.body.email)
+    const selectUserQuery = `SELECT * FROM users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id
+        const deletePlaceQuery = `DELETE FROM food where placename = $1 and uid = $2;`;
+        console.log(placename)
+        db.query(deletePlaceQuery, [placename, uid]).then((results)=>{
+            console.log(results)
+        }).catch((error) => {
+            if (error) { throw error };
+        })
+        const selectFoodToDoQuery = `SELECT placename, note FROM food WHERE uid =$1 AND 
+        todo = false AND favorite = true`;
+        db.query(selectFoodToDoQuery, [uid]).then((results2)=>{
+            console.log(results2);
+            res.json(results2)
+        }).catch((error2)=>{
+            if(error2){throw error2};
+        })
+    }).catch((error)=>{
+        if(error){throw error};
+    })
+})
+
+
 
 router.post("/addReview/:placename", (req,res,next)=>{
     const email = req.body.email;
