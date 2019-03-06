@@ -2,8 +2,6 @@ import React from 'react';
 import './Splash.css'
 import Carousel from './Carousel';
 import {Link} from 'react-router-dom';
-import SweetAlert from 'sweetalert-react';
-import 'sweetalert/dist/sweetalert.css'
 
 function Splash(props){
 

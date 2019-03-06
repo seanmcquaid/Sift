@@ -3,7 +3,6 @@ import './Splash.css'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { relative } from 'path';
 
 function Carousel(props){
     const settings = {
@@ -14,7 +13,6 @@ function Carousel(props){
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        // position:relative
     }
 
     return(
@@ -24,22 +22,22 @@ function Carousel(props){
             </div>
             <Slider {...settings} className="carouselImageRow" >
                     <div className="slick-image">
-                        <img src="/images/carousel/1.jpg"/>
+                        <img src="/images/carousel/1.jpg" alt="carouselImage"/>
                     </div>
                     <div className="slick-image">
-                        <img src="/images/carousel/2.jpg"/>
+                        <img src="/images/carousel/2.jpg" alt="carouselImage"/>
                     </div>
                     <div className="slick-image">
-                        <img src="/images/carousel/3.jpg"/>
+                        <img src="/images/carousel/3.jpg" alt="carouselImage"/>
                     </div>
                     <div className="slick-image">
-                        <img src="/images/carousel/4.jpg"/>
+                        <img src="/images/carousel/4.jpg" alt="carouselImage"/>
                     </div>
                     <div className="slick-image">
-                        <img src="/images/carousel/5.jpg"/>
+                        <img src="/images/carousel/5.jpg" alt="carouselImage"/>
                     </div>
                     <div className="slick-image">
-                        <img src="/images/carousel/6.jpg"/>
+                        <img src="/images/carousel/6.jpg" alt="carouselImage"/>
                     </div>
             </Slider>
         </div>
