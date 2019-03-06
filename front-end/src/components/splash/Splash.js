@@ -26,7 +26,7 @@ function Splash(props){
                     <div className="box"></div>
                 </div>
                 <h1>Intereste<span className="questionMark">d?</span></h1>
-                <p><Link to="../../containers/users/register">Register</Link> today and start planning your next adventure.</p>
+                <p><Link to="../../register">Register</Link> today and start planning your next adventure.</p>
             </div>
         </div>
     )

@@ -85,6 +85,7 @@
 .food:hover, .active:hover, .culture:hover, .events:hover {
     transform:scale(.75);
     transition: 2s all;
+    background-color: rgb(135,202,176,0.75)
 }
 
 .food:hover p, .active:hover p, .culture:hover p, .events:hover p{
