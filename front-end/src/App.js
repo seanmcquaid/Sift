@@ -9,6 +9,7 @@ import Home from "./containers/home/Home"
 import Splash from "./components/splash/Splash";
 import Login from "./containers/users/login/Login";
 import FoodTodo from "./containers/pages/food/todo/FoodTodo";
+import FoodFavorites from './containers/pages/food/favorites/FoodFavorites'
 import Register from "./containers/users/register/Register";
 
 
@@ -24,6 +25,7 @@ class App extends Component {
           <Route exact path="/userHome" component={Home}/>
           {/* <Route exact path="/food" component={Food} /> */}
           <Route exact path="/food/todo" component={FoodTodo} />
+          <Route exact path="food/favorites" component={FoodFavorites} />
           <Route exact path="/register" component={Register}/>
 
         </Layout>
