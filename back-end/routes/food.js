@@ -22,11 +22,12 @@ router.post('/getFoodList', (req, res, next)=>{
 
 router.post('/getFoodFaveList', (req,res,next)=>{
     const email = req.body.email;
-    const selectUserQuery = `SELECT id FROM users WHERE email = $1;`;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         const getFavesQuery = `SELECT placename, note FROM food WHERE todo = false AND favorite = true AND uid = $1;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
+
             res.json(results2)
             // console.log(results2)
         }).catch((error2) => {
