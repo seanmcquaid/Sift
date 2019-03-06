@@ -9,12 +9,21 @@
 
 .faveButton {
     background-color: #87cab0;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
 }
 
 .deleteButton {
     background-color: palevioletred;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
 }
 
 .editButton {
     background-color: #ffa094;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
 }
