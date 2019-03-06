@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import AddForm from '../../../Forms/AddForm';
+
 import PlaceCards from '../../../../components/Lists/ToDo/PlaceCards';
 import Button from '../../../../components/utility/button/Button';
+
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
