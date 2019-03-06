@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
-import SearchAddForm from '../../../Forms/SearchAddForm';
+import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/ToDo/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import SweetAlert from 'sweetalert-react';
@@ -117,7 +117,7 @@ class FoodToDo extends Component {
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <SearchAddForm
+                <AddForm
                     addNewPlace={this.addNewPlace}
                     placeholder="Add new..."
                     textType="Add note..."

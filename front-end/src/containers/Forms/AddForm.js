@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Button from '../../components/utility/button/Button'
 
 
-class SearchAddForm extends Component {
+class AddForm extends Component {
     constructor(){
         super()
         this.state = {
@@ -67,4 +67,4 @@ class SearchAddForm extends Component {
     }
 }
 
-export default SearchAddForm; 
+export default AddForm; 
