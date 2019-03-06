@@ -71,7 +71,7 @@ class Register extends Component {
         return(
             <div className="register">
                 <div className="register-header-image">
-                    <img className="header-image" src="../../../../images/food/bread.jpeg"/>
+                    <img className="header-image" src="../../../../images/food/bread.jpeg" alt="registerImage"/>
                 </div>
                 <div className="register-title">
                     <h1 className="title">Register</h1>
