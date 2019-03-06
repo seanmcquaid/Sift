@@ -20,6 +20,12 @@ class AddForm extends Component {
         event.preventDefault(event)
         // console.log("someone added!")
         this.props.addNewPlace(this.state.place, this.state.type, this.state.text)
+        document.getElementById('Dropdown').value = this.props.defaultType;
+        this.setState({
+            place: '',
+            type: '',
+            text: '',
+        })
         // console.log(this.state.place, this.state.type, this.state.text)
     }
 
@@ -53,9 +59,9 @@ class AddForm extends Component {
                 <form onSubmit={this.addNew} className="AddForm">
                     <div className="addNameAndType">
                         <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
-                        <select className="Dropdown Type" onChange={this.changeType}>
-                            <option value="">Choose type!</option>
-                            <option value={this.props.defaultType}>{this.props.defaultType}</option>
+                        <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
+                            <option value="">{this.props.defaultType}</option>
+                            <option value={this.props.type1}>{this.props.type1}</option>
                             <option value={this.props.type2}>{this.props.type2}</option>
                             <option value={this.props.type3}>{this.props.type3}</option>
                             <option value={this.props.type4}>{this.props.type4}</option>
