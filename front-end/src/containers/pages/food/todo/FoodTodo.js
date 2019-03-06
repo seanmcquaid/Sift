@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from "react-redux";
-import ToDoForm from '../../../Forms/ToDoForm';
-import ToDo from '../../../../components/Lists/ToDo/ToDo'
+import SearchAddForm from '../../../Forms/ToDoForm';
+import List from '../../../../components/Lists/ToDo/ToDo'
 import Button from '../../../../components/utility/button/Button'
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
@@ -113,7 +113,7 @@ class FoodToDo extends Component {
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <ToDoForm 
+                <SearchAddForm 
                     addNewPlace={this.addNewPlace}
                     placeholder="Add new..."
                     defaultType="Restaurant"
@@ -121,7 +121,7 @@ class FoodToDo extends Component {
                     type3="Bar"
                     type4="Diner"
                 />
-                <ToDo //maybe have to make <th> a component to get text to render @ top of table! compare to how
+                <List //maybe have to make <th> a component to get text to render @ top of table! compare to how
                 //the types for drop down work above...
                     col1="Place"
                     col2="Type"

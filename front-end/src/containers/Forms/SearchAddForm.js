@@ -4,7 +4,7 @@ import option from '../../components/utility/option/option'
 import Button from '../../components/utility/button/Button'
 
 
-class ToDoForm extends Component {
+class SearchAddForm extends Component {
     constructor(){
         super()
         this.state = {
@@ -60,4 +60,4 @@ class ToDoForm extends Component {
     }
 }
 
-export default ToDoForm; 
+export default SearchAddForm; 
