@@ -6,6 +6,7 @@ import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+import "./FoodFavorites.css";
 
 class FoodFavorites extends Component {
         constructor() {
@@ -68,6 +69,10 @@ class FoodFavorites extends Component {
                     showAlert: true
                 })
             })
+        }
+
+        addReview = () =>{
+            
         }
     
         removePlace = (placename) => {
