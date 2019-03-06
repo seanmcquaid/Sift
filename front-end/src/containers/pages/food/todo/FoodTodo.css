@@ -1,9 +1,23 @@
 .FoodToDo {
-    margin-top: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align:center;
     width: 100%;
+}
+
+h2{
+    color: #333745;
+    font-family: 'Bad Script', cursive;
+    font-size: 22pt;
+    margin-top: 3rem;
+}
+
+.placeCard{
+    border: 1px solid #ffa094;
+    background-color: #fff1cb;
+    border-radius: 30px;
+    padding: 1rem;
+    margin: 0.5rem;
 }

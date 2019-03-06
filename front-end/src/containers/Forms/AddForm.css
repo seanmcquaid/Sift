@@ -1,0 +1,48 @@
+.SearchAdd{
+    margin: 1rem 5rem;
+    width: 30rem;
+}
+
+.AddForm{
+    margin: 0 auto;
+    
+}
+
+.addNameAndType{
+    display: inline;
+}
+
+select {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #333745;
+    width: 150px;
+    height: 25px;
+
+    margin: 0.5rem;
+}
+
+#NewPlace{
+    width: 13rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#NewText {
+    width: 80%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
 import Button from '../../components/utility/button/Button'
+import './AddForm.css'
 
 
 class AddForm extends Component {
@@ -49,17 +50,20 @@ class AddForm extends Component {
     render(){
         return(
             <div className="SearchAdd">
-                <form onSubmit={this.addNew} className="TodoForm">
-                    <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
-                    <select className="Dropdown Type" onChange={this.changeType}> 
-                        {/* may need handlers on all dropdown options??  instea of just above??*/}
-                        <option value="">Choose type!</option>
-                        <option value={this.props.defaultType}>{this.props.defaultType}</option>
-                        <option value={this.props.type2}>{this.props.type2}</option>
-                        <option value={this.props.type3}>{this.props.type3}</option>
-                        <option value={this.props.type4}>{this.props.type4}</option>
-                    </select>
-                    <input onChange={this.changeText} type="text" id="newText" placeholder={this.props.textType} value={this.state.text} />
+                <form onSubmit={this.addNew} className="AddForm">
+                    <div className="addNameAndType">
+                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
+                        <select className="Dropdown Type" onChange={this.changeType}>
+                            <option value="">Choose type!</option>
+                            <option value={this.props.defaultType}>{this.props.defaultType}</option>
+                            <option value={this.props.type2}>{this.props.type2}</option>
+                            <option value={this.props.type3}>{this.props.type3}</option>
+                            <option value={this.props.type4}>{this.props.type4}</option>
+                        </select>
+                    </div>
+                    <div className="addNote">
+                        <textarea onChange={this.changeText} id="NewText" placeholder={this.props.textType} value={this.state.text}></textarea>
+                    </div>
                     <Button type="submit" className="submitButton">Add</Button>
                 </form>
             </div>
