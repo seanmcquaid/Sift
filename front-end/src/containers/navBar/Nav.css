@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     background-color: #ffa094;
-    padding: 1rem;
+    padding: 1rem 0 1rem 0;
     box-shadow:0 1px 6px rgba(2, 15, 7, 0.502);
     position: fixed;
     display: flex;
@@ -14,6 +14,7 @@
 
 .logo {
     width: 50%;
+    margin-left: 0.5rem;
 }
 
 .nav-right {
@@ -22,7 +23,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 1rem;
 }
 
 .nav-right div {

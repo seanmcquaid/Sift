@@ -20,7 +20,7 @@ class Nav extends Component{
         } else {
             navLeft = <div className="logo"><Link to="/userHome">Logo Placeholder</Link></div>;
             navRight = <div className="nav-right">
-                            <div className="category-link"><Link to="/food">Food</Link></div>
+                            <div className="category-link"><Link to="/userHome/food">Food</Link></div>
                             <div className="category-link"><Link to="/">Active</Link></div>
                             <div className="category-link"><Link to="/">Culture</Link></div>
                             <div className="category-link"><Link to="/">Outdoor</Link></div>

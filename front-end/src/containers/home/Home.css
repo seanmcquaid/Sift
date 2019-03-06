@@ -44,6 +44,8 @@
     text-align:center;
     vertical-align: middle;
     font-family:'Bad Script',cursive;
+    /* text-decoration:none;
+    text-decoration-line: none; */
     font-size:3rem;
     font-weight: 800;
     transition: transform 2s;
@@ -55,6 +57,7 @@
 .food p, .active p, .culture p, .events p{
    opacity:0;
     color: #333745;
+    
     transition-property: opacity;
     transition: opacity 2s;
 }
@@ -90,12 +93,14 @@
 .food:hover, .active:hover, .culture:hover, .events:hover {
     transform:scale(.75);
     transition: 2s all;
-    background-color: rgb(135,202,176,0.75)
+    background-color: rgb(135,202,176,0.75);
+   
 }
 
 .food:hover p, .active:hover p, .culture:hover p, .events:hover p{
    opacity: 1;
     transition: 2s all;
+    
 }
 
 

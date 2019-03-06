@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+
 import './PlaceCards.css'
+
 
 
 class PlaceCards extends Component {

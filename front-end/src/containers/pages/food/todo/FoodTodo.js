@@ -92,7 +92,7 @@ class FoodToDo extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
                 console.log(food)
