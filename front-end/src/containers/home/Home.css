@@ -46,12 +46,17 @@
     font-family:'Bad Script',cursive;
     font-size:3rem;
     font-weight: 800;
- 
+    transition: transform 2s;
+    transform: scale(1) 
+
+
 }
 
 .food p, .active p, .culture p, .events p{
-    opacity: 0;
+   opacity:0;
     color: #333745;
+    transition-property: opacity;
+    transition: opacity 2s;
 }
 
 .food{
