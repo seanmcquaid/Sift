@@ -5,7 +5,6 @@
 
 .AddForm{
     margin: 0 auto;
-    
 }
 
 .addNameAndType{
@@ -18,7 +17,6 @@ select {
     color: #333745;
     width: 150px;
     height: 25px;
-
     margin: 0.5rem;
 }
 
