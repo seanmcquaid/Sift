@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import AddForm from '../../../Forms/AddForm';
-import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
-import Button from '../../../../components/utility/button/Button'
+
+import PlaceCards from '../../../../components/Lists/ToDo/PlaceCards';
+import Button from '../../../../components/utility/button/Button';
+
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
@@ -88,7 +90,7 @@ class FoodToDo extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
                 console.log(food)

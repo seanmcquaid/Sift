@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     background-color: #ffa094;
-    padding: 1rem;
+    padding: 1rem 0 1rem 0;
     box-shadow:0 1px 6px rgba(2, 15, 7, 0.502);
     position: fixed;
     display: flex;
