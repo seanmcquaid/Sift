@@ -9,6 +9,7 @@
     flex-direction: row;
     align-items: center;
     color: #333745;
+    z-index: 20;
 }
 
 .logo {
