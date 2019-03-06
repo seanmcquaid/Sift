@@ -1,8 +1,8 @@
 import React from 'react';
 
-const option = (props) => (
+const Option = (props) => (
     <option value={props.type}>{props.childen}</option>
 
 )
 
-export default option;
+export default Option;
