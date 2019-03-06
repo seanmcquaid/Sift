@@ -19,9 +19,10 @@ class Register extends Component {
     }
 
     componentWillReceiveProps(newProps){
-        if(newProps.reg.msg === "userAdded"){
+        console.log(newProps)
+        if(newProps.login.msg === "userAdded"){
             this.props.history.push('/userHome');
-        } else if(newProps.reg.msg === "userExists"){
+        } else if(newProps.login.msg === "userExists"){
             this.setState({
                 msg : "This user already exists, please try again!",
                 showAlert: true
@@ -97,7 +98,7 @@ class Register extends Component {
 
 function mapStateToProps(state){
     return{
-        reg: state.reg
+        login : state.login
     }
 }
 

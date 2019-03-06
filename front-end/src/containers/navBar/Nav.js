@@ -1,8 +1,11 @@
 import React, {Component} from "react";
 import "./Nav.css";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 class Nav extends Component{
+    // need logic to see if logged in, change route on left to user home
+    // and on right, display categories and hamburger with profile/logout
     render(){
         return(
             <div className="nav">
@@ -15,5 +18,7 @@ class Nav extends Component{
         )
     }
 }
+
+// mapstate to props to find out login status
 
 export default Nav;
