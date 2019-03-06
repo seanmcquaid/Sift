@@ -17,9 +17,9 @@ class AddForm extends Component {
 
     addNew = (event) => {
         event.preventDefault(event)
-        console.log("someone added!")
+        // console.log("someone added!")
         this.props.addNewPlace(this.state.place, this.state.type, this.state.text)
-        console.log(this.state.place, this.state.type, this.state.text)
+        // console.log(this.state.place, this.state.type, this.state.text)
     }
 
     changePlace = (event) => {
