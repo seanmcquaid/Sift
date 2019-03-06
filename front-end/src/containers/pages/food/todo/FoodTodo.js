@@ -74,6 +74,10 @@ class FoodToDo extends Component {
         })
     }
 
+    editPlace = (placename) => {
+        //edit note/name of place
+    }
+
     removePlace = (placename) => {
         //easy, just delete from DB!
         console.log(this.props.login.email)
@@ -92,19 +96,21 @@ class FoodToDo extends Component {
     }
 
     render() {
-        // console.log(this.props)
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
                 console.log(food)
                 return (
                     <div key={i} className="placeCard">
-                        <h4>{food.placename}</h4>
-                        <div>
-                            <p>{food.note}</p>
+                        <div className="cardLeft">
+                            <h4>{food.placename}</h4>
+                            <div>
+                                <p>{food.note}</p>
+                            </div>
                         </div>
                         <div className="buttonContainer">
-                            <Button clicked={() => this.addToFavorites(food.placename)} className="faveButton">*</Button>
-                            <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">-</Button>
+                            <Button clicked={() => this.addToFavorites(food.placename)} className="faveButton">Fave</Button>
+                            <Button clicked={() => this.removePlace(food.placename)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.editPlace(food.placename)} className="deleteButton">Remove</Button>
                         </div>
                         
                     </div>

@@ -90,7 +90,9 @@ class FoodFavorites extends Component {
         render() {
             console.log(this.props)
             if (this.state.list.data !== undefined) {
-                var foodFavorites = this.state.list.data.map((food, i) => {
+
+                var favorites = this.state.list.data.map((food, i) => {
+
                     console.log(food)
                     return (
                         <div key={i} className="placeCard">
@@ -110,6 +112,7 @@ class FoodFavorites extends Component {
     
             return (
                 <div className="FoodFavorites">
+                    <h2>Favorites</h2>
                     <AddForm
                         addNewPlace={this.addNewPlace}
                         placeholder="Add new..."
@@ -120,7 +123,8 @@ class FoodFavorites extends Component {
                         type4="Diner"
                     
                     />
-                    <PlaceCards cards={foodFavorites}/>
+                    <PlaceCards cards={favorites}/>
+
                 </div>
             )
         }

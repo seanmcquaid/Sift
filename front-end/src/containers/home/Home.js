@@ -1,8 +1,6 @@
 import React from 'react';
 import './Home.css'
 import {Link} from 'react-router-dom';
-import SweetAlert from 'sweetalert-react';
-import 'sweetalert/dist/sweetalert.css'
 
 
 function Home(props){
@@ -10,13 +8,13 @@ function Home(props){
     const chooseMessage = number
     let welcomeMessage
 
-    if (chooseMessage == 1){
+    if (chooseMessage === 1){
         welcomeMessage = "Let's Get It"
-    } else if (chooseMessage == 2){
+    } else if (chooseMessage === 2){
         welcomeMessage = "Welcome Back"
-    } else if (chooseMessage == 3){
+    } else if (chooseMessage === 3){
         welcomeMessage = "Carp Diem"
-    } else if (chooseMessage == 4){
+    } else if (chooseMessage === 4){
         welcomeMessage = "Holla"
     } else {
         welcomeMessage = "Nice to See You"
