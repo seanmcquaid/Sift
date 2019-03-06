@@ -12,6 +12,7 @@ h2{
     font-family: 'Bad Script', cursive;
     font-size: 22pt;
     margin-top: 3rem;
+    margin: 3rem auto 1rem;
 }
 
 .placeCard{
@@ -20,4 +21,29 @@ h2{
     border-radius: 30px;
     padding: 1rem;
     margin: 0.5rem;
+    text-align: left;
+    display: flex;
+
+}
+
+.cardLeft {
+    width: 80%;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 1rem;
+    margin:0.5rem 0;
+    color: #333745;
+}
+
+p {
+    font-size: 0.75rem;
+    color: #333745;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
