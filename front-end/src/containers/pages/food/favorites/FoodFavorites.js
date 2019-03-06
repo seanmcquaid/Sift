@@ -60,7 +60,7 @@ class FoodFavorites extends Component {
             console.log(this.props.login.email)
             axios({
                 method: "POST",
-                url: `${window.apiHost}/food/deletePlace/${placename}`,
+                url: `${window.apiHost}/food/deleteFavePlace/${placename}`,
                 data: {
                     email: this.props.login.email
                 }
