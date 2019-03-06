@@ -96,7 +96,6 @@ class FoodToDo extends Component {
                 return (
                     <tr key={i}>
                         <td>{food.placename}</td>
-                        <td>{food.type}</td>
                         <td><Button clicked={()=>this.addToFavorites(food.placename)} className="faveButton">*</Button></td>
                         <td><Button clicked={()=>this.removePlace(food.placename)} className="deleteButton">-</Button></td>
                     </tr>
@@ -124,10 +123,9 @@ class FoodToDo extends Component {
                 <List //maybe have to make <th> a component to get text to render @ top of table! compare to how
                 //the types for drop down work above...
                     col1="Place"
-                    col2="Type"
-                    col3="Favorite"
-                    col4="Remove"
-                    toDoList={foodToDo}
+                    col2="Favorite"
+                    col3="Remove"
+                    list={foodToDo}
                     // can't get the map function to work so i can't see if this passing of props works
                 />
             </div>
