@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {connect} from "react-redux";
 import SearchAddForm from '../../../Forms/SearchAddForm';
-import List from '../../../../components/Lists/ToDo/List'
-import Button from '../../../../components/utility/button/Button'
+import List from '../../../../components/Lists/ToDo/List';
+import Button from '../../../../components/utility/button/Button';
+import config from "../../../../config";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
@@ -89,7 +90,8 @@ class FoodToDo extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
+        console.log(config);
         if(this.state.list.data !== undefined){
             var foodToDo = this.state.list.data.map((food, i) => {
                 // console.log(food.placename)
