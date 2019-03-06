@@ -15,7 +15,7 @@
     width: 50%;
 }
 
-.login-register {
+.nav-right {
     width: 50%;
     display: flex;
     flex-direction: row;
@@ -24,9 +24,14 @@
     margin-right: 1rem;
 }
 
-.login-register div {
+.nav-right div {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+}
+
+.logo a{
+    text-decoration: none;
+    color: #333745;
 }
 
 .login-link a{
@@ -35,6 +40,11 @@
 }
 
 .register-link a {
+    text-decoration: none;
+    color: #333745;
+}
+
+.category-link a {
     text-decoration: none;
     color: #333745;
 }
