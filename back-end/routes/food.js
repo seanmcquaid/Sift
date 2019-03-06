@@ -72,7 +72,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
 
 router.post("/deletePlace/:placename", (req,res,next)=>{
     const placename = req.params.placename;
-    const email = req.body.email
+    const email = req.body.email;
     console.log(req.body.email)
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
@@ -97,6 +97,21 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
     })
 })
 
+
+router.post("/addReview/:placename", (req,res,next)=>{
+    const email = req.body.email;
+    const placename = req.params.placename;
+    const stars = req.body.stars;
+    const review = req.body.review;
+    const selectUserQuery = `SELECT * FROM users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id;
+        
+    }).catch((error)=>{
+        if(error){throw error};
+    })
+
+})
 
 
 module.exports = router;
