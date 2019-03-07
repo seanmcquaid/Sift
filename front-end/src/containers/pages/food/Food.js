@@ -5,14 +5,31 @@ class Food extends Component {
 
     render(){
         return(
-            <div className="FoodHome">
-                <Link to="/userHome/food/todo">To Do</Link>
-                <Link to="/userHome/food/favorites">Favorites</Link>
-                <Link to="/userHome/food/reviews">Reviews</Link>
+
+            <div>
+                 <div className="optionsMenuText">
+                    <h1>Options Menu</h1>
+                </div>
+                <div className="optionsCircleContainer">
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/todo"><div className="toDoCircle"><p>To Do</p></div></Link>
+                        </div>
+                        <div>    
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/favorites"><div className="favoritesCircle"><p>Favorite</p></div></Link>
+                        </div>
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
+                        </div>
+                        {/* <div>
+                            
+                        </div> */}
+                </div>
+
             </div>
         )
     }
 }
+
 
 export default Food;
 

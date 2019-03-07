@@ -19,12 +19,6 @@
     justify-content: center;
 }
 
-/* .lineBlocks{
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-} */
 
 .food, .active, .culture, .events{
     display: flex;
