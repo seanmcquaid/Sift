@@ -1,9 +1,8 @@
 import React from 'react';
 import './Modal.css'
-import { prependOnceListener } from 'cluster';
 
 const Modal = (props) => (
-    <div className="Modal" show={this.props.show}>
+    <div className="Modal" show={props.show}>
         {props.children}
     </div>
 )

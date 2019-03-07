@@ -5,6 +5,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import "./ActiveFavorites.css";
+import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class ActiveFavorites extends Component {
     constructor() {

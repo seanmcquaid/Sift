@@ -15,19 +15,19 @@ class EditForm extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log(this.props)
-        axios({
-            method: "GET",
-            url: `http://localhost:3000/getPlace/${place}`
-        }).then((taskFromBackEnd) => {
-            {
-                this.setState({
-                    task: taskFromBackEnd.data.task
-                })
-            }
-        })
-    }
+    // componentDidMount() {
+    //     console.log(this.props)
+    //     axios({
+    //         method: "GET",
+    //         url: `http://localhost:3000/getPlace/${place}`
+    //     }).then((taskFromBackEnd) => {
+    //         {
+    //             this.setState({
+    //                 task: taskFromBackEnd.data.task
+    //             })
+    //         }
+    //     })
+    // }
 
     editPlace = (event) => {
         event.preventDefault(event)

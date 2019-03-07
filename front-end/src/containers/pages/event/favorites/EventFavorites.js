@@ -61,7 +61,7 @@ class EventFavorites extends Component {
             console.log(this.props.login.email)
             axios({
                 method: "POST",
-                url: `${window.apiHost}/event/deleteEvent/${placename}`,
+                url: `${window.apiHost}/event/deleteEvent/${eventname}`,
                 data: {
                     email: this.props.login.email
                 }
@@ -95,14 +95,14 @@ class EventFavorites extends Component {
             console.log(this.props)
             if (this.state.list.data !== undefined) {
 
-                var favorites = this.state.list.data.map((food, i) => {
+                var favorites = this.state.list.data.map((event, i) => {
 
-                    console.log(food)
+                    console.log(event)
                     return (
                         <div key={i} className="placeCard">
-                            <h4>{food.placename}</h4>
+                            <h4>{event.placename}</h4>
                             <div>
-                                <p>{food.note}</p>
+                                <p>{event.note}</p>
                             </div>
                             <div className="buttonContainer">
                             <Link to="../reviews"><Button className="reviewButton">Review</Button></Link>

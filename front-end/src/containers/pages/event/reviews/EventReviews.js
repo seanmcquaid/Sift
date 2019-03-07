@@ -54,7 +54,7 @@ class EventReviews extends Component {
 
     render() {
         if (this.state.list.data !== undefined) {
-            var foodReviews = this.state.list.data.map((review, i) => {
+            var eventReviews = this.state.list.data.map((review, i) => {
                 // console.log(review)
                 return (
                     <div key={i} className="placeCard">

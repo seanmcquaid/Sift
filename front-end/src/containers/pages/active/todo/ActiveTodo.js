@@ -92,7 +92,7 @@ class ActiveTodo extends Component {
                 list: backEndResponse,
                 showModal: true
             })
-            if (backEndResponse.data.msg == 'updated') {
+            if (backEndResponse.data.msg === 'updated') {
                 this.props.history.push('/active/todo')
             }
         })
