@@ -1,30 +1,43 @@
 import React, { Component } from 'react';
 import Button from '../../components/utility/button/Button'
-import './AddForm.css'
+import './EditForm.css'
 
 
-class AddForm extends Component {
-    constructor(){
+class EditForm extends Component {
+    constructor() {
         super()
         this.state = {
             place: '',
             type: '',
-            text: '',
-            filter: ''
+            text: ''
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
         }
     }
 
-    addNew = (event) => {
-        event.preventDefault(event)
-        this.props.addNewPlace(this.state.place, this.state.type, this.state.text)
-        document.getElementById('Dropdown').value = this.props.defaultType;
-        this.setState({
-            place: '',
-            type: '',
-            text: '',
+    componentDidMount() {
+        console.log(this.props)
+        axios({
+            method: "GET",
+            url: `http://localhost:3000/getPlace/${place}`
+        }).then((taskFromBackEnd) => {
+            {
+                this.setState({
+                    task: taskFromBackEnd.data.task
+                })
+            }
         })
+    }
+
+    editPlace = (event) => {
+        event.preventDefault(event)
+        this.props.editPlace(this.state.place, this.state.type, this.state.text)
+        // document.getElementById('Dropdown').value = this.props.defaultType;
+        // this.setState({
+        //     place: '',
+        //     type: '',
+        //     text: '',
+        // })
     }
 
     changePlace = (event) => {
@@ -50,14 +63,12 @@ class AddForm extends Component {
             text: event.target.value
         })
     }
-    
-    render(){
-        // const typeArray = this.props.types
-        // console.log(typeArray)
 
-        return(
+    render() {
+
+        return (
             <div className="SearchAddEdit">
-                <form onSubmit={this.addNew} className="AddForm">
+                <form onSubmit={this.editPlace} className="EditForm">
                     <div className="addNameAndType">
                         <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
                         <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
@@ -75,4 +86,4 @@ class AddForm extends Component {
     }
 }
 
-export default AddForm; 
+export default EditForm; 
