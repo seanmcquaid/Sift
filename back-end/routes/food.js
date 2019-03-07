@@ -172,7 +172,7 @@ router.post("/getFoodReviews", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
             // console.log(results2);
             res.json(results2);
@@ -205,7 +205,7 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
                 db.query(insertReviewQuery,[uid, placename, type, false, false, true, stars, review]).then((results3)=>{
                     
-                    const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
+                    const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
                         // console.log(results4);
                         res.json(results4);
@@ -216,10 +216,10 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
                     if(error3){throw error3};
                 })
             } else {
-                const updateFoodQuery = `UPDATE food SET reviewed = true, review = $1 WHERE uid = $2
-                AND placename = $3;`
-                db.query(updateFoodQuery,[review,uid,placename]).then((results5)=>{
-                    const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
+                const updateFoodQuery = `UPDATE food SET reviewed = true, review = $1, stars = $2 WHERE uid = $3
+                AND placename = $4;`
+                db.query(updateFoodQuery,[review, stars, uid,placename]).then((results5)=>{
+                    const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results6)=>{
                         // console.log(results6);
                         res.json(results6);

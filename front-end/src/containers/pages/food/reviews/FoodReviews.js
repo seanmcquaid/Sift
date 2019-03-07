@@ -27,7 +27,7 @@ class FoodReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            // console.log(reviewListFromDB)
+            console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))
@@ -47,9 +47,11 @@ class FoodReviews extends Component {
                 stars
             }
         }).then((responseFromDB)=>{
+            // console.log(responseFromDB)
             this.setState({
                 list : responseFromDB,
-                msg : `Congrats! You've added a review for ${place}!`
+                msg : `Congrats! You've added a review for ${place}!`,
+                showAlert: true,
             })
         })
     }
@@ -58,17 +60,21 @@ class FoodReviews extends Component {
 
     }
 
+    deleteReview = ()=>{
+        
+    }
+
     render() {
         if (this.state.list.data !== undefined) {
             var foodReviews = this.state.list.data.map((review, i) => {
-                // console.log(review)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
                             <h4>{review.placename}</h4>
-                            <div>
-                                <p>{review.review}</p>
-                            </div>
+                            <p>{review.review}</p>
+                        </div>
+                        <div className="stars">
+                            <p> {review.stars} Stars</p>
                         </div>
                         <div className="buttonContainer">
                             <Button className="shareButton">Share</Button>

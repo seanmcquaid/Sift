@@ -15,7 +15,13 @@ class AddReviewForm extends Component {
 
     addNewReview = (event)=>{
         event.preventDefault();
-        this.props.addReview(this.state.place,this.state.review, this.state.type, this.state.stars)
+        this.props.addReview(this.state.place,this.state.review, this.state.type, this.state.stars);
+        this.setState({
+            place: "",
+            review : "",
+            type: "",
+            stars : ""
+        })
     }
 
     changePlace= (event)=>{
