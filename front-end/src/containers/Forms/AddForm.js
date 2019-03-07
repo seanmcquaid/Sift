@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
 import Button from '../../components/utility/button/Button'
 import './AddForm.css'
 
@@ -10,7 +9,8 @@ class AddForm extends Component {
         this.state = {
             place: '',
             type: '',
-            text: ''
+            text: '',
+            filter: ''
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
         }
@@ -18,7 +18,6 @@ class AddForm extends Component {
 
     addNew = (event) => {
         event.preventDefault(event)
-        // console.log("someone added!")
         this.props.addNewPlace(this.state.place, this.state.type, this.state.text)
         document.getElementById('Dropdown').value = this.props.defaultType;
         this.setState({
@@ -26,7 +25,6 @@ class AddForm extends Component {
             type: '',
             text: '',
         })
-        // console.log(this.state.place, this.state.type, this.state.text)
     }
 
     changePlace = (event) => {
@@ -54,6 +52,9 @@ class AddForm extends Component {
     }
     
     render(){
+        // const typeArray = this.props.types
+        // console.log(typeArray)
+
         return(
             <div className="SearchAdd">
                 <form onSubmit={this.addNew} className="AddForm">
@@ -61,10 +62,7 @@ class AddForm extends Component {
                         <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
                         <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
                             <option value="">{this.props.defaultType}</option>
-                            <option value={this.props.type1}>{this.props.type1}</option>
-                            <option value={this.props.type2}>{this.props.type2}</option>
-                            <option value={this.props.type3}>{this.props.type3}</option>
-                            <option value={this.props.type4}>{this.props.type4}</option>
+                            {this.props.types}
                         </select>
                     </div>
                     <div className="addNote">

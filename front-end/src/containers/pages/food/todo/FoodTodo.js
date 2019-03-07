@@ -8,6 +8,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import './FoodTodo.css'
+import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 
 
@@ -16,6 +17,7 @@ class FoodToDo extends Component {
         super()
         this.state = {
             list: [],
+            types: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             msg: "",
             showAlert: false,
         }
@@ -38,7 +40,7 @@ class FoodToDo extends Component {
     }
 
     addNewPlace = (place, type, text) => {
-        //api call will go here with autocomplete to add name, location to DB
+        // possibly, api call will go here with autocomplete to add name, location to DB
         // console.log(place, type)
         axios({
             method: 'POST',
@@ -95,6 +97,24 @@ class FoodToDo extends Component {
         })
     }
 
+    filterResults = (filter) => {
+        console.log(filter)
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/food/filter/${filter}`,
+            data: {
+                type: filter,
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            // console.log(backEndResponse)
+            this.setState({
+                list: backEndResponse
+            })
+        })
+
+    }
+
     render() {
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
@@ -118,6 +138,14 @@ class FoodToDo extends Component {
             })
         }
 
+        const typeArray = this.state.types.map((type, i)=>{
+            return (<option key={i} value={type}>{type}</option>)
+        })
+
+        const filterArray = this.state.types.map((filter, i)=>{
+            return(<option key={i} value={filter}>{filter}</option>)
+        })
+        
 
         return (
             <div className="FoodToDo">
@@ -132,11 +160,13 @@ class FoodToDo extends Component {
                     addNewPlace={this.addNewPlace}
                     placeholder="Add new place to eat..."
                     textType="Add note..."
-                    defaultType="Choose type!"
-                    type1="Restaurant"
-                    type2="Cafe"
-                    type3="Bar"
-                    type4="Diner"
+                    defaultType="Choose type!" 
+                    types={typeArray}
+                />
+                <Filter 
+                    defaultFilter="Filter by type"
+                    filters={filterArray}
+                    filterResults={this.filterResults}
                 />
                 <PlaceCards cards={foodToDo}/>
             </div>
