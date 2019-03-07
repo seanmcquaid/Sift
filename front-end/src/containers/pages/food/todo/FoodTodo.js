@@ -124,7 +124,7 @@ class FoodToDo extends Component {
                 <h2>Food To Do!</h2>
                 <SweetAlert
                     show={this.state.showAlert}
-                    title="Add to Faves"
+                    title="Added to Faves"
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />

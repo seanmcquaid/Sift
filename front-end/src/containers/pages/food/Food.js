@@ -5,6 +5,7 @@ class Food extends Component {
 
     render(){
         return(
+
             <div>
                  <div className="optionsMenuText">
                     <h1>Options Menu</h1>
@@ -23,6 +24,7 @@ class Food extends Component {
                             
                         </div> */}
                 </div>
+
             </div>
         )
     }

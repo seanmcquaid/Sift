@@ -1,9 +1,12 @@
 import React, {Component} from "react";
+import Button from "../../components/utility/button/Button";
+import "./AddReviewForm.css"
 
 class AddReviewForm extends Component {
     constructor() {
         super();
         this.state = {
+            place: "",
             review : "",
             stars : ""
         }
@@ -11,8 +14,15 @@ class AddReviewForm extends Component {
 
     addNewReview = (event)=>{
         event.preventDefault();
-        this.props.addReview(this.state.review, this.state.stars)
+        this.props.addReview(this.state.place,this.state.review, this.state.stars)
     }
+
+    changePlace= (event)=>{
+        this.setState({
+            place : event.target.value
+        })
+    }
+
 
     changeStars = (event)=>{
         this.setState({
@@ -30,6 +40,8 @@ class AddReviewForm extends Component {
         return(
             <div className="AddReviewForm">
                 <form onSubmit={this.addNewReview} className="reviewForm">
+                <div className="addPlaceStars">
+                    <input type="text" placeholder="Enter your place to review here!" id="newPlace" onChange={this.changePlace}/>
                     <select className="starDropdown" onChange={this.changeStars}> 
                         <option value="">How many stars?</option>
                         <option value="1">1</option>
@@ -38,10 +50,15 @@ class AddReviewForm extends Component {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <input onChange={this.changeReview} type="text" id="newReview" placeholder="Add review here!" value={this.state.reviews} />
-                    <Button type="submit" className="submitButton">Add</Button>
+                </div>
+                <div className="addReview">
+                    <textarea onChange={this.changeReview} id="newReview" placeholder={this.props.placeholder} value={this.state.review}></textarea>
+                        <Button type="submit" className="submitButton">Add Review</Button>
+                </div>
                 </form>
             </div>
         )
     }
 }
+
+export default AddReviewForm;
