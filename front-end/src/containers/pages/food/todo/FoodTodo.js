@@ -52,7 +52,6 @@ class FoodToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            // console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -81,7 +80,6 @@ class FoodToDo extends Component {
     }
 
     removePlace = (placename) => {
-        //easy, just delete from DB!
         console.log(this.props.login.email)
         axios({
             method: "POST",
@@ -107,12 +105,25 @@ class FoodToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            // console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
         })
+    }
 
+    clearFilter = () => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/food/getFoodList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((foodListFromDB) => {
+            // console.log(foodListFromDB)
+            this.setState({
+                list: foodListFromDB
+            })
+        })
     }
 
     render() {
@@ -167,6 +178,7 @@ class FoodToDo extends Component {
                     defaultFilter="Filter by type"
                     filters={filterArray}
                     filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={foodToDo}/>
             </div>
