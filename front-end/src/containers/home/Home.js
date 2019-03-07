@@ -27,7 +27,7 @@ function Home(props){
             </div>
             <div className="categoryCircleContainer">
                     <div className="circleSpacing">
-                    <Link to="/userHome/food"><div className="food"><p>Food</p></div></Link>
+                    <Link style={{ textDecoration: 'none' }} to="/userHome/food"><div className="food"><p>Food</p></div></Link>
                         <div className="active"><p>Active</p></div>
                     </div>
                     <div>
