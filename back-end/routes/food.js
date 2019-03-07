@@ -93,8 +93,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
 
 router.post('/addFave/:placename', (req, res, next)=>{
     const placename = req.params.placename;
-    const email = req.body.email
-
+    const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id
@@ -190,7 +189,7 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
     const placename = req.params.placename;
     const stars = req.body.stars;
     const review = req.body.review;
-    const selectUserQuery = `SELECT * FROM users where email = $1;`;
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
         
@@ -200,5 +199,25 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
 
 })
 
-
+router.post("/filter/:filter", (req, res, next) => {
+    const email = req.body.email;
+    const filter = req.params.filter
+    console.log(filter)
+    console.log(req.params)
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
+    db.query(selectUserQuery, [email]).then((results) => {
+        console.log(results)
+        const uid = results[0].id;
+        const filterQuery = `SELECT placename, note FROM food WHERE uid = $1 AND type = $2 AND favorite = false;`;
+        db.query(filterQuery, [uid, filter]).then((results2) => {
+            console.log(results2)
+            res.json(results2)
+        }).catch((error2)=>{
+            if(error2){throw error2}
+        })
+    }).catch((error) => {
+        if (error) {throw error}
+    })    
+})
+    
 module.exports = router;
