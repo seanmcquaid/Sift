@@ -122,9 +122,6 @@ button:hover{
    
 }
 
-.link{
-    text-decoration: none;
-}
 
 .toDoCircle{
     background-image: url('/images/icons/toDoIcon.png');
