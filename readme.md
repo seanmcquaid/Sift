@@ -14,8 +14,7 @@ TBD is a UI for everything you want to do. This application uses PostgresQL, Exp
 
 
 # Technologies
-- React
-- Redux
+- React/Redux
 - HTML/CSS/JavaScript
 - Node.js/Express
 - PostgreSQL
@@ -23,6 +22,7 @@ TBD is a UI for everything you want to do. This application uses PostgresQL, Exp
 
 
 # Challenges & Solutions
+- File Structure:
  
 
 # MVP
@@ -37,15 +37,15 @@ Sift is an application that allows users to create lists of places they'd like t
 
 # Authors
 - Sean McQuaid
-  - Contributions: 
+  - Contributions: Login and registration connection, implementation of Redux, implentation of Router, code for 'Reviews' list,
   - [GitHub Profile](https://github.com/seanmcquaid)
 
 - Katie Duane
-  - Contributions: 
+  - Contributions: Logo design, database schema set-up, creation of re-usable React Components for each category, initialized database connection for 'Food' section,  code for 'To-Do' list,
   - [GitHub Profile](https://github.com/katiejduane)
   
 - Greg Roques
-  - Contributions: 
+  - Contributions: Wireframes, designs, and style guide, mark-up and CSS for splash and home pages, code for 'Favorites' list, 
   - [GitHub Profile](https://github.com/gregroques)
 
   
