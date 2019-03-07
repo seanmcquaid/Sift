@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
-router.post('/getFoodList', (req, res, next)=>{
+router.post('/getEventList', (req, res, next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
@@ -11,6 +11,7 @@ router.post('/getFoodList', (req, res, next)=>{
         const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
         db.query(getFoodToDoQuery,[uid]).then((results2) => {
             res.json(results2)
+            // console.log(results2)
         }).catch((error2) => {
             if (error2) { throw error2 }
         })
@@ -19,7 +20,7 @@ router.post('/getFoodList', (req, res, next)=>{
     })
 })
 
-router.post('/getFoodFaveList', (req,res,next)=>{
+router.post('/getEventFaveList', (req,res,next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
@@ -27,6 +28,7 @@ router.post('/getFoodFaveList', (req,res,next)=>{
         const getFavesQuery = `SELECT placename, note FROM food WHERE todo = false AND favorite = true AND uid = $1;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
             res.json(results2)
+            // console.log(results2)
         }).catch((error2) => {
             if (error2) { throw error2 }
         })
@@ -35,7 +37,7 @@ router.post('/getFoodFaveList', (req,res,next)=>{
     })
 })
 
-router.post('/addFood', (req, res, next)=>{
+router.post('/addEvent', (req, res, next)=>{
     console.log(req.body)
     const place = req.body.placename;
     const type = req.body.type;
@@ -52,6 +54,7 @@ router.post('/addFood', (req, res, next)=>{
             const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND uid = $1;`;
             db.query(getFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
+                // console.log(results2)
             })
         }).catch((error2) => {
             if (error2) { throw error2 }
@@ -67,8 +70,10 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
     const type = req.body.type;
     const note = req.body.note;
     const email = req.body.email;
+    // console.log(place, type)
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
+        // console.log(results)
         const uid = results[0].id;
         const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite,reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
@@ -76,6 +81,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
             const getFoodToDoQuery = `SELECT placename, note FROM food WHERE favorite = true AND uid = $1;`;
             db.query(getFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
+                // console.log(results2)
             })
         }).catch((error2) => {
             if (error2) { throw error2 }
@@ -85,7 +91,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
     })
 })
 
-router.post('/addFave/:placename', (req, res, next)=>{
+router.post('/addFave/:eventname', (req, res, next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
@@ -107,7 +113,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
     })
 })
 
-router.post("/deletePlace/:placename", (req,res,next)=>{
+router.post("/deleteEvent/:eventname", (req,res,next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     console.log(req.body.email)
@@ -134,7 +140,7 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
     })
 })
 
-router.post("/deleteFavePlace/:placename", (req,res,next)=>{
+router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     console.log(req.body.email)
@@ -161,13 +167,14 @@ router.post("/deleteFavePlace/:placename", (req,res,next)=>{
     })
 })
 
-router.post("/getFoodReviews", (req,res,next)=>{
+router.post("/getEventReviews", (req,res,next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
+            // console.log(results2);
             res.json(results2);
         }).catch((error2)=>{
             if(error2){throw error2};
@@ -177,55 +184,14 @@ router.post("/getFoodReviews", (req,res,next)=>{
     })
 })
 
-router.post("/addFoodReview/:placename", (req,res,next)=>{
+router.post("/addEventReview/:eventname", (req,res,next)=>{
     const email = req.body.email;
     const placename = req.params.placename;
-    const type = req.body.type;
     const stars = req.body.stars;
     const review = req.body.review;
-    console.log(placename)
-    console.log(type)
-    console.log(stars)
-    console.log(review)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectPlaceQuery = `SELECT placename FROM food WHERE uid = $1 AND placename = $2;`;
-        db.query(selectPlaceQuery, [uid, placename]).then((results2)=>{
-            console.log(results2)
-            if(results2.length === 0){
-                const insertReviewQuery = `INSERT INTO food (uid, placename, type, todo, favorite, reviewed, stars, review) 
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
-                db.query(insertReviewQuery,[uid, placename, type, false, false, true, stars, review]).then((results3)=>{
-                    
-                    const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
-                    db.query(selectReviewsQuery,[uid]).then((results4)=>{
-                        // console.log(results4);
-                        res.json(results4);
-                    }).catch((error4)=>{
-                        if(error4){throw error4};
-                    })
-                }).catch((error3)=>{
-                    if(error3){throw error3};
-                })
-            } else {
-                const updateFoodQuery = `UPDATE food SET reviewed = true, review = $1, stars = $2 WHERE uid = $3
-                AND placename = $4;`
-                db.query(updateFoodQuery,[review, stars, uid,placename]).then((results5)=>{
-                    const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
-                    db.query(selectReviewsQuery,[uid]).then((results6)=>{
-                        // console.log(results6);
-                        res.json(results6);
-                    }).catch((error6)=>{
-                        if(error6){throw error6};
-                    })
-                }).catch((error5)=>{
-                    if(error5){throw error5}
-                })
-            }
-        }).catch((error2)=>{
-            if(error2){throw error2}
-        })
         
     }).catch((error)=>{
         if(error){throw error};
