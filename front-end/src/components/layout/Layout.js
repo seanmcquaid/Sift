@@ -8,7 +8,7 @@ function Layout(props){
     return(
         <Aux>
             <Nav/>
-                <div className="content-margin">
+            <div className="content-margin">
                 {props.children}
             </div>
             <Footer/>
