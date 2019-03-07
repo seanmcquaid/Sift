@@ -12,7 +12,7 @@ import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 
 
-class EventToDo extends Component {
+class EventTodo extends Component {
     constructor() {
         super()
         this.state = {
@@ -118,13 +118,13 @@ class EventToDo extends Component {
     render() {
         if (this.state.list.data !== undefined) {
             var eventToDo = this.state.list.data.map((event, i) => {
-                console.log(food)
+                console.log(event)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{food.placename}</h4>
+                            <h4>{event.placename}</h4>
                             <div>
-                                <p>{food.note}</p>
+                                <p>{event.note}</p>
                             </div>
                         </div>
                         <div className="buttonContainer">
@@ -180,4 +180,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(EventToDo);
+export default connect(mapStateToProps, null)(EventTodo);

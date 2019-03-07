@@ -17,15 +17,25 @@ import FoodReviews from "./containers/pages/food/reviews/FoodReviews"
 
 import Culture from './containers/pages/culture/Culture';
 import CultureTodo from './containers/pages/culture/todo/CultureTodo';
+import CultureFavorites from './containers/pages/culture/favorites/CultureFavorites';
+import CultureReviews from './containers/pages/culture/reviews/CultureReviews';
 
+import Event from "./containers/pages/event/Event";
+import EventTodo from './containers/pages/event/todo/EventTodo';
+import EventFavorites from './containers/pages/event/favorites/EventFavorites';
+import EventReviews from './containers/pages/event/reviews/EventReviews';
 
+import Active from "./containers/pages/active/Active";
+import ActiveTodo from "./containers/pages/active/todo/ActiveTodo";
+import ActiveFavorites from "./containers/pages/active/favorites/ActiveFavorites";
+import ActiveReviews from "./containers/pages/active/reviews/ActiveReviews";
 
 class App extends Component {
   render() {
     return (
       <Router>
          <Layout>
-
+           
           <Route exact path="/" component={Splash}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
@@ -44,9 +54,10 @@ class App extends Component {
           
           <Route exact path="/userHome/event" component={Event} />
           <Route exact path="/userHome/event/todo" component={EventTodo}/>
-          <Route exact path="/userHome/event/favorites" component={EVentFavorites}/>
+          <Route exact path="/userHome/event/favorites" component={EventFavorites}/>
           <Route exact path="/userHome/event/reviews" component={EventReviews}/>
 
+          <Route exact path="/userHome/active" component={Active}/>
           <Route exact path="/userHome/active/todo" component={ActiveTodo} />
           <Route exact path="/userHome/active/favorites" component={ActiveFavorites} />
           <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
