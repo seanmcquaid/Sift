@@ -8,18 +8,25 @@ class AddReviewForm extends Component {
         this.state = {
             place: "",
             review : "",
+            type: "",
             stars : ""
         }
     }
 
     addNewReview = (event)=>{
         event.preventDefault();
-        this.props.addReview(this.state.place,this.state.review, this.state.stars)
+        this.props.addReview(this.state.place,this.state.review, this.state.type, this.state.stars)
     }
 
     changePlace= (event)=>{
         this.setState({
             place : event.target.value
+        })
+    }
+
+    changeType = (event)=>{
+        this.setState({
+           type : event.target.value 
         })
     }
 
@@ -40,8 +47,14 @@ class AddReviewForm extends Component {
         return(
             <div className="AddReviewForm">
                 <form onSubmit={this.addNewReview} className="reviewForm">
-                <div className="addPlaceStars">
+                <div className="placeInput">
                     <input type="text" placeholder="Enter your place to review here!" id="newPlace" onChange={this.changePlace}/>
+                </div>
+                <div className="typeStarInput">
+                <select className="type" onChange={this.changeType}>
+                        <option value="">{this.props.defaultType}</option>
+                        {this.props.types}
+                    </select>
                     <select className="starDropdown" onChange={this.changeStars}> 
                         <option value="">How many stars?</option>
                         <option value="1">1</option>

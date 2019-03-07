@@ -29,7 +29,7 @@ select {
 }
 
 #newReview {
-    width: 100%;
+    width: 80%;
     max-width: 30rem;
     height: 8rem;
     margin: 0.5rem;

@@ -14,6 +14,7 @@ class FoodReviews extends Component {
         this.state = {
             list : [],
             msg : "",
+            types : ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             showAlert: false,
         }
     }
@@ -34,16 +35,21 @@ class FoodReviews extends Component {
     }
 
     // need to finish add review
-    addReview = (place, review, stars) =>{
+    addReview = (place, review, type, stars) =>{
         axios({
             method : "POST",
             url : `${window.apiHost}/food/addFoodReview/${place}`,
             data : {
-                email : this.props.login.email
+                email : this.props.login.email,
+                place,
+                review,
+                type,
+                stars
             }
         }).then((responseFromDB)=>{
             this.setState({
-                list : responseFromDB
+                list : responseFromDB,
+                msg : `Congrats! You've added a review for ${place}!`
             })
         })
     }
@@ -74,11 +80,24 @@ class FoodReviews extends Component {
                 )
             })
         }
+
+        const typeArray = this.state.types.map((type, i)=>{
+            return (<option key={i} value={type}>{type}</option>)
+        });
+
         return (
             <div className="FoodReviews">
                 <h2>Reviews</h2>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Added to Faves"
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <AddReviewForm
                     placeholder="Add your food review here!"
+                    defaultType= "Choose type!"
+                    types={typeArray}
                     addReview={this.addReview}
                 />
                 <PlaceCards cards={foodReviews}/>

@@ -187,11 +187,52 @@ router.post("/getFoodReviews", (req,res,next)=>{
 router.post("/addFoodReview/:placename", (req,res,next)=>{
     const email = req.body.email;
     const placename = req.params.placename;
+    const type = req.body.type;
     const stars = req.body.stars;
     const review = req.body.review;
+    console.log(placename)
+    console.log(type)
+    console.log(stars)
+    console.log(review)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
+        const selectPlaceQuery = `SELECT placename FROM food WHERE uid = $1 AND placename = $2;`;
+        db.query(selectPlaceQuery, [uid, placename]).then((results2)=>{
+            console.log(results2)
+            if(results2.length === 0){
+                const insertReviewQuery = `INSERT INTO food (uid, placename, type, todo, favorite, reviewed, stars, review) 
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
+                db.query(insertReviewQuery,[uid, placename, type, false, false, true, stars, review]).then((results3)=>{
+                    
+                    const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
+                    db.query(selectReviewsQuery,[uid]).then((results4)=>{
+                        // console.log(results4);
+                        res.json(results4);
+                    }).catch((error4)=>{
+                        if(error4){throw error4};
+                    })
+                }).catch((error3)=>{
+                    if(error3){throw error3};
+                })
+            } else {
+                const updateFoodQuery = `UPDATE food SET reviewed = true, review = $1 WHERE uid = $2
+                AND placename = $3;`
+                db.query(updateFoodQuery,[review,uid,placename]).then((results5)=>{
+                    const selectReviewsQuery = `SELECT placename, review from food WHERE uid = $1 AND reviewed = true;`;
+                    db.query(selectReviewsQuery,[uid]).then((results6)=>{
+                        // console.log(results6);
+                        res.json(results6);
+                    }).catch((error6)=>{
+                        if(error6){throw error6};
+                    })
+                }).catch((error5)=>{
+                    if(error5){throw error5}
+                })
+            }
+        }).catch((error2)=>{
+            if(error2){throw error2}
+        })
         
     }).catch((error)=>{
         if(error){throw error};
