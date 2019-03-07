@@ -8,7 +8,7 @@ class Food extends Component {
             <div className="FoodHome">
                 <Link to="/userHome/food/todo">To Do</Link>
                 <Link to="/userHome/food/favorites">Favorites</Link>
-                <Link to="/userHome/food">Reviews</Link>
+                <Link to="/userHome/food/reviews">Reviews</Link>
             </div>
         )
     }

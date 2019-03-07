@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
-import SweetAlert from 'sweetalert-react';
-import 'sweetalert/dist/sweetalert.css';
 import "./FoodFavorites.css";
 
 class FoodFavorites extends Component {
@@ -86,7 +84,9 @@ class FoodFavorites extends Component {
                                 <p>{food.note}</p>
                             </div>
                             <div className="buttonContainer">
-                                <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">-</Button>
+                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+                            <Button clicked={() => this.editPlace(food.placename)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                             </div>
                             
                         </div>
