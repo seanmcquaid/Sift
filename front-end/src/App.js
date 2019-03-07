@@ -25,9 +25,7 @@ class App extends Component {
 
           <Route exact path="/" component={Splash}/>
           <Route exact path="/login" component={Login}/>
-
           <Route exact path="/userHome" component={Home}/>
-
           <Route exact path="/userHome/food" component={Food} />
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
@@ -37,6 +35,11 @@ class App extends Component {
           <Route exact path="/userHome/event/todo" component={EventTodo}/>
           <Route exact path="/userHome/event/favorites" component={EVentFavorites}/>
           <Route exact path="/userHome/event/reviews" component={EventReviews}/>
+
+
+          <Route exact path="/userHome/active/todo" component={ActiveTodo} />
+          <Route exact path="/userHome/active/favorites" component={ActiveFavorites} />
+          <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
 
           <Route exact path="/register" component={Register}/>
 

@@ -1,54 +1,219 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from "react-redux";
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
+
+import './ActiveTodo.css'
+import AddForm from '../../../Forms/AddForm';
+import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
+import Button from '../../../../components/utility/button/Button'
+import Filter from '../../../../components/utility/filterDropDown/Filter';
+import Modal from '../../../../components/utility/modal/Modal';
+import EditForm from '../../../Forms/EditForm';
+
 
 class ActiveTodo extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
-            activity: '',
-            type: '',
-
+            list: [],
+            types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
+            msg: "",
+            showAlert: false,
+            showModal: false,
         }
     }
 
-    render(){
-        // in the logic for mapping through the data to make the table, we need to be SURE that the favorites button can be clicked to add the item
-        // to the favorites and remove it from this table
+    componentDidMount() {
+        // console.log('component did mount')
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/active/getActiveList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((activeListFromDB) => {
+            // console.log(activeListFromDB)
+            this.setState({
+                list: activeListFromDB
+            })
+        })
+    }
 
-       return (
+    addNewActive = (activity, type, text) => {
+        // possibly, api call will go here with autocomplete to add name, location to DB
+        // console.log(place, type)
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/active/addActive`,
+            data: {
+                placename: activity,
+                type: type,
+                note: text,
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            this.setState({
+                list: backEndResponse
+            })
+        })
+    }
+
+    addToFavorites = (activity) => {
+        axios({
+            method: "POST",
+            url: `${window.apiHost}/active/addFave/${activity}`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            console.log(backEndResponse)
+            this.setState({
+                list: backEndResponse,
+                msg: "Success! Added to favorites",
+                showAlert: true
+            })
+        })
+    }
+
+    editActive = (activity, type, text) => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/active/edit/${activity}`,
+            data: {
+                placename: activity,
+                type: type,
+                note: text,
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            this.setState({
+                list: backEndResponse,
+                showModal: true
+            })
+            if (backEndResponse.data.msg == 'updated') {
+                this.props.history.push('/active/todo')
+            }
+        })
+    }
+
+    removeActive = (activity) => {
+        console.log(this.props.login.email)
+        axios({
+            method: "POST",
+            url: `${window.apiHost}/active/deleteActive/${activity}`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            console.log(backEndResponse)
+            this.setState({
+                list: backEndResponse
+            })
+        })
+    }
+
+    filterResults = (filter) => {
+        console.log(filter)
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/active/filter/${filter}`,
+            data: {
+                type: filter,
+                email: this.props.login.email
+            }
+        }).then((backEndResponse) => {
+            this.setState({
+                list: backEndResponse
+            })
+        })
+    }
+
+    clearFilter = () => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/active/getActiveList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((activeListFromDB) => {
+            // console.log(activeListFromDB)
+            this.setState({
+                list: activeListFromDB
+            })
+        })
+    }
+
+    render() {
+        if (this.state.list.data !== undefined) {
+            var activeTodo = this.state.list.data.map((activity, i) => {
+                console.log(activity)
+                return (
+                    <div key={i} className="placeCard">
+                        <div className="cardLeft">
+                            <h4>{activity.placename}</h4>
+                            <div>
+                                <p>{activity.note}</p>
+                            </div>
+                        </div>
+                        <div className="buttonContainer">
+                            <Button clicked={() => this.addToFavorites(activity.placename)} className="faveButton">Fave</Button>
+                            <Button clicked={() => this.editPlace(activity.placename)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
+                        </div>
+
+                    </div>
+                )
+            })
+        }
+
+        const typeArray = this.state.types.map((type, i) => {
+            return (<option key={i} value={type}>{type}</option>)
+        })
+
+        const filterArray = this.state.types.map((filter, i) => {
+            return (<option key={i} value={filter}>{filter}</option>)
+        })
+
+
+        return (
             <div className="ActiveTodo">
-                <div className="Search">
-                    <form onSubmit={this.addNewActive} className="TodoForm">
-                        <input onChange = {this.changeActive} type="text" id="NewActive" placeholder="Add activity" value={this.state.activity} />
-                        <select className="ActiveType">
-                            <option default value="Outdoors" onClick={}>Outdoors</option>
-                            <option value="Fitness" onClick={}>Fitness</option>
-                            <option value="Sports" onClick={}>Sports</option>
-                            <option value="Trips" onClick={}>Trips</option>
-                        </select>
-                    </form>
-                </div>
-                <div>
-                    <table className="Table">
-                        <thead>
-                            <tr>
-                                <th>Activity</th>
-                                <th>Type</th>
-                                <th>Favorite</th>
-                                <th>Remove</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* JSX for mapped array of activities! */}
-                        </tbody>
-                    </table>
-                </div>
-           </div>
-       ) 
+                <h2>Active To Do!</h2>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Added to Faves"
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
+                <AddForm
+                    addNewActive={this.addNewActive}
+                    placeholder="Add new activity..."
+                    textType="Add note..."
+                    defaultType="Choose type!"
+                    types={typeArray}
+                />
+                <Filter
+                    defaultFilter="Filter by type"
+                    filters={filterArray}
+                    filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
+                />
+                <PlaceCards cards={activeTodo} />
+                <Modal show={this.state.showModal}>
+                    <EditForm />
+                </Modal>
+            </div>
+        )
     }
 }
 
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    }
+}
+
+export default connect(mapStateToProps, null)(ActiveTodo);
 
 
-
-
-export default ActiveTodo;
