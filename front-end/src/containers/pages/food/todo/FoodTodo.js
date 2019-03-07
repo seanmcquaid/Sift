@@ -14,7 +14,7 @@ import EditForm from '../../../Forms/EditForm';
 
 
 
-class FoodToDo extends Component {
+class FoodTodo extends Component {
     constructor() {
         super()
         this.state = {
@@ -93,7 +93,7 @@ class FoodToDo extends Component {
                 list: backEndResponse,
                 showModal: true
             })
-            if(backEndResponse.data.msg == 'updated'){
+            if(backEndResponse.data.msg === 'updated'){
                 this.props.history.push('/food/todo')
             }
         })
@@ -215,4 +215,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, null)(FoodToDo);
+export default connect(mapStateToProps, null)(FoodTodo);
