@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
-router.post('/getFoodList', (req, res, next)=>{
+router.post('/getEventList', (req, res, next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
@@ -20,7 +20,7 @@ router.post('/getFoodList', (req, res, next)=>{
     })
 })
 
-router.post('/getFoodFaveList', (req,res,next)=>{
+router.post('/getEventFaveList', (req,res,next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
@@ -37,7 +37,7 @@ router.post('/getFoodFaveList', (req,res,next)=>{
     })
 })
 
-router.post('/addFood', (req, res, next)=>{
+router.post('/addEvent', (req, res, next)=>{
     console.log(req.body)
     const place = req.body.placename;
     const type = req.body.type;
@@ -91,7 +91,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
     })
 })
 
-router.post('/addFave/:placename', (req, res, next)=>{
+router.post('/addFave/:eventname', (req, res, next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
@@ -113,7 +113,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
     })
 })
 
-router.post("/deletePlace/:placename", (req,res,next)=>{
+router.post("/deleteEvent/:eventname", (req,res,next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     console.log(req.body.email)
@@ -140,7 +140,7 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
     })
 })
 
-router.post("/deleteFavePlace/:placename", (req,res,next)=>{
+router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
     console.log(req.body.email)
@@ -167,7 +167,7 @@ router.post("/deleteFavePlace/:placename", (req,res,next)=>{
     })
 })
 
-router.post("/getFoodReviews", (req,res,next)=>{
+router.post("/getEventReviews", (req,res,next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
@@ -184,7 +184,7 @@ router.post("/getFoodReviews", (req,res,next)=>{
     })
 })
 
-router.post("/addFoodReview/:placename", (req,res,next)=>{
+router.post("/addEventReview/:eventname", (req,res,next)=>{
     const email = req.body.email;
     const placename = req.params.placename;
     const stars = req.body.stars;

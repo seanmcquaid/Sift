@@ -32,6 +32,12 @@ class App extends Component {
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
           <Route exact path="/userHome/food/reviews" component={FoodReviews}/>
+
+          <Route exact path="/userHome/event" component={Event} />
+          <Route exact path="/userHome/event/todo" component={EventTodo}/>
+          <Route exact path="/userHome/event/favorites" component={EVentFavorites}/>
+          <Route exact path="/userHome/event/reviews" component={EventReviews}/>
+
           <Route exact path="/register" component={Register}/>
 
         </Layout>
