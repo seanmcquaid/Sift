@@ -1,0 +1,160 @@
+.CultureToDo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align:center;
+    width: 100%;
+}
+
+h2{
+    color: #333745;
+    font-family: 'Bad Script', cursive;
+    font-size: 22pt;
+    margin-top: 3rem;
+    margin: 3rem auto 1rem;
+}
+
+.placeCard{
+    border: 1px solid #ffa094;
+    background-color: #fff1cb;
+    border-radius: 30px;
+    padding: 1rem;
+    margin: 0.5rem;
+    text-align: left;
+    display: flex;
+
+}
+
+.cardLeft {
+    width: 80%;
+}
+
+h4 {
+    font-weight: bold;
+    font-size: 1rem;
+    margin:0.5rem 0;
+    color: #333745;
+}
+
+p {
+    font-size: 0.75rem;
+    color: #333745;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+button {
+    margin-bottom: 2px;
+}
+
+button:hover{
+    color: #fff6dd;
+}
+
+
+.optionsMenuText{
+    margin:3rem auto 0;
+    width:80%;
+    margin-top:5rem;
+    font-family:'Montserrat',sans-serif;
+    font-size:1.25rem;
+    font-style:italic;
+    font-weight: 100;
+    text-align: center;
+    color: #333745;
+}
+
+.optionsCircleContainer{
+    margin-bottom:3rem;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+   
+}
+
+.toDoCircle, .favoritesCircle, .reviewsCircle{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    height:250px;
+    width:250px;
+    margin:2rem;
+    border-radius:100%;
+    background-color: #87cab0;
+    /* background-repeat: no-repeat;
+    background-position: center; */
+    border-color: white;
+    border-width:9px;
+    border-style:solid;
+    text-align:center;
+    vertical-align: middle;
+    font-family:'Bad Script',cursive;
+    text-decoration:none;
+    text-decoration-line: none;
+    font-size:3rem;
+    font-weight: 800;
+    transition: transform 2s;
+    transform: scale(1) 
+
+
+}
+
+.toDoCircle p, .favoritesCircle p, .reviewsCircle p{
+    opacity: 0;
+    color: #333745;
+    transition: all 2s;
+    font-size:3rem;
+    font-weight: 800;
+    transition-property:opacity;
+    transition: opacity(0) 2s;
+    text-decoration:none;
+   
+}
+
+.link{
+    text-decoration: none;
+}
+
+.toDoCircle{
+    background-image: url('/images/icons/toDoIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.favoritesCircle{
+    background-image: url('/images/icons/favoritesIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.reviewsCircle{
+    background-image: url('/images/icons/reviewIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover {
+    transform:scale(.75);
+    transition: 2s all;
+    background-color: rgb(135,202,176,0.75);
+   
+}
+
+.toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p{
+   opacity: 1;
+    transition: 2s all;
+    
+}
