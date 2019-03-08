@@ -187,23 +187,29 @@ class FoodTodo extends Component {
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <AddForm
-                    addNewPlace={this.addNewPlace}
-                    placeholder="Add new place to eat..."
-                    textType="Add note..."
-                    defaultType="Choose type!" 
-                    types={typeArray}
-                />
-                <Filter 
-                    defaultFilter="Filter by type"
-                    filters={filterArray}
-                    filterResults={this.filterResults}
-                    clearFilter={this.clearFilter}
-                />
-                <PlaceCards cards={foodToDo}/>
-                <Modal show={this.state.showModal}>
-                    <EditForm />
-                </Modal>
+                <div className="todoBody">
+                    <div className="todoLeft">
+                        <AddForm
+                            addNewPlace={this.addNewPlace}
+                            placeholder="Add new place to eat..."
+                            textType="Add note..."
+                            defaultType="Choose type!"
+                            types={typeArray}
+                        />
+                    </div>
+                    <div className="todoRight">
+                        <Filter 
+                            defaultFilter="Filter by type"
+                            filters={filterArray}
+                            filterResults={this.filterResults}
+                            clearFilter={this.clearFilter}
+                        />
+                    <PlaceCards cards={foodToDo}/>
+                    </div>
+                    <Modal show={this.state.showModal}>
+                        <EditForm />
+                    </Modal>
+                </div>
             </div>
         )
     }
