@@ -52,6 +52,7 @@ p {
     justify-content: center;
 }
 
+
 @media screen and (max-width: 25rem){
     .placeCard {
         max-width: 68%;
