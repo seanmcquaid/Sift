@@ -162,7 +162,6 @@ class EventTodo extends Component {
                     placeholder="Add new event..."
                     textType="Add note..."
                     defaultType="Choose type!" 
-                    
                     types={typeArray}
                 />
                 <Filter 

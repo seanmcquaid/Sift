@@ -57,7 +57,7 @@ class AddEventForm extends Component {
 
         return(
             <div className="SearchAddEdit">
-                <form onSubmit={this.addNew} className="AddForm">
+                <form onSubmit={this.addNewEvent} className="AddForm">
                     <div className="addName">
                         <input onChange={this.changeEvent} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.events} />
                     </div>

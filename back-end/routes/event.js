@@ -8,7 +8,7 @@ router.post('/getEventList', (req, res, next)=>{
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         console.log(uid);
-        const getEventToDoQuery = `SELECT eventname, note FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
+        const getEventToDoQuery = `SELECT eventname, date, note FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
         db.query(getEventToDoQuery,[uid]).then((results2) => {
             res.json(results2)
             // console.log(results2)
@@ -25,7 +25,7 @@ router.post('/getEventFaveList', (req,res,next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const getFavesQuery = `SELECT eventname, note FROM events WHERE todo = false AND favorite = true AND uid = $1;`;
+        const getFavesQuery = `SELECT eventname, date, note FROM events WHERE todo = false AND favorite = true AND uid = $1;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
             res.json(results2)
             // console.log(results2)
@@ -39,7 +39,7 @@ router.post('/getEventFaveList', (req,res,next)=>{
 
 router.post('/addEvent', (req, res, next)=>{
     console.log(req.body)
-    const event = req.body.eventname;
+    const eventname = req.body.eventname;
     const type = req.body.type;
     const date = req.body.date;
     const note = req.body.note;
@@ -51,7 +51,7 @@ router.post('/addEvent', (req, res, next)=>{
         const uid = results[0].id;
         const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        db.query(insertEventQuery, [uid, event, type, date, note, true, false, false]).then(() => {
+        db.query(insertEventQuery, [uid, eventname, type, date, note, true, false, false]).then(() => {
             const getEventQuery = `SELECT eventname, note FROM events WHERE todo = true AND uid = $1;`;
             db.query(getEventQuery, [uid]).then((results2) => {
                 res.json(results2)
@@ -67,7 +67,7 @@ router.post('/addEvent', (req, res, next)=>{
 
 router.post('/addFaveInFavorites', (req, res, next)=>{
     console.log(req.body)
-    const event = req.body.eventname;
+    const eventname = req.body.eventname;
     const type = req.body.type;
     const date = req.body.date;
     const note = req.body.note;
@@ -79,7 +79,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
         const uid = results[0].id;
         const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        db.query(insertEventQuery, [uid, event, type, date, note, false, true, false]).then(() => {
+        db.query(insertEventQuery, [uid, eventname, type, date, note, false, true, false]).then(() => {
             const getEventQuery = `SELECT eventname, note FROM events WHERE favorite = true AND uid = $1;`;
             db.query(getEventQuery, [uid]).then((results2) => {
                 res.json(results2)
