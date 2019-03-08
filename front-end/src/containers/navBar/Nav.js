@@ -6,6 +6,16 @@ import {connect} from "react-redux";
 class Nav extends Component{
     // need logic to see if logged in, change route on left to user home
     // and on right, display categories and hamburger with profile/logout
+
+    navRightToggle = (event)=>{
+        event.preventDefault();
+        if(document.querySelector(".nav-right-dropdown").style.display === "none"){
+            document.querySelector(".nav-right-dropdown").style.display = "inline";
+        } else {
+            document.querySelector(".nav-right-dropdown").style.display = "none";
+        }
+        
+    }
     
     render(){
         let navLeft;
@@ -24,8 +34,12 @@ class Nav extends Component{
                             <div className="category-link"><Link to="/">Active</Link></div>
                             <div className="category-link"><Link to="/userHome/culture">Culture</Link></div>
                             <div className="category-link"><Link to="/">Outdoor</Link></div>
-                            <div className="nav-toggle-icon">
+                            <div className="nav-toggle-icon" onClick={this.navRightToggle}>
                                 <i className="fas fa-bars"></i>
+                            </div>
+                            <div className="nav-right-dropdown">
+                                <div className="nav-right-dropdown-link">Account</div>
+                                <div className="nav-right-dropdown-link">Log Out</div>
                             </div>
                         </div>;
         }

@@ -30,6 +30,20 @@
     margin-right: 0.5rem;
 }
 
+.nav-right-dropdown{
+    display: none;
+    background-color: #ffa094;
+    margin-top: 4.5rem;
+    right: 0;
+    position: fixed;
+    box-shadow:0 1px 6px rgba(2, 15, 7, 0.502);
+}
+
+.nav-right-dropdown-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+}
+
 .logo a{
     text-decoration: none;
     color: #333745;
