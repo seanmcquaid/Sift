@@ -112,7 +112,21 @@ class CultureToDo extends Component {
                 list: backEndResponse
             })
         })
+    }
 
+    clearFilter = () => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/culture/getCultureList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((cultureListFromDB) => {
+            // console.log(foodListFromDB)
+            this.setState({
+                list: cultureListFromDB
+            })
+        })
     }
 
     render() {
@@ -149,7 +163,7 @@ class CultureToDo extends Component {
 
         return (
             <div className="CultureToDo">
-                <h2>CultureToDo To Do!</h2>
+                <h2>Culture To Do!</h2>
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Added to Faves"
@@ -167,6 +181,7 @@ class CultureToDo extends Component {
                     defaultFilter="Filter by type"
                     filters={filterArray}
                     filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={cultureToDo}/>
             </div>
