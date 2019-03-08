@@ -15,6 +15,10 @@ h2{
     margin: 3rem auto 1rem;
 }
 
+.reviewBody{
+    display: flex;
+}
+
 .placeCard{
     border: 1px solid #ffa094;
     background-color: #fff1cb;
@@ -52,15 +56,25 @@ p {
     margin: 0.25rem;
 }
 
-@media screen and (max-width: 25rem){
-    .placeCard {
-        width: 16rem;
-    }
-    .placeCards {
+@media screen and (max-width: 56rem){
+    .reviewBody {
         display: flex;
-        justify-content: center;
-        align-content: center;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
     }
+}
+
+@media screen and (max-width: 25rem){
+    .placeCards{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .placeCard {
+        width: 13rem;
+    }
+
+
 }
