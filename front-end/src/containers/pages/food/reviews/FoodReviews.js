@@ -80,18 +80,16 @@ class FoodReviews extends Component {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{review.placename}</h4>
+                            <h4>{review.placename} - {review.stars} Stars</h4>
                             <p>{review.review}</p>
                         </div>
-                        <div className="stars">
-                            <p> {review.stars} Stars</p>
+                        <div className="cardRight">
+                            <div className="buttonContainer">
+                                <Button className="shareButton">Share</Button>
+                                <Button clicked={() => this.editReview(review.placename)} className="editButton">Edit</Button>
+                                <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
+                            </div>
                         </div>
-                        <div className="buttonContainer">
-                            <Button className="shareButton">Share</Button>
-                            <Button clicked={() => this.editReview(review.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
-                        </div>
-                        
                     </div>
                 )
             })

@@ -29,10 +29,6 @@ h2{
     width: 80%;
 }
 
-.stars{
-    width: 30%;
-}
-
 
 h4 {
     font-weight: bold;
@@ -52,10 +48,13 @@ p {
     justify-content: center;
 }
 
+.buttonContainer button{
+    margin: 0.25rem;
+}
 
 @media screen and (max-width: 25rem){
     .placeCard {
-        max-width: 68%;
+        width: 16rem;
     }
     .placeCards {
         display: flex;
