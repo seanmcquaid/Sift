@@ -13,6 +13,7 @@ class ActiveReviews extends Component {
         super()
         this.state = {
             list: [],
+            types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             msg: "",
             showAlert: false,
         }
@@ -51,6 +52,11 @@ class ActiveReviews extends Component {
     }
 
     render() {
+
+        const typeArray = this.state.types.map((type, i) => {
+            return (<option key={i} value={type}>{type}</option>)
+        })
+
         if (this.state.list.data !== undefined) {
             var activeReviews = this.state.list.data.map((review, i) => {
                 return (
@@ -77,6 +83,8 @@ class ActiveReviews extends Component {
                 <AddReviewForm
                     placeholder="Add your review here!"
                     addReview={this.addReview}
+                    defaultType={"Choose a type!"}
+                    types={typeArray}
                 />
                 <PlaceCards cards={activeReviews} />
             </div>

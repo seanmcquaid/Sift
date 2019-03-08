@@ -159,8 +159,8 @@ class ActiveTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(activity.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.editPlace(activity.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
+                            <Button clicked={() => this.editActive(activity.placename)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.removeActive(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
 
                     </div>
@@ -187,7 +187,7 @@ class ActiveTodo extends Component {
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
                 <AddForm
-                    addNewActive={this.addNewActive}
+                    addNewPlace={this.addNewActive}
                     placeholder="Add new activity..."
                     textType="Add note..."
                     defaultType="Choose type!"

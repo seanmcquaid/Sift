@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Button from '../button/Button'
+import Button from '../button/Button';
+import './Filter.css'
 
 class Filter extends Component{
     constructor(){
@@ -34,10 +35,10 @@ class Filter extends Component{
                         <option value="">{this.props.defaultFilter}</option>
                         {this.props.filters}
                     </select>
-                    <Button type="submit" className="submitButton">Filter</Button>
+                    <Button type="submit" className="filterButton">Filter</Button>
                 </form>
                 <form onSubmit={this.viewAll} className="clearFilterForm">
-                    <Button type="submit" className="submitButton">View All</Button>
+                    <Button type="submit" className="filterButton">Clear</Button>
                 </form>
             </div>
         )

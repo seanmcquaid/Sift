@@ -46,7 +46,7 @@ router.post('/addFood', (req, res, next)=>{
     db.query(selectUserQuery,[email]).then((results)=>{
         // console.log(results)
         const uid = results[0].id;
-        const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite,reviewed) VALUES
+        const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite, reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
         db.query(insertFoodQuery, [uid, place, type, note, true, false, false]).then(() => {
             const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND uid = $1;`;
@@ -106,6 +106,29 @@ router.post('/addFave/:placename', (req, res, next)=>{
         })
     })
 })
+
+// router.get('/getTask/:tid', (req, res, next) => {
+//     const tid = req.params.tid;
+//     const selectTaskQuery = `SELECT * FROM tasks WHERE id =?`;
+//     connection.query(selectTaskQuery, [tid], (err, result) => {
+//         if (err) { throw err }
+//         res.json({ task: result[0] });
+//     })
+// })
+
+// router.post('/edit', (req, res, next) => {
+//     const id = req.body.id;
+//     const taskName = req.body.task.taskName;
+//     const taskDate = req.body.task.taskDate.substring(0, 10);
+//     const updateQuery = `UPDATE tasks SET taskName = ?, taskDate = ?
+//     WHERE id =?`;
+//     connection.query(updateQuery, [taskName, taskDate, id], (error, results) => {
+//         if (error) { throw error };
+//         res.json({
+//             msg: "updated"
+//         })
+//     })
+// });
 
 router.post("/deletePlace/:placename", (req,res,next)=>{
     const placename = req.params.placename;
