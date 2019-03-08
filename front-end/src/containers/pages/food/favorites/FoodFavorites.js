@@ -100,12 +100,13 @@ class FoodFavorites extends Component {
                     console.log(food)
                     return (
                         <div key={i} className="placeCard">
-                            <h4>{food.placename}</h4>
-                            <div>
+                            <div className="placeCardSpacing">
+                                <h4>{food.placename}</h4>
                                 <p>{food.note}</p>
                             </div>
+                           
                             <div className="buttonContainer">
-                            <Link to="../reviews"><Button className="reviewButton">Review</Button></Link>
+                            <Button className="reviewButton">Review</Button>
                             <Button clicked={() => this.editPlace(food.placename)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                             
@@ -128,23 +129,27 @@ class FoodFavorites extends Component {
             
     
             return (
-                <div className="FoodFavorites">
+                <div className="faveTop">
                     <h2>Favorites</h2>
-                    <AddForm
-                        addNewPlace={this.addNewPlace}
-                        placeholder="Add new..."
-                        textType="Add note..."
-                        defaultType="Restaurant"
-                        types={typeArray}
-                  
-                    />
-                    <Filter 
-                        defaultFilter="Filter by type"
-                        filters={filterArray}
-                        filterResults={this.filterResults}
-                    />
-                    <PlaceCards cards={favorites}/>
-
+                    <div className="FoodFavorites">
+                        <div className="formRows">
+                            <AddForm
+                                addNewPlace={this.addNewPlace}
+                                placeholder="Add new..."
+                                textType="Add note..."
+                                defaultType="Restaurant"
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="formRows">
+                            <Filter 
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                            />
+                            <PlaceCards cards={favorites}/>
+                        </div>
+                    </div>
                 </div>
             )
         }
