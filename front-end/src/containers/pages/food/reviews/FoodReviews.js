@@ -114,6 +114,7 @@ class FoodReviews extends Component {
                 <AddReviewForm
                     placeholder="Add your food review here!"
                     defaultType= "Choose type!"
+                    defaultStars = "How many stars?"
                     types={typeArray}
                     addReview={this.addReview}
                 />
