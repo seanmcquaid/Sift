@@ -7,7 +7,7 @@ class Culture extends Component {
         return(
             <div>
                  <div className="optionsMenuText">
-                    <h1>Options Menu</h1>
+                    <h1>Culture Options Menu</h1>
                 </div>
                 <div className="optionsCircleContainer">
                         <div>

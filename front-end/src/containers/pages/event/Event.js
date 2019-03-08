@@ -8,7 +8,7 @@ class Event extends Component {
 
             <div>
                  <div className="optionsMenuText">
-                    <h1>Options Menu</h1>
+                    <h1>Event Options Menu</h1>
                 </div>
                 <div className="optionsCircleContainer">
                         <div>

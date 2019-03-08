@@ -108,6 +108,11 @@
     color: #333745;
 }
 
+.nav-right-dropdown-link a {
+    text-decoration: none;
+    color: #333745;
+}
+
 @media screen and (max-width: 34rem){
     .nav-toggle-icon-login{
         display: block;
