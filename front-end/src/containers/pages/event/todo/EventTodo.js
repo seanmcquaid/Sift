@@ -116,6 +116,21 @@ class EventTodo extends Component {
 
     }
 
+    clearFilter = () => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/event/getEventList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((foodListFromDB) => {
+            // console.log(foodListFromDB)
+            this.setState({
+                list: foodListFromDB
+            })
+        })
+    }
+
     render() {
         if (this.state.list.data !== undefined) {
             var eventToDo = this.state.list.data.map((events, i) => {
@@ -168,6 +183,7 @@ class EventTodo extends Component {
                     defaultFilter="Filter by type"
                     filters={filterArray}
                     filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={eventToDo}/>
             </div>

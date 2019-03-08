@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
+// ================================================================== To Do
+
 router.post('/getCultureList', (req, res, next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
@@ -115,6 +117,8 @@ router.post("/filter/:filter", (req, res, next) => {
     })    
 })
 
+// ================================================================== Favorites
+
 router.post('/getCultureFaveList', (req,res,next)=>{
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
@@ -181,6 +185,8 @@ router.post("/deleteFavePlace/:placename", (req,res,next)=>{
         if(error){throw error};
     })
 })
+
+// =================================================================== Reviews
 
 router.post("/getCultureReviews", (req,res,next)=>{
     const email = req.body.email;

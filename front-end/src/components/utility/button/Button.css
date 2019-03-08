@@ -28,6 +28,13 @@
     border: none;
 }
 
+.reviewButton {
+    background-color: #87cab0;;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
+}
+
 .shareButton {
     background-color: #87cab0;
     font-family: 'Montserrat', sans-serif;

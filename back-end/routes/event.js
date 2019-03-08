@@ -241,7 +241,6 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
     const email = req.body.email;
     const eventname = req.params.eventname;
     const type = req.body.type;
-    const date = req.body.date;
     const stars = req.body.stars;
     const review = req.body.review;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
@@ -251,8 +250,8 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
         db.query(selectEventQuery, [uid, eventname]).then((results2)=>{
             console.log(results2)
             if(results2.length === 0){
-                const insertReviewQuery = `INSERT INTO events (uid, eventname, type, date, todo, favorite, reviewed, stars, review) 
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
+                const insertReviewQuery = `INSERT INTO events (uid, eventname, type, todo, favorite, reviewed, stars, review) 
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
                 db.query(insertReviewQuery,[uid, eventname, type, false, false, true, stars, review]).then((results3)=>{
                     const selectReviewsQuery = `SELECT eventname, review, stars from events WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
@@ -289,7 +288,7 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
 
 })
 
-router.post("/deleteEventsReview/:eventname", (req,res,next)=>{
+router.post("/deleteEventReview/:eventname", (req,res,next)=>{
     const eventname = req.params.eventname;
     const email = req.body.email;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
