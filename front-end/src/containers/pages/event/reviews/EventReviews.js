@@ -75,7 +75,7 @@ class EventReviews extends Component {
             })
         }
         return (
-            <div className="editReviews">
+            <div className="eventReviews">
                 <h2>Reviews</h2>
                 <AddReviewForm
                     placeholder="Add your event review here!"
