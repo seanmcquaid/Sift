@@ -14,7 +14,7 @@ class CultureReviews extends Component {
         this.state = {
             list : [],
             msg : "",
-            types : [],
+            types : ['Music', 'Art', 'Theater', 'Festival'],
             showAlert: false,
         }
     }
@@ -60,8 +60,18 @@ class CultureReviews extends Component {
 
     }
 
-    deleteReview = ()=>{
-        
+    removeReview = (place)=>{
+        axios({
+            method : "POST",
+            url: `${window.apiHost}/culture/deleteCultureReview/${place}`,
+            data :{
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                list : backEndResponse
+            })
+        })
     }
 
     render() {

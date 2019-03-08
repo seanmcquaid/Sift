@@ -12,6 +12,7 @@ class CultureFavorites extends Component {
             this.state = {
                 list: [],
                 msg: "",
+                types: ['Music', 'Art', 'Theater', 'Festival'],
                 showAlert: false,
             }
         }
@@ -90,19 +91,19 @@ class CultureFavorites extends Component {
                 })
             }
             
-    
+            const typeArray = this.state.types.map((type, i)=>{
+                return (<option key={i} value={type}>{type}</option>)
+            })
+
             return (
                 <div className="CultureFavorites">
                     <h2>Favorites</h2>
                     <AddForm
                         addNewPlace={this.addNewPlace}
-                        placeholder="Add new..."
+                        placeholder="Add a new experience..."
                         textType="Add note..."
-                        defaultType="Restaurant"
-                        type2="Cafe"
-                        type3="Bar"
-                        type4="Diner"
-                    
+                        defaultType="Choose type!" 
+                        types={typeArray}
                     />
                     <PlaceCards cards={favorites}/>
 

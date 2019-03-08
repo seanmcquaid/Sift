@@ -17,7 +17,7 @@ class CultureToDo extends Component {
         super()
         this.state = {
             list: [],
-            types: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
+            types: ['Music', 'Art', 'Theater', 'Festival'],
             msg: "",
             showAlert: false,
         }

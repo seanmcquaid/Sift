@@ -60,8 +60,18 @@ class FoodReviews extends Component {
 
     }
 
-    deleteReview = ()=>{
-        
+    removeReview = (place)=>{
+        axios({
+            method : "POST",
+            url: `${window.apiHost}/food/deleteFoodReview/${place}`,
+            data :{
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                list : backEndResponse
+            })
+        })
     }
 
     render() {
@@ -96,8 +106,9 @@ class FoodReviews extends Component {
                 <h2>Reviews</h2>
                 <SweetAlert
                     show={this.state.showAlert}
-                    title="Added to Faves"
+                    title="Review Added"
                     text={this.state.msg}
+                    confirmBtnBsStyle="danger"
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
                 <AddReviewForm

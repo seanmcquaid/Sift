@@ -22,7 +22,7 @@ class Nav extends Component{
             navRight = <div className="nav-right">
                             <div className="category-link"><Link to="/userHome/food">Food</Link></div>
                             <div className="category-link"><Link to="/">Active</Link></div>
-                            <div className="category-link"><Link to="/">Culture</Link></div>
+                            <div className="category-link"><Link to="/userHome/culture">Culture</Link></div>
                             <div className="category-link"><Link to="/">Outdoor</Link></div>
                             <div className="nav-toggle-icon">
                                 <i className="fas fa-bars"></i>
