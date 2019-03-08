@@ -25,6 +25,10 @@
     justify-content: flex-end;
 }
 
+.nav-toggle-icon-login{
+    display:none;
+}
+
 .nav-right div {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
