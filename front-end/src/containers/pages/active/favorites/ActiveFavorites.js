@@ -12,6 +12,7 @@ class ActiveFavorites extends Component {
         super()
         this.state = {
             list: [],
+            types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             msg: "",
             showAlert: false,
         }

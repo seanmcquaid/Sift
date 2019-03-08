@@ -59,8 +59,8 @@ class AddForm extends Component {
             <div className="SearchAddEdit">
                 <form onSubmit={this.addNew} className="AddForm">
                     <div className="addNameAndType">
-                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} />
-                        <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
+                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} required/>
+                        <select className="Dropdown Type" id="Dropdown" onChange={this.changeType} required>
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>

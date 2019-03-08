@@ -34,3 +34,12 @@
     outline: none;
     border: none;
 }
+
+.filterButton {
+    background-color: #87cab0;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
