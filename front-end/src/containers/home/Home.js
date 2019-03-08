@@ -32,7 +32,7 @@ function Home(props){
                     </div>
                     <div>
                         <Link style={{ textDecoration: 'none' }} to="/userHome/culture"><div className="culture"><p>Culture</p></div></Link>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/active"><div className="events"><p>Events</p></div></Link>
+                        <Link style={{ textDecoration: 'none' }} to="/userHome/event"><div className="events"><p>Events</p></div></Link>
                     </div>
             </div>
         </div>
