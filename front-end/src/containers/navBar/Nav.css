@@ -25,6 +25,22 @@
     justify-content: flex-end;
 }
 
+.nav-right-login {
+    width: 50%;
+}
+
+.nav-right-login-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav-right-login div {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
 .nav-toggle-icon-login{
     display:none;
 }
@@ -66,4 +82,14 @@
 .category-link a {
     text-decoration: none;
     color: #333745;
+}
+
+@media screen and (max-width: 34rem){
+    .nav-toggle-icon-login{
+        display: block;
+    }
+
+    .nav-right-login-links {
+        display: none;
+    }
 }
