@@ -46,9 +46,9 @@ router.post('/addFood', (req, res, next)=>{
     db.query(selectUserQuery,[email]).then((results)=>{
         // console.log(results)
         const uid = results[0].id;
-        const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite) VALUES
-        ($1, $2, $3, $4, $5, $6);`;
-        db.query(insertFoodQuery, [uid, place, type, note, true, false]).then(() => {
+        const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite,reviewed) VALUES
+        ($1, $2, $3, $4, $5, $6, $7);`;
+        db.query(insertFoodQuery, [uid, place, type, note, true, false, false]).then(() => {
             const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND uid = $1;`;
             db.query(getFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
@@ -122,7 +122,7 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
             if (error) { throw error };
         })
         const selectFoodToDoQuery = `SELECT placename, note FROM food WHERE uid =$1 AND 
-        todo = true AND favorite = false`;
+        todo = true AND favorite = false AND reviewed = false`;
         db.query(selectFoodToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)

@@ -17,7 +17,8 @@ select {
 }
 
 #newPlace{
-    width: 16rem;
+    width: 100%;
+    max-width: 16rem;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
@@ -41,4 +42,25 @@ select {
     border: 1px solid rgb(165, 165, 165);
     outline:none;
     resize: none;
+}
+
+/* media queries */
+
+@media screen and (max-width: 25rem){
+    
+    #newPlace {
+        font-size: 0.75rem;
+        max-width: 12rem;
+    }
+
+    #newReview {
+        width: 60%;
+        font-size: 0.75rem;
+    }
+
+    select {
+        width: 8rem;
+        font-size: 0.75rem;
+    }
+
 }
