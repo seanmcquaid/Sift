@@ -14,7 +14,6 @@ class Nav extends Component{
         } else {
             document.querySelector(".nav-right-dropdown").style.display = "none";
         }
-        
     }
     
     render(){
@@ -22,9 +21,18 @@ class Nav extends Component{
         let navRight;
         if(this.props.login.length === 0){
             navLeft = <div className="logo"><Link to="/">Logo Placeholder</Link></div>;
-            navRight = <div className="nav-right">
-                            <div className="login-link"><Link to="/login">Login</Link></div>
-                            <div className="register-link"><Link to="/register">Register</Link></div>
+            navRight = <div className="nav-right-login">
+                            <div className="nav-right-login-links">
+                                <div className="login-link"><Link to="/login">Login</Link></div>
+                                <div className="register-link"><Link to="/register">Register</Link></div>
+                            </div>
+                            <div className="nav-toggle-icon-login" onClick={this.navRightToggle}>
+                                <i className="fas fa-bars"></i>
+                            </div>
+                            <div className="nav-right-dropdown">
+                                <div className="nav-right-dropdown-link">Account</div>
+                                <div className="nav-right-dropdown-link">Log Out</div>
+                            </div>
                         </div>;
             
         } else {
