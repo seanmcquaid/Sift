@@ -1,5 +1,9 @@
 .AddReviewForm{
     width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .reviewForm{
@@ -44,6 +48,13 @@ select {
     resize: none;
 }
 
+.addReview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* media queries */
 
 @media screen and (max-width: 25rem){
@@ -54,7 +65,7 @@ select {
     }
 
     #newReview {
-        width: 60%;
+        width: 14rem;
         font-size: 0.75rem;
     }
 

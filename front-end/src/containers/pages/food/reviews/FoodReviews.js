@@ -109,14 +109,20 @@ class FoodReviews extends Component {
                     confirmBtnBsStyle="danger"
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <AddReviewForm
-                    placeholder="Add your food review here!"
-                    defaultType= "Choose type!"
-                    defaultStars = "How many stars?"
-                    types={typeArray}
-                    addReview={this.addReview}
-                />
-                <PlaceCards cards={foodReviews}/>
+                <div className="reviewBody">
+                    <div className="reviewLeft">
+                        <AddReviewForm
+                            placeholder="Add your food review here!"
+                            defaultType= "Choose type!"
+                            defaultStars = "How many stars?"
+                            types={typeArray}
+                            addReview={this.addReview}
+                        />
+                    </div>
+                    <div className="reviewRight">
+                        <PlaceCards cards={foodReviews}/>
+                    </div>
+                </div>
             </div>
         )
     }
