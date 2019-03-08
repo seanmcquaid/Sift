@@ -35,7 +35,7 @@ select {
 #NewText {
     width: 80%;
     margin: 0.5rem;
-    padding: 0.5rem;
+    padding: 0.25rem;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
@@ -43,4 +43,17 @@ select {
     border: 1px solid rgb(165, 165, 165);
     outline:none;
     resize: none;
+}
+
+#NewDate{
+    width: 13rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    outline:none;
+
 }
