@@ -197,7 +197,6 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
                 const insertReviewQuery = `INSERT INTO food (uid, placename, type, todo, favorite, reviewed, stars, review) 
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
                 db.query(insertReviewQuery,[uid, placename, type, false, false, true, stars, review]).then((results3)=>{
-                    
                     const selectReviewsQuery = `SELECT placename, review, stars from food WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
                         // console.log(results4);
@@ -231,6 +230,28 @@ router.post("/addFoodReview/:placename", (req,res,next)=>{
         if(error){throw error};
     })
 
+})
+
+router.post("/deleteFoodReview/:placename", (req,res,next)=>{
+    const placename = req.params.placename;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        const deleteReviewQuery = `DELETE FROM food WHERE placename = $1 AND reviewed = true AND uid = $2;`;
+        db.query(deleteReviewQuery,[placename,uid]).then((results2)=>{
+            const selectReviewsQuery = `SELECT * FROM food where reviewed = true AND uid = $1;`;
+            db.query(selectReviewsQuery, [uid]).then((results3)=>{
+                res.json(results3)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        }).catch((error2)=>{
+            if(error2){throw error2};
+        })
+    }).catch((error)=>{
+        if(error){throw error};
+    })
 })
 
 router.post("/filter/:filter", (req, res, next) => {

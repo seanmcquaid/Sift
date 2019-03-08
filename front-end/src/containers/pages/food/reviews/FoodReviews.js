@@ -60,8 +60,18 @@ class FoodReviews extends Component {
 
     }
 
-    deleteReview = ()=>{
-        
+    removeReview = (place)=>{
+        axios({
+            method : "POST",
+            url: `${window.apiHost}/food/deleteFoodReview/${place}`,
+            data :{
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                list : backEndResponse
+            })
+        })
     }
 
     render() {
