@@ -8,6 +8,7 @@ var usersRouter = require('./routes/users');
 const foodRouter = require('./routes/food');
 const activeRouter = require("./routes/active");
 const cultureRouter = require("./routes/culture");
+const eventRouter= require('./routes/event')
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/food', foodRouter);
 app.use("/active", activeRouter);
+app.use('/event', eventRouter);
 app.use("/culture", cultureRouter);
 
 module.exports = app;

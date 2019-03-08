@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import {Link} from 'react-router-dom';
-import AddForm from '../../../Forms/AddForm';
+import AddEventForm from '../../../Forms/AddEventForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import "./EventFavorites.css";
@@ -35,7 +35,7 @@ class EventFavorites extends Component {
                 })
         }
     
-        addNewEvent = (event, type, text) => {
+        addNewEvent = (event, type, date, text) => {
             //api call will go here with autocomplete to add name, location to DB
             // console.log(place, type)
             axios({
@@ -44,6 +44,7 @@ class EventFavorites extends Component {
                 data: {
                     eventname: event,
                     type: type,
+                    date: date,
                     note: text,
                     email: this.props.login.email
                 }
@@ -100,14 +101,15 @@ class EventFavorites extends Component {
                     console.log(event)
                     return (
                         <div key={i} className="placeCard">
-                            <h4>{event.placename}</h4>
+                            <h4>{event.eventname}</h4>
                             <div>
+                                <p>{event.date}</p>
                                 <p>{event.note}</p>
                             </div>
                             <div className="buttonContainer">
                             <Link to="../reviews"><Button className="reviewButton">Review</Button></Link>
                             <Button clicked={() => this.editPlace(event.eventname)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removePlace(event.eventname)} className="deleteButton">Remove</Button>
+                            <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                             
                             </div>
                             
@@ -115,8 +117,6 @@ class EventFavorites extends Component {
                     )
                 })
             }
-
-
     
             const filterArray = this.state.types.map((filter, i)=>{
                 return(<option key={i} value={filter}>{filter}</option>)
@@ -125,12 +125,10 @@ class EventFavorites extends Component {
                 return (<option key={i} value={type}>{type}</option>)
             })
             
-            
-    
             return (
                 <div className="EventFavorites">
                     <h2>Favorites</h2>
-                    <AddForm
+                    <AddEventForm
                         addNewEvent={this.addNewEvent}
                         placeholder="Add new..."
                         textType="Add note..."
