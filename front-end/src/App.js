@@ -13,6 +13,7 @@ import Register from "./containers/users/register/Register";
 import Food from "./containers/pages/food/Food";
 import FoodTodo from "./containers/pages/food/todo/FoodTodo";
 import EditForm from "./containers/Forms/EditForm";
+import FaveReviewForm from './containers/Forms/FaveReviewForm'
 import FoodFavorites from './containers/pages/food/favorites/FoodFavorites'
 import FoodReviews from "./containers/pages/food/reviews/FoodReviews"
 
@@ -65,6 +66,7 @@ class App extends Component {
           <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
 
           <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
+          <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
 
         </Layout>
       </Router>

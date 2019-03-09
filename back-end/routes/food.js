@@ -379,5 +379,45 @@ router.post("/deleteFoodReview/:placename", (req,res,next)=>{
     })
 })
 
+router.post('/:section/getFaveToReview/:placename',(req, res, next)=>{
+    const section = req.params.section;
+    const placename = req.params.placename;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id;
+                const getFoodFavoriteQuery = `SELECT placename, type FROM food WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2;`;
+                db.query(getFoodFavoriteQuery,[uid,placename]).then((results2)=>{
+                    const favoriteResult = results2[0];
+                    console.log(favoriteResult)
+                    res.json(favoriteResult)
+                }).catch((error2)=>{
+                    if(error2){throw error2};
+                })
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
+
+router.post("/favorites/reviewFave/:placename", (req,res,next)=>{
+    const email = req.body.email;
+    const placename = req.params.placename;
+    const stars = req.body.updatedStars;
+    const review = req.body.updatedReview;
+    console.log(placename)
+    console.log(stars)
+    console.log(review)
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        const updateFoodFavoriteQuery = ` UPDATE food 
+        SET stars = $1, review = $2, reviewed = true
+        WHERE uid = $3 and placename = $4;`
+        db.query(updateFoodFavoriteQuery, [stars,review,uid,placename])
+        res.json("YAY IT UPDATED!")
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
     
 module.exports = router;
