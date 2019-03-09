@@ -126,16 +126,19 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
             SET placename = $1, type = $2, note = $3
             WHERE uid = $4 AND placename = $5 AND todo = true AND favorite = false AND reviewed = false;`
             db.query(updateFoodTodoQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
         }else if(section == "favorites"){
             const updateFoodFavoriteQuery = `UPDATE food 
             SET placename = $1, type = $2, note = $3
             WHERE uid = $4 AND placename = $5 AND todo = false AND favorite = true;`
             db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
         }else if(section == "reviews"){
             const updateFoodFavoriteQuery = `UPDATE food 
             SET placename = $1, type = $2, review = $3
             WHERE uid = $4 AND placename = $5 AND reviewed = true;`
             db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
         }
     }).catch((error)=>{
         if(error){throw error}

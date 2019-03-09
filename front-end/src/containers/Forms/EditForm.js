@@ -104,6 +104,7 @@ class EditForm extends Component {
 
 
     render() {
+        console.log(this.state.redirect)
         const foodTypeArray = this.state.foodTypes.map((type, i) => {
             return (<option key={i} value={type}>{type}</option>)
         })
@@ -111,8 +112,9 @@ class EditForm extends Component {
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
             const category = this.props.match.params.category;
+            console.log(section)
             return(
-                <Redirect to={"userHome/" + {category} + "/" + {section}}/>
+                <Redirect to={`/userHome/${category}/${section}`}/>
             )
         } else {
             return (
