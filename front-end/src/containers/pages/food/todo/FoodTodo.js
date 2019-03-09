@@ -145,6 +145,7 @@ class FoodTodo extends Component {
     render() {
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
+                console.log(food)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">

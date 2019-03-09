@@ -27,14 +27,14 @@ class CultureReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            // console.log(reviewListFromDB)
+            console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))
         })
     }
 
-    // need to finish add review
+   
     addReview = (place, review, type, stars) =>{
         axios({
             method : "POST",
@@ -111,10 +111,11 @@ class CultureReviews extends Component {
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
                 <AddReviewForm
-                    placeholder="Add your food review here!"
-                    defaultType= "Choose type!"
-                    types={typeArray}
-                    addReview={this.addReview}
+                     placeholder="Add your food review here!"
+                     defaultType= "Choose type!"
+                     defaultStars = "How many stars?"
+                     types={typeArray}
+                     addReview={this.addReview}
                 />
                 <PlaceCards cards={cultureReviews}/>
             </div>
