@@ -148,21 +148,6 @@ class ActiveFavorites extends Component {
                         <PlaceCards cards={favorites} />
                     </div>
                 </div>
-                <AddForm
-                    addNewPlace={this.addNewPlace}
-                    placeholder="Add new favorite activity..."
-                    textType="Add note..."
-                    defaultType="Choose type!"
-                    types={typeArray}
-                />
-                <Filter
-                    defaultFilter="Filter by type"
-                    filters={filterArray}
-                    filterResults={this.filterResults}
-                    clearFilter={this.clearFilter}
-                />
-                <PlaceCards cards={favorites} />
-
             </div>
         )
     }
