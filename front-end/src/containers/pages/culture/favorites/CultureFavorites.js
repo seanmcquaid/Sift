@@ -5,6 +5,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import "./CultureFavorites.css";
+import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class CultureFavorites extends Component {
         constructor() {
@@ -69,6 +70,24 @@ class CultureFavorites extends Component {
                 })
             })
         }
+
+        filterResults = (filter) => {
+            console.log(filter)
+            axios({
+                method: 'POST',
+                url: `${window.apiHost}/culture/faveFilter/${filter}`,
+                data: {
+                    type: filter,
+                    email: this.props.login.email
+                }
+            }).then((backEndResponse) => {
+                // console.log(backEndResponse)
+                this.setState({
+                    list: backEndResponse
+                })
+            })
+    
+        }
        
         render() {
             // console.log(this.props)
@@ -90,6 +109,10 @@ class CultureFavorites extends Component {
                     )
                 })
             }
+
+            const filterArray = this.state.types.map((filter, i)=>{
+                return(<option key={i} value={filter}>{filter}</option>)
+            })
             
             const typeArray = this.state.types.map((type, i)=>{
                 return (<option key={i} value={type}>{type}</option>)
@@ -104,6 +127,11 @@ class CultureFavorites extends Component {
                         textType="Add note..."
                         defaultType="Choose type!" 
                         types={typeArray}
+                    />
+                    <Filter 
+                        defaultFilter="Filter by type"
+                        filters={filterArray}
+                        filterResults={this.filterResults}
                     />
                     <PlaceCards cards={favorites}/>
 

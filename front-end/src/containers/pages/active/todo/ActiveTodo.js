@@ -200,9 +200,7 @@ class ActiveTodo extends Component {
                     clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={activeTodo} />
-                <Modal show={this.state.showModal}>
-                    <EditForm />
-                </Modal>
+                
             </div>
         )
     }

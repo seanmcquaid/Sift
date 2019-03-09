@@ -17,7 +17,7 @@ class EventTodo extends Component {
         super()
         this.state = {
             list: [],
-            types: ['Festival','Arts/Movies/Music', 'Sporting Events', 'Educational'],
+            types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
             msg: "",
             showAlert: false,
         }
@@ -135,17 +135,13 @@ class EventTodo extends Component {
         if (this.state.list.data !== undefined) {
             var eventToDo = this.state.list.data.map((events, i) => {
                 
-                console.log(events)
-                const currDate = (events.date).toString().slice(0,10)
-                const currYear = currDate.slice(0,4)
-                const currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
-                let publishDate = `${currMonDay}-${currYear}`
+        
                 
                 return (
                     <div key={i} className="placeCard">
                          <div>
                             <h4>{events.eventname}</h4>
-                            <p>{publishDate}</p>
+                            <p>{events.date}</p>
                             <p>{events.note}</p>
                         </div>
                         <div className="buttonContainer">

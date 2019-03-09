@@ -33,22 +33,43 @@ class ActiveReviews extends Component {
         })
     }
 
-    addReview = (activity, review, stars) => {
+    addReview = (activity, review, type, stars) =>{
         axios({
-            method: "POST",
-            url: `${window.apiHost}/active/addActiveReview/${activity}`,
-            data: {
-                email: this.props.login.email
+            method : "POST",
+            url : `${window.apiHost}/active/addActiveReview/${activity}`,
+            data : {
+                email : this.props.login.email,
+                activity,
+                review,
+                type,
+                stars
             }
-        }).then((responseFromDB) => {
+        }).then((responseFromDB)=>{
+            // console.log(responseFromDB)
             this.setState({
-                list: responseFromDB
+                list : responseFromDB,
+                msg : `Congrats! You've added a review for ${activity}!`,
+                showAlert: true,
             })
         })
     }
 
     editReview = (dong) => {
 
+    }
+
+    removeReview = (activity)=>{
+        axios({
+            method : "POST",
+            url: `${window.apiHost}/active/deleteActiveReview/${activity}`,
+            data :{
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                list : backEndResponse
+            })
+        })
     }
 
     render() {
@@ -62,7 +83,7 @@ class ActiveReviews extends Component {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{review.placename}</h4>
+                            <h4>{review.placename} – {review.stars} Stars</h4>
                             <div>
                                 <p>{review.review}</p>
                             </div>
@@ -80,11 +101,18 @@ class ActiveReviews extends Component {
         return (
             <div className="ActiveReviews">
                 <h2>Reviews</h2>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Added to Faves"
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <AddReviewForm
-                    placeholder="Add your review here!"
-                    addReview={this.addReview}
-                    defaultType={"Choose a type!"}
+                    placeholder="Add your active review here!"
+                    defaultType= "Choose type!"
+                    defaultStars = "How many stars?"
                     types={typeArray}
+                    addReview={this.addReview}
                 />
                 <PlaceCards cards={activeReviews} />
             </div>
