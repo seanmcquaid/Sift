@@ -97,7 +97,7 @@ p {
     }
 
     .reviewLeft{
-        width: 22rem;
+        width: 24rem;
         margin: 0rem 2rem;
         padding: 1rem;
         display: flex;
@@ -105,7 +105,7 @@ p {
     }
 
     .reviewRight{
-        width: 22rem;
+        width: 24rem;
         padding: 1rem;
         display: flex;
         justify-content: center;
@@ -137,182 +137,12 @@ p {
     }
 
     .reviewLeft {
-        width: 24rem;
+        width: 26rem;
         margin: 0rem 3rem;
     }
 
     .reviewRight {
-        width: 24rem;
+        width: 26rem;
         margin: 1rem 3rem;
     } 
-
-    /* .cardLeft {
-        width: 18rem;
-        margin-left: 0.5rem;
-    }
-    .cardRight {
-        width: 8rem;
-    }  */
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .reviews {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align:center;
-    width: 100%;
-}
-
-.reviewBody{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.reviewLeft{
-    width: 40%;
-    margin: 0rem 1rem;
-    display: flex;
-    justify-content: center;
-}
-
-.reviewRight{
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    margin: 1rem;
-}
-
-h2{
-    color: #333745;
-    font-family: 'Bad Script', cursive;
-    font-size: 22pt;
-    margin-top: 3rem;
-    margin: 3rem auto 1rem;
-} */
-
-/* Card styling */
-/* 
-.placeCard{
-    border: 1px solid #ffa094;
-    background-color: #fff1cb;
-    border-radius: 30px;
-    padding: 1rem;
-    margin: 0.5rem;
-    text-align: left;
-    display: flex;
-    align-items: center;
-}
-
-.cardLeft {
-    width: 80%;
-    margin-left: 0.5rem;
-}
-
-
-h4 {
-    font-weight: bold;
-    font-size: 1rem;
-    margin:0.5rem 0;
-    color: #333745;
-}
-
-p {
-    font-size: 0.75rem;
-    color: #333745;
-} */
-
-/* Button container */
-/* 
-.buttonContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.buttonContainer button{
-    margin: 0.25rem;
-} */
-
-/* teeny tiny screens
-@media screen and (max-width: 25rem){
-    .placeCards{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .placeCard{
-        width: 16rem;
-    }
-} */
-
-/* phones and vertical tablets
-@media screen and (max-width: 56rem){
-    .reviewBody {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .reviewLeft {
-        width: 22rem;
-    }
-
-    .reviewRight {
-        width: 22rem;
-    }
-
-    .cardLeft {
-        width: 14rem;
-        margin-left: 0.5rem;
-}
-    .cardRight {
-        width: 6rem;
-    }
-} */
-
-/* xl screenz */
-/* @media screen and (min-width: 1400px){
-    .reviewBody {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .reviewLeft {
-        width: 26rem;
-    }
-
-    .reviewRight {
-        width: 26rem;
-    }
-
-    .cardLeft {
-        width: 18rem;
-        margin-left: 0.5rem;
-}
-    .cardRight {
-        width: 8rem;
-    }
-} */
+ }
