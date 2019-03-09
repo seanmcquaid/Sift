@@ -80,16 +80,18 @@ class ActiveReviews extends Component {
         return (
             <div className="ActiveReviews">
                 <h2>Reviews</h2>
-                <div className="activeReviewsLeft">
-                    <AddReviewForm
-                        placeholder="Add your review here!"
-                        addReview={this.addReview}
-                        defaultType={"Choose a type!"}
-                        types={typeArray}
-                    />
-                </div>
-                <div className="activeReviewsRight">
-                    <PlaceCards cards={activeReviews} />
+                <div className="activeBody">
+                    <div className="activeReviewsLeft">
+                        <AddReviewForm
+                            placeholder="Add your review here!"
+                            addReview={this.addReview}
+                            defaultType={"Choose a type!"}
+                            types={typeArray}
+                        />
+                    </div>
+                    <div className="activeReviewsRight">
+                        <PlaceCards cards={activeReviews} />
+                    </div>
                 </div>
             </div>
         )
