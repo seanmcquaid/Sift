@@ -134,14 +134,19 @@ class EventTodo extends Component {
     render() {
         if (this.state.list.data !== undefined) {
             var eventToDo = this.state.list.data.map((events, i) => {
+                
                 console.log(events)
+                const currDate = (events.date).toString().slice(0,10)
+                const currYear = currDate.slice(0,4)
+                const currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+                let publishDate = `${currMonDay}-${currYear}`
+                
                 return (
                     <div key={i} className="placeCard">
-                        <div className="cardLeft">
+                         <div>
                             <h4>{events.eventname}</h4>
-                            <div>
-                                <p>{events.note}</p>
-                            </div>
+                            <p>{publishDate}</p>
+                            <p>{events.note}</p>
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(events.eventname)} className="faveButton">Fave</Button>
