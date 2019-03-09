@@ -75,26 +75,6 @@ class FoodTodo extends Component {
         })
     }
 
-    editPlace = (place, type, text) => {
-        axios({
-            method: 'POST',
-            url: `${window.apiHost}/food/edit/${place}`,
-            data: {
-                placename: place,
-                type: type,
-                note: text,
-                email: this.props.login.email
-            }
-        }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse,
-                showModal: true
-            })
-            if(backEndResponse.data.msg === 'updated'){
-                this.props.history.push('/food/todo')
-            }
-        })
-    }
 
     removePlace = (placename) => {
         console.log(this.props.login.email)
@@ -143,6 +123,8 @@ class FoodTodo extends Component {
     }
 
     render() {
+        let category = "food";
+        let section = "todo";
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
                 return (
@@ -155,7 +137,7 @@ class FoodTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(food.placename)} className="faveButton">Fave</Button>
-                            <Button className="editButton"><Link to={"/userHome/food/edit/" + food.placename}>Edit</Link></Button>
+                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                         </div>
                         
