@@ -125,25 +125,29 @@ class ActiveFavorites extends Component {
             })
         }
 
-
         return (
             <div className="ActiveFavorites">
                 <h2>Favorites</h2>
-                <AddForm
-                    addNewActive={this.addNewActive}
-                    placeholder="Add new favorite activity..."
-                    textType="Add note..."
-                    defaultType="Choose type!"
-                    types={typeArray}
-                />
-                <Filter
-                    defaultFilter="Filter by type"
-                    filters={filterArray}
-                    filterResults={this.filterResults}
-                    clearFilter={this.clearFilter}
-                />
-                <PlaceCards cards={favorites} />
-
+                <div className="favoritesBody">
+                    <div className="favoritesLeft">
+                        <AddForm
+                            addNewActive={this.addNewActive}
+                            placeholder="Add new favorite activity..."
+                            textType="Add note..."
+                            defaultType="Choose type!"
+                            types={typeArray}
+                        />
+                    </div>
+                    <div className="favoritesRight">
+                        <Filter
+                            defaultFilter="Filter by type"
+                            filters={filterArray}
+                            filterResults={this.filterResults}
+                            clearFilter={this.clearFilter}
+                        />
+                        <PlaceCards cards={favorites} />
+                    </div>
+                </div>
             </div>
         )
     }

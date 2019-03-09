@@ -70,7 +70,6 @@ router.post('/addFave/:placename', (req, res, next)=>{
     })
 })
 
-
 router.post('/getPlace/:placename',(req, res)=>{
     const place = req.params.placename
     const email = req.body.email;
