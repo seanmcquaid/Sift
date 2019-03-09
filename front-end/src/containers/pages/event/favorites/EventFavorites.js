@@ -13,7 +13,7 @@ class EventFavorites extends Component {
             super()
             this.state = {
                 list: [],
-                types: ['Festival','Arts/Movies/Music', 'Sporting Events', 'Educational'],
+                types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
                 msg: "",
                 showAlert: false,
             }
@@ -28,7 +28,7 @@ class EventFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((eventListFromDB) => {
-                console.log('logged in')
+                
                     this.setState({
                         list: eventListFromDB
                     })
@@ -49,7 +49,6 @@ class EventFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
@@ -123,7 +122,7 @@ class EventFavorites extends Component {
                                 <p>{event.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button className="reviewButton">Review</Button>
+                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
                             <Button clicked={() => this.editPlace(event.eventname)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                             

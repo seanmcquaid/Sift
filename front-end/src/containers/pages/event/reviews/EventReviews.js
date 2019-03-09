@@ -14,7 +14,7 @@ class EventReviews extends Component {
         this.state = {
             list : [],
             msg : "",
-            types: ['Festival','Arts/Movies/Music', 'Sporting Events', 'Educational'],
+            types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
             showAlert: false,
         }
     }

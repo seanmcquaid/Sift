@@ -225,7 +225,7 @@ router.post("/getEventReviews", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT eventname, review from events WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT eventname, stars, review from events WHERE uid = $1 AND reviewed = true;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
             // console.log(results2);
             res.json(results2);

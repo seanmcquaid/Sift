@@ -32,7 +32,7 @@ class ActiveFavorites extends Component {
         })
     }
 
-    addNewActive = (activity, type, text) => {
+    addNewPlace = (activity, type, text) => {
         //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
@@ -50,7 +50,7 @@ class ActiveFavorites extends Component {
         })
     }
 
-    removeActive = (activity) => {
+    removePlace = (activity) => {
         console.log(this.props.login.email)
         axios({
             method: "POST",
@@ -85,7 +85,7 @@ class ActiveFavorites extends Component {
     clearFilter = () => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/active/getActiveList`,
+            url: `${window.apiHost}/active/getActiveFaveList`,
             data: {
                 email: this.props.login.email
             }
@@ -148,6 +148,21 @@ class ActiveFavorites extends Component {
                         <PlaceCards cards={favorites} />
                     </div>
                 </div>
+                <AddForm
+                    addNewPlace={this.addNewPlace}
+                    placeholder="Add new favorite activity..."
+                    textType="Add note..."
+                    defaultType="Choose type!"
+                    types={typeArray}
+                />
+                <Filter
+                    defaultFilter="Filter by type"
+                    filters={filterArray}
+                    filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
+                />
+                <PlaceCards cards={favorites} />
+
             </div>
         )
     }
