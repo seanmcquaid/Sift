@@ -30,7 +30,6 @@ import Active from "./containers/pages/active/Active";
 import ActiveTodo from "./containers/pages/active/todo/ActiveTodo";
 import ActiveFavorites from "./containers/pages/active/favorites/ActiveFavorites";
 import ActiveReviews from "./containers/pages/active/reviews/ActiveReviews";
-import Edit from './components/utility/Edit/Edit';
 
 class App extends Component {
   render() {
