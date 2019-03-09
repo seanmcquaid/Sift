@@ -9,7 +9,6 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-import Modal from '../../../../components/utility/modal/Modal';
 import EditForm from '../../../Forms/EditForm';
 
 
@@ -21,7 +20,6 @@ class ActiveTodo extends Component {
             types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             msg: "",
             showAlert: false,
-            showModal: false,
         }
     }
 
@@ -206,20 +204,6 @@ class ActiveTodo extends Component {
                         <PlaceCards cards={activeTodo} />
                     </div>
                 </div>
-                <AddForm
-                    addNewPlace={this.addNewActive}
-                    placeholder="Add new activity..."
-                    textType="Add note..."
-                    defaultType="Choose type!"
-                    types={typeArray}
-                />
-                <Filter
-                    defaultFilter="Filter by type"
-                    filters={filterArray}
-                    filterResults={this.filterResults}
-                    clearFilter={this.clearFilter}
-                />
-                <PlaceCards cards={activeTodo} />
             </div>
         )
     }

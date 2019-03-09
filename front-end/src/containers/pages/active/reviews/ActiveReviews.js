@@ -101,33 +101,26 @@ class ActiveReviews extends Component {
         return (
             <div className="ActiveReviews">
                 <h2>Reviews</h2>
-                <div className="activeBody">
-                    <div className="activeReviewsLeft">
-                        <AddReviewForm
-                            placeholder="Add your review here!"
-                            addReview={this.addReview}
-                            defaultType={"Choose a type!"}
-                            types={typeArray}
-                        />
-                    </div>
-                    <div className="activeReviewsRight">
-                        <PlaceCards cards={activeReviews} />
-                    </div>
-                </div>
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Added to Faves"
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <AddReviewForm
-                    placeholder="Add your active review here!"
-                    defaultType= "Choose type!"
-                    defaultStars = "How many stars?"
-                    types={typeArray}
-                    addReview={this.addReview}
-                />
-                <PlaceCards cards={activeReviews} />
+                <div className="activeBody">
+                    <div className="activeReviewsLeft">
+                        <AddReviewForm
+                            placeholder="Add your active review here!"
+                            defaultType="Choose type!"
+                            defaultStars="How many stars?"
+                            types={typeArray}
+                            addReview={this.addReview}
+                        />
+                    </div>
+                    <div className="activeReviewsRight">
+                        <PlaceCards cards={activeReviews} />
+                    </div>
+                </div>
             </div>
         )
     }

@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.todoBody {
+.activeBody {
     display: flex;
     flex-direction: row;
     justify-content: center;
