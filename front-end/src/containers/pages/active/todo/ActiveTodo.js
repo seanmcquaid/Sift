@@ -186,6 +186,26 @@ class ActiveTodo extends Component {
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
+                <div className="todoBody">
+                    <div className="todoLeft">
+                        <AddForm
+                            addNewPlace={this.addNewActive}
+                            placeholder="Add new activity..."
+                            textType="Add note..."
+                            defaultType="Choose type!"
+                            types={typeArray}
+                        />
+                    </div>
+                    <div className="todoRight">
+                        <Filter
+                            defaultFilter="Filter by type"
+                            filters={filterArray}
+                            filterResults={this.filterResults}
+                            clearFilter={this.clearFilter}
+                        />
+                        <PlaceCards cards={activeTodo} />
+                    </div>
+                </div>
                 <AddForm
                     addNewPlace={this.addNewActive}
                     placeholder="Add new activity..."
@@ -200,7 +220,6 @@ class ActiveTodo extends Component {
                     clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={activeTodo} />
-                
             </div>
         )
     }

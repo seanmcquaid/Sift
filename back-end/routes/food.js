@@ -71,8 +71,6 @@ router.post('/addFave/:placename', (req, res, next)=>{
 })
 
 // EDIT FOR ALL SECTIONs
-
-
 router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
     const section = req.params.section;
     const placename = req.params.placename;
@@ -146,7 +144,6 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
 
 })
 
-// =======================
 
 router.post("/deletePlace/:placename", (req,res,next)=>{
     const placename = req.params.placename;
