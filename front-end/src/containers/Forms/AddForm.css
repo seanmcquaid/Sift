@@ -1,9 +1,13 @@
-.SearchAddEdit{
+.addFormContainer{
     margin: 1rem 5rem;
     width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.AddForm{
+.addForm{
     margin: 0 auto;
 }
 

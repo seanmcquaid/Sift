@@ -98,6 +98,7 @@ class FoodReviews extends Component {
         const typeArray = this.state.types.map((type, i)=>{
             return (<option key={i} value={type}>{type}</option>)
         });
+
         if(this.props.login.length === 0){
             return (
                 <Redirect to="/login"/>

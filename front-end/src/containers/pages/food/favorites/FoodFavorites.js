@@ -90,6 +90,21 @@ class FoodFavorites extends Component {
             })
     
         }
+
+        clearFilter = () => {
+            axios({
+                method: 'POST',
+                url: `${window.apiHost}/food/getFoodFaveList`,
+                data: {
+                    email: this.props.login.email
+                }
+            }).then((foodListFromDB) => {
+                console.log('logged in')
+                this.setState({
+                    list: foodListFromDB
+                })
+            })
+        }
        
         render() {
             let category = "food";
@@ -125,7 +140,7 @@ class FoodFavorites extends Component {
                 return (<option key={i} value={type}>{type}</option>)
             })
             
-            
+
             if(this.props.login.length === 0){
                 return(
                 <Redirect to="/login"/>

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
-import './ActiveTodo.css'
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'

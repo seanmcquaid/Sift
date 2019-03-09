@@ -155,6 +155,7 @@ class FoodTodo extends Component {
             return(<option key={i} value={filter}>{filter}</option>)
         })
         
+          
         // console.log(this.props.login.length)
         if(this.props.login.length === 0){
             return (
@@ -189,6 +190,7 @@ class FoodTodo extends Component {
                             />
                         <PlaceCards cards={foodToDo}/>
                         </div>
+
                     </div>
                 </div>
             )
