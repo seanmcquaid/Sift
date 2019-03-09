@@ -12,6 +12,7 @@ import Register from "./containers/users/register/Register";
 
 import Food from "./containers/pages/food/Food";
 import FoodTodo from "./containers/pages/food/todo/FoodTodo";
+import EditForm from "./containers/Forms/EditForm";
 import FoodFavorites from './containers/pages/food/favorites/FoodFavorites'
 import FoodReviews from "./containers/pages/food/reviews/FoodReviews"
 
@@ -29,6 +30,7 @@ import Active from "./containers/pages/active/Active";
 import ActiveTodo from "./containers/pages/active/todo/ActiveTodo";
 import ActiveFavorites from "./containers/pages/active/favorites/ActiveFavorites";
 import ActiveReviews from "./containers/pages/active/reviews/ActiveReviews";
+import Edit from './components/utility/Edit/Edit';
 
 class App extends Component {
   render() {
@@ -41,8 +43,9 @@ class App extends Component {
           <Route exact path="/register" component={Register}/>
 
           <Route exact path="/userHome" component={Home}/>
-      
+          
           <Route exact path="/userHome/food" component={Food} />
+          <Route exact path="/userHome/food/edit/:place" component={Edit} />
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
           <Route exact path="/userHome/food/reviews" component={FoodReviews}/>

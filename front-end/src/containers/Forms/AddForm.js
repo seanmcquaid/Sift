@@ -52,8 +52,6 @@ class AddForm extends Component {
     }
     
     render(){
-        // const typeArray = this.props.types
-        // console.log(typeArray)
 
         return(
             <div className="SearchAddEdit">
