@@ -100,7 +100,7 @@ class FoodReviews extends Component {
         });
 
         return (
-            <div className="FoodReviews">
+            <div className="reviews">
                 <h2>Reviews</h2>
                 <SweetAlert
                     show={this.state.showAlert}

@@ -54,8 +54,8 @@ class AddForm extends Component {
     render(){
 
         return(
-            <div className="SearchAddEdit">
-                <form onSubmit={this.addNew} className="AddForm">
+            <div className="addFormContainer">
+                <form onSubmit={this.addNew} className="addForm">
                     <div className="addNameAndType">
                         <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} required/>
                         <select className="Dropdown Type" id="Dropdown" onChange={this.changeType} required>

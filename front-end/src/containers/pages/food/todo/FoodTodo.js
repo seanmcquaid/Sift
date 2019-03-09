@@ -157,7 +157,7 @@ class FoodTodo extends Component {
         
 
         return (
-            <div className="FoodToDo">
+            <div className="toDo">
                 <h2>Food To Do!</h2>
                 <SweetAlert
                     show={this.state.showAlert}

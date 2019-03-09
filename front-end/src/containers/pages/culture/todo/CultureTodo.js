@@ -7,7 +7,6 @@ import 'sweetalert/dist/sweetalert.css';
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from '../../../../components/utility/button/Button';
-import './CultureTodo.css';
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 
