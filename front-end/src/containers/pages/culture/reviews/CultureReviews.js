@@ -4,7 +4,6 @@ import AddReviewForm from '../../../Forms/AddReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
-import "./CultureReviews.css";
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
 

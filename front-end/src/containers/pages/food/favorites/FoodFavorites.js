@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
@@ -90,6 +90,21 @@ class FoodFavorites extends Component {
             })
     
         }
+
+        clearFilter = () => {
+            axios({
+                method: 'POST',
+                url: `${window.apiHost}/food/getFoodFaveList`,
+                data: {
+                    email: this.props.login.email
+                }
+            }).then((foodListFromDB) => {
+                console.log('logged in')
+                this.setState({
+                    list: foodListFromDB
+                })
+            })
+        }
        
         render() {
             let category = "food";
@@ -125,33 +140,38 @@ class FoodFavorites extends Component {
                 return (<option key={i} value={type}>{type}</option>)
             })
             
-            
-    
-            return (
-                <div className="faveTop">
-                    <h2>Favorites</h2>
-                    <div className="FoodFavorites">
-                        <div className="formRows">
-                            <AddForm
-                                addNewPlace={this.addNewPlace}
-                                placeholder="Add new..."
-                                textType="Add note..."
-                                defaultType="Restaurant"
-                                types={typeArray}
-                            />
-                        </div>
-                        <div className="formRows">
-                            <Filter 
-                                defaultFilter="Filter by type"
-                                filters={filterArray}
-                                filterResults={this.filterResults}
-                            />
-                            <PlaceCards cards={favorites}/>
+
+            if(this.props.login.length === 0){
+                return(
+                <Redirect to="/login"/>
+                )
+            } else {
+                return (
+                    <div className="faveTop">
+                        <h2>Favorites</h2>
+                        <div className="FoodFavorites">
+                            <div className="formRows">
+                                <AddForm
+                                    addNewPlace={this.addNewPlace}
+                                    placeholder="Add new..."
+                                    textType="Add note..."
+                                    defaultType="Restaurant"
+                                    types={typeArray}
+                                />
+                            </div>
+                            <div className="formRows">
+                                <Filter 
+                                    defaultFilter="Filter by type"
+                                    filters={filterArray}
+                                    filterResults={this.filterResults}
+                                />
+                                <PlaceCards cards={favorites}/>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
-        }
+                )
+            }
+            }
     }
     
     function mapStateToProps(state) {
