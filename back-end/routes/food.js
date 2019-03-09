@@ -113,7 +113,7 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
 router.post("/:section/editPlace/:placename", (req,res,next)=>{
     const email = req.body.email;
     const section = req.params.section;
-    console.log(section)
+    // console.log(section)
     const oldPlacename = req.params.placename;
     const newPlacename = req.body.updatedPlacename;
     const newType = req.body.updatedType;

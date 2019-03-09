@@ -17,7 +17,7 @@ class EditForm extends Component {
             foodTypes: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             activeTypes: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             cultureTypes: ['Music', 'Art', 'Theater', 'Festival'],
-            eventTypes: ['Festival', 'Arts/Movies/Music', 'Sporting Events', 'Educational'],
+            eventTypes: ['Festival', 'Arts-Movies-Music', 'Sporting Events', 'Educational'],
             redirect : false
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
@@ -70,7 +70,7 @@ class EditForm extends Component {
                 place : "",
                 category : "",
                 type : "",
-                text : "textFromDB",
+                text : "",
                 redirect: true
             })
         })
