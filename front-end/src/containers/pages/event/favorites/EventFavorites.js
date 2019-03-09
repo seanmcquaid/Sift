@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 import AddEventForm from '../../../Forms/AddEventForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
-import "./EventFavorites.css";
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class EventFavorites extends Component {

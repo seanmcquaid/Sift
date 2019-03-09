@@ -90,6 +90,21 @@ class FoodFavorites extends Component {
             })
     
         }
+
+        clearFilter = () => {
+            axios({
+                method: 'POST',
+                url: `${window.apiHost}/food/getFoodFaveList`,
+                data: {
+                    email: this.props.login.email
+                }
+            }).then((foodListFromDB) => {
+                console.log('logged in')
+                this.setState({
+                    list: foodListFromDB
+                })
+            })
+        }
        
         render() {
             let category = "food";
@@ -128,10 +143,10 @@ class FoodFavorites extends Component {
             
     
             return (
-                <div className="faveTop">
+                <div className="favorites">
                     <h2>Favorites</h2>
-                    <div className="FoodFavorites">
-                        <div className="formRows">
+                    <div className="favoritesBody">
+                        <div className="favoritesLeft">
                             <AddForm
                                 addNewPlace={this.addNewPlace}
                                 placeholder="Add new..."
@@ -140,11 +155,12 @@ class FoodFavorites extends Component {
                                 types={typeArray}
                             />
                         </div>
-                        <div className="formRows">
+                        <div className="favoritesRight">
                             <Filter 
                                 defaultFilter="Filter by type"
                                 filters={filterArray}
                                 filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
                             />
                             <PlaceCards cards={favorites}/>
                         </div>

@@ -1,5 +1,6 @@
 .AddReviewForm{
     width: 30rem;
+    margin: 1rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,7 +10,6 @@
 .reviewForm{
     margin: 0 auto;
 }
-
 
 select {
     font-family: 'Montserrat', sans-serif;
@@ -49,6 +49,8 @@ select {
 }
 
 .addReview {
+    width: 24rem;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -57,7 +59,7 @@ select {
 
 /* media queries */
 
-@media screen and (max-width: 25rem){
+@media screen and (max-width: 400px){
     
     #newPlace {
         font-size: 0.75rem;
@@ -65,7 +67,7 @@ select {
     }
 
     #newReview {
-        width: 14rem;
+        width: 16rem;
         font-size: 0.75rem;
     }
 
