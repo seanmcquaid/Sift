@@ -70,49 +70,83 @@ router.post('/addFave/:placename', (req, res, next)=>{
     })
 })
 
+// EDIT FOR ALL SECTIONs
 
-router.post('/getPlace/:placename',(req, res)=>{
-    const place = req.params.placename
+
+router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
+    const section = req.params.section;
+    const placename = req.params.placename;
     const email = req.body.email;
-    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
-    db.query(selectUserQuery, [email]).then((results) => {
-        const uid = results[0].id
-        const selectPlaceQuery = `SELECT placename, type, note FROM food WHERE uid = $1 and placename = $2`
-        db.query(selectPlaceQuery, [uid, place]).then((results2) => {
-            res.json(results2)
-            console.log(results2)
-        }).catch((error2)=>{
-            if(error2){throw error2}
-        })
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const getFoodToDoQuery = `SELECT placename, type, note FROM food WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 AND placename = $2;`;
+            db.query(getFoodToDoQuery, [uid, placename]).then((results2)=>{
+                const todoResult = results2[0]
+                res.json(todoResult)
+            }).catch((error2)=>{
+                if(error2){throw error2}
+            })
+        } else if (section == "favorites"){
+            const getFoodFavoriteQuery = `SELECT placename, type, note FROM food WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2;`;
+            db.query(getFoodFavoriteQuery,[uid,placename]).then((results3)=>{
+                const favoriteResult = results3[0];
+                res.json(favoriteResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        } else if (section == "reviews"){
+            const getFoodReviewQuery = `SELECT placename, type, review FROM food WHERE reviewed = true AND uid = $1 AND placename = $2;`;
+            db.query(getFoodReviewQuery,[uid,placename]).then((results3)=>{
+                const reviewResult = results3[0];
+                res.json(reviewResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        }
     }).catch((error)=>{
         if(error){throw error}
     })
 })
 
-router.post("/editPlace/:placename", (req, res, next) => {
-    const updatedPlace = req.params.placename;
-    const originalPlace = req.body.originalPlace;
-    const type = req.body.type;
-    const note = req.body.note;
+router.post("/:section/editPlace/:placename", (req,res,next)=>{
     const email = req.body.email;
-    console.log(updatedPlace)
-    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
-    db.query(selectUserQuery, [email]).then((results) => {
-        const uid = results[0].id
-        const selectPlaceQuery = `UPDATE food SET placename = $1, type = $2, note = $3 WHERE uid = $4 and placename = $1`
-        db.query(selectPlaceQuery, [updatedPlace, type, note, uid, originalPlace]).then((results2) => {
-            res.json({
-                results2,
-                msg : "updated"
-            })
-            console.log(results2)
-        }).catch((error2) => {
-            if (error2) { throw error2 }
-        })
-    }).catch((error) => {
-        if (error) { throw error }
+    const section = req.params.section;
+    // console.log(section)
+    const oldPlacename = req.params.placename;
+    const newPlacename = req.body.updatedPlacename;
+    const newType = req.body.updatedType;
+    const newText = req.body.updatedText;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const updateFoodTodoQuery = `UPDATE food 
+            SET placename = $1, type = $2, note = $3
+            WHERE uid = $4 AND placename = $5 AND todo = true AND favorite = false AND reviewed = false;`
+            db.query(updateFoodTodoQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "favorites"){
+            const updateFoodFavoriteQuery = `UPDATE food 
+            SET placename = $1, type = $2, note = $3
+            WHERE uid = $4 AND placename = $5 AND todo = false AND favorite = true;`
+            db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "reviews"){
+            const updateFoodFavoriteQuery = `UPDATE food 
+            SET placename = $1, type = $2, review = $3
+            WHERE uid = $4 AND placename = $5 AND reviewed = true;`
+            db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }
+    }).catch((error)=>{
+        if(error){throw error}
     })
+
 })
+
+// =======================
 
 router.post("/deletePlace/:placename", (req,res,next)=>{
     const placename = req.params.placename;

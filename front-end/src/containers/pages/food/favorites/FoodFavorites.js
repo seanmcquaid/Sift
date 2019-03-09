@@ -92,7 +92,8 @@ class FoodFavorites extends Component {
         }
        
         render() {
-            console.log(this.props)
+            let category = "food";
+            let section = "favorites";
             if (this.state.list.data !== undefined) {
 
                 var favorites = this.state.list.data.map((food, i) => {
@@ -104,12 +105,10 @@ class FoodFavorites extends Component {
                                 <h4>{food.placename}</h4>
                                 <p>{food.note}</p>
                             </div>
-                           
                             <div className="buttonContainer">
                             <Button className="reviewButton">Review</Button>
-                            <Button clicked={() => this.editPlace(food.placename)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
-                            
                             </div>
                             
                         </div>
