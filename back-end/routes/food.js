@@ -107,33 +107,52 @@ router.post('/addFave/:placename', (req, res, next)=>{
     })
 })
 
-// router.get('/getTask/:tid', (req, res, next) => {
-//     const tid = req.params.tid;
-//     const selectTaskQuery = `SELECT * FROM tasks WHERE id =?`;
-//     connection.query(selectTaskQuery, [tid], (err, result) => {
-//         if (err) { throw err }
-//         res.json({ task: result[0] });
-//     })
-// })
+router.post('/getPlace/:placename',(req, res)=>{
+    const place = req.params.placename
+    const email = req.body.email;
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
+    db.query(selectUserQuery, [email]).then((results) => {
+        const uid = results[0].id
+        const selectPlaceQuery = `SELECT placename, type, note FROM food WHERE uid = $1 and placename = $2`
+        db.query(selectPlaceQuery, [uid, place]).then((results2) => {
+            res.json(results2)
+            console.log(results2)
+        }).catch((error2)=>{
+            if(error2){throw error2}
+        })
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
 
-// router.post('/edit', (req, res, next) => {
-//     const id = req.body.id;
-//     const taskName = req.body.task.taskName;
-//     const taskDate = req.body.task.taskDate.substring(0, 10);
-//     const updateQuery = `UPDATE tasks SET taskName = ?, taskDate = ?
-//     WHERE id =?`;
-//     connection.query(updateQuery, [taskName, taskDate, id], (error, results) => {
-//         if (error) { throw error };
-//         res.json({
-//             msg: "updated"
-//         })
-//     })
-// });
+router.post("/editPlace/:placename", (req, res, next) => {
+    const updatedPlace = req.params.placename;
+    const originalPlace = req.body.originalPlace;
+    const type = req.body.type;
+    const note = req.body.note;
+    const email = req.body.email;
+    console.log(updatedPlace)
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`
+    db.query(selectUserQuery, [email]).then((results) => {
+        const uid = results[0].id
+        const selectPlaceQuery = `UPDATE food SET placename = $1, type = $2, note = $3 WHERE uid = $4 and placename = $1`
+        db.query(selectPlaceQuery, [updatedPlace, type, note, uid, originalPlace]).then((results2) => {
+            res.json({
+                results2,
+                msg : "updated"
+            })
+            console.log(results2)
+        }).catch((error2) => {
+            if (error2) { throw error2 }
+        })
+    }).catch((error) => {
+        if (error) { throw error }
+    })
+})
 
 router.post("/deletePlace/:placename", (req,res,next)=>{
     const placename = req.params.placename;
     const email = req.body.email;
-    console.log(req.body.email)
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id

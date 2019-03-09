@@ -7,9 +7,9 @@ class AddReviewForm extends Component {
         super();
         this.state = {
             place: "",
-            review : "",
+            review: "",
             type: "",
-            stars : ""
+            stars: ""
         }
     }
 

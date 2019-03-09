@@ -3,14 +3,14 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+import { Link } from 'react-router-dom';
 
 import './FoodTodo.css'
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-import Modal from '../../../../components/utility/modal/Modal';
-import EditForm from '../../../Forms/EditForm';
+// import EditForm from '../../../Forms/EditForm';
 
 
 
@@ -22,12 +22,10 @@ class FoodTodo extends Component {
             types: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             msg: "",
             showAlert: false,
-            showModal: false,
         }
     }
 
     componentDidMount() {
-        // console.log('component did mount')
         axios({
             method: 'POST',
             url: `${window.apiHost}/food/getFoodList`,
@@ -35,7 +33,6 @@ class FoodTodo extends Component {
                 email: this.props.login.email
             }
         }).then((foodListFromDB) => {
-            // console.log(foodListFromDB)
             this.setState({
                 list: foodListFromDB
             })
@@ -139,7 +136,6 @@ class FoodTodo extends Component {
                 email: this.props.login.email
             }
         }).then((foodListFromDB) => {
-            // console.log(foodListFromDB)
             this.setState({
                 list: foodListFromDB
             })
@@ -149,7 +145,6 @@ class FoodTodo extends Component {
     render() {
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
-                console.log(food)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
@@ -160,7 +155,7 @@ class FoodTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(food.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.editPlace(food.placename)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/food/edit/" + food.placename}>Edit</Link></Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                         </div>
                         
@@ -206,9 +201,6 @@ class FoodTodo extends Component {
                         />
                     <PlaceCards cards={foodToDo}/>
                     </div>
-                    <Modal show={this.state.showModal}>
-                        <EditForm />
-                    </Modal>
                 </div>
             </div>
         )

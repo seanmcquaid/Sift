@@ -1,5 +1,6 @@
 .submitButton {
     background-color: #ffa094;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid rgb(165, 165, 165);
     margin: 1rem;
@@ -9,6 +10,7 @@
 
 .faveButton {
     background-color: #87cab0;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
@@ -16,6 +18,7 @@
 
 .deleteButton {
     background-color: palevioletred;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
@@ -23,13 +26,24 @@
 
 .editButton {
     background-color: #ffa094;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
 }
 
+.editButton a {
+    text-decoration: none;
+    color: #333745;
+}
+
+.editButton a:hover{
+    color: #EEF5DB;
+}
+
 .shareButton {
     background-color: #87cab0;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
@@ -37,6 +51,7 @@
 
 .filterButton {
     background-color: #87cab0;
+    color: #333745;
     font-family: 'Montserrat', sans-serif;
     border: 1px solid rgb(165, 165, 165);
     margin: 0.5rem;
