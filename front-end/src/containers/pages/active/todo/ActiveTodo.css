@@ -1,4 +1,3 @@
-
 .ActiveToDo {
     display: flex;
     flex-direction: column;
@@ -6,6 +5,28 @@
     align-items: center;
     text-align:center;
     width: 100%;
+}
+
+.todoBody {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.todoLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin: 1rem;
+}
+
+.todoRight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin: 1rem;
 }
 
 h2{
@@ -56,3 +77,4 @@ button {
 button:hover{
     color: #fff6dd;
 }
+
