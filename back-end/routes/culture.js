@@ -124,7 +124,7 @@ router.post('/getCultureFaveList', (req,res,next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const getFavesQuery = `SELECT placename, note FROM culture WHERE todo = false AND favorite = true AND uid = $1;`;
+        const getFavesQuery = `SELECT placename, note FROM culture WHERE favorite = true AND uid = $1;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
@@ -214,7 +214,7 @@ router.post("/getCultureReviews", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT placename, review, type stars from culture WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT placename, review, type, stars from culture WHERE uid = $1 AND reviewed = true;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
             res.json(results2);
         }).catch((error2)=>{

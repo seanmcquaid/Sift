@@ -278,7 +278,7 @@ router.post("/deleteActiveReview/:placename", (req,res,next)=>{
         const uid = results[0].id;
         const deleteReviewQuery = `DELETE FROM active WHERE placename = $1 AND reviewed = true AND uid = $2;`;
         db.query(deleteReviewQuery,[placename,uid]).then((results2)=>{
-            const selectReviewsQuery = `SELECT * FROM active where reviewed = true AND uid = $1;`;
+            const selectReviewsQuery = `SELECT placename, review, type, stars from active WHERE uid = $1 AND reviewed = true;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
                 res.json(results3)
             }).catch((error3)=>{

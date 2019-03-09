@@ -36,7 +36,7 @@ class ActiveReviews extends Component {
     addReview = (activity, review, type, stars) =>{
         axios({
             method : "POST",
-            url : `${window.apiHost}/culture/addCultureReview/${activity}`,
+            url : `${window.apiHost}/active/addActiveReview/${activity}`,
             data : {
                 email : this.props.login.email,
                 activity,
@@ -83,7 +83,7 @@ class ActiveReviews extends Component {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{review.placename}</h4>
+                            <h4>{review.placename} – {review.stars} Stars</h4>
                             <div>
                                 <p>{review.review}</p>
                             </div>
