@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
@@ -130,6 +131,8 @@ class CultureToDo extends Component {
 
     render() {
         if (this.state.list.data !== undefined) {
+            let category = "culture";
+            let section = "todo";
             var cultureToDo = this.state.list.data.map((culture, i) => {
                 console.log(culture)
                 return (
@@ -142,7 +145,7 @@ class CultureToDo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(culture.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.editPlace(culture.placename)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + culture.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
                         </div>
                         

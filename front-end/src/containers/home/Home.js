@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Home.css'
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import { connect } from "react-redux";
 
 
-function Home(props){
-    const number = (Math.floor(Math.random() * 5) + 1)
+class Home extends Component{
+    render(){
+        const number = (Math.floor(Math.random() * 5) + 1)
     const chooseMessage = number
     let welcomeMessage
 
@@ -19,24 +21,37 @@ function Home(props){
     } else {
         welcomeMessage = "Nice to See You"
     } 
-
-    return(
-        <div>
-            <div className="welcomeTextContent">
-                <h1>{welcomeMessage}</h1>
-            </div>
-            <div className="categoryCircleContainer">
-                    <div className="circleSpacing">
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/food"><div className="food"><p>Food</p></div></Link>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/active"><div className="active"><p>Active</p></div></Link>
-                    </div>
-                    <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/culture"><div className="culture"><p>Culture</p></div></Link>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/event"><div className="events"><p>Events</p></div></Link>
-                    </div>
-            </div>
-        </div>
+    console.log(this.props.login.length)
+    if(this.props.login.length === 0){
+        return(
+        <Redirect to="/login"/>
         )
+    } else {
+        return(
+            <div>
+                <div className="welcomeTextContent">
+                    <h1>{welcomeMessage}</h1>
+                </div>
+                <div className="categoryCircleContainer">
+                        <div className="circleSpacing">
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/food"><div className="food"><p>Food</p></div></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/active"><div className="active"><p>Active</p></div></Link>
+                        </div>
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/culture"><div className="culture"><p>Culture</p></div></Link>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/event"><div className="events"><p>Events</p></div></Link>
+                        </div>
+                </div>
+            </div>
+            )
+        }
     }
-    
-    export default Home;
+}
+
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    }
+}
+
+export default connect(mapStateToProps, null)(Home);

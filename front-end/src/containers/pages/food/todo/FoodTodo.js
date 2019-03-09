@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import './FoodTodo.css'
 import AddForm from '../../../Forms/AddForm';
@@ -155,40 +155,48 @@ class FoodTodo extends Component {
             return(<option key={i} value={filter}>{filter}</option>)
         })
         
+          
+        // console.log(this.props.login.length)
+        if(this.props.login.length === 0){
+            return (
+                <Redirect to="/login"/>
+            )
+        } else {
+            return (
+                <div className="FoodToDo">
+                    <h2>Food To Do!</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Added to Faves"
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="todoBody">
+                        <div className="todoLeft">
+                            <AddForm
+                                addNewPlace={this.addNewPlace}
+                                placeholder="Add new place to eat..."
+                                textType="Add note..."
+                                defaultType="Choose type!"
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="todoRight">
+                            <Filter 
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
+                            />
+                        <PlaceCards cards={foodToDo}/>
+                        </div>
 
-        return (
-            <div className="toDo">
-                <h2>Food To Do!</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Added to Faves"
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <div className="todoBody">
-                    <div className="todoLeft">
-                        <AddForm
-                            addNewPlace={this.addNewPlace}
-                            placeholder="Add new place to eat..."
-                            textType="Add note..."
-                            defaultType="Choose type!"
-                            types={typeArray}
-                        />
-                    </div>
-                    <div className="todoRight">
-                        <Filter 
-                            defaultFilter="Filter by type"
-                            filters={filterArray}
-                            filterResults={this.filterResults}
-                            clearFilter={this.clearFilter}
-                        />
-                    <PlaceCards cards={foodToDo}/>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        }
     }
-}
 
 function mapStateToProps(state) {
     return {

@@ -4,7 +4,7 @@ import AddReviewForm from '../../../Forms/AddReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import "./FoodReviews.css";
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
@@ -99,33 +99,39 @@ class FoodReviews extends Component {
             return (<option key={i} value={type}>{type}</option>)
         });
 
-        return (
-            <div className="reviews">
-                <h2>Reviews</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Review Added"
-                    text={this.state.msg}
-                    confirmBtnBsStyle="danger"
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <div className="reviewBody">
-                    <div className="reviewLeft">
-                        <AddReviewForm
-                            placeholder="Add your food review here!"
-                            defaultType= "Choose type!"
-                            defaultStars = "How many stars?"
-                            types={typeArray}
-                            addReview={this.addReview}
-                        />
-                    </div>
-                    <div className="reviewRight">
-                        <PlaceCards cards={foodReviews}/>
+        if(this.props.login.length === 0){
+            return (
+                <Redirect to="/login"/>
+            )
+        } else {
+            return (
+                <div className="FoodReviews">
+                    <h2>Reviews</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Review Added"
+                        text={this.state.msg}
+                        confirmBtnBsStyle="danger"
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="reviewBody">
+                        <div className="reviewLeft">
+                            <AddReviewForm
+                                placeholder="Add your food review here!"
+                                defaultType= "Choose type!"
+                                defaultStars = "How many stars?"
+                                types={typeArray}
+                                addReview={this.addReview}
+                            />
+                        </div>
+                        <div className="reviewRight">
+                            <PlaceCards cards={foodReviews}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
-    }
+            )
+        }
+        }
 }
 
 function mapStateToProps(state) {

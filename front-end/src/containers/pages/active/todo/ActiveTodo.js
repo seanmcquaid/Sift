@@ -8,7 +8,6 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-import EditForm from '../../../Forms/EditForm';
 
 
 class ActiveTodo extends Component {
