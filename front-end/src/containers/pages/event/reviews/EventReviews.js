@@ -4,6 +4,10 @@ import AddReviewForm from '../../../Forms/AddReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
+
+import {Link} from "react-router-dom";
+import "./EventReviews.css";
+
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
 
@@ -74,6 +78,8 @@ class EventReviews extends Component {
     }
 
     render() {
+        let category = "event";
+        let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
                 return (
@@ -87,7 +93,7 @@ class EventReviews extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button className="shareButton">Share</Button>
-                            <Button clicked={() => this.editReview(review.eventname)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
                         </div>
                         

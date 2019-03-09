@@ -121,7 +121,7 @@ class FoodFavorites extends Component {
                                 <p>{food.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button className="reviewButton">Review</Button>
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + food.placename} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                             </div>
