@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
-import AddForm from '../../../Forms/AddForm';
+import AddEventForm from '../../../Forms/AddEventForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import './EventTodo.css'
@@ -39,7 +39,7 @@ class EventTodo extends Component {
         })
     }
 
-    addNewEvent = (event, type, text) => {
+    addNewEvent = (event, type, date, text) => {
         // possibly, api call will go here with autocomplete to add name, location to DB
         // console.log(place, type)
         axios({
@@ -48,6 +48,7 @@ class EventTodo extends Component {
             data: {
                 eventname: event,
                 type: type,
+                date: date,
                 note: text,
                 email: this.props.login.email
             }
@@ -80,7 +81,7 @@ class EventTodo extends Component {
         //edit note/name of place
     }
 
-    removePlace = (eventname) => {
+    removeEvent = (eventname) => {
         //easy, just delete from DB!
         console.log(this.props.login.email)
         axios({
@@ -115,22 +116,37 @@ class EventTodo extends Component {
 
     }
 
+    clearFilter = () => {
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/event/getEventList`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((foodListFromDB) => {
+            // console.log(foodListFromDB)
+            this.setState({
+                list: foodListFromDB
+            })
+        })
+    }
+
     render() {
         if (this.state.list.data !== undefined) {
-            var eventToDo = this.state.list.data.map((event, i) => {
-                console.log(event)
+            var eventToDo = this.state.list.data.map((events, i) => {
+                console.log(events)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{event.placename}</h4>
+                            <h4>{events.eventname}</h4>
                             <div>
-                                <p>{event.note}</p>
+                                <p>{events.note}</p>
                             </div>
                         </div>
                         <div className="buttonContainer">
-                            <Button clicked={() => this.addToFavorites(event.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.editPlace(event.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removePlace(event.placename)} className="deleteButton">Remove</Button>
+                            <Button clicked={() => this.addToFavorites(events.eventname)} className="faveButton">Fave</Button>
+                            <Button clicked={() => this.editEvent(events.eventname)} className="editButton">Edit</Button>
+                            <Button clicked={() => this.removeEvent(events.eventname)} className="deleteButton">Remove</Button>
                         </div>
                         
                     </div>
@@ -149,16 +165,16 @@ class EventTodo extends Component {
 
         return (
             <div className="eventToDo">
-                <h2>Food To Do!</h2>
+                <h2>Event To Do!</h2>
                 <SweetAlert
                     show={this.state.showAlert}
                     title="Added to Faves"
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <AddForm
-                    addNewPlace={this.addNewEvent}
-                    placeholder="Add new place to eat..."
+                <AddEventForm
+                    addNewEvent={this.addNewEvent}
+                    placeholder="Add new event..."
                     textType="Add note..."
                     defaultType="Choose type!" 
                     types={typeArray}
@@ -167,6 +183,7 @@ class EventTodo extends Component {
                     defaultFilter="Filter by type"
                     filters={filterArray}
                     filterResults={this.filterResults}
+                    clearFilter={this.clearFilter}
                 />
                 <PlaceCards cards={eventToDo}/>
             </div>

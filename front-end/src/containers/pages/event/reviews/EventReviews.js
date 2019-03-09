@@ -14,6 +14,7 @@ class EventReviews extends Component {
         this.state = {
             list : [],
             msg : "",
+            types: ['Festival','Arts/Movies/Music', 'Sporting Events', 'Educational'],
             showAlert: false,
         }
     }
@@ -34,16 +35,23 @@ class EventReviews extends Component {
     }
 
     // need to finish add review
-    addReview = (event, review, stars) =>{
+    addReview = (event, review, type, stars) =>{
         axios({
             method : "POST",
             url : `${window.apiHost}/event/addEventReview/${event}`,
             data : {
-                email : this.props.login.email
+                email : this.props.login.email,
+                event,
+                review,
+                type,
+                stars
             }
         }).then((responseFromDB)=>{
+            // console.log(responseFromDB)
             this.setState({
-                list : responseFromDB
+                list : responseFromDB,
+                msg : `Congrats! You've added a review for ${event}!`,
+                showAlert: true,
             })
         })
     }
@@ -52,17 +60,31 @@ class EventReviews extends Component {
 
     }
 
+    removeReview = (event)=>{
+        axios({
+            method : "POST",
+            url: `${window.apiHost}/event/deleteEventReview/${event}`,
+            data :{
+                email : this.props.login.email
+            }
+        }).then((backEndResponse)=>{
+            this.setState({
+                list : backEndResponse
+            })
+        })
+    }
+
     render() {
         if (this.state.list.data !== undefined) {
-            var eventReviews = this.state.list.data.map((review, i) => {
-                // console.log(review)
+            var EventReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
                             <h4>{review.eventname}</h4>
-                            <div>
-                                <p>{review.review}</p>
-                            </div>
+                            <p>{review.review}</p>
+                        </div>
+                        <div className="stars">
+                            <p> {review.stars} Stars</p>
                         </div>
                         <div className="buttonContainer">
                             <Button className="shareButton">Share</Button>
@@ -74,14 +96,27 @@ class EventReviews extends Component {
                 )
             })
         }
+
+        const typeArray = this.state.types.map((type, i)=>{
+            return (<option key={i} value={type}>{type}</option>)
+        });
+
         return (
-            <div className="editReviews">
+            <div className="eventReviews">
                 <h2>Reviews</h2>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title="Added to Faves"
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <AddReviewForm
                     placeholder="Add your event review here!"
+                    defaultType= "Choose type!"
+                    types={typeArray}
                     addReview={this.addReview}
                 />
-                <PlaceCards cards={eventReviews}/>
+                <PlaceCards cards={EventReviews}/>
             </div>
         )
     }

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
+// ================================================ To Do
 
 router.post('/getActiveList', (req, res, next) => {
     const email = req.body.email;
@@ -11,22 +12,6 @@ router.post('/getActiveList', (req, res, next) => {
         console.log(uid);
         const getActiveToDoQuery = `SELECT placename, note FROM active WHERE todo = true AND favorite = false AND uid = $1;`;
         db.query(getActiveToDoQuery, [uid]).then((results2) => {
-            res.json(results2)
-        }).catch((error2) => {
-            if (error2) { throw error2 }
-        })
-    }).catch((error) => {
-        if (error) { throw error };
-    })
-})
-
-router.post('/getActiveFaveList', (req, res, next) => {
-    const email = req.body.email;
-    const selectUserQuery = `SELECT id from users where email = $1;`;
-    db.query(selectUserQuery, [email]).then((results) => {
-        const uid = results[0].id;
-        const getFavesQuery = `SELECT placename, note FROM active WHERE todo = false AND favorite = true AND uid = $1;`;
-        db.query(getFavesQuery, [uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
             if (error2) { throw error2 }
@@ -50,29 +35,6 @@ router.post('/addActive', (req, res, next) => {
         db.query(insertActiveQuery, [uid, activity, type, note, true, false, false]).then(() => {
             const getActiveToDoQuery = `SELECT placename, note FROM active WHERE todo = true AND favorite = false AND uid = $1;`;
             db.query(getActiveToDoQuery, [uid]).then((results2) => {
-                res.json(results2)
-            })
-        }).catch((error2) => {
-            if (error2) { throw error2 }
-        })
-    }).catch((error) => {
-        if (error) { throw error };
-    })
-})
-
-router.post('/addFaveInFavorites', (req, res, next) => {
-    const activity = req.body.activity;
-    const type = req.body.type;
-    const note = req.body.note;
-    const email = req.body.email;
-    const selectUserQuery = `SELECT id from users where email = $1;`;
-    db.query(selectUserQuery, [email]).then((results) => {
-        const uid = results[0].id;
-        const insertActiveFaveQuery = `INSERT INTO active (uid, placename, type, note, todo, favorite, reviewed) VALUES
-        ($1, $2, $3, $4, $5, $6, $7);`;
-        db.query(insertActiveFaveQuery, [uid, activity, type, note, false, true, false]).then(() => {
-            const getActiveFaveQuery = `SELECT placename, note FROM active WHERE favorite = true AND uid = $1;`;
-            db.query(getActiveFaveQuery, [uid]).then((results2) => {
                 res.json(results2)
             })
         }).catch((error2) => {
@@ -129,6 +91,51 @@ router.post("/deleteActive/:activity", (req, res, next) => {
     })
 })
 
+
+
+
+// ================================================ Favorites
+
+router.post('/getActiveFaveList', (req, res, next) => {
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results) => {
+        const uid = results[0].id;
+        const getFavesQuery = `SELECT placename, note FROM active WHERE todo = false AND favorite = true AND uid = $1;`;
+        db.query(getFavesQuery, [uid]).then((results2) => {
+            res.json(results2)
+        }).catch((error2) => {
+            if (error2) { throw error2 }
+        })
+    }).catch((error) => {
+        if (error) { throw error };
+    })
+})
+
+
+router.post('/addFaveInFavorites', (req, res, next) => {
+    const activity = req.body.activity;
+    const type = req.body.type;
+    const note = req.body.note;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results) => {
+        const uid = results[0].id;
+        const insertActiveFaveQuery = `INSERT INTO active (uid, placename, type, note, todo, favorite, reviewed) VALUES
+        ($1, $2, $3, $4, $5, $6, $7);`;
+        db.query(insertActiveFaveQuery, [uid, activity, type, note, false, true, false]).then(() => {
+            const getActiveFaveQuery = `SELECT placename, note FROM active WHERE favorite = true AND uid = $1;`;
+            db.query(getActiveFaveQuery, [uid]).then((results2) => {
+                res.json(results2)
+            })
+        }).catch((error2) => {
+            if (error2) { throw error2 }
+        })
+    }).catch((error) => {
+        if (error) { throw error };
+    })
+})
+
 router.post("/deleteFavePlace/:activity", (req, res, next) => {
     const activity = req.params.activity;
     const email = req.body.email;
@@ -153,6 +160,30 @@ router.post("/deleteFavePlace/:activity", (req, res, next) => {
         if (error) { throw error };
     })
 })
+
+router.post("/faveFilter/:filter", (req, res, next) => {
+    const email = req.body.email;
+    const filter = req.params.filter
+    console.log(filter)
+    console.log(req.params)
+    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
+    db.query(selectUserQuery, [email]).then((results) => {
+        console.log(results)
+        const uid = results[0].id;
+        const filterQuery = `SELECT placename, note FROM active WHERE uid = $1 AND type = $2 AND favorite = true;`;
+        db.query(filterQuery, [uid, filter]).then((results2) => {
+            console.log(results2)
+            res.json(results2)
+        }).catch((error2) => {
+            if (error2) { throw error2 }
+        })
+    }).catch((error) => {
+        if (error) { throw error }
+    })
+})
+
+
+// ================================================ Reviews
 
 router.post("/getActiveReviews", (req, res, next) => {
     const email = req.body.email;
@@ -219,49 +250,6 @@ router.post("/addActiveReview/:activity", (req, res, next) => {
     })
 
 })
-
-router.post("/filter/:filter", (req, res, next) => {
-    const email = req.body.email;
-    const filter = req.params.filter
-    console.log(filter)
-    console.log(req.params)
-    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
-    db.query(selectUserQuery, [email]).then((results) => {
-        console.log(results)
-        const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM active WHERE uid = $1 AND type = $2 AND favorite = false;`;
-        db.query(filterQuery, [uid, filter]).then((results2) => {
-            console.log(results2)
-            res.json(results2)
-        }).catch((error2) => {
-            if (error2) { throw error2 }
-        })
-    }).catch((error) => {
-        if (error) { throw error }
-    })
-})
-
-router.post("/faveFilter/:filter", (req, res, next) => {
-    const email = req.body.email;
-    const filter = req.params.filter
-    console.log(filter)
-    console.log(req.params)
-    const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
-    db.query(selectUserQuery, [email]).then((results) => {
-        console.log(results)
-        const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM active WHERE uid = $1 AND type = $2 AND favorite = true;`;
-        db.query(filterQuery, [uid, filter]).then((results2) => {
-            console.log(results2)
-            res.json(results2)
-        }).catch((error2) => {
-            if (error2) { throw error2 }
-        })
-    }).catch((error) => {
-        if (error) { throw error }
-    })
-})
-
 
 
 module.exports = router;
