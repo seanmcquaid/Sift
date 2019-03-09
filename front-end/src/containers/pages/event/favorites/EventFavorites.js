@@ -62,7 +62,7 @@ class EventFavorites extends Component {
             console.log(this.props.login.email)
             axios({
                 method: "POST",
-                url: `${window.apiHost}/event/deleteEvent/${eventname}`,
+                url: `${window.apiHost}/event/deleteFaveEvent/${eventname}`,
                 data: {
                     email: this.props.login.email
                 }
@@ -99,30 +99,31 @@ class EventFavorites extends Component {
                 data: {
                     email: this.props.login.email
                 }
-            }).then((foodListFromDB) => {
-                // console.log(foodListFromDB)
+            }).then((eventListFromDB) => {
+                // console.log(eventListFromDB)
                 this.setState({
-                    list: foodListFromDB
+                    list: eventListFromDB
                 })
             })
         }
+
+  
        
         render() {
             console.log(this.props)
             if (this.state.list.data !== undefined) {
 
-                var favorites = this.state.list.data.map((event, i) => {
+                var favorites = this.state.list.data.map((event, i) => {                 
 
-                    console.log(event)
                     return (
                         <div key={i} className="placeCard">
-                            <h4>{event.eventname}</h4>
                             <div>
+                                <h4>{event.eventname}</h4>
                                 <p>{event.date}</p>
                                 <p>{event.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Link to="../reviews"><Button className="reviewButton">Review</Button></Link>
+                            <Button className="reviewButton">Review</Button>
                             <Button clicked={() => this.editPlace(event.eventname)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                             
@@ -141,24 +142,28 @@ class EventFavorites extends Component {
             })
             
             return (
-                <div className="EventFavorites">
+                <div className="faveTop">
                     <h2>Favorites</h2>
-                    <AddEventForm
-                        addNewEvent={this.addNewEvent}
-                        placeholder="Add new..."
-                        textType="Add note..."
-                        defaultType="Festival"
-                        types={typeArray}
-                  
-                    />
-                    <Filter 
-                        defaultFilter="Filter by type"
-                        filters={filterArray}
-                        filterResults={this.filterResults}
-                        clearFilter={this.clearFilter}
-                    />
-                    <PlaceCards cards={favorites}/>
-
+                    <div className="eventFavorites">
+                        <div className="formRows">
+                            <AddEventForm
+                                addNewEvent={this.addNewEvent}
+                                placeholder="Add new..."
+                                textType="Add note..."
+                                defaultType="Festival"
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="formRows">
+                            <Filter 
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
+                            />
+                            <PlaceCards cards={favorites}/>
+                        </div>
+                    </div>
                 </div>
             )
         }

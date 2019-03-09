@@ -1,11 +1,27 @@
-.EventFavorites {
+.eventFavorites {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-content:center;
+    flex-wrap: wrap;
     text-align:center;
     width: 100%;
+    
 }
+
+.faveTop{
+    margin-top: 6rem;
+  
+}
+
+.formRows{
+    display: flex;
+    justify-content:flex-start;
+    align-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
 
 h2{
     color: #333745;
@@ -13,6 +29,8 @@ h2{
     font-size: 22pt;
     margin-top: 3rem;
     margin: 3rem auto 1rem;
+    text-align:center;
+    width: 100%;
 }
 
 .placeCard{
@@ -21,8 +39,17 @@ h2{
     border-radius: 30px;
     padding: 1rem;
     margin: 0.5rem;
+    justify-content: space-around;
+    display: flex;
+
+}
+
+.placeCardSpacing{
+    margin-right: .75rem;
+    margin-left: .75rem;
     text-align: left;
     display: flex;
+    flex-direction: column;
 
 }
 
@@ -43,7 +70,12 @@ p {
 }
 
 .buttonContainer{
+    margin-right: .75rem;
+    margin-left: .75rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-content:center;
+    /* align-items:center; */
 }
+
