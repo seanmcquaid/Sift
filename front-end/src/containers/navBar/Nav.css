@@ -23,6 +23,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    margin-right: 0.5rem;
 }
 
 .nav-right-login {
@@ -54,6 +55,8 @@
 
 .nav-toggle-icon-login{
     display:none;
+    font-size: 2rem;
+    cursor: pointer;
 }
 
 .nav-right div {
@@ -86,6 +89,7 @@
 .nav-right-dropdown-link {
     padding-top: 0.5rem;
     padding-bottom: 0.75rem;
+    cursor: pointer;
 }
 
 .logo a{
@@ -116,6 +120,7 @@
 @media screen and (max-width: 34rem){
     .nav-toggle-icon-login{
         display: block;
+        cursor: pointer;
     }
 
     .nav-right-login-links {

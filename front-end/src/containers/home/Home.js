@@ -21,7 +21,7 @@ class Home extends Component{
     } else {
         welcomeMessage = "Nice to See You"
     } 
-    console.log(this.props.login.length)
+    
     if(this.props.login.length === 0){
         return(
         <Redirect to="/login"/>
