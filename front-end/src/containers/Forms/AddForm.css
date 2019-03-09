@@ -1,6 +1,8 @@
+/* mobile shared */
+
 .addFormContainer{
     margin: 1rem 5rem;
-    width: 30rem;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,15 +14,14 @@
 }
 
 .addNameAndType{
-    display: inline;
+    display: block;
 }
 
-select {
+#DropDown {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #333745;
-    width: 150px;
-    height: 25px;
+    width: 12rem;
     margin: 0.5rem;
 }
 
@@ -61,3 +62,28 @@ select {
     outline:none;
 
 }
+
+@media screen and (min-width: 400px){
+    .addFormContainer{
+        margin: 1rem 5rem;
+        width: 24rem;
+    }
+}
+
+@media screen and (min-width: 900px){
+
+    .addFormContainer {
+        width: 30rem;
+    }
+
+    .addNameAndType{
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 1200px){
+
+}
+
+
+
