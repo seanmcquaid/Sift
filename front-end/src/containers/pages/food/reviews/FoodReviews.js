@@ -4,6 +4,7 @@ import AddReviewForm from '../../../Forms/AddReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
+import {Link} from "react-router-dom";
 import "./FoodReviews.css";
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
@@ -56,9 +57,6 @@ class FoodReviews extends Component {
         })
     }
 
-    editReview = (dong)=>{
-
-    }
 
     removeReview = (place)=>{
         axios({
@@ -75,6 +73,8 @@ class FoodReviews extends Component {
     }
 
     render() {
+        let category = "food";
+        let section = "reviews";
         if (this.state.list.data !== undefined) {
             var foodReviews = this.state.list.data.map((review, i) => {
                 return (
@@ -86,7 +86,7 @@ class FoodReviews extends Component {
                         <div className="cardRight">
                             <div className="buttonContainer">
                                 <Button className="shareButton">Share</Button>
-                                <Button clicked={() => this.editReview(review.placename)} className="editButton">Edit</Button>
+                                <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.placename} >Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
                             </div>
                         </div>

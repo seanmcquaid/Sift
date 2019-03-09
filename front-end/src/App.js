@@ -45,7 +45,7 @@ class App extends Component {
           <Route exact path="/userHome" component={Home}/>
           
           <Route exact path="/userHome/food" component={Food} />
-          <Route exact path="/userHome/food/edit/:place" component={Edit} />
+
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
           <Route exact path="/userHome/food/reviews" component={FoodReviews}/>
@@ -65,6 +65,7 @@ class App extends Component {
           <Route exact path="/userHome/active/favorites" component={ActiveFavorites} />
           <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
 
+          <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
 
         </Layout>
       </Router>

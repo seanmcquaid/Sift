@@ -11,12 +11,13 @@ class EditForm extends Component {
         super()
         this.state = {
             place: '',
+            category : "",
             type: '',
             text: '',
             foodTypes: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             activeTypes: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             cultureTypes: ['Music', 'Art', 'Theater', 'Festival'],
-            eventTypes: ['Festival', 'Arts/Movies/Music', 'Sporting Events', 'Educational'],
+            eventTypes: ['Festival', 'Arts-Movies-Music', 'Sporting Events', 'Educational'],
             redirect : false
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
@@ -24,43 +25,58 @@ class EditForm extends Component {
     }
 
     componentDidMount() {
-        const placename = this.props.match.params.place
-        // console.log(placename);
+        const placename = this.props.match.params.place;
+        const section = this.props.match.params.section;
+        const category = this.props.match.params.category;
+    
         axios({
-            method: "POST",
-            url: `http://localhost:3000/${this.props.category}/getPlace/${placename}`,
+            method: 'POST',
+            url: `${window.apiHost}/${category}/${section}/getPlaceToEdit/${placename}`,
             data: {
                 email: this.props.login.email
             }
-        }).then((placeFromBackEnd) => {
-            console.log(placeFromBackEnd)
+        }).then((responseFromDB) => {
+            let textFromDB = responseFromDB.data.note || responseFromDB.data.review
             this.setState({
-                place: placeFromBackEnd.data[0].placename,
-                type: placeFromBackEnd.data[0].type,
-                text: placeFromBackEnd.data[0].note,
-                
+                place : responseFromDB.data.placename,
+                category : category,
+                type : responseFromDB.data.type,
+                text : textFromDB
+            })
+            // console.log(this.state)
+        })
+    
+    }
+
+    editPlace = (event)=>{
+        event.preventDefault();
+        const placename = this.props.match.params.place;
+        const section = this.props.match.params.section;
+        const category = this.props.match.params.category;
+        const updatedPlacename = this.state.place;
+        const updatedType = this.state.type;
+        const updatedText = this.state.text;
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/${category}/${section}/editPlace/${placename}`,
+            data: {
+                email: this.props.login.email,
+                updatedPlacename,
+                updatedType,
+                updatedText
+            }
+        }).then((responseFromDB) => {
+            this.setState({
+                place : "",
+                category : "",
+                type : "",
+                text : "",
+                redirect: true
             })
         })
     }
 
-    editPlace = (event) => {
-        event.preventDefault();
-        axios({
-            method: "POST",
-            url: `http://localhost:3000/${this.props.category}/editPlace/${this.state.place}`,
-            data: {
-                email: this.props.login.email,
-                originalPlace : this.state.place,
-                type : this.state.type,
-                note : this.state.text
-            },
-        }).then((updatedPlaceInfo) => {
-            console.log(updatedPlaceInfo.data);
-            this.setState({
-                redirect : true
-            })
-        })
-    }
+   
 
     changePlace = (event) => {
         this.setState({
@@ -86,14 +102,19 @@ class EditForm extends Component {
         })
     }
 
+
     render() {
+        console.log(this.state.redirect)
         const foodTypeArray = this.state.foodTypes.map((type, i) => {
             return (<option key={i} value={type}>{type}</option>)
         })
 
         if(this.state.redirect === true){
+            const section = this.props.match.params.section;
+            const category = this.props.match.params.category;
+            console.log(section)
             return(
-                <Redirect to="userHome/{this.props.category}/{this.props.section}"/>
+                <Redirect to={`/userHome/${category}/${section}`}/>
             )
         } else {
             return (
