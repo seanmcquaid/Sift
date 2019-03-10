@@ -148,6 +148,7 @@ class EventFavorites extends Component {
                         <div className="faveRight">
                             <Filter 
                                 defaultFilter="Filter by type"
+                                defaultValue={this.state.types[0]}
                                 filters={filterArray}
                                 filterResults={this.filterResults}
                                 clearFilter={this.clearFilter}
