@@ -7,8 +7,6 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 
-import {Link} from "react-router-dom";
-
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 import '../../favorites.css';
 

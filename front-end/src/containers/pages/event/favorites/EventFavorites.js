@@ -81,6 +81,7 @@ class EventFavorites extends Component {
                 list: backEndResponse
             })
         })
+    }
 
     clearFilter = () => {
         axios({
