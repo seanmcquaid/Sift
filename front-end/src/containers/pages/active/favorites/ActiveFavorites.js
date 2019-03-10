@@ -4,8 +4,11 @@ import { connect } from "react-redux";
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
+<<<<<<< HEAD
 import "./ActiveFavorites.css";
 import {Link} from "react-router-dom";
+=======
+>>>>>>> 793106cf8a7f808e776e0c546b1b63df4882d14b
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class ActiveFavorites extends Component {

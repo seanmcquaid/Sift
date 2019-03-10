@@ -4,8 +4,10 @@ import AddEventReviewForm from '../../../Forms/AddEventReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
+
 import {Link} from "react-router-dom";
 import "./EventReviews.css";
+
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
 

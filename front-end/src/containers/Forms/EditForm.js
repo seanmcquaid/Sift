@@ -104,14 +104,28 @@ class EditForm extends Component {
 
 
     render() {
-        console.log(this.state.redirect)
-        const foodTypeArray = this.state.foodTypes.map((type, i) => {
-            return (<option key={i} value={type}>{type}</option>)
-        })
+        const category = this.props.match.params.category;
+        let typeArray;
+        if(category === "food"){
+            typeArray = this.state.foodTypes.map((type, i) => {
+                return (<option key={i} value={type}>{type}</option>)
+            })
+        } else if(category === "culture"){
+            typeArray = this.state.cultureTypes.map((type, i) => {
+                return (<option key={i} value={type}>{type}</option>)
+            })
+        } else if(category === "active"){
+            typeArray = this.state.activeTypes.map((type, i) => {
+                return (<option key={i} value={type}>{type}</option>)
+            })
+        } else if (category === "event"){
+            typeArray = this.state.eventTypes.map((type, i) => {
+                return (<option key={i} value={type}>{type}</option>)
+            })
+        }
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
-            const category = this.props.match.params.category;
             console.log(section)
             return(
                 <Redirect to={`/userHome/${category}/${section}`}/>
@@ -124,7 +138,7 @@ class EditForm extends Component {
                             <input onChange={this.changePlace} type="text" id="NewPlace" defaultValue={this.state.place} />
                             <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
                                 <option defaultValue={this.state.type}>{this.state.type}</option>
-                                {foodTypeArray}
+                                {typeArray}
                             </select>
                         </div>
                         <div className="addNote">
