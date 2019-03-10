@@ -108,7 +108,7 @@ router.post("/filter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND favorite = false;`;
+        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
@@ -205,7 +205,7 @@ router.post("/faveFilter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND favorite = true;`;
+        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
