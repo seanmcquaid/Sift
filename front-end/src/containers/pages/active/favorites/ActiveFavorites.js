@@ -7,9 +7,6 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 
-import "./ActiveFavorites.css";
-import {Link} from "react-router-dom";
-
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 import '../../favorites.css';
 
@@ -127,21 +124,13 @@ class ActiveFavorites extends Component {
 
                             <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + activity.placename} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + activity.placename} >Edit</Link></Button>
-
-                  <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
+                            <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
                     </div>
                 )
             })
         }
 
-
-        const typeArray = this.state.types.map((type, i) => {
-            return (<option key={i} value={type}>{type}</option>)
-        })
-        const filterArray = this.state.types.map((filter, i) => {
-            return (<option key={i} value={filter}>{filter}</option>)
-        })
 
         if (this.props.login.length === 0) {
             return (
