@@ -27,7 +27,7 @@ class EventTodo extends Component {
     componentDidMount() {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/getEventList`,
+            url: `${window.apiHost}/events/getEventList`,
             data: {
                 email: this.props.login.email
             }
@@ -41,7 +41,7 @@ class EventTodo extends Component {
     addNewEvent = (event, type, date,  text) => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/addEvent`,
+            url: `${window.apiHost}/events/addEvent`,
             data: {
                 eventname: event,
                 type: type,
@@ -60,7 +60,7 @@ class EventTodo extends Component {
     addToFavorites = (eventname) => {
         axios({
             method: "POST",
-            url: `${window.apiHost}/event/addFave/${eventname}`,
+            url: `${window.apiHost}/events/addFave/${eventname}`,
             data: {
                 email: this.props.login.email
             }
@@ -76,7 +76,7 @@ class EventTodo extends Component {
     removeEvent = (eventname) => {
         axios({
             method: "POST",
-            url: `${window.apiHost}/event/deleteEvent/${eventname}`,
+            url: `${window.apiHost}/events/deleteEvent/${eventname}`,
             data: {
                 email: this.props.login.email
             }
@@ -90,7 +90,7 @@ class EventTodo extends Component {
     filterResults = (filter) => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/filter/${filter}`,
+            url: `${window.apiHost}/events/filter/${filter}`,
             data: {
                 type: filter,
                 email: this.props.login.email
@@ -106,7 +106,7 @@ class EventTodo extends Component {
     clearFilter = () => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/getEventList`,
+            url: `${window.apiHost}/events/getEventList`,
             data: {
                 email: this.props.login.email
             }
@@ -132,7 +132,7 @@ class EventTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(events.eventname)} className="faveButton">Fave</Button>
-                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + events.placename} >Edit</Link></Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + events.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(events.eventname)} className="deleteButton">Remove</Button>
                         </div>
                         

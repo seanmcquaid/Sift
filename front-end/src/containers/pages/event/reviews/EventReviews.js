@@ -27,7 +27,7 @@ class EventReviews extends Component {
     componentDidMount(){
         axios({
             method : "POST",
-            url : `${window.apiHost}/event/getEventReviews`,
+            url : `${window.apiHost}/events/getEventReviews`,
             data : {
                 email : this.props.login.email
             }
@@ -43,7 +43,7 @@ class EventReviews extends Component {
 
         axios({
             method : "POST",
-            url : `${window.apiHost}/event/addEventReview/${event}`,
+            url : `${window.apiHost}/events/addEventReview/${event}`,
             data : {
                 email : this.props.login.email,
                 event,
@@ -64,7 +64,7 @@ class EventReviews extends Component {
     removeReview = (event)=>{
         axios({
             method : "POST",
-            url: `${window.apiHost}/event/deleteEventReview/${event}`,
+            url: `${window.apiHost}/events/deleteEventReview/${event}`,
             data :{
                 email : this.props.login.email
             }

@@ -67,7 +67,7 @@ class AddEventForm extends Component {
         // const typeArray = this.props.types
         // console.log(typeArray)
         let minDate = new Date().toISOString().slice(0,10);
-        console.log(minDate)
+        let maxDate = '2030-03-10'
         return(
             <div className="SearchAddEdit">
                 <form onSubmit={this.addNewEvent} className="AddForm">
@@ -79,7 +79,7 @@ class AddEventForm extends Component {
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>
-                        <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} id="NewDate" value={this.state.date}/>
+                        <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} max={maxDate} id="NewDate" value={this.state.date}/>
                     </div>
                     
                     <div className="addNote">

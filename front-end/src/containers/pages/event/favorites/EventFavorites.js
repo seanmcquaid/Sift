@@ -23,7 +23,7 @@ class EventFavorites extends Component {
     componentDidMount() {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/getEventFaveList`,
+            url: `${window.apiHost}/events/getEventFaveList`,
             data: {
                 email: this.props.login.email
             }
@@ -38,7 +38,7 @@ class EventFavorites extends Component {
         //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/addFaveInFavorites`,
+            url: `${window.apiHost}/events/addFaveInFavorites`,
             data: {
                 eventname: event,
                 type: type,
@@ -57,7 +57,7 @@ class EventFavorites extends Component {
     removeEvent = (eventname) => {
         axios({
             method: "POST",
-            url: `${window.apiHost}/event/deleteFaveEvent/${eventname}`,
+            url: `${window.apiHost}/events/deleteFaveEvent/${eventname}`,
             data: {
                 email: this.props.login.email
             }
@@ -71,7 +71,7 @@ class EventFavorites extends Component {
     filterResults = (filter) => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/faveFilter/${filter}`,
+            url: `${window.apiHost}/events/faveFilter/${filter}`,
             data: {
                 type: filter,
                 email: this.props.login.email
@@ -86,7 +86,7 @@ class EventFavorites extends Component {
     clearFilter = () => {
         axios({
             method: 'POST',
-            url: `${window.apiHost}/event/getEventFaveList`,
+            url: `${window.apiHost}/events/getEventFaveList`,
             data: {
                 email: this.props.login.email
             }
@@ -112,7 +112,7 @@ class EventFavorites extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
-                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + event.placename} >Edit</Link></Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + event.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                         </div>   
                     </div>
