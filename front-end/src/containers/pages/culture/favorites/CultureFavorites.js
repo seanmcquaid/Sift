@@ -141,6 +141,7 @@ class CultureFavorites extends Component {
                         <div className="faveBody">
                             <div className="faveLeft">
                                 <AddForm
+                                    title="Add a favorite!"
                                     addNewPlace={this.addNewPlace}
                                     placeholder="Add a new experience..."
                                     textType="Add note..."

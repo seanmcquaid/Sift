@@ -18,7 +18,6 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(newProps){
-        // console.log(newProps.login.msg)
         if(newProps.login.msg === "badUser"){
             this.setState({
                 msg : "Incorrect email, please try again!",

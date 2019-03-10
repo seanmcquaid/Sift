@@ -167,6 +167,7 @@ class CultureToDo extends Component {
                     <div className="todoBody">
                         <div className="todoLeft">
                             <AddForm
+                                title="Add to your list!"
                                 addNewPlace={this.addNewPlace}
                                 placeholder="Add new place to visit..."
                                 textType="Add note..."
