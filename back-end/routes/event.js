@@ -305,7 +305,7 @@ router.post("/deleteEventReview/:eventname", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const deleteReviewQuery = `DELETE FROM events WHERE eventname = $1 AND reviewed = true AND uid = $2;`;
+        const deleteReviewQuery = `UPDATE event SET reviewed = false WHERE eventname = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[eventname,uid]).then((results2)=>{
             const selectReviewsQuery = `SELECT * FROM events where reviewed = true AND uid = $1;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
