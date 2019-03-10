@@ -1,4 +1,4 @@
-.FoodFavorites{
+.Favorites{
     margin-top: 7rem;
     text-align: center;
 }
@@ -12,20 +12,20 @@ h2 {
 }
 
  /* list styling */
-.todoBody {
+.faveBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.todoLeft {
+.faveLeft {
     width: 22rem;
     display: flex;
     justify-content: center;
 }
 
-.todoRight {
+.faveRight {
     width: 22rem;
     display: flex;
     flex-direction: column;
@@ -95,7 +95,7 @@ p {
 
 /* desktop and tablet landscape */
 @media screen and (min-width: 900px){
-    .todoBody{
+    .faveBody{
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -103,7 +103,7 @@ p {
         align-items: flex-start;
     }
 
-    .todoLeft{
+    .faveLeft{
         width: 24rem;
         margin: 0rem 2rem;
         padding: 0rem 1rem;
@@ -111,7 +111,7 @@ p {
         justify-content: center;
     }
 
-    .todoRight{
+    .faveRight{
         width: 24rem;
         padding: 0rem 1rem;
         display: flex;
@@ -132,7 +132,7 @@ p {
 
 /* xl screenz */
  @media screen and (min-width: 1200px){ 
-    .todoBody {
+    .faveBody {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -143,12 +143,12 @@ p {
         width: 24rem;
     }
 
-    .todoLeft {
+    .faveLeft {
         width: 26rem;
         margin: 0rem 3rem;
     }
 
-    .todoRight {
+    .faveRight {
         width: 26rem;
         margin: 1rem 3rem;
     } 

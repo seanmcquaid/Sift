@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+import { Link, Redirect } from 'react-router-dom';
+
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
+import '../../favorites.css';
 
 class ActiveFavorites extends Component {
     constructor() {
@@ -58,7 +61,6 @@ class ActiveFavorites extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -66,7 +68,6 @@ class ActiveFavorites extends Component {
     }
 
     filterResults = (filter) => {
-        console.log(filter)
         axios({
             method: 'POST',
             url: `${window.apiHost}/active/faveFilter/${filter}`,
@@ -96,59 +97,64 @@ class ActiveFavorites extends Component {
     }
 
     render() {
-
-        const typeArray = this.state.types.map((type, i) => {
-            return (<option key={i} value={type}>{type}</option>)
-        })
-
-        const filterArray = this.state.types.map((filter, i) => {
-            return (<option key={i} value={filter}>{filter}</option>)
-        })
-
+        let category = "active";
+        let section = "favorites";
         if (this.state.list.data !== undefined) {
             var favorites = this.state.list.data.map((activity, i) => {
                 return (
                     <div key={i} className="placeCard">
-                        <h4>{activity.placename}</h4>
-                        <div>
+                        <div className="cardLeft">
+                            <h4>{activity.placename}</h4>
                             <p>{activity.note}</p>
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
-                            <Button clicked={() => this.editPlace(activity.placename)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + activity.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
-
                     </div>
                 )
             })
         }
 
-        return (
-            <div className="ActiveFavorites">
-                <h2>Favorites</h2>
-                <div className="favoritesBody">
-                    <div className="favoritesLeft">
-                        <AddForm
-                            addNewActive={this.addNewActive}
-                            placeholder="Add new favorite activity..."
-                            textType="Add note..."
-                            defaultType="Choose type!"
-                            types={typeArray}
-                        />
-                    </div>
-                    <div className="favoritesRight">
-                        <Filter
-                            defaultFilter="Filter by type"
-                            filters={filterArray}
-                            filterResults={this.filterResults}
-                            clearFilter={this.clearFilter}
-                        />
-                        <PlaceCards cards={favorites} />
+        const typeArray = this.state.types.map((type, i) => {
+            return (<option key={i} value={type}>{type}</option>)
+        })
+        const filterArray = this.state.types.map((filter, i) => {
+            return (<option key={i} value={filter}>{filter}</option>)
+        })
+
+        if (this.props.login.length === 0) {
+            return (
+                <Redirect to="/login" />
+            )
+        } else {
+            return (
+                <div className="Favorites">
+                    <h2>Favorites</h2>
+                    <div className="faveBody">
+                        <div className="faveLeft">
+                            <AddForm
+                                addNewActive={this.addNewActive}
+                                placeholder="Add new favorite activity..."
+                                textType="Add note..."
+                                defaultType="Choose type!"
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="faveRight">
+                            <Filter
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
+                            />
+                            <PlaceCards cards={favorites} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 

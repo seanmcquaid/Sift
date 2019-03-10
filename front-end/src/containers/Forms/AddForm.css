@@ -20,7 +20,7 @@
     align-items: center;
 }
 
-#addNewPlace {
+#NewPlace {
     font-size: 0.75rem;
     width: 14rem;
     font-family: 'Montserrat', sans-serif;
@@ -32,14 +32,14 @@
     outline:none;
 }
 
-#DropDownAdd {
+#Dropdown {
     width: 10rem;
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
 }
 
-#newText {
+#NewText {
     width: 16rem;
     height: 2rem;
     margin-top: 1rem;
@@ -60,17 +60,17 @@
         width: 24rem;
     }
 
-    #addNewPlace {
+    #NewPlace {
         width: 16rem;
         font-size: 1rem
     }
 
-    #DropDownAdd {
+    #Dropdown {
         width: 10rem;
         font-size: 0.85rem;
     }
 
-    #newText {
+    #NewText {
         width: 20rem;
         font-size: 1rem;
     }
@@ -83,15 +83,15 @@
         align-items: center;
     }
 
-    #addNewPlace {
+    #NewPlace {
         margin: 0.5rem;
     }
 
-    #DropDownAdd {
+    #Dropdown {
         margin: 0.5rem;
     }
 
-    #newText {
+    #NewText {
         margin-top: 0.5rem;
     }
 
@@ -110,19 +110,19 @@
         align-items: center;
     }
 
-    #addNewPlace {
+    #NewPlace {
         width: 14rem;
         margin: 0.5rem;
         font-size: 1rem;
     }
 
-    #DropDownAdd {
+    #Dropdown {
         width: 10rem;
         font-size: 1rem;
         margin: 0.5rem;
     }
 
-    #newText {
+    #NewText {
         width: 23rem;
         height: 2rem;
         margin: 0.5rem auto;
@@ -135,19 +135,19 @@
         margin-bottom: 1rem;
     }
 
-    #addNewPlace {
+    #NewPlace {
         width: 16rem;
         margin: 1rem;
         font-size: 1rem;
     }
 
-    #DropDownAdd {
+    #Dropdown {
         width: 10rem;
         font-size: 1rem;
         margin: 1rem;
     }
 
-    #newText {
+    #NewText {
         width: 26rem;
         height: 3rem;
         margin: 0.5rem auto;

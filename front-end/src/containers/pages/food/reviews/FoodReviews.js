@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import AddReviewForm from '../../../Forms/AddReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
 import {Link, Redirect} from "react-router-dom";
-import "./FoodReviews.css";
+
+import AddReviewForm from '../../../Forms/AddReviewForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
+import '../../reviews.css'
 
 class FoodReviews extends Component {
     constructor() {
@@ -28,14 +29,12 @@ class FoodReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))
         })
     }
 
-    // need to finish add review
     addReview = (place, review, type, stars) =>{
         axios({
             method : "POST",
@@ -48,7 +47,6 @@ class FoodReviews extends Component {
                 stars
             }
         }).then((responseFromDB)=>{
-            // console.log(responseFromDB)
             this.setState({
                 list : responseFromDB,
                 msg : `Congrats! You've added a review for ${place}!`,
@@ -56,7 +54,6 @@ class FoodReviews extends Component {
             })
         })
     }
-
 
     removeReview = (place)=>{
         axios({
@@ -105,7 +102,7 @@ class FoodReviews extends Component {
             )
         } else {
             return (
-                <div className="FoodReviews">
+                <div className="Reviews">
                     <h2>Reviews</h2>
                     <SweetAlert
                         show={this.state.showAlert}
@@ -131,7 +128,7 @@ class FoodReviews extends Component {
                 </div>
             )
         }
-        }
+    }
 }
 
 function mapStateToProps(state) {

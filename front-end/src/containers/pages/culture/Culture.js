@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import "../categoryHome.css";
 
 class Culture extends Component {
 
     render(){
         return(
-            <div>
+            <div className="optionsMenu">
                  <div className="optionsMenuText">
                     <h1>Culture Options Menu</h1>
                 </div>

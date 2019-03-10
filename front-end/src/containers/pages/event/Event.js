@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
+import "../categoryHome.css";
 
 class Event extends Component {
 
     render(){
         return(
 
-            <div>
+            <div className="optionsMenu">
                  <div className="optionsMenuText">
                     <h1>Event Options Menu</h1>
                 </div>
