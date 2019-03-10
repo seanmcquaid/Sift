@@ -188,7 +188,7 @@ class FoodTodo extends Component {
                                 filterResults={this.filterResults}
                                 clearFilter={this.clearFilter}
                             />
-                        <PlaceCards cards={foodToDo}/>
+                            <PlaceCards cards={foodToDo}/>
                         </div>
 
                     </div>

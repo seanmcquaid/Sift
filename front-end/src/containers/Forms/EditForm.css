@@ -7,11 +7,14 @@
     margin: 0 auto;
 }
 
-.addNameAndType{
-    display: inline;
+.editNameAndType{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-select {
+#DropDownEdit {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     color: #333745;
@@ -20,7 +23,7 @@ select {
     margin: 0.5rem;
 }
 
-#NewPlace{
+#editPlace{
     width: 13rem;
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
@@ -32,7 +35,7 @@ select {
     outline:none;
 }
 
-#NewText {
+#editText {
     width: 80%;
     margin: 0.5rem;
     padding: 0.5rem;

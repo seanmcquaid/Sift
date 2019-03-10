@@ -116,7 +116,7 @@ class FoodFavorites extends Component {
                     console.log(food)
                     return (
                         <div key={i} className="placeCard">
-                            <div className="placeCardSpacing">
+                            <div className="cardLeft">
                                 <h4>{food.placename}</h4>
                                 <p>{food.note}</p>
                             </div>
@@ -147,10 +147,10 @@ class FoodFavorites extends Component {
                 )
             } else {
                 return (
-                    <div className="faveTop">
+                    <div className="FoodFavorites">
                         <h2>Favorites</h2>
-                        <div className="FoodFavorites">
-                            <div className="formRows">
+                        <div className="faveBody">
+                            <div className="faveLeft">
                                 <AddForm
                                     addNewPlace={this.addNewPlace}
                                     placeholder="Add new..."
@@ -159,11 +159,12 @@ class FoodFavorites extends Component {
                                     types={typeArray}
                                 />
                             </div>
-                            <div className="formRows">
+                            <div className="faveRight">
                                 <Filter 
                                     defaultFilter="Filter by type"
                                     filters={filterArray}
                                     filterResults={this.filterResults}
+                                    clearFilter={this.clearFilter}
                                 />
                                 <PlaceCards cards={favorites}/>
                             </div>
@@ -171,7 +172,7 @@ class FoodFavorites extends Component {
                     </div>
                 )
             }
-            }
+        }
     }
     
     function mapStateToProps(state) {

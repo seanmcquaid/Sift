@@ -31,7 +31,7 @@ class Filter extends Component{
         return (
             <div className="filterBox">
                 <form onSubmit={this.filter} className="filterForm">
-                    <select className={this.props.className} onChange={this.changeFilter}>
+                    <select className="filterDropDown" onChange={this.changeFilter}>
                         <option value="">{this.props.defaultFilter}</option>
                         {this.props.filters}
                     </select>

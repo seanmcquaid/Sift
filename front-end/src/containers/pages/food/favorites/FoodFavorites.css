@@ -1,36 +1,44 @@
-.FoodFavorites {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content:center;
-    flex-wrap: wrap;
-    text-align:center;
-    width: 100%;
-    
+.FoodFavorites{
+    margin-top: 7rem;
+    text-align: center;
 }
 
-.faveTop{
-    margin-top: 6rem;
-  
-}
-
-.formRows{
-    display: flex;
-    justify-content:flex-start;
-    align-content:center;
-    align-items:center;
-    flex-direction:column;
-}
-
-
-h2{
+h2 {
     color: #333745;
     font-family: 'Bad Script', cursive;
     font-size: 22pt;
     margin-top: 3rem;
     margin: 3rem auto 1rem;
-    text-align:center;
-    width: 100%;
+}
+
+ /* list styling */
+.faveBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.faveLeft {
+    width: 22rem;
+    display: flex;
+    justify-content: center;
+}
+
+.faveRight {
+    width: 22rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* card styling */
+.placeCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .placeCard{
@@ -39,22 +47,10 @@ h2{
     border-radius: 30px;
     padding: 1rem;
     margin: 0.5rem;
-    justify-content: space-around;
-    display: flex;
-
-}
-
-.placeCardSpacing{
-    margin-right: .75rem;
-    margin-left: .75rem;
     text-align: left;
     display: flex;
-    flex-direction: column;
-
-}
-
-.cardLeft {
-    width: 80%;
+    align-items: center;
+    width: 16rem;
 }
 
 h4 {
@@ -69,13 +65,91 @@ p {
     color: #333745;
 }
 
+/* Button container */
 .buttonContainer{
-    margin-right: .75rem;
-    margin-left: .75rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content:center;
-    /* align-items:center; */
 }
 
+.buttonContainer button{
+    margin: 0.25rem;
+}
+
+/* larger phones and tablet portraits */
+@media screen and (min-width: 400px) {
+
+    .placeCard {
+        width: 20rem;
+    }
+    
+    .cardLeft {
+        width: 14rem;
+        margin-left: 0.5rem;
+    }
+
+    .cardRight {
+        width: 6rem;
+    }
+}
+
+/* desktop and tablet landscape */
+@media screen and (min-width: 900px){
+    .faveBody{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .faveLeft{
+        width: 24rem;
+        margin: 0rem 2rem;
+        padding: 0rem 1rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .faveRight{
+        width: 24rem;
+        padding: 0rem 1rem;
+        display: flex;
+        justify-content: center;
+        margin: 1rem 2rem;
+    }
+
+    /* card styling */
+    .placeCard {
+        width: 22rem;
+    }
+
+    .cardLeft {
+        width: 80%;
+        margin-left: 0.5rem;
+    }
+}
+
+/* xl screenz */
+ @media screen and (min-width: 1200px){ 
+    .faveBody {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .placeCard {
+        width: 24rem;
+    }
+
+    .faveLeft {
+        width: 26rem;
+        margin: 0rem 3rem;
+    }
+
+    .faveRight {
+        width: 26rem;
+        margin: 1rem 3rem;
+    } 
+ }

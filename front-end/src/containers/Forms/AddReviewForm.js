@@ -63,7 +63,7 @@ class AddReviewForm extends Component {
                         <option value="">{this.props.defaultType}</option>
                         {this.props.types}
                     </select>
-                    <select className="starDropdown" id="starDropDown" value={this.state.stars} onChange={this.changeStars} required> 
+                    <select className="starDropDown" id="starDropDown" value={this.state.stars} onChange={this.changeStars} required> 
                         <option value="">{this.props.defaultStars}</option>
                         <option value="1">1</option>
                         <option value="2">2</option>

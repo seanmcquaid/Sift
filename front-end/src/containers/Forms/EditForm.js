@@ -134,17 +134,17 @@ class EditForm extends Component {
             return (
                 <div className="SearchAddEdit">
                     <form onSubmit={this.editPlace} className="EditForm">
-                        <div className="addNameAndType">
-                            <input onChange={this.changePlace} type="text" id="NewPlace" defaultValue={this.state.place} />
-                            <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
+                        <div className="editNameAndType">
+                            <input onChange={this.changePlace} type="text" id="editPlace" defaultValue={this.state.place} />
+                            <select className="DropDown Type" id="DropDownEdit" onChange={this.changeType}>
                                 <option defaultValue={this.state.type}>{this.state.type}</option>
                                 {typeArray}
                             </select>
                         </div>
-                        <div className="addNote">
-                            <textarea onChange={this.changeText} value={this.state.text} id="NewText"></textarea>
+                        <div className="editNote">
+                            <textarea onChange={this.changeText} value={this.state.text} id="editText"></textarea>
                         </div>
-                        <Button type="submit" className="submitButton">Add</Button>
+                        <Button type="submit" className="submitButton">Update</Button>
                     </form>
                 </div>
             )

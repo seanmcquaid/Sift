@@ -1,5 +1,10 @@
 /* mobile shared */
 
+.FoodReviews {
+    margin-top: 7rem;
+    text-align:center;
+}
+
 h2 {
     color: #333745;
     font-family: 'Bad Script', cursive;
@@ -14,6 +19,18 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.reviewLeft {
+    width: 22rem;
+    display: flex;
+    justify-content: center;
+}
+
+.reviewRight {
+    width: 22rem;
+    display: flex;
+    justify-content: center;
 }
 
 

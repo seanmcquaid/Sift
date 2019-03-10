@@ -3,14 +3,14 @@
 .AddReviewForm{
     width: 30rem;
     margin: 1rem 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .reviewForm{
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .addReview {
@@ -53,6 +53,7 @@
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
+    margin: 0.5rem;
 }
 
 #starDropDown {
@@ -60,6 +61,7 @@
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
+    margin: 0.5rem;
 }
 
 /* min 400px */
@@ -70,6 +72,16 @@
 
     #newPlace {
         width: 18rem;
+    }
+
+    #reviewDropDown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #starDropDown {
+        width: 10rem;
+        font-size: 0.85rem;
     }
 
     #newReview {

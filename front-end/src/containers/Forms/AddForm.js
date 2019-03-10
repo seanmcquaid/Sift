@@ -57,14 +57,14 @@ class AddForm extends Component {
             <div className="addFormContainer">
                 <form onSubmit={this.addNew} className="addForm">
                     <div className="addNameAndType">
-                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} required/>
-                        <select className="Dropdown Type" id="Dropdown" onChange={this.changeType} required>
+                        <input onChange={this.changePlace} type="text" id="addNewPlace" placeholder={this.props.placeholder} value={this.state.place} required/>
+                        <select className="DropDownAdd Type" id="DropDownAdd" onChange={this.changeType} required>
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>
                     </div>
                     <div className="addNote">
-                        <textarea onChange={this.changeText} id="NewText" placeholder={this.props.textType} value={this.state.text}></textarea>
+                        <textarea onChange={this.changeText} id="newText" placeholder={this.props.textType} value={this.state.text}></textarea>
                     </div>
                     <Button type="submit" className="submitButton">Add</Button>
                 </form>
