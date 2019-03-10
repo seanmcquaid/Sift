@@ -233,7 +233,7 @@ router.post("/getEventReviews", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT eventname, date, stars, review from events WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT eventname, type, date, stars, review from events WHERE uid = $1 AND reviewed = true;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
             // console.log(results2);
             res.json(results2);
@@ -247,11 +247,12 @@ router.post("/getEventReviews", (req,res,next)=>{
 
 router.post("/addEventReview/:eventname", (req,res,next)=>{
     console.log(req.body)
-    console.log(req.body.type)
+    
     const email = req.body.email;
     const eventname = req.params.eventname;
     const type = req.body.type;
     const date = req.body.date
+    // console.log(req.body.date,req.body.type)
     const stars = req.body.stars;
     const review = req.body.review;
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
@@ -264,7 +265,7 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
                 const insertReviewQuery = `INSERT INTO events (uid, eventname, type, date, todo, favorite, reviewed, stars, review) 
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
                 db.query(insertReviewQuery,[uid, eventname, type, date, false, false, true, stars, review]).then((results3)=>{
-                    const selectReviewsQuery = `SELECT eventname, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
+                    const selectReviewsQuery = `SELECT eventname, type, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
                         // console.log(results4);
                         res.json(results4);
@@ -278,7 +279,7 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
                 const updateEventQuery = `UPDATE events SET reviewed = true, review = $1, stars = $2 WHERE uid = $3
                 AND eventname = $4;`
                 db.query(updateEventQuery,[review, stars, uid,eventname]).then((results5)=>{
-                    const selectReviewsQuery = `SELECT eventname, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
+                    const selectReviewsQuery = `SELECT eventname, type, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results6)=>{
                         // console.log(results6);
                         res.json(results6);

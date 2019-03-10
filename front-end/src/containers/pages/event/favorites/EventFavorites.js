@@ -111,7 +111,7 @@ class EventFavorites extends Component {
                             <p>{event.note}</p>
                         </div>
                         <div className="buttonContainer">
-                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+                        <Button className="reviewButton"><Link to={"/userHome/"+ category + "/eventReviews/" + section + "/" + event.eventname} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + event.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                         </div>   
