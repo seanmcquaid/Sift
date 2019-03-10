@@ -4,7 +4,7 @@ import './AddForm.css'
 
 
 class AddForm extends Component {
-    constructor(){
+    constructor() {
         super()
         this.state = {
             place: '',
@@ -50,14 +50,14 @@ class AddForm extends Component {
             text: event.target.value
         })
     }
-    
-    render(){
 
-        return(
+    render() {
+
+        return (
             <div className="addFormContainer">
                 <form onSubmit={this.addNew} className="addForm">
                     <div className="addNameAndType">
-                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} required/>
+                        <input onChange={this.changePlace} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.place} required />
                         <select className="Dropdown Type" id="Dropdown" onChange={this.changeType} required>
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
@@ -73,4 +73,5 @@ class AddForm extends Component {
     }
 }
 
-export default AddForm; 
+export default AddForm;
+

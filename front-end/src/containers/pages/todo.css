@@ -1,4 +1,7 @@
-/* mobile shared */
+.ToDo {
+    margin-top: 7rem;
+    text-align: center;
+}
 
 h2 {
     color: #333745;
@@ -8,22 +11,26 @@ h2 {
     margin: 3rem auto 1rem;
 }
 
- /* reviews styling */
-.reviewBody {
+ /* list styling */
+.todoBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.todoLeft {
+    width: 22rem;
+    display: flex;
+    justify-content: center;
+}
 
-.reviews {
+.todoRight {
+    width: 22rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    text-align:center;
-    width: 100%;
 }
 
 /* card styling */
@@ -88,7 +95,7 @@ p {
 
 /* desktop and tablet landscape */
 @media screen and (min-width: 900px){
-    .reviewBody{
+    .todoBody{
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -96,17 +103,17 @@ p {
         align-items: flex-start;
     }
 
-    .reviewLeft{
+    .todoLeft{
         width: 24rem;
         margin: 0rem 2rem;
-        padding: 1rem;
+        padding: 0rem 1rem;
         display: flex;
         justify-content: center;
     }
 
-    .reviewRight{
+    .todoRight{
         width: 24rem;
-        padding: 1rem;
+        padding: 0rem 1rem;
         display: flex;
         justify-content: center;
         margin: 1rem 2rem;
@@ -125,7 +132,7 @@ p {
 
 /* xl screenz */
  @media screen and (min-width: 1200px){ 
-    .reviewBody {
+    .todoBody {
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -136,12 +143,12 @@ p {
         width: 24rem;
     }
 
-    .reviewLeft {
+    .todoLeft {
         width: 26rem;
         margin: 0rem 3rem;
     }
 
-    .reviewRight {
+    .todoRight {
         width: 26rem;
         margin: 1rem 3rem;
     } 

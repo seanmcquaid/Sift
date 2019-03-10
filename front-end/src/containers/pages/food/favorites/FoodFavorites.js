@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import {Link, Redirect} from 'react-router-dom';
+
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
-import "./FoodFavorites.css";
 import Filter from '../../../../components/utility/filterDropDown/Filter';
+import '../../favorites.css'
 
 class FoodFavorites extends Component {
         constructor() {
@@ -20,7 +21,6 @@ class FoodFavorites extends Component {
         }
     
         componentDidMount() {
-            // console.log('component did mount')
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/food/getFoodFaveList`,
@@ -28,7 +28,6 @@ class FoodFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((foodListFromDB) => {
-                console.log('logged in')
                     this.setState({
                         list: foodListFromDB
                     })
@@ -37,7 +36,6 @@ class FoodFavorites extends Component {
     
         addNewPlace = (place, type, text) => {
             //api call will go here with autocomplete to add name, location to DB
-            // console.log(place, type)
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/food/addFaveInFavorites`,
@@ -48,17 +46,13 @@ class FoodFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
             })
         }
     
-    
         removePlace = (placename) => {
-            //easy, just delete from DB!
-            console.log(this.props.login.email)
             axios({
                 method: "POST",
                 url: `${window.apiHost}/food/deleteFavePlace/${placename}`,
@@ -66,7 +60,6 @@ class FoodFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
@@ -74,7 +67,6 @@ class FoodFavorites extends Component {
         }
 
         filterResults = (filter) => {
-            console.log(filter)
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/food/faveFilter/${filter}`,
@@ -83,12 +75,10 @@ class FoodFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
             })
-    
         }
 
         clearFilter = () => {
@@ -99,7 +89,6 @@ class FoodFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((foodListFromDB) => {
-                console.log('logged in')
                 this.setState({
                     list: foodListFromDB
                 })
@@ -110,36 +99,29 @@ class FoodFavorites extends Component {
             let category = "food";
             let section = "favorites";
             if (this.state.list.data !== undefined) {
-
                 var favorites = this.state.list.data.map((food, i) => {
-
-                    console.log(food)
                     return (
                         <div key={i} className="placeCard">
-                            <div className="placeCardSpacing">
+                            <div className="cardLeft">
                                 <h4>{food.placename}</h4>
                                 <p>{food.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + food.placename} >Review</Link></Button>
-                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
-                            <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
-                            </div>
-                            
+                                <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + food.placename} >Review</Link></Button>
+                                <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
+                                <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
+                            </div> 
                         </div>
                     )
                 })
             }
 
-
-    
+            const typeArray = this.state.types.map((type, i) => {
+                return (<option key={i} value={type}>{type}</option>)
+            })
             const filterArray = this.state.types.map((filter, i)=>{
                 return(<option key={i} value={filter}>{filter}</option>)
             })
-            const typeArray = this.state.types.map((type, i)=>{
-                return (<option key={i} value={type}>{type}</option>)
-            })
-            
 
             if(this.props.login.length === 0){
                 return(
@@ -147,10 +129,10 @@ class FoodFavorites extends Component {
                 )
             } else {
                 return (
-                    <div className="faveTop">
+                    <div className="Favorites">
                         <h2>Favorites</h2>
-                        <div className="FoodFavorites">
-                            <div className="formRows">
+                        <div className="faveBody">
+                            <div className="faveLeft">
                                 <AddForm
                                     addNewPlace={this.addNewPlace}
                                     placeholder="Add new..."
@@ -159,11 +141,12 @@ class FoodFavorites extends Component {
                                     types={typeArray}
                                 />
                             </div>
-                            <div className="formRows">
+                            <div className="faveRight">
                                 <Filter 
                                     defaultFilter="Filter by type"
                                     filters={filterArray}
                                     filterResults={this.filterResults}
+                                    clearFilter={this.clearFilter}
                                 />
                                 <PlaceCards cards={favorites}/>
                             </div>
@@ -171,7 +154,7 @@ class FoodFavorites extends Component {
                     </div>
                 )
             }
-            }
+        }
     }
     
     function mapStateToProps(state) {

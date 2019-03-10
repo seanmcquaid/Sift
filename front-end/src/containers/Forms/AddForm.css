@@ -1,47 +1,50 @@
 /* mobile shared */
 
 .addFormContainer{
-    margin: 1rem 5rem;
-    width: 20rem;
+    width: 30rem;
+    margin: 1rem 2rem;
+}
+
+.addForm{
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.addForm{
-    margin: 0 auto;
+.addNameAndType {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.addNameAndType{
-    display: block;
-}
-
-#DropDown {
-    font-family: 'Montserrat', sans-serif;
+#NewPlace {
     font-size: 0.75rem;
-    color: #333745;
-    width: 12rem;
-    margin: 0.5rem;
-}
-
-#NewPlace{
-    width: 13rem;
-    font-size: 1rem;
+    width: 14rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
     border-radius: 20px;
     border: 1px solid rgb(165, 165, 165);
-    margin: 0.5rem;
+    margin: 1rem;
     padding: 0.5rem;
     outline:none;
 }
 
+#Dropdown {
+    width: 10rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
 #NewText {
-    width: 80%;
-    margin: 0.5rem;
-    padding: 0.25rem;
-    font-size: 1rem;
+    width: 16rem;
+    height: 2rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
     border-radius: 20px;
@@ -50,40 +53,103 @@
     resize: none;
 }
 
-#NewDate{
-    width: 13rem;
-    font-size: 1rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #333745;
-    border-radius: 20px;
-    border: 1px solid rgb(165, 165, 165);
-    margin: 0.5rem;
-    padding: 0.5rem;
-    outline:none;
 
-}
-
+/* min 400px */
 @media screen and (min-width: 400px){
-    .addFormContainer{
-        margin: 1rem 5rem;
+    .addForm {
         width: 24rem;
     }
-}
 
-@media screen and (min-width: 900px){
-
-    .addFormContainer {
-        width: 30rem;
+    #NewPlace {
+        width: 16rem;
+        font-size: 1rem
     }
 
-    .addNameAndType{
-        display: inline;
+    #Dropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #NewText {
+        width: 20rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .addNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #NewPlace {
+        margin: 0.5rem;
+    }
+
+    #Dropdown {
+        margin: 0.5rem;
+    }
+
+    #NewText {
+        margin-top: 0.5rem;
+    }
+
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .addForm {
+        width: 22rem;
+        margin: 1rem;
+    }
+
+    .addNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #NewPlace {
+        width: 14rem;
+        margin: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #Dropdown {
+        width: 10rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #NewText {
+        width: 23rem;
+        height: 2rem;
+        margin: 0.5rem auto;
     }
 }
 
 @media screen and (min-width: 1200px){
+    .addForm {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
 
+    #NewPlace {
+        width: 16rem;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+
+    #Dropdown {
+        width: 10rem;
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #NewText {
+        width: 26rem;
+        height: 3rem;
+        margin: 0.5rem auto;
+    }
 }
-
-
-

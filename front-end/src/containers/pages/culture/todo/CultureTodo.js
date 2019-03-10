@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 
@@ -9,7 +9,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from '../../../../components/utility/button/Button';
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-
+import '../../todo.css';
 
 
 class CultureToDo extends Component {
@@ -17,14 +17,13 @@ class CultureToDo extends Component {
         super()
         this.state = {
             list: [],
-            types: ['Music', 'Art', 'Theater', 'Festival'],
+            types: ['Music', 'Art', 'Theater', 'Learning'],
             msg: "",
             showAlert: false,
         }
     }
 
     componentDidMount() {
-        // console.log('component did mount')
         axios({
             method: 'POST',
             url: `${window.apiHost}/culture/getCultureList`,
@@ -32,7 +31,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((cultureListFromDB) => {
-            // console.log(foodListFromDB)
             this.setState({
                 list: cultureListFromDB
             })
@@ -52,7 +50,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            // console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -76,13 +73,7 @@ class CultureToDo extends Component {
         })
     }
 
-    editPlace = (placename) => {
-        //edit note/name of place
-    }
-
     removePlace = (placename) => {
-        //easy, just delete from DB!
-        // console.log(this.props.login.email)
         axios({
             method: "POST",
             url: `${window.apiHost}/culture/deletePlace/${placename}`,
@@ -98,7 +89,6 @@ class CultureToDo extends Component {
     }
 
     filterResults = (filter) => {
-        // console.log(filter)
         axios({
             method: 'POST',
             url: `${window.apiHost}/culture/filter/${filter}`,
@@ -107,7 +97,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            // console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -122,7 +111,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((cultureListFromDB) => {
-            // console.log(foodListFromDB)
             this.setState({
                 list: cultureListFromDB
             })
@@ -130,9 +118,9 @@ class CultureToDo extends Component {
     }
 
     render() {
+        let category = "culture";
+        let section = "todo";
         if (this.state.list.data !== undefined) {
-            let category = "culture";
-            let section = "todo";
             var cultureToDo = this.state.list.data.map((culture, i) => {
                 console.log(culture)
                 return (
@@ -148,7 +136,6 @@ class CultureToDo extends Component {
                             <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + culture.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
                         </div>
-                        
                     </div>
                 )
             })
@@ -163,31 +150,43 @@ class CultureToDo extends Component {
         })
         
 
-        return (
-            <div className="CultureToDo">
-                <h2>Culture To Do!</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Added to Faves"
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <AddForm
-                    addNewPlace={this.addNewPlace}
-                    placeholder="Add new place to eat..."
-                    textType="Add note..."
-                    defaultType="Choose type!" 
-                    types={typeArray}
-                />
-                <Filter 
-                    defaultFilter="Filter by type"
-                    filters={filterArray}
-                    filterResults={this.filterResults}
-                    clearFilter={this.clearFilter}
-                />
-                <PlaceCards cards={cultureToDo}/>
-            </div>
-        )
+        if (this.props.login.length === 0) {
+            return (
+                <Redirect to="/login" />
+            )
+        } else {
+            return (
+                <div className="ToDo">
+                    <h2>Culture To Do!</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Added to Faves"
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="todoBody">
+                        <div className="todoLeft">
+                            <AddForm
+                                addNewPlace={this.addNewPlace}
+                                placeholder="Add new place to visit..."
+                                textType="Add note..."
+                                defaultType="Choose type!" 
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="todoRight">
+                            <Filter 
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
+                            />
+                            <PlaceCards cards={cultureToDo}/>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

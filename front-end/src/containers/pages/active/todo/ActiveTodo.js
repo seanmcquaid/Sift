@@ -3,12 +3,13 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
+import { Link, Redirect } from 'react-router-dom';
 
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-
+import '../../todo.css';
 
 class ActiveTodo extends Component {
     constructor() {
@@ -22,7 +23,6 @@ class ActiveTodo extends Component {
     }
 
     componentDidMount() {
-        // console.log('component did mount')
         axios({
             method: 'POST',
             url: `${window.apiHost}/active/getActiveList`,
@@ -30,7 +30,6 @@ class ActiveTodo extends Component {
                 email: this.props.login.email
             }
         }).then((activeListFromDB) => {
-            // console.log(activeListFromDB)
             this.setState({
                 list: activeListFromDB
             })
@@ -64,7 +63,6 @@ class ActiveTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse,
                 msg: "Success! Added to favorites",
@@ -73,29 +71,7 @@ class ActiveTodo extends Component {
         })
     }
 
-    editActive = (activity, type, text) => {
-        axios({
-            method: 'POST',
-            url: `${window.apiHost}/active/edit/${activity}`,
-            data: {
-                placename: activity,
-                type: type,
-                note: text,
-                email: this.props.login.email
-            }
-        }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse,
-                showModal: true
-            })
-            if (backEndResponse.data.msg === 'updated') {
-                this.props.history.push('/active/todo')
-            }
-        })
-    }
-
     removeActive = (activity) => {
-        console.log(this.props.login.email)
         axios({
             method: "POST",
             url: `${window.apiHost}/active/deleteActive/${activity}`,
@@ -103,7 +79,6 @@ class ActiveTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -111,7 +86,6 @@ class ActiveTodo extends Component {
     }
 
     filterResults = (filter) => {
-        console.log(filter)
         axios({
             method: 'POST',
             url: `${window.apiHost}/active/filter/${filter}`,
@@ -134,7 +108,6 @@ class ActiveTodo extends Component {
                 email: this.props.login.email
             }
         }).then((activeListFromDB) => {
-            // console.log(activeListFromDB)
             this.setState({
                 list: activeListFromDB
             })
@@ -142,6 +115,8 @@ class ActiveTodo extends Component {
     }
 
     render() {
+        let category = "active";
+        let section = "todo";
         if (this.state.list.data !== undefined) {
             var activeTodo = this.state.list.data.map((activity, i) => {
                 console.log(activity)
@@ -155,7 +130,7 @@ class ActiveTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(activity.placename)} className="faveButton">Fave</Button>
-                            <Button clicked={() => this.editActive(activity.placename)} className="editButton">Edit</Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + activity.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removeActive(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
 
@@ -172,38 +147,43 @@ class ActiveTodo extends Component {
             return (<option key={i} value={filter}>{filter}</option>)
         })
 
-
-        return (
-            <div className="ActiveTodo">
-                <h2>Active To Do!</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Added to Faves"
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <div className="todoBody">
-                    <div className="todoLeft">
-                        <AddForm
-                            addNewPlace={this.addNewActive}
-                            placeholder="Add new activity..."
-                            textType="Add note..."
-                            defaultType="Choose type!"
-                            types={typeArray}
-                        />
-                    </div>
-                    <div className="todoRight">
-                        <Filter
-                            defaultFilter="Filter by type"
-                            filters={filterArray}
-                            filterResults={this.filterResults}
-                            clearFilter={this.clearFilter}
-                        />
-                        <PlaceCards cards={activeTodo} />
+        if (this.props.login.length === 0) {
+            return (
+                <Redirect to="/login" />
+            )
+        } else {
+            return (
+                <div className="ToDo">
+                    <h2>Active To Do!</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Added to Faves"
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="todoBody">
+                        <div className="todoLeft">
+                            <AddForm
+                                addNewPlace={this.addNewActive}
+                                placeholder="Add new activity..."
+                                textType="Add note..."
+                                defaultType="Choose type!"
+                                types={typeArray}
+                            />
+                        </div>
+                        <div className="todoRight">
+                            <Filter
+                                defaultFilter="Filter by type"
+                                filters={filterArray}
+                                filterResults={this.filterResults}
+                                clearFilter={this.clearFilter}
+                            />
+                            <PlaceCards cards={activeTodo} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
@@ -214,5 +194,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, null)(ActiveTodo);
-
-
