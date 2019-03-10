@@ -6,6 +6,9 @@ import { Link, Redirect } from 'react-router-dom';
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
+
+import {Link} from "react-router-dom";
+
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 import '../../favorites.css';
 
@@ -97,8 +100,10 @@ class CultureFavorites extends Component {
         }
        
         render() {
+
             let category = "culture";
             let section = "favorites";
+
             if (this.state.list.data !== undefined) {
                 var favorites = this.state.list.data.map((culture, i) => {
                     return (
@@ -108,9 +113,11 @@ class CultureFavorites extends Component {
                                 <p>{culture.note}</p>
                             </div>
                             <div className="buttonContainer">
-                                <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+
+                                <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + culture.placename} >Review</Link></Button>
                                 <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + culture.placename}>Edit</Link></Button>
                                 <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
+
                             </div> 
                         </div>
                     )

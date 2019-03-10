@@ -26,6 +26,7 @@ import Event from "./containers/pages/event/Event";
 import EventTodo from './containers/pages/event/todo/EventTodo';
 import EventFavorites from './containers/pages/event/favorites/EventFavorites';
 import EventReviews from './containers/pages/event/reviews/EventReviews';
+import EventFaveReviewForm from './containers/Forms/EventFaveReviewForm'
 
 import Active from "./containers/pages/active/Active";
 import ActiveTodo from "./containers/pages/active/todo/ActiveTodo";
@@ -45,7 +46,6 @@ class App extends Component {
           <Route exact path="/userHome" component={Home}/>
           
           <Route exact path="/userHome/food" component={Food} />
-
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
           <Route exact path="/userHome/food/reviews" component={FoodReviews}/>
@@ -67,6 +67,7 @@ class App extends Component {
 
           <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
           <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
+          <Route exact path="/userHome/:category/eventReviews/:section/:place" component={EventFaveReviewForm} />
 
         </Layout>
       </Router>

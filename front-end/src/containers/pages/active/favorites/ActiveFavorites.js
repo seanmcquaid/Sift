@@ -6,6 +6,10 @@ import { Link, Redirect } from 'react-router-dom';
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
+
+import "./ActiveFavorites.css";
+import {Link} from "react-router-dom";
+
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 import '../../favorites.css';
 
@@ -34,7 +38,7 @@ class ActiveFavorites extends Component {
         })
     }
 
-    addNewPlace = (activity, type, text) => {
+    addNewActive = (activity, type, text) => {
         //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
@@ -97,8 +101,20 @@ class ActiveFavorites extends Component {
     }
 
     render() {
+
+
+        const typeArray = this.state.types.map((type, i) => {
+            return (<option key={i} value={type}>{type}</option>)
+        })
+
+        const filterArray = this.state.types.map((filter, i) => {
+            return (<option key={i} value={filter}>{filter}</option>)
+        })
+
         let category = "active";
         let section = "favorites";
+
+
         if (this.state.list.data !== undefined) {
             var favorites = this.state.list.data.map((activity, i) => {
                 return (
@@ -108,14 +124,17 @@ class ActiveFavorites extends Component {
                             <p>{activity.note}</p>
                         </div>
                         <div className="buttonContainer">
-                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + activity.placename} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + activity.placename} >Edit</Link></Button>
-                            <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
+
+                  <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
                     </div>
                 )
             })
         }
+
 
         const typeArray = this.state.types.map((type, i) => {
             return (<option key={i} value={type}>{type}</option>)
@@ -135,7 +154,7 @@ class ActiveFavorites extends Component {
                     <div className="faveBody">
                         <div className="faveLeft">
                             <AddForm
-                                addNewActive={this.addNewActive}
+                                addNewPlace={this.addNewActive}
                                 placeholder="Add new favorite activity..."
                                 textType="Add note..."
                                 defaultType="Choose type!"

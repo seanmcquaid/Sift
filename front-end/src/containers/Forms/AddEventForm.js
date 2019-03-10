@@ -9,21 +9,24 @@ class AddEventForm extends Component {
         this.state = {
             events: '',
             type: '',
+            readableDate:'',
             date:'',
             text: '',
-            filter: ''
+            filter: '',
+           
         }
     }
 
     addNewEvent = (event) => {
         event.preventDefault(event)
-        this.props.addNewEvent(this.state.events, this.state.type, this.state.date, this.state.text)
+        this.props.addNewEvent(this.state.events, this.state.type, this.state.readableDate, this.state.text)
         document.getElementById('Dropdown').value = this.props.defaultType;
         this.setState({
             events: '',
             type: '',
-            date:'',
+            readableDate:'',
             text: '',
+            
         })
     }
 
@@ -40,9 +43,18 @@ class AddEventForm extends Component {
     }
 
     changeDate = (event) => {
+        var date= event.target.value
+        
+        var currDate = (date).toString().slice(0,10)
+        var currYear = currDate.slice(0,4)
+        var currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+        var publishDate = `${currMonDay}-${currYear}`
+
         this.setState({
-            date: event.target.value
+            readableDate: publishDate,
+            date: date
         })
+        console.log(new Date())
     }
 
     changeText = (event) => {
@@ -54,7 +66,8 @@ class AddEventForm extends Component {
     render(){
         // const typeArray = this.props.types
         // console.log(typeArray)
-
+        let minDate = new Date().toISOString().slice(0,10);
+        console.log(minDate)
         return(
             <div className="SearchAddEdit">
                 <form onSubmit={this.addNewEvent} className="AddForm">
@@ -66,7 +79,7 @@ class AddEventForm extends Component {
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>
-                        <input onChange={this.changeDate} className="Dropdown type" type="date" id="NewDate" value={this.state.date}/>
+                        <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} id="NewDate" value={this.state.date}/>
                     </div>
                     
                     <div className="addNote">

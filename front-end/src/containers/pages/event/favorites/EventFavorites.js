@@ -82,8 +82,6 @@ class EventFavorites extends Component {
             })
         })
 
-    }
-
     clearFilter = () => {
         axios({
             method: 'POST',
@@ -97,7 +95,8 @@ class EventFavorites extends Component {
             })
         })
     }
-
+  
+       
     render() {
         let category = "events";
         let section = "favorites";

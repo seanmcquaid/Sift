@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
@@ -15,6 +16,8 @@ class EventReviews extends Component {
         super()
         this.state = {
             list : [],
+            date:"",
+            readableDate:'',
             msg : "",
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
             showAlert: false,
@@ -35,15 +38,18 @@ class EventReviews extends Component {
         })
     }
 
-    addReview = (event, review, type, stars) =>{
+
+    addReview = (event, type, review, date, stars) =>{
+
         axios({
             method : "POST",
             url : `${window.apiHost}/event/addEventReview/${event}`,
             data : {
                 email : this.props.login.email,
                 event,
-                review,
                 type,
+                review,
+                date,
                 stars
             }
         }).then((responseFromDB)=>{
@@ -78,8 +84,10 @@ class EventReviews extends Component {
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
                             <h4>{review.eventname} - {review.stars} Stars </h4>
+                            {review.date}
                             <p>{review.review}</p>
                         </div>
+
                         <div className="cardRight">
                             <div className="buttonContainer">
                                 <Button className="shareButton">Share</Button>
@@ -87,6 +95,7 @@ class EventReviews extends Component {
                                 <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
                             </div>
                         </div>  
+
                     </div>
                 )
             })
@@ -128,6 +137,7 @@ class EventReviews extends Component {
                 </div>
             )
         }
+
     }
 }
 
