@@ -5,6 +5,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import "./CultureFavorites.css";
+import {Link} from "react-router-dom";
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class CultureFavorites extends Component {
@@ -91,6 +92,9 @@ class CultureFavorites extends Component {
        
         render() {
             // console.log(this.props)
+            let category = "culture";
+            let section = "favorites";
+
             if (this.state.list.data !== undefined) {
 
                 var favorites = this.state.list.data.map((culture, i) => {
@@ -101,7 +105,7 @@ class CultureFavorites extends Component {
                                 <p>{culture.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + culture.placename} >Review</Link></Button>
                             <Button clicked={() => this.editPlace(culture.placename)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
                             </div> 

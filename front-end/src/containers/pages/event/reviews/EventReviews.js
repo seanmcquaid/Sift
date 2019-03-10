@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import AddReviewForm from '../../../Forms/AddReviewForm';
+import AddEventReviewForm from '../../../Forms/AddEventReviewForm';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
@@ -14,6 +14,8 @@ class EventReviews extends Component {
         super()
         this.state = {
             list : [],
+            date:"",
+            readableDate:'',
             msg : "",
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
             showAlert: false,
@@ -36,15 +38,16 @@ class EventReviews extends Component {
     }
 
     // need to finish add review
-    addReview = (event, review, type, stars) =>{
+    addReview = (event, type, review, date, stars) =>{
         axios({
             method : "POST",
             url : `${window.apiHost}/event/addEventReview/${event}`,
             data : {
                 email : this.props.login.email,
                 event,
-                review,
                 type,
+                review,
+                date,
                 stars
             }
         }).then((responseFromDB)=>{
@@ -87,6 +90,7 @@ class EventReviews extends Component {
                             <p>{review.review}</p>
                         </div>
                         <div className="stars">
+                                {review.date}
                             <p> {review.stars} Stars</p>
                         </div>
                         <div className="buttonContainer">
@@ -113,7 +117,7 @@ class EventReviews extends Component {
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
-                <AddReviewForm
+                <AddEventReviewForm
                     placeholder="Add your event review here!"
                     defaultType= "Choose type!"
                     types={typeArray}

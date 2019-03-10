@@ -5,6 +5,7 @@ import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import "./ActiveFavorites.css";
+import {Link} from "react-router-dom";
 import Filter from '../../../../components/utility/filterDropDown/Filter';
 
 class ActiveFavorites extends Component {
@@ -32,7 +33,7 @@ class ActiveFavorites extends Component {
         })
     }
 
-    addNewPlace = (activity, type, text) => {
+    addNewActive = (activity, type, text) => {
         //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
@@ -106,6 +107,9 @@ class ActiveFavorites extends Component {
             return (<option key={i} value={filter}>{filter}</option>)
         })
 
+        let category = "active";
+        let section = "favorites";
+
         if (this.state.list.data !== undefined) {
             var favorites = this.state.list.data.map((activity, i) => {
                 return (
@@ -115,7 +119,7 @@ class ActiveFavorites extends Component {
                             <p>{activity.note}</p>
                         </div>
                         <div className="buttonContainer">
-                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + activity.placename} >Review</Link></Button>
                             <Button clicked={() => this.editPlace(activity.placename)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
                         </div>
@@ -131,7 +135,7 @@ class ActiveFavorites extends Component {
                 <div className="favoritesBody">
                     <div className="favoritesLeft">
                         <AddForm
-                            addNewActive={this.addNewActive}
+                            addNewPlace={this.addNewActive}
                             placeholder="Add new favorite activity..."
                             textType="Add note..."
                             defaultType="Choose type!"

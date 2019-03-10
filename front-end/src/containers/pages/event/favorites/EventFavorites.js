@@ -109,6 +109,8 @@ class EventFavorites extends Component {
   
        
         render() {
+            let category = "event";
+            let section = "favorites";
             console.log(this.props)
             if (this.state.list.data !== undefined) {
 
@@ -122,7 +124,7 @@ class EventFavorites extends Component {
                                 <p>{event.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button clicked={() => this.setState({ showAlert: true })} className="reviewButton">Review</Button>
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/eventReviews/" + section + "/" + event.eventname} >Review</Link></Button>
                             <Button clicked={() => this.editPlace(event.eventname)} className="editButton">Edit</Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                             

@@ -18,6 +18,8 @@ class EventTodo extends Component {
         this.state = {
             list: [],
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
+            date:'',
+            readableDate:'',
             msg: "",
             showAlert: false,
         }
@@ -39,9 +41,7 @@ class EventTodo extends Component {
         })
     }
 
-    addNewEvent = (event, type, date, text) => {
-        // possibly, api call will go here with autocomplete to add name, location to DB
-        // console.log(place, type)
+    addNewEvent = (event, type, date,  text) => {
         axios({
             method: 'POST',
             url: `${window.apiHost}/event/addEvent`,
@@ -49,6 +49,7 @@ class EventTodo extends Component {
                 eventname: event,
                 type: type,
                 date: date,
+                
                 note: text,
                 email: this.props.login.email
             }
@@ -134,9 +135,8 @@ class EventTodo extends Component {
     render() {
         if (this.state.list.data !== undefined) {
             var eventToDo = this.state.list.data.map((events, i) => {
-                
-        
-                
+                console.log(events)
+                console.log(events.date)
                 return (
                     <div key={i} className="placeCard">
                          <div>
