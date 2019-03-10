@@ -121,7 +121,6 @@ class ActiveFavorites extends Component {
                             <p>{activity.note}</p>
                         </div>
                         <div className="buttonContainer">
-
                             <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + activity.placename} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + activity.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(activity.placename)} className="deleteButton">Remove</Button>
@@ -143,6 +142,7 @@ class ActiveFavorites extends Component {
                     <div className="faveBody">
                         <div className="faveLeft">
                             <AddForm
+                                title="Add a favorite thing to do!"
                                 addNewPlace={this.addNewActive}
                                 placeholder="Add new favorite activity..."
                                 textType="Add note..."

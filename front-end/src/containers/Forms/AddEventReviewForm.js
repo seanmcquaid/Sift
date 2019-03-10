@@ -72,6 +72,7 @@ class AddEventReviewForm extends Component {
         let minDate = new Date().toISOString().slice(0,10);
         return(
             <div className="AddReviewForm">
+                <h3>Add your review below!</h3>
                 <form onSubmit={this.addNewReview} className="reviewForm">
                 <div className="placeInput">
                     <input type="text" placeholder="Enter your place to review here!" value={this.state.place}id="newPlace" onChange={this.changePlace} required/>

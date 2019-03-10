@@ -1,4 +1,11 @@
 /* mobile shared */
+/* body {
+    margin: 0 auto;
+} */
+
+h2 {
+    text-align: center;
+}
 
 .AddReviewForm{
     width: 30rem;

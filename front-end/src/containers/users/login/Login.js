@@ -18,7 +18,6 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(newProps){
-        // console.log(newProps.login.msg)
         if(newProps.login.msg === "badUser"){
             this.setState({
                 msg : "Incorrect email, please try again!",
@@ -58,7 +57,6 @@ class Login extends Component {
 
     
     render(){
-        console.log(this.props)
         return(
             <div className="login">
                 <div className="login-header-image">

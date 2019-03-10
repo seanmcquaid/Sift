@@ -134,6 +134,7 @@ class FoodFavorites extends Component {
                         <div className="faveBody">
                             <div className="faveLeft">
                                 <AddForm
+                                    title="Add a favorite!"
                                     addNewPlace={this.addNewPlace}
                                     placeholder="Add new..."
                                     textType="Add note..."

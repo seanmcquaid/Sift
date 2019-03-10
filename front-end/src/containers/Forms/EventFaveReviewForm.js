@@ -104,6 +104,7 @@ class EventFaveReviewForm extends Component {
             return (
                 <div className="SearchAddEdit">
                     <form onSubmit={this.editPlace} className="EditForm">
+                    <h2>Add your review below!</h2>
                         <div className="addNameAndType">
                             <input onChange={this.changePlace} type="text" id="NewPlace" value={this.state.place} />
                             <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>

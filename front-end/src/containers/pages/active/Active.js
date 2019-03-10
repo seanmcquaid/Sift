@@ -9,7 +9,7 @@ class Active extends Component {
 
             <div className="optionsMenu">
                 <div className="optionsMenuText">
-                    <h1>Active Options Menu</h1>
+                    <h1>Adventure time!</h1>
                 </div>
                 <div className="optionsCircleContainer">
                     <div>

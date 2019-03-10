@@ -132,11 +132,12 @@ class EditForm extends Component {
             )
         } else {
             return (
-                <div className="SearchAddEdit">
-                    <form onSubmit={this.editPlace} className="EditForm">
+                <div className="EditFormContainer">
+                    <form onSubmit={this.editPlace} className="editForm">
+                    <h2>Make your edits below!</h2>
                         <div className="editNameAndType">
                             <input onChange={this.changePlace} type="text" id="editPlace" defaultValue={this.state.place} />
-                            <select className="DropDown Type" id="DropDownEdit" onChange={this.changeType}>
+                            <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
                                 <option defaultValue={this.state.type}>{this.state.type}</option>
                                 {typeArray}
                             </select>

@@ -55,6 +55,7 @@ class AddReviewForm extends Component {
         return(
             <div className="AddReviewForm">
                 <form onSubmit={this.addNewReview} className="reviewForm">
+                <h3>Add your review!</h3>
                 <div className="placeInput">
                     <input type="text" placeholder="Enter your place to review here!" value={this.state.place}id="newPlace" onChange={this.changePlace} required/>
                 </div>
