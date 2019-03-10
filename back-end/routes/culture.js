@@ -282,7 +282,7 @@ router.post("/deleteCultureReview/:placename", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const deleteReviewQuery = `DELETE FROM culture WHERE placename = $1 AND reviewed = true AND uid = $2;`;
+        const deleteReviewQuery = `UPDATE culture SET reviewed = false WHERE placename = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[placename,uid]).then((results2)=>{
             const selectReviewsQuery = `SELECT * FROM culture where reviewed = true AND uid = $1;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{

@@ -276,7 +276,7 @@ router.post("/deleteActiveReview/:placename", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const deleteReviewQuery = `DELETE FROM active WHERE placename = $1 AND reviewed = true AND uid = $2;`;
+        const deleteReviewQuery = `UPDATE active SET reviewed = false WHERE placename = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[placename,uid]).then((results2)=>{
             const selectReviewsQuery = `SELECT placename, review, type, stars from active WHERE uid = $1 AND reviewed = true;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
