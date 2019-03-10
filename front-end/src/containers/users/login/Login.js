@@ -58,7 +58,6 @@ class Login extends Component {
 
     
     render(){
-        console.log(this.props)
         return(
             <div className="login">
                 <div className="login-header-image">

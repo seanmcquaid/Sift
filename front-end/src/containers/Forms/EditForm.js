@@ -28,7 +28,8 @@ class EditForm extends Component {
         const placename = this.props.match.params.place;
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
-    
+        console.log(this.props.match)
+        // const eventname = this.props.match.params.
         axios({
             method: 'POST',
             url: `${window.apiHost}/${category}/${section}/getPlaceToEdit/${placename}`,
@@ -36,9 +37,11 @@ class EditForm extends Component {
                 email: this.props.login.email
             }
         }).then((responseFromDB) => {
+            console.log(responseFromDB)
             let textFromDB = responseFromDB.data.note || responseFromDB.data.review
+            let placeFromDB = responseFromDB.data.placename || responseFromDB.data.eventname
             this.setState({
-                place : responseFromDB.data.placename,
+                place : placeFromDB,
                 category : category,
                 type : responseFromDB.data.type,
                 text : textFromDB
@@ -118,7 +121,7 @@ class EditForm extends Component {
             typeArray = this.state.activeTypes.map((type, i) => {
                 return (<option key={i} value={type}>{type}</option>)
             })
-        } else if (category === "event"){
+        } else if (category === "events"){
             typeArray = this.state.eventTypes.map((type, i) => {
                 return (<option key={i} value={type}>{type}</option>)
             })
@@ -127,9 +130,11 @@ class EditForm extends Component {
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
             console.log(section)
-            return(
-                <Redirect to={`/userHome/${category}/${section}`}/>
-            )
+            if(category === "events"){
+                return <Redirect to={`/userHome/event/${section}`}/>
+            }else{
+               return  <Redirect to={`/userHome/${category}/${section}`}/>
+            }
         } else {
             return (
                 <div className="SearchAddEdit">

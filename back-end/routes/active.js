@@ -333,4 +333,77 @@ router.post("/favorites/reviewFave/:placename", (req,res,next)=>{
     })
 })
 
+router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
+    const section = req.params.section;
+    const placename = req.params.placename;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const getActiveToDoQuery = `SELECT placename, type, note FROM active WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 AND placename = $2;`;
+            db.query(getActiveToDoQuery, [uid, placename]).then((results2)=>{
+                const todoResult = results2[0]
+                res.json(todoResult)
+            }).catch((error2)=>{
+                if(error2){throw error2}
+            })
+        } else if (section == "favorites"){
+            const getActiveFavoriteQuery = `SELECT placename, type, note FROM active WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2;`;
+            db.query(getActiveFavoriteQuery,[uid,placename]).then((results3)=>{
+                const favoriteResult = results3[0];
+                res.json(favoriteResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        } else if (section == "reviews"){
+            const getActiveReviewQuery = `SELECT placename, type, review FROM active WHERE reviewed = true AND uid = $1 AND placename = $2;`;
+            db.query(getActiveReviewQuery,[uid,placename]).then((results3)=>{
+                const reviewResult = results3[0];
+                res.json(reviewResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        }
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
+
+router.post("/:section/editPlace/:placename", (req,res,next)=>{
+    const email = req.body.email;
+    const section = req.params.section;
+    // console.log(section)
+    const oldPlacename = req.params.placename;
+    const newPlacename = req.body.updatedPlacename;
+    const newType = req.body.updatedType;
+    const newText = req.body.updatedText;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const updateActiveTodoQuery = `UPDATE active 
+            SET placename = $1, type = $2, note = $3
+            WHERE uid = $4 AND placename = $5 AND todo = true AND favorite = false AND reviewed = false;`
+            db.query(updateActiveTodoQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "favorites"){
+            const updateActiveFavoriteQuery = `UPDATE active 
+            SET placename = $1, type = $2, note = $3
+            WHERE uid = $4 AND placename = $5 AND todo = false AND favorite = true;`
+            db.query(updateActiveFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "reviews"){
+            const updateActiveFavoriteQuery = `UPDATE active 
+            SET placename = $1, type = $2, review = $3
+            WHERE uid = $4 AND placename = $5 AND reviewed = true;`
+            db.query(updateActiveFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+
+})
+
 module.exports = router;

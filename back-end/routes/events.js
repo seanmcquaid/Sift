@@ -305,7 +305,7 @@ router.post("/deleteEventReview/:eventname", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const deleteReviewQuery = `UPDATE event SET reviewed = false WHERE eventname = $1 and  uid = $2;`;
+        const deleteReviewQuery = `UPDATE events SET reviewed = false WHERE eventname = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[eventname,uid]).then((results2)=>{
             const selectReviewsQuery = `SELECT * FROM events where reviewed = true AND uid = $1;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
@@ -362,9 +362,77 @@ router.post("/:section/reviewFave/:eventname", (req,res,next)=>{
     })
 })
     
-module.exports = router;
+router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
+    const section = req.params.section;
+    const placename = req.params.placename;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery,[email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const getEventToDoQuery = `SELECT eventname, type, note, date FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 AND eventname = $2;`;
+            db.query(getEventToDoQuery, [uid, placename]).then((results2)=>{
+                const todoResult = results2[0]
+                res.json(todoResult)
+            }).catch((error2)=>{
+                if(error2){throw error2}
+            })
+        } else if (section == "favorites"){
+            const getEventFavoriteQuery = `SELECT eventname, type, note, date FROM events WHERE todo = false AND favorite = true AND uid = $1 AND eventname = $2;`;
+            db.query(getEventFavoriteQuery,[uid,placename]).then((results3)=>{
+                const favoriteResult = results3[0];
+                res.json(favoriteResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        } else if (section == "reviews"){
+            const getEventReviewQuery = `SELECT eventname, type, review, date FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
+            db.query(getEventReviewQuery,[uid,placename]).then((results3)=>{
+                const reviewResult = results3[0];
+                res.json(reviewResult)
+            }).catch((error3)=>{
+                if(error3){throw error3};
+            })
+        }
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
 
+router.post("/:section/editPlace/:placename", (req,res,next)=>{
+    const email = req.body.email;
+    const section = req.params.section;
+    // console.log(section)
+    const oldPlacename = req.params.placename;
+    const newPlacename = req.body.updatedPlacename;
+    const newType = req.body.updatedType;
+    const newText = req.body.updatedText;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        if(section == "todo"){
+            const updateEventTodoQuery = `UPDATE events
+            SET eventname = $1, type = $2, note = $3
+            WHERE uid = $4 AND eventname = $5 AND todo = true AND favorite = false AND reviewed = false;`
+            db.query(updateEventTodoQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "favorites"){
+            const updateEventFavoriteQuery = `UPDATE events 
+            SET eventname = $1, type = $2, note = $3
+            WHERE uid = $4 AND eventname = $5 AND todo = false AND favorite = true;`
+            db.query(updateEventFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }else if(section == "reviews"){
+            const updateEventFavoriteQuery = `UPDATE events 
+            SET eventname = $1, type = $2, review = $3
+            WHERE uid = $4 AND eventname = $5 AND reviewed = true;`
+            db.query(updateEventFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            res.json("updated")
+        }
+    }).catch((error)=>{
+        if(error){throw error}
+    })
 
-
+})
     
 module.exports = router;
