@@ -15,7 +15,8 @@ import FoodTodo from "./containers/pages/food/todo/FoodTodo";
 import EditForm from "./containers/Forms/EditForm";
 import FaveReviewForm from './containers/Forms/FaveReviewForm'
 import FoodFavorites from './containers/pages/food/favorites/FoodFavorites'
-import FoodReviews from "./containers/pages/food/reviews/FoodReviews"
+import FoodReviews from "./containers/pages/food/reviews/FoodReviews";
+import FoodExplore from "./containers/pages/food/explore/FoodExplore";
 
 import Culture from './containers/pages/culture/Culture';
 import CultureTodo from './containers/pages/culture/todo/CultureTodo';
@@ -49,6 +50,7 @@ class App extends Component {
           <Route exact path="/userHome/food/todo" component={FoodTodo}/>
           <Route exact path="/userHome/food/favorites" component={FoodFavorites}/>
           <Route exact path="/userHome/food/reviews" component={FoodReviews}/>
+          <Route exact path="/userHome/food/explore" component={FoodExplore}/>
       
           <Route exact path="/userHome/culture" component={Culture} />
           <Route exact path="/userHome/culture/todo" component={CultureTodo}/>
