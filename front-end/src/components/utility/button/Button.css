@@ -7,6 +7,10 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
 }
+ 
+.submitButton:hover{
+    text-decoration: underline;
+}
 
 .faveButton {
     background-color: #87cab0;
@@ -16,12 +20,20 @@
     border: none;
 }
 
+.faveButton:hover {
+    color: #EEF5DB;
+}
+
 .deleteButton {
     background-color: palevioletred;
     color: #333745;
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
+}
+
+.deleteButton:hover {
+    color: #EEF5DB;
 }
 
 .editButton {
@@ -47,7 +59,15 @@
     font-family: 'Montserrat', sans-serif;
     outline: none;
     border: none;
+}
 
+.reviewButton a {
+    text-decoration: none;
+    color: #333745;
+}
+
+.reviewButton a:hover{
+    color: #EEF5DB;
 }
 
 .shareButton {
@@ -58,6 +78,10 @@
     border: none;
 }
 
+.shareButton:hover {
+    color: #EEF5DB;
+}
+
 .filterButton {
     background-color: #87cab0;
     color: #333745;
@@ -66,4 +90,8 @@
     margin: 0.5rem;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+}
+
+.filterButton:hover {
+    text-decoration: underline;
 }

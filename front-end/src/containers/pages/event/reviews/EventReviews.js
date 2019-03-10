@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import AddEventReviewForm from '../../../Forms/AddEventReviewForm';
+
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
-import {Link} from "react-router-dom";
-import "./EventReviews.css";
-
+import AddReviewForm from '../../../Forms/AddReviewForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
+import '../../reviews.css';
 
 class EventReviews extends Component {
     constructor() {
@@ -32,15 +32,15 @@ class EventReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            // console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))
         })
     }
 
-    // need to finish add review
+
     addReview = (event, type, review, date, stars) =>{
+
         axios({
             method : "POST",
             url : `${window.apiHost}/event/addEventReview/${event}`,
@@ -53,17 +53,12 @@ class EventReviews extends Component {
                 stars
             }
         }).then((responseFromDB)=>{
-            // console.log(responseFromDB)
             this.setState({
                 list : responseFromDB,
                 msg : `Congrats! You've added a review for ${event}!`,
                 showAlert: true,
             })
         })
-    }
-
-    editReview = (dong)=>{
-
     }
 
     removeReview = (event)=>{
@@ -81,26 +76,26 @@ class EventReviews extends Component {
     }
 
     render() {
-        let category = "event";
+        let category = "events";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{review.eventname}</h4>
+                            <h4>{review.eventname} - {review.stars} Stars </h4>
+                            {review.date}
                             <p>{review.review}</p>
                         </div>
-                        <div className="stars">
-                                {review.date}
-                            <p> {review.stars} Stars</p>
-                        </div>
-                        <div className="buttonContainer">
-                            <Button className="shareButton">Share</Button>
-                            <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
-                            <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
-                        </div>
-                        
+
+                        <div className="cardRight">
+                            <div className="buttonContainer">
+                                <Button className="shareButton">Share</Button>
+                                <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
+                                <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
+                            </div>
+                        </div>  
+
                     </div>
                 )
             })
@@ -110,24 +105,39 @@ class EventReviews extends Component {
             return (<option key={i} value={type}>{type}</option>)
         });
 
-        return (
-            <div className="eventReviews">
-                <h2>Reviews</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Added to Faves"
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <AddEventReviewForm
-                    placeholder="Add your event review here!"
-                    defaultType= "Choose type!"
-                    types={typeArray}
-                    addReview={this.addReview}
-                />
-                <PlaceCards cards={EventReviews}/>
-            </div>
-        )
+        if (this.props.login.length === 0) {
+            return (
+                <Redirect to="/login" />
+            )
+        } else {
+            return (
+                <div className="Reviews">
+                    <h2>Reviews</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Review Added"
+                        text={this.state.msg}
+                        confirmBtnBsStyle="danger"
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="reviewBody">
+                        <div className="reviewLeft">
+                            <AddReviewForm
+                                placeholder="Add your event review here!"
+                                defaultType= "Choose type!"
+                                defaultStars="How many stars?"
+                                types={typeArray}
+                                addReview={this.addReview}
+                            />
+                        </div>
+                        <div className="reviewRight">
+                            <PlaceCards cards={EventReviews}/>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
     }
 }
 

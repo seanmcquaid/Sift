@@ -5,14 +5,11 @@ import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
 import { Link, Redirect } from 'react-router-dom';
 
-import './FoodTodo.css'
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-// import EditForm from '../../../Forms/EditForm';
-
-
+import '../../todo.css'
 
 class FoodTodo extends Component {
     constructor() {
@@ -66,7 +63,6 @@ class FoodTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse,
                 msg: "Success! Added to favorites",
@@ -75,9 +71,7 @@ class FoodTodo extends Component {
         })
     }
 
-
     removePlace = (placename) => {
-        console.log(this.props.login.email)
         axios({
             method: "POST",
             url: `${window.apiHost}/food/deletePlace/${placename}`,
@@ -85,7 +79,6 @@ class FoodTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -93,7 +86,6 @@ class FoodTodo extends Component {
     }
 
     filterResults = (filter) => {
-        console.log(filter)
         axios({
             method: 'POST',
             url: `${window.apiHost}/food/filter/${filter}`,
@@ -127,7 +119,6 @@ class FoodTodo extends Component {
         let section = "todo";
         if (this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
-                console.log(food)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
@@ -141,7 +132,6 @@ class FoodTodo extends Component {
                             <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link></Button>
                             <Button clicked={() => this.removePlace(food.placename)} className="deleteButton">Remove</Button>
                         </div>
-                        
                     </div>
                 )
             })
@@ -150,20 +140,17 @@ class FoodTodo extends Component {
         const typeArray = this.state.types.map((type, i)=>{
             return (<option key={i} value={type}>{type}</option>)
         })
-
         const filterArray = this.state.types.map((filter, i)=>{
             return(<option key={i} value={filter}>{filter}</option>)
         })
         
-          
-        // console.log(this.props.login.length)
         if(this.props.login.length === 0){
             return (
                 <Redirect to="/login"/>
             )
         } else {
             return (
-                <div className="FoodToDo">
+                <div className="ToDo">
                     <h2>Food To Do!</h2>
                     <SweetAlert
                         show={this.state.showAlert}
@@ -176,21 +163,21 @@ class FoodTodo extends Component {
                             <AddForm
                                 addNewPlace={this.addNewPlace}
                                 placeholder="Add new place to eat..."
-                                textType="Add note..."
                                 defaultType="Choose type!"
+                                textType="Add note..."
                                 types={typeArray}
                             />
                         </div>
                         <div className="todoRight">
                             <Filter 
                                 defaultFilter="Filter by type"
+                                defaultValue={this.state.types[0]}
                                 filters={filterArray}
                                 filterResults={this.filterResults}
                                 clearFilter={this.clearFilter}
                             />
-                        <PlaceCards cards={foodToDo}/>
+                            <PlaceCards cards={foodToDo}/>
                         </div>
-
                     </div>
                 </div>
             )

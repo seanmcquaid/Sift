@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import "./Food.css";
+import "../categoryHome.css";
 
 class Food extends Component {
 
     render(){
         return(
 
-            <div>
+            <div className="optionsMenu">
                  <div className="optionsMenuText">
-                    <h1>Food Options Menu</h1>
+                    <h1>Yummy treats!</h1>
                 </div>
                 <div className="optionsCircleContainer">
                         <div>
@@ -22,7 +22,6 @@ class Food extends Component {
                             <Link style={{ textDecoration: 'none' }} to="/userHome/food/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
                         </div>
                 </div>
-
             </div>
         )
     }

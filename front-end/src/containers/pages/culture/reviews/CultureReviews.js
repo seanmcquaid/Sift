@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import AddReviewForm from '../../../Forms/AddReviewForm';
+import { connect } from "react-redux";
+import { Link, Redirect } from 'react-router-dom';
 import SweetAlert from 'sweetalert-react';
 import 'sweetalert/dist/sweetalert.css';
-import { connect } from "react-redux";
+
+import AddReviewForm from '../../../Forms/AddReviewForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
+import '../../reviews.css';
 
 class CultureReviews extends Component {
     constructor() {
@@ -13,7 +16,7 @@ class CultureReviews extends Component {
         this.state = {
             list : [],
             msg : "",
-            types : ['Music', 'Art', 'Theater', 'Festival'],
+            types: ['Music', 'Art', 'Theater', 'Learning'],
             showAlert: false,
         }
     }
@@ -33,7 +36,6 @@ class CultureReviews extends Component {
         })
     }
 
-   
     addReview = (place, review, type, stars) =>{
         axios({
             method : "POST",
@@ -46,17 +48,12 @@ class CultureReviews extends Component {
                 stars
             }
         }).then((responseFromDB)=>{
-            // console.log(responseFromDB)
             this.setState({
                 list : responseFromDB,
                 msg : `Congrats! You've added a review for ${place}!`,
                 showAlert: true,
             })
         })
-    }
-
-    editReview = (dong)=>{
-
     }
 
     removeReview = (place)=>{
@@ -74,23 +71,23 @@ class CultureReviews extends Component {
     }
 
     render() {
+        let category = "culture";
+        let section = "reviews";
         if (this.state.list.data !== undefined) {
             var cultureReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{review.placename}</h4>
+                            <h4>{review.placename} - {review.stars} Stars</h4>
                             <p>{review.review}</p>
                         </div>
-                        <div className="stars">
-                            <p> {review.stars} Stars</p>
+                        <div className="cardRight">
+                            <div className="buttonContainer">
+                                <Button className="shareButton">Share</Button>
+                                <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + review.placename}>Edit</Link></Button>
+                                <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
+                            </div>
                         </div>
-                        <div className="buttonContainer">
-                            <Button className="shareButton">Share</Button>
-                            <Button clicked={() => this.editReview(review.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
-                        </div>
-                        
                     </div>
                 )
             })
@@ -100,25 +97,38 @@ class CultureReviews extends Component {
             return (<option key={i} value={type}>{type}</option>)
         });
 
-        return (
-            <div className="CultureReviews">
-                <h2>Reviews</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title="Added to Faves"
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
-                <AddReviewForm
-                     placeholder="Add your food review here!"
-                     defaultType= "Choose type!"
-                     defaultStars = "How many stars?"
-                     types={typeArray}
-                     addReview={this.addReview}
-                />
-                <PlaceCards cards={cultureReviews}/>
-            </div>
-        )
+        if (this.props.login.length === 0) {
+            return (
+                <Redirect to="/login" />
+            )
+        } else {
+            return (
+                <div className="Reviews">
+                    <h2>Reviews</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title="Added to Faves"
+                        text={this.state.msg}
+                        confirmBtnBsStyle="danger"
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
+                    <div className="reviewBody">
+                        <div className="reviewLeft">
+                            <AddReviewForm
+                                placeholder="Add your food review here!"
+                                defaultType= "Choose type!"
+                                defaultStars = "How many stars?"
+                                types={typeArray}
+                                addReview={this.addReview}
+                            />
+                        </div>
+                        <div className="reviewRight">
+                            <PlaceCards cards={cultureReviews}/>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
     }
 }
 

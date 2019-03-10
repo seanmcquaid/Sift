@@ -18,6 +18,10 @@ class Filter extends Component{
     viewAll = (event) => {
         event.preventDefault(event)
         this.props.clearFilter()
+        document.getElementById('filterDropDown').value = this.props.defaultFilter;
+        this.setState({
+            filter: ''
+        })
     }
 
     changeFilter = (event) => {
@@ -31,8 +35,8 @@ class Filter extends Component{
         return (
             <div className="filterBox">
                 <form onSubmit={this.filter} className="filterForm">
-                    <select className={this.props.className} onChange={this.changeFilter}>
-                        <option value="">{this.props.defaultFilter}</option>
+                    <select className="filterDropDown" id="filterDropDown" onChange={this.changeFilter}>
+                        <option value={this.props.defaultValue}>{this.props.defaultFilter}</option>
                         {this.props.filters}
                     </select>
                     <Button type="submit" className="filterButton">Filter</Button>

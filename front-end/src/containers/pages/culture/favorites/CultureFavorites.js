@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+import { Link, Redirect } from 'react-router-dom';
+
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
 import Button from '../../../../components/utility/button/Button'
-<<<<<<< HEAD
-import "./CultureFavorites.css";
+
 import {Link} from "react-router-dom";
-=======
->>>>>>> 793106cf8a7f808e776e0c546b1b63df4882d14b
+
 import Filter from '../../../../components/utility/filterDropDown/Filter';
+import '../../favorites.css';
 
 class CultureFavorites extends Component {
         constructor() {
@@ -17,13 +18,12 @@ class CultureFavorites extends Component {
             this.state = {
                 list: [],
                 msg: "",
-                types: ['Music', 'Art', 'Theater', 'Festival'],
+                types: ['Music', 'Art', 'Theater', 'Learning'],
                 showAlert: false,
             }
         }
     
         componentDidMount() {
-            // console.log('component did mount')
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/culture/getCultureFaveList`,
@@ -50,17 +50,13 @@ class CultureFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
             })
         }
     
-    
         removePlace = (placename) => {
-            //easy, just delete from DB!
-            console.log(this.props.login.email)
             axios({
                 method: "POST",
                 url: `${window.apiHost}/culture/deleteFavePlace/${placename}`,
@@ -68,7 +64,6 @@ class CultureFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
@@ -76,7 +71,6 @@ class CultureFavorites extends Component {
         }
 
         filterResults = (filter) => {
-            console.log(filter)
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/culture/faveFilter/${filter}`,
@@ -85,32 +79,45 @@ class CultureFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                // console.log(backEndResponse)
                 this.setState({
                     list: backEndResponse
                 })
             })
-    
+        }
+
+        clearFilter = () => {
+            axios({
+                method: 'POST',
+                url: `${window.apiHost}/culture/getCultureFaveList`,
+                data: {
+                    email: this.props.login.email
+                }
+            }).then((foodListFromDB) => {
+                this.setState({
+                    list: foodListFromDB
+                })
+            })
         }
        
         render() {
-            // console.log(this.props)
+
             let category = "culture";
             let section = "favorites";
 
             if (this.state.list.data !== undefined) {
-
                 var favorites = this.state.list.data.map((culture, i) => {
                     return (
                         <div key={i} className="placeCard">
-                            <h4>{culture.placename}</h4>
-                            <div>
+                            <div className="cardLeft">
+                                <h4>{culture.placename}</h4>
                                 <p>{culture.note}</p>
                             </div>
                             <div className="buttonContainer">
-                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + culture.placename} >Review</Link></Button>
-                            <Button clicked={() => this.editPlace(culture.placename)} className="editButton">Edit</Button>
-                            <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
+
+                                <Button className="reviewButton"><Link to={"/userHome/"+ category + "/reviews/" + section + "/" + culture.placename} >Review</Link></Button>
+                                <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + culture.placename}>Edit</Link></Button>
+                                <Button clicked={() => this.removePlace(culture.placename)} className="deleteButton">Remove</Button>
+
                             </div> 
                         </div>
                     )
@@ -125,25 +132,38 @@ class CultureFavorites extends Component {
                 return (<option key={i} value={type}>{type}</option>)
             })
 
-            return (
-                <div className="CultureFavorites">
-                    <h2>Favorites</h2>
-                    <AddForm
-                        addNewPlace={this.addNewPlace}
-                        placeholder="Add a new experience..."
-                        textType="Add note..."
-                        defaultType="Choose type!" 
-                        types={typeArray}
-                    />
-                    <Filter 
-                        defaultFilter="Filter by type"
-                        filters={filterArray}
-                        filterResults={this.filterResults}
-                    />
-                    <PlaceCards cards={favorites}/>
-
-                </div>
-            )
+            if (this.props.login.length === 0) {
+                return (
+                    <Redirect to="/login" />
+                )
+            } else {
+                return (
+                    <div className="Favorites">
+                        <h2>Favorites</h2>
+                        <div className="faveBody">
+                            <div className="faveLeft">
+                                <AddForm
+                                    addNewPlace={this.addNewPlace}
+                                    placeholder="Add a new experience..."
+                                    textType="Add note..."
+                                    defaultType="Choose type!" 
+                                    types={typeArray}
+                                />
+                            </div>
+                            <div className="faveRight">
+                                <Filter 
+                                    defaultFilter="Filter by type"
+                                    defaultValue={this.state.types[0]}
+                                    filters={filterArray}
+                                    filterResults={this.filterResults}
+                                    clearFilter={this.clearFilter}
+                                />
+                                <PlaceCards cards={favorites}/>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         }
     }
     

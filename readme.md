@@ -37,15 +37,15 @@ Sift is an application that allows users to create lists of places they'd like t
 
 # Authors
 - Sean McQuaid
-  - Contributions: Login and registration connection, implementation of Redux, implentation of Router, code for 'Reviews' list,
+  - Contributions: Login and registration connection, implementation of Redux, implentation of Router, routing for redirects, responsive design, mobile navigation,front and backend code for 'Reviews' list and 'Culture' section,
   - [GitHub Profile](https://github.com/seanmcquaid)
 
 - Katie Duane
-  - Contributions: Logo design, database schema set-up, creation of re-usable React Components for each category, initialized database connection for 'Food' section,  code for 'To-Do' list,
+  - Contributions: Logo design, database schema set-up, creation of re-usable React Components for each category, initialized database connection, CSS debugging, front and backend code for 'To-Do' list and 'Active' section,
   - [GitHub Profile](https://github.com/katiejduane)
   
 - Greg Roques
-  - Contributions: Wireframes, designs, and style guide, mark-up and CSS for splash and home pages, code for 'Favorites' list, 
+  - Contributions: Wireframes, designs, and style guide, mark-up and CSS for splash and home pages, CSS animations, router debugging, front and backend code for 'Favorites' list and 'Event' section,
   - [GitHub Profile](https://github.com/gregroques)
 
   

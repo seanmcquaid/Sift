@@ -59,11 +59,11 @@ class AddReviewForm extends Component {
                     <input type="text" placeholder="Enter your place to review here!" value={this.state.place}id="newPlace" onChange={this.changePlace} required/>
                 </div>
                 <div className="typeStarInput">
-                <select className="type" onChange={this.changeType} value={this.state.type} required>
+                <select className="type" id="reviewDropDown" onChange={this.changeType} value={this.state.type} required>
                         <option value="">{this.props.defaultType}</option>
                         {this.props.types}
                     </select>
-                    <select className="starDropdown" value={this.state.stars} onChange={this.changeStars} required> 
+                    <select className="starDropDown" id="starDropDown" value={this.state.stars} onChange={this.changeStars} required> 
                         <option value="">{this.props.defaultStars}</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
