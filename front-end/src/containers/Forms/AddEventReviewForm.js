@@ -17,13 +17,13 @@ class AddEventReviewForm extends Component {
 
     addNewReview = (event)=>{
         event.preventDefault();
-        this.props.addReview(this.state.events,this.state.review, this.state.type, this.state.readableDate, this.state.stars);
+        this.props.addReview(this.state.events,this.state.type, this.state.review, this.state.readableDate, this.state.stars);
         document.getElementsByClassName('type').value = this.props.defaultType;
         document.getElementsByClassName("starDropdown").value = this.props.defaultStars;
         this.setState({
             events: "",
+            type:'',
             review: "",
-            type: "",
             date:'',
             stars: ""
         })
@@ -70,6 +70,7 @@ class AddEventReviewForm extends Component {
     
     render(){
         let minDate = new Date().toISOString().slice(0,10);
+        let maxDate = '2030-03-10'
         return(
             <div className="AddReviewForm">
                 <form onSubmit={this.addNewReview} className="reviewForm">
@@ -89,7 +90,7 @@ class AddEventReviewForm extends Component {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} id="NewDate" value={this.state.date}/>
+                    <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} max={maxDate} id="NewDate" value={this.state.date}/>
                 </div>
                 <div className="addReview">
                     <textarea onChange={this.changeReview} id="newReview" placeholder={this.props.placeholder} value={this.state.review} required></textarea>

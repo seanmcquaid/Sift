@@ -6,7 +6,7 @@ import 'sweetalert/dist/sweetalert.css';
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 
-import AddReviewForm from '../../../Forms/AddReviewForm';
+import AddEventReviewForm from '../../../Forms/AddEventReviewForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
 import Button from "../../../../components/utility/button/Button";
 import '../../reviews.css';
@@ -16,10 +16,10 @@ class EventReviews extends Component {
         super()
         this.state = {
             list : [],
-            date:"",
-            readableDate:'',
-            msg : "",
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
+            date:"",
+
+            msg : "",
             showAlert: false,
         }
     }
@@ -122,7 +122,7 @@ class EventReviews extends Component {
                     />
                     <div className="reviewBody">
                         <div className="reviewLeft">
-                            <AddReviewForm
+                            <AddEventReviewForm
                                 placeholder="Add your event review here!"
                                 defaultType= "Choose type!"
                                 defaultStars="How many stars?"
