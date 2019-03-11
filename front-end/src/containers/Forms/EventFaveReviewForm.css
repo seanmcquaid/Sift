@@ -1,0 +1,165 @@
+/* mobile shared */
+body {
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.EditFormContainer{
+    margin: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.editForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editNameAndType {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#editPlace {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 1rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#DropDownEdit {
+    width: 10rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
+#editText {
+    width: 16rem;
+    height: 3rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}
+
+
+/* min 400px */
+@media screen and (min-width: 400px){
+    .editForm {
+        width: 24rem;
+    }
+
+    #editPlace {
+        width: 16rem;
+        font-size: 1rem
+    }
+
+    #DropDownEdit {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #editText {
+        width: 20rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .editNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #editPlace {
+        margin: 0.5rem;
+    }
+
+    #DropDownEdit {
+        margin: 0.5rem;
+    }
+
+    #editText {
+        margin-top: 0.5rem;
+    }
+
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .editForm {
+        width: 22rem;
+        margin: 1rem;
+    }
+
+    .editNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #editPlace {
+        width: 14rem;
+        margin: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #DropDownEdit {
+        width: 10rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #editText {
+        width: 23rem;
+        height: 2rem;
+        margin: 0.5rem auto;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .editForm {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
+
+    #editPlace {
+        width: 16rem;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+
+    #DropDownEdit {
+        width: 10rem;
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #editText {
+        width: 26rem;
+        height: 3rem;
+        margin: 0.5rem auto;
+    }
+}

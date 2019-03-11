@@ -3,16 +3,16 @@
     margin: 0 auto;
 } */
 
-h2 {
+h3 {
     text-align: center;
 }
 
-.AddEventReviewForm{
+.AddEventFormContainer{
     width: 30rem;
     margin: 1rem 2rem;
 }
 
-.eventReviewForm{
+.AddEventForm{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ h2 {
     align-items: center;
 }
 
-.addEventReview {
+.AddNewEventNote {
     width: 24rem;
     margin: 0 auto;
     display: flex;
@@ -29,7 +29,7 @@ h2 {
     align-items: center;
 }
 
-#newEvent {
+#NewAddEvent {
     font-size: 0.75rem;
     width: 14rem;
     font-family: 'Montserrat', sans-serif;
@@ -41,7 +41,7 @@ h2 {
     outline:none;
 }
 
-#newEventReview {
+#AddNewEventText {
     width: 16rem;
     height: 4rem;
     margin: 0.5rem;
@@ -55,7 +55,7 @@ h2 {
     resize: none;
 }
 
-#eventTypeDropdown {
+#NewEventTypeDropdown {
     width: 8rem;
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
@@ -63,15 +63,7 @@ h2 {
     margin: 0.5rem;
 }
 
-#eventStarDropdown {
-    width: 8rem;
-    font-size: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #333745;
-    margin: 0.5rem;
-}
-
-#eventDateDropdown {
+#NewEventDateDropdown {
     width: 8rem;
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
@@ -81,68 +73,53 @@ h2 {
 
 /* min 400px */
 @media screen and (min-width: 400px){
-    .addEventReview {
+    .AddNewEventNote {
         width: 24rem;
     }
 
-    #newEvent{
+    #NewAddEvent{
         width: 18rem;
     }
 
-    #eventTypeDropdown {
+    #NewEventTypeDropdown {
         width: 10rem;
         font-size: 0.85rem;
     }
 
-    #eventStarDropdown {
+    #NewEventDateDropdown {
         width: 10rem;
         font-size: 0.85rem;
     }
 
-    #starDropDown {
-        width: 10rem;
-        font-size: 0.85rem;
-    }
-
-    #eventDateDropdown {
-        width: 10rem;
-        font-size: 0.85rem;
-    }
-
-    #newEventReview {
+    #AddNewEventText {
         width: 21rem;
     }
 }
 
 /* min 900px */
 @media screen and (min-width: 900px) {
-    .addEventReview {
+    .AddNewEventNote {
         width: 26rem;
         margin-bottom: 1rem;
     }
 
-    #newEvent {
+    #NewAddEvent {
         width: 20rem;
         margin-bottom: 1rem;
         font-size: 1rem;
     }
 
-    #eventTypeDropdown {
+    #NewEventTypeDropdown {
         width: 11rem;
         font-size: 1rem;
     }
 
-    #eventStarDropdown {
+    #NewEventDateDropdown {
         width: 11rem;
         font-size: 1rem;
     }
 
-    #eventDateDropdown {
-        width: 11rem;
-        font-size: 1rem;
-    }
-
-    #newEventReview {
+    #AddNewEventText {
         width: 23rem;
         height: 5rem;
         margin: 1rem auto;
@@ -150,33 +127,28 @@ h2 {
 }
 
 @media screen and (min-width: 1200px){
-    .addEventReview {
+    .AddNewEventNote {
         width: 28rem;
         margin-bottom: 1rem;
     }
 
-    #newEvent {
+    #NewAddEvent {
         width: 20rem;
         margin-bottom: 1rem;
         font-size: 1rem;
     }
 
-    #eventTypeDropDown {
+    #NewEventTypeDropdown {
         width: 12rem;
         font-size: 1rem;
     }
 
-    #eventStarDropdown {
+    #NewEventDateDropdown {
         width: 12rem;
         font-size: 1rem;
     }
 
-    #eventDateDropdown {
-        width: 12rem;
-        font-size: 1rem;
-    }
-
-    #newEventReview {
+    #AddNewEventText {
         width: 26rem;
         height: 5rem;
         margin: 1rem auto;

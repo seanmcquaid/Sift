@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import Button from '../../components/utility/button/Button'
 import {Redirect} from "react-router-dom";
-import './EditForm.css'
+import './EventFaveReviewForm.css'
 
 
 class EventFaveReviewForm extends Component {
@@ -102,7 +102,7 @@ class EventFaveReviewForm extends Component {
             )
         } else {
             return (
-                <div className="SearchAddEdit">
+                <div className="EventFaveReviewFormContainer">
                     <form onSubmit={this.editPlace} className="EditForm">
                     <h2>Add your review below!</h2>
                         <div className="addNameAndType">

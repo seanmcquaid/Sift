@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../components/utility/button/Button'
-import './AddForm.css'
+import './AddEventForm.css'
 
 
 class AddEventForm extends Component {
@@ -69,22 +69,21 @@ class AddEventForm extends Component {
         let minDate = new Date().toISOString().slice(0,10);
         let maxDate = '2030-03-10'
         return(
-            <div className="SearchAddEdit">
+            <div className="AddEventFormContainer">
                 <h3>Add an event!</h3>
-                <form onSubmit={this.addNewEvent} className="AddForm">
-                    <div className="addName">
-                        <input onChange={this.changeEvent} type="text" id="NewPlace" placeholder={this.props.placeholder} value={this.state.events} />
+                <form onSubmit={this.addNewEvent} className="AddEventForm">
+                    <div className="addEventName">
+                        <input onChange={this.changeEvent} type="text" id="NewAddEvent" placeholder={this.props.placeholder} value={this.state.events} />
                     </div>
-                    <div className="addTypeAndDate">
-                        <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
+                    <div className="addEventTypeAndDate">
+                        <select className="Dropdown Type" id="NewEventTypeDropdown" onChange={this.changeType}>
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>
-                        <input onChange={this.changeDate} className="Dropdown type" type="date" min={minDate} max={maxDate} id="NewDate" value={this.state.date}/>
+                        <input onChange={this.changeDate} id="NewEventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date}/>
                     </div>
-                    
-                    <div className="addNote">
-                        <textarea onChange={this.changeText} id="NewText" placeholder={this.props.textType} value={this.state.text}></textarea>
+                    <div className="AddNewEventNote">
+                        <textarea onChange={this.changeText} id="AddNewEventText" placeholder={this.props.textType} value={this.state.text}></textarea>
                     </div>
                     <Button type="submit" className="submitButton">Add</Button>
                 </form>
