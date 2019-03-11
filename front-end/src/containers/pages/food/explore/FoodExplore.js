@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import {Link, Redirect} from "react-router-dom";
 import "./FoodExplore.css"
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -83,12 +82,27 @@ class FoodExplore extends Component {
         })
     }
 
-    addExploreFavorite = ()=>{
+    addExploreFavorite = (place, type, text)=>{
+        const email = this.props.login.email;
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/food/addExploreFavorite`,
+            data: {
+                place,
+                type,
+                text,
+                email
+            }
+        }).then((backEndResponse) => {
+            if(backEndResponse.data.msg === "added"){
+                this.props.history.push("/userHome/food/favorites")
+            }
+        })
 
     }
 
     render(){
-        console.log(this.state)
+        // console.log(this.state)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -101,6 +115,10 @@ class FoodExplore extends Component {
                 }
             }
             
+            if(type === undefined){
+                type = "Restaurant"
+            }
+            
             return (
                 <div key={i} className="placeCard">
                     <div className="cardLeft">
@@ -109,7 +127,7 @@ class FoodExplore extends Component {
                     </div>
                     <div className="buttonContainer">
                         <Button clicked={() => this.addExploreTodo(place.name, type, place.formatted_address)} className="todoButton">Todo</Button>
-                        <Button className="favoriteButton"><Link to="/userHome/food/favorites">Favorite</Link></Button>
+                        <Button clicked={() => this.addExploreFavorite(place.name, type, place.formatted_address)} className="faveButton">Favorite</Button>
                     </div> 
                 </div>
                 )
@@ -119,7 +137,6 @@ class FoodExplore extends Component {
                     <h2>Explore That Food therrreeeee</h2>
                     <div className="exploreBody">
                         <div className="exploreLeft">
-                            {/* explore form component for searching */}
                             <ExploreForm
                             searchPlaceholder="What would you like to eat?"
                             locationPlaceholder="Enter city and state"

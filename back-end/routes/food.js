@@ -438,9 +438,29 @@ router.post("/addExploreTodo", (req,res,next)=>{
     }).catch((error)=>{
         if(error){throw error}
     })
-
 })
 
+
+router.post("/addExploreFavorite", (req,res,next)=>{
+    console.log(req.body)
+    const placename = req.body.place;
+    const type = req.body.type;
+    const note = req.body.text;
+    const email = req.body.email;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
+    db.query(selectUserQuery, [email]).then((results)=>{
+        const uid = results[0].id;
+        const insertExploreFavoriteQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite, reviewed, location)
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8);
+        `
+        db.query(insertExploreFavoriteQuery,[uid,placename,type, note,false,true,false,note])
+        res.json({
+            msg : "added"
+        })
+    }).catch((error)=>{
+        if(error){throw error}
+    })
+})
 
     
 module.exports = router;
