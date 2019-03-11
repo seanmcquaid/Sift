@@ -20,7 +20,7 @@ class AddEventForm extends Component {
     addNewEvent = (event) => {
         event.preventDefault(event)
         this.props.addNewEvent(this.state.events, this.state.type, this.state.readableDate, this.state.text)
-        document.getElementById('Dropdown').value = this.props.defaultType;
+        document.getElementById('NewEventTypeDropdown').value = this.props.defaultType;
         this.setState({
             events: '',
             type: '',
