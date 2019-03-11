@@ -1,8 +1,9 @@
 import React, {Component} from "react";
+import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import "./FoodExplore.css"
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -11,7 +12,8 @@ class FoodExplore extends Component {
     constructor(){
         super()
         this.state = {
-            exploreResults : []
+            exploreResults : [],
+            types: ['Restaurant','Cafe', 'Bar', 'Diner'],
         }
     }
 
@@ -62,8 +64,23 @@ class FoodExplore extends Component {
         })
     }
 
-    addExploreTodo = ()=>{
-
+    addExploreTodo = (place, type, text) => {
+        //api call will go here with autocomplete to add name, location to DB
+        const email = this.props.login.email;
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/food/addExploreTodo`,
+            data: {
+                place,
+                type,
+                text,
+                email
+            }
+        }).then((backEndResponse) => {
+            if(backEndResponse.data.msg === "added"){
+                this.props.history.push("/userHome/food/todo")
+            }
+        })
     }
 
     addExploreFavorite = ()=>{
@@ -73,14 +90,25 @@ class FoodExplore extends Component {
     render(){
         console.log(this.state)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
+            const typeArray = this.state.types;
+            const exploreTypeArray = place.types;
+            let type;
+            for(let i =0; i < typeArray.length; i++){
+                for(let j = 0; j < exploreTypeArray.length; j++){
+                    if(typeArray[i].toLowerCase() === exploreTypeArray[j]){
+                        type = typeArray[i]
+                    }
+                }
+            }
+            
             return (
                 <div key={i} className="placeCard">
                     <div className="cardLeft">
-                        <h4>Hi</h4>
-                        <p>THERE</p>
+                        <h4>{place.name}</h4>
+                        <p>{type}</p>
                     </div>
                     <div className="buttonContainer">
-                        <Button className="todoButton"><Link to="/userHome/food/todo">Todo</Link></Button>
+                        <Button clicked={() => this.addExploreTodo(place.name, type, place.formatted_address)} className="todoButton">Todo</Button>
                         <Button className="favoriteButton"><Link to="/userHome/food/favorites">Favorite</Link></Button>
                     </div> 
                 </div>
@@ -107,4 +135,10 @@ class FoodExplore extends Component {
     }
 }
 
-export default FoodExplore;
+function mapStateToProps(state) {
+    return {
+        login: state.login
+    }
+}
+
+export default connect(mapStateToProps, null)(FoodExplore);
