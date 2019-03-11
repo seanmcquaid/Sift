@@ -1,0 +1,156 @@
+/* mobile shared */
+/* body {
+    margin: 0 auto;
+} */
+
+h3 {
+    text-align: center;
+}
+
+.AddEventFormContainer{
+    width: 30rem;
+    margin: 1rem 2rem;
+}
+
+.AddEventForm{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.AddNewEventNote {
+    width: 24rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#NewAddEvent {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#AddNewEventText {
+    width: 16rem;
+    height: 4rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}
+
+#NewEventTypeDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.5rem;
+}
+
+#NewEventDateDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.5rem;
+}
+
+/* min 400px */
+@media screen and (min-width: 400px){
+    .AddNewEventNote {
+        width: 24rem;
+    }
+
+    #NewAddEvent{
+        width: 18rem;
+    }
+
+    #NewEventTypeDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #NewEventDateDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #AddNewEventText {
+        width: 21rem;
+    }
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .AddNewEventNote {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
+
+    #NewAddEvent {
+        width: 20rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    #NewEventTypeDropdown {
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    #NewEventDateDropdown {
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    #AddNewEventText {
+        width: 23rem;
+        height: 5rem;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .AddNewEventNote {
+        width: 28rem;
+        margin-bottom: 1rem;
+    }
+
+    #NewAddEvent {
+        width: 20rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    #NewEventTypeDropdown {
+        width: 12rem;
+        font-size: 1rem;
+    }
+
+    #NewEventDateDropdown {
+        width: 12rem;
+        font-size: 1rem;
+    }
+
+    #AddNewEventText {
+        width: 26rem;
+        height: 5rem;
+        margin: 1rem auto;
+    }
+}

@@ -1,0 +1,217 @@
+/* mobile shared */
+body {
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.EventFaveReviewFormContainer{
+    margin: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.EventFaveReviewForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addEventReviewNameTypeDate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#NewFaveReviewEvent{
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 1rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#NewFaveReviewEventType {
+    width: 10rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
+#NewFaveReviewEventStars {
+    width: 10rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
+#NewFaveReviewEventDate {
+    width: 10rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
+#NewFaveReviewEventReview {
+    width: 16rem;
+    height: 3rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}
+
+
+/* min 400px */
+@media screen and (min-width: 400px){
+    .editForm {
+        width: 24rem;
+    }
+
+    #NewFaveReviewEvent{
+        width: 16rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventType {
+        width: 10rem;
+        font-size: 0.85rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventStars {
+        width: 10rem;
+        font-size: 0.85rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventDate {
+        width: 10rem;
+        font-size: 0.85rem;
+        margin: 0.5rem;
+    }
+    
+
+    #NewFaveReviewEventReview {
+        width: 20rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #NewFaveReviewEvent{
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventType {
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventStars {
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventDate {
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventReview {
+        margin-top: 0.5rem;
+    }
+
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .editForm {
+        width: 22rem;
+        margin: 1rem;
+    }
+
+    #NewFaveReviewEvent {
+        width: 14rem;
+        margin: 0.5rem;
+        font-size: 1rem;
+    }
+
+    #NewFaveReviewEventType{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventStars{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventDate{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 0.5rem;
+    }
+
+    #NewFaveReviewEventReview {
+        width: 23rem;
+        height: 2rem;
+        margin: 0.5rem auto;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .editForm {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
+
+    #NewFaveReviewEvent{
+        width: 16rem;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+
+    #NewFaveReviewEventType{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #NewFaveReviewEventStars{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #NewFaveReviewEventDate{
+        width: 10rem;
+        font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #editText {
+        width: 26rem;
+        height: 3rem;
+        margin: 0.5rem auto;
+    }
+}
