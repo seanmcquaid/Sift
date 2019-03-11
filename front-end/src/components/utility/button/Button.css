@@ -99,3 +99,15 @@ button {
 .filterButton:hover {
     text-decoration: underline;
 }
+
+.todoButton {
+    background-color: palevioletred;
+    color: #333745;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
+}
+
+.todoButton:hover {
+    color: #EEF5DB;
+}
