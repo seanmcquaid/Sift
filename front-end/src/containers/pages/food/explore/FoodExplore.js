@@ -1,27 +1,91 @@
 import React, {Component} from "react";
 import ExploreForm from "../../../Forms/ExploreForm";
+import axios from "axios";
+import config from "../../../../config";
+import {Link} from "react-router-dom";
 import "./FoodExplore.css"
+import Button from "../../../../components/utility/button/Button";
+import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
 
 class FoodExplore extends Component {
+    constructor(){
+        super()
+        this.state = {
+            exploreResults : []
+        }
+    }
 
 
     exploreRequest = (name,city)=>{
-      
-        var request = {
-          query: `${name} + " " + ${city} `,
-          fields: ['name', "geometry"],
-        };
+        let cityCoordinates, searchLat, searchLon;
+        const locationComma = city.replace(/,/g,"");
+        const locationFinalFormat = locationComma.replace(/ /g,"+");
+        const addressToCoordinatesUrl=`https://maps.googleapis.com/maps/api/geocode/json?address=${locationFinalFormat}&key=${config.apiKey}`;
+        axios({
+            method : "GET",
+            url : addressToCoordinatesUrl
+        }).then((response)=>{
+            searchLat =  response.data.results[0].geometry.location.lat
+            searchLon =  response.data.results[0].geometry.location.lng;
+            cityCoordinates = {
+                lat : searchLat,
+                lng : searchLon
+            }
 
-        // USE WINDOW TO ACCESS GOOGLE 
-      
-        var service = new window.google.maps.places.PlacesService(document.createElement('div'));
-      
-        service.findPlaceFromQuery(request, function(results, status) {
-            console.log(results[0].geometry.location.lat())
-        });
+            let request = {
+              query: `${name}`,
+              rankby : "distance",
+              location : cityCoordinates,
+              radius: 10000
+            };
+    
+            // USE WINDOW TO ACCESS GOOGLE 
+          
+            let service = new window.google.maps.places.PlacesService(document.createElement('div'));
+            let searchResults = [];
+            service.textSearch(request, (results, status)=> {
+                let loopLength;
+                if (10 < results.length){
+                    loopLength = 10
+                } else {
+                    loopLength = results.length
+                }
+
+                for(let i = 0; i < loopLength; i++) {
+                    searchResults.push(results[i])
+                }
+                
+                this.setState({
+                    exploreResults : searchResults
+                })
+            });
+        })
+    }
+
+    addExploreTodo = ()=>{
+
+    }
+
+    addExploreFavorite = ()=>{
+
     }
 
     render(){
+        console.log(this.state)
+        const exploreResults = this.state.exploreResults.map((place, i)=>{
+            return (
+                <div key={i} className="placeCard">
+                    <div className="cardLeft">
+                        <h4>Hi</h4>
+                        <p>THERE</p>
+                    </div>
+                    <div className="buttonContainer">
+                        <Button className="todoButton"><Link to="/userHome/food/todo">Todo</Link></Button>
+                        <Button className="favoriteButton"><Link to="/userHome/food/favorites">Favorite</Link></Button>
+                    </div> 
+                </div>
+                )
+            })
         return (
             <div className="Explore">
                     <h2>Explore That Food therrreeeee</h2>
@@ -35,8 +99,7 @@ class FoodExplore extends Component {
                             />
                         </div>
                         <div className="exploreRight">
-                            {/* placecards that will display name,  */}
-                            {/* <PlaceCards cards={} /> */}
+                            <PlaceCards cards={exploreResults} />
                         </div>
                     </div>
                 </div>
