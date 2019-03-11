@@ -9,10 +9,7 @@ import EditForm from '../../Forms/EditForm';
 import FaveReviewForm from '../../Forms/FaveReviewForm'
 
 import CategoryHomeLayout from '../CategoryHomeLayout'
-import '../categoryHome.css'
-import EditForm from '../../Forms/EditForm';
-import FaveReviewForm from '../../Forms/FaveReviewForm';
-import EventFaveReviewForm from '../../Forms/EventFaveReviewForm';
+import '../categoryHome.css';
 
 class Food extends Component {
 
