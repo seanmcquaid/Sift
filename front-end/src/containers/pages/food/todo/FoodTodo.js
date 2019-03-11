@@ -151,7 +151,7 @@ class FoodTodo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Food To Do!</h2>
+                    <h2>Places I'd like to try:</h2>
                     <SweetAlert
                         show={this.state.showAlert}
                         title="Added to Faves"

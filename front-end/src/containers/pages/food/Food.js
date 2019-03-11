@@ -21,6 +21,9 @@ class Food extends Component {
                         <div>
                             <Link style={{ textDecoration: 'none' }} to="/userHome/food/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
                         </div>
+                        <div>
+                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/explore"><div className="exploreCircle"><p>Explore</p></div></Link>
+                        </div>
                 </div>
             </div>
         )

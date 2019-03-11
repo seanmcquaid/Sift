@@ -24,7 +24,7 @@
    
 }
 
-.toDoCircle, .favoritesCircle, .reviewsCircle{
+.toDoCircle, .favoritesCircle, .reviewsCircle, .exploreCircle{
     display: flex;
     justify-content:center;
     align-content:center;
@@ -50,7 +50,7 @@
 
 }
 
-.toDoCircle p, .favoritesCircle p, .reviewsCircle p{
+.toDoCircle p, .favoritesCircle p, .reviewsCircle p, .exploreCircle p{
     opacity: 0;
     color: #333745;
     transition: all 2s;
@@ -84,15 +84,22 @@
     background-position: center;
 }
 
+.exploreCircle {
+    background-image: url('/images/icons/exploreIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-.toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover {
+
+.toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
     transform:scale(.75);
     transition: 2s all;
     background-color: rgb(135,202,176,0.75);
    
 }
 
-.toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p{
+.toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
    opacity: 1;
     transition: 2s all;
     

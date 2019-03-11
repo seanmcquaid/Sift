@@ -11,15 +11,15 @@ class Home extends Component{
     let welcomeMessage
 
     if (chooseMessage === 1){
-        welcomeMessage = "Let's Get It"
+        welcomeMessage = "Let's Get It!"
     } else if (chooseMessage === 2){
-        welcomeMessage = "Welcome Back"
+        welcomeMessage = "Welcome Back!"
     } else if (chooseMessage === 3){
-        welcomeMessage = "Carp Diem"
+        welcomeMessage = "Carpé Diem!"
     } else if (chooseMessage === 4){
-        welcomeMessage = "Holla"
+        welcomeMessage = "Hello hello!"
     } else {
-        welcomeMessage = "Nice to See You"
+        welcomeMessage = "Nice to See You!"
     } 
     
     if(this.props.login.length === 0){
@@ -30,7 +30,7 @@ class Home extends Component{
         return(
             <div>
                 <div className="welcomeTextContent">
-                    <h1>{welcomeMessage}</h1>
+                    <h1 className="welcomeMessage">{welcomeMessage}</h1>
                 </div>
                 <div className="categoryCircleContainer">
                         <div className="circleSpacing">
