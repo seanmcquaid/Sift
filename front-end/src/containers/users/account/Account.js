@@ -13,6 +13,7 @@ class Account extends Component {
         this.state = {
             showAlert : false,
             msg : "",
+            alertTitle: "",
             email:'',
             password : "",
             testPassword : ""
@@ -38,6 +39,7 @@ class Account extends Component {
         event.preventDefault();
         if(userPassword !== testPassword){
             this.setState({
+                alertTitle: "Whoopsie Daisies",
                 msg : "Your passwords don't match, please try again",
                 showAlert: true
             })
@@ -53,6 +55,7 @@ class Account extends Component {
                 }).then(() => {
                     this.setState({
                         msg : "Password changed",
+                        alertTitle: "Hurray!",
                         showAlert: true
                     })
                 })
@@ -72,7 +75,7 @@ class Account extends Component {
                 </div>
                 <SweetAlert
                     show={this.state.showAlert}
-                    title="Whoopsie Daisies"
+                    title={this.state.alertTitle}
                     text={this.state.msg}
                     onConfirm={() => this.setState({ showAlert: false })}
                 />
