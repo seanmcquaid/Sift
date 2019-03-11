@@ -10,13 +10,14 @@ import Splash from "./components/splash/Splash";
 import Login from "./containers/users/login/Login";
 import Register from "./containers/users/register/Register";
 
+import FoodExplore from "./containers/pages/food/explore/FoodExplore";
+import EditForm from "./containers/Forms/EditForm";
+
 import Food from "./containers/pages/food/Food";
 import FoodTodo from "./containers/pages/food/todo/FoodTodo";
-import EditForm from "./containers/Forms/EditForm";
 import FaveReviewForm from './containers/Forms/FaveReviewForm'
 import FoodFavorites from './containers/pages/food/favorites/FoodFavorites'
 import FoodReviews from "./containers/pages/food/reviews/FoodReviews";
-import FoodExplore from "./containers/pages/food/explore/FoodExplore";
 
 import Culture from './containers/pages/culture/Culture';
 import CultureTodo from './containers/pages/culture/todo/CultureTodo';
