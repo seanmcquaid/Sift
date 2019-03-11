@@ -1,0 +1,174 @@
+/* mobile shared */
+/* body {
+    margin: 0 auto;
+} */
+
+h2 {
+    text-align: center;
+}
+
+.AddEventReviewForm{
+    width: 30rem;
+    margin: 1rem 2rem;
+}
+
+.eventReviewForm{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.addEventReview {
+    width: 24rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#newEvent {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#newEventReview {
+    width: 16rem;
+    height: 4rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}
+
+#eventTypeDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.5rem;
+}
+
+#eventStarDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.5rem;
+}
+
+#eventDateDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.5rem;
+}
+
+/* min 400px */
+@media screen and (min-width: 400px){
+    .addEventReview {
+        width: 24rem;
+    }
+
+    #newEvent{
+        width: 18rem;
+    }
+
+    #eventTypeDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #eventStarDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #starDropDown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #eventDateDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #newEventReview {
+        width: 21rem;
+    }
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .addEventReview {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
+
+    #newEvent {
+        width: 20rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    #eventTypeDropdown {
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    #eventStarDropdown {
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    #newEventReview {
+        width: 23rem;
+        height: 5rem;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .addEventReview {
+        width: 28rem;
+        margin-bottom: 1rem;
+    }
+
+    #newEvent {
+        width: 20rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+
+    #eventTypeDropDown {
+        width: 12rem;
+        font-size: 1rem;
+    }
+
+    #eventStarDropdown {
+        width: 12rem;
+        font-size: 1rem;
+    }
+
+    #newEventReview {
+        width: 26rem;
+        height: 5rem;
+        margin: 1rem auto;
+    }
+}
