@@ -1,107 +1,33 @@
-.optionsMenu {
-    margin-top: 15vh;
-    color: #333745;
-}
-
-.optionsMenuText{
-    margin:3rem auto 0;
-    width:80%;
-    margin-top: 5rem;
-    font-family: 'Bad Script', cursive;
-    font-size:1.5rem;
-    font-weight: 100;
-    text-align: center;
-    color: #333745;
-}
-
-.optionsCircleContainer{
-    margin-bottom:3rem;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:center;
-    align-content:center;
-    align-items:center;
-   
-}
-
-.toDoCircle, .favoritesCircle, .reviewsCircle, .exploreCircle{
+.categoryHomeContainer{
     display: flex;
-    justify-content:center;
-    align-content:center;
-    flex-direction:column;
-    height:250px;
-    width:250px;
-    margin:2rem;
-    border-radius:100%;
-    background-color: #87cab0;
-    /* background-repeat: no-repeat;
-    background-position: center; */
-    border: 9px white solid;
-    text-align:center;
-    vertical-align: middle;
-    font-family:'Bad Script',cursive;
-    text-decoration:none;
-    text-decoration-line: none;
-    font-size:3rem;
-    font-weight: 800;
-    transition: transform 2s;
-    transform: scale(1) 
-
-
+    flex-direction: column;
+    margin-top: 3rem;
 }
 
-.toDoCircle p, .favoritesCircle p, .reviewsCircle p, .exploreCircle p{
-    opacity: 0;
-    color: #333745;
-    transition: all 2s;
-    font-size:3rem;
-    font-weight: 800;
-    transition-property:opacity;
-    transition: opacity(0) 2s;
-    text-decoration:none;
-   
+.mainHome {
+    margin-top: 4rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+@media screen and (min-width: 550px){
+    .mainHome {
+        margin-top: 8rem;
+        padding: 1rem;
+        width: 100%;
+    }
+} 
 
-.toDoCircle{
-    background-image: url('/images/icons/toDoIcon.png');
-    background-size:60%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+@media screen and (min-width: 800px){
+    .categoryHomeContainer {
+        flex-direction: row;
+    }
 
-.favoritesCircle{
-    background-image: url('/images/icons/favoritesIcon.png');
-    background-size:60%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+    .mainHome {
+        margin-top: 2rem;
+        margin-left: 12rem;
+        width: 75%
 
-.reviewsCircle{
-    background-image: url('/images/icons/reviewIcon.png');
-    background-size:60%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.exploreCircle {
-    background-image: url('/images/icons/exploreIcon.png');
-    background-size:60%;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-
-.toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
-    transform:scale(.75);
-    transition: 2s all;
-    background-color: rgb(135,202,176,0.75);
-   
-}
-
-.toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
-   opacity: 1;
-    transition: 2s all;
-    
+    }
 }

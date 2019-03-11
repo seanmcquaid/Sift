@@ -151,7 +151,7 @@ class FoodTodo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Places I'd like to try:</h2>
+                    <h2>Yummy treats!</h2>
                     <SweetAlert
                         show={this.state.showAlert}
                         title="Added to Faves"
@@ -163,7 +163,7 @@ class FoodTodo extends Component {
                             <AddForm
                                 title="Add to your list!"
                                 addNewPlace={this.addNewPlace}
-                                placeholder="Add new place to eat..."
+                                placeholder="Add new place..."
                                 defaultType="Choose type!"
                                 textType="Add note..."
                                 types={typeArray}

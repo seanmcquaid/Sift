@@ -1,13 +1,11 @@
 .ToDo {
-    margin-top: 7rem;
     text-align: center;
 }
 
 h2 {
     color: #333745;
-    font-family: 'Bad Script', cursive;
     margin-top: 3rem;
-    margin: 3rem auto 1rem;
+    font-family: 'Bad Script', cursive;
 }
 
  /* list styling */
@@ -30,6 +28,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
 }
 
 /* card styling */
@@ -39,13 +38,12 @@ h2 {
     justify-content: center;
     align-items: center;
     background-color:#ffa094;
-    padding:1rem;
+    padding: 1rem;
+    width: 18rem;
 }
 
 .placeCard{
-    border: 3px solid #ffa094;
     background-color: #fff1cb;
-    /* border-radius: 30px; */
     padding: 1rem;
     margin: 0.5rem;
     text-align: left;
@@ -54,14 +52,14 @@ h2 {
     width: 16rem;
 }
 
- .cardLeft {
-        width: 11rem;
-        margin-left: 0.5rem;
-    }
+.cardLeft {
+    width: 11rem;
+    margin-left: 0.5rem;
+}
 
-    .cardRight {
-        width: 4rem;
-    }
+.cardRight {
+    width: 4rem;
+}
 
 h4 {
     font-weight: bold;
@@ -88,9 +86,12 @@ p {
 
 /* larger phones and tablet portraits */
 @media screen and (min-width: 400px) {
+    .placeCards {
+        width: 20rem;
+    }
 
     .placeCard {
-        width: 20rem;
+        width: 18rem;
     }
     
     .cardLeft {
@@ -103,33 +104,61 @@ p {
     }
 }
 
+@media screen and (min-width: 800px) {
+     h2 {
+        margin-top: 0rem;
+    }
+
+    .placeCards{
+        width: 22rem
+    }
+
+    .placeCard {
+        width: 20rem;
+    }
+}
+
 /* desktop and tablet landscape */
-@media screen and (min-width: 900px){
+@media screen and (min-width: 1000px){
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .todoBody{
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: flex-start;
+    
     }
 
     .todoLeft{
-        width: 24rem;
-        margin: 0rem 2rem;
-        padding: 0rem 1rem;
+        width: auto;
+        height: auto;
+        padding: 1rem;
+        margin: 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .todoRight{
-        width: 24rem;
+        width: auto;
+        height: auto;
         padding: 0rem 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin: 1rem 2rem;
     }
 
     /* card styling */
+    .placeCards{
+        width: 25rem
+    }
+
     .placeCard {
         width: 22rem;
     }
@@ -142,24 +171,40 @@ p {
 
 /* xl screenz */
  @media screen and (min-width: 1200px){ 
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .todoBody {
         display: flex;
         flex-direction: row;
+    }
+
+    .todoLeft{
+        width: auto;
+        margin: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
+    }
+
+    .todoRight{
+        width: auto;
+        padding: 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .placeCards{
+        width: 25rem
     }
 
     .placeCard {
-        width: 24rem;
+        width: 22rem;
     }
 
-    .todoLeft {
-        width: 26rem;
-        margin: 0rem 3rem;
-    }
-
-    .todoRight {
-        width: 26rem;
-        margin: 1rem 3rem;
-    } 
  }

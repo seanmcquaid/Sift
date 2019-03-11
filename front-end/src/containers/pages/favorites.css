@@ -1,4 +1,4 @@
-.Favorites{
+/* .Favorites{
     margin-top: 7rem;
     text-align: center;
 }
@@ -6,13 +6,13 @@
 h2 {
     color: #333745;
     font-family: 'Bad Script', cursive;
-    font-size: 22pt;
-    margin-top: 3rem;
-    margin: 3rem auto 1rem;
-}
+    font-size: 22pt; */
+    /* margin-top: 3rem;
+    margin: 3rem auto 1rem; */
+/* } */
 
  /* list styling */
-.faveBody {
+/* .faveBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,29 +31,18 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
 /* card styling */
-.placeCards{
+/* .placeCards{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-/* .placeCard{
-    border: 1px solid #ffa094;
-    background-color: #fff1cb;
-    border-radius: 30px;
-    padding: 1rem;
-    margin: 0.5rem;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    width: 16rem;
 } */
 
-h4 {
+
+/* h4 {
     font-weight: bold;
     font-size: 1rem;
     margin:0.5rem 0;
@@ -63,10 +52,10 @@ h4 {
 p {
     font-size: 0.75rem;
     color: #333745;
-}
+} */
 
 /* Button container */
-.buttonContainer{
+/* .buttonContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,10 +63,10 @@ p {
 
 .buttonContainer button{
     margin: 0.25rem;
-}
+} */
 
 /* larger phones and tablet portraits */
-@media screen and (min-width: 400px) {
+/* @media screen and (min-width: 400px) {
 
     .placeCard {
         width: 20rem;
@@ -91,10 +80,10 @@ p {
     .cardRight {
         width: 6rem;
     }
-}
+} */
 
 /* desktop and tablet landscape */
-@media screen and (min-width: 900px){
+/* @media screen and (min-width: 1000px){
     .faveBody{
         width: 100%;
         display: flex;
@@ -117,10 +106,10 @@ p {
         display: flex;
         justify-content: center;
         margin: 1rem 2rem;
-    }
+    } */
 
     /* card styling */
-    .placeCard {
+    /* .placeCard {
         width: 22rem;
     }
 
@@ -128,10 +117,10 @@ p {
         width: 80%;
         margin-left: 0.5rem;
     }
-}
+} */
 
 /* xl screenz */
- @media screen and (min-width: 1200px){ 
+ /* @media screen and (min-width: 1200px){ 
     .faveBody {
         display: flex;
         flex-direction: row;
@@ -152,4 +141,4 @@ p {
         width: 26rem;
         margin: 1rem 3rem;
     } 
- }
+ } */

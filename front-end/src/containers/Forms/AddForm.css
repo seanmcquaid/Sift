@@ -1,18 +1,5 @@
 /* mobile shared */
 
-.addFormContainer{
-    width: 30rem;
-    margin: 1rem 2rem;
-    /* background-color:#87cab0; */
-}
-
-.addFormTitle {
-    color: #333745;
-    font-family: 'Bad Script', cursive;
-    margin-top: 3rem;
-    margin: 3rem auto 1rem;
-}
-
 .addForm{
     margin: 0 auto;
     padding-top: 0.5rem;
@@ -65,9 +52,6 @@
 
 /* min 400px */
 @media screen and (min-width: 400px){
-    .addForm {
-        width: 24rem;
-    }
 
     #NewPlace {
         width: 16rem;
@@ -75,12 +59,12 @@
     }
 
     #Dropdown {
-        width: 10rem;
-        font-size: 0.85rem;
+        width: 14rem;
+        font-size: 1rem;
     }
 
     #NewText {
-        width: 20rem;
+        width: 18rem;
         font-size: 1rem;
     }
 }
@@ -93,6 +77,7 @@
 
     #Dropdown {
         margin: 0.5rem;
+        font-size: 1rem;
     }
 
     #NewText {
@@ -102,57 +87,52 @@
 }
 
 /* min 900px */
-@media screen and (min-width: 900px) {
-    .addFormContainer {
-        width: 30rem;
-        margin: 2rem auto;
-    }
+@media screen and (min-width: 1000px) {
+
     
-    .addForm {
-        width: 22rem;
-        margin: 1rem;
+    .addFormContainer {
+        margin: 0 auto;
+        padding: 0.5rem 0;
     }
 
     #NewPlace {
-        width: 14rem;
+        width: 12rem;
         margin: 0.5rem;
         font-size: 1rem;
     }
 
     #Dropdown {
-        width: 10rem;
+        width: 12rem;
         font-size: 1rem;
         margin: 0.5rem;
     }
 
     #NewText {
-        width: 18rem;
-        height: 3rem;
+        width: 14rem;
+        height: 4rem;
         margin: 0.5rem auto;
     }
 }
 
 @media screen and (min-width: 1200px){
     .addForm {
-        width: 26rem;
+        /* width: 26rem; */
         margin-bottom: 1rem;
     }
 
     #NewPlace {
         width: 16rem;
-        margin: 1rem;
         font-size: 1rem;
     }
 
     #Dropdown {
-        width: 10rem;
+        width: 16rem;
         font-size: 1rem;
-        margin: 1rem;
     }
 
     #NewText {
-        width: 26rem;
-        height: 3rem;
+        width: 18rem;
+        height: 4rem;
         margin: 0.5rem auto;
     }
 }
