@@ -6,7 +6,6 @@
 h2 {
     color: #333745;
     font-family: 'Bad Script', cursive;
-    font-size: 22pt;
     margin-top: 3rem;
     margin: 3rem auto 1rem;
 }
@@ -39,12 +38,14 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color:#ffa094;
+    padding:1rem;
 }
 
 .placeCard{
-    border: 1px solid #ffa094;
+    border: 3px solid #ffa094;
     background-color: #fff1cb;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     padding: 1rem;
     margin: 0.5rem;
     text-align: left;
@@ -52,6 +53,15 @@ h2 {
     align-items: center;
     width: 16rem;
 }
+
+ .cardLeft {
+        width: 11rem;
+        margin-left: 0.5rem;
+    }
+
+    .cardRight {
+        width: 4rem;
+    }
 
 h4 {
     font-weight: bold;

@@ -1,0 +1,141 @@
+/* mobile shared */
+body {
+    margin: 0 auto;
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Bad Script', cursive;
+    font-size: 2rem;
+    margin: 3rem auto 1rem;
+    color:#333745;
+}
+
+.FaveReviewFormContainer{
+    margin: 5rem auto;
+}
+
+.FaveReviewForm{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#NewFaveReview {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+.addFaveReviewInput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.typeAndStars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.DropdownFaveReviewType {
+    width: 8rem;
+    margin: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.faveReviewStarDropdown {
+    width: 4rem;
+    margin: 0.5rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+}
+
+#NewFaveReviewText {
+    width: 16rem;
+    height: 4rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    outline:none;
+    resize: none;
+}
+
+
+/* min 400px */
+@media screen and (min-width: 400px){
+
+   #NewFaveReview {
+        width: 18rem;
+    }
+
+    .DropdownFaveReviewType {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    .faveReviewStarDropdown {
+        width: 8rem;
+        font-size: 0.85rem;
+    }
+
+    #NewFaveReviewText {
+        width: 21rem;
+    }
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    #NewFaveReview {
+        width: 18rem;
+    }
+
+    .DropdownFaveReviewType {
+        width: 10rem;
+        font-size: 1rem;
+    }
+
+    .faveReviewStarDropdown {
+        width: 8rem;
+        font-size: 1rem;
+    }
+
+    #NewFaveReviewText {
+        width: 22rem;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    #NewFaveReview {
+        width: 20rem;
+    }
+
+    .DropdownFaveReviewType {
+        width: 12rem;
+        font-size: 0.85rem;
+    }
+
+    .faveReviewStarDropdown {
+        width: 10rem;
+        font-size: 0.85rem;
+    }
+
+    #NewFaveReviewText {
+        width: 24rem;
+    }
+}

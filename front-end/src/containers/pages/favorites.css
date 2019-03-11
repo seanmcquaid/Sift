@@ -41,7 +41,7 @@ h2 {
     align-items: center;
 }
 
-.placeCard{
+/* .placeCard{
     border: 1px solid #ffa094;
     background-color: #fff1cb;
     border-radius: 30px;
@@ -51,7 +51,7 @@ h2 {
     display: flex;
     align-items: center;
     width: 16rem;
-}
+} */
 
 h4 {
     font-weight: bold;
