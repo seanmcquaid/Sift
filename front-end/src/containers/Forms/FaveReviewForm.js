@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from "react-redux";
 import Button from '../../components/utility/button/Button'
 import {Redirect} from "react-router-dom";
-import './EditForm.css'
+import './FaveReviewForm.css'
 
 
 class FaveReviewForm extends Component {
@@ -23,7 +23,6 @@ class FaveReviewForm extends Component {
 
     componentDidMount() {
         const placename = this.props.match.params.place;
-        console.log(placename)
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
     
@@ -67,9 +66,6 @@ class FaveReviewForm extends Component {
             })
         })
     }
-
-
-
    
     changePlace = (event) => {}
 
@@ -100,26 +96,27 @@ class FaveReviewForm extends Component {
             )
         } else {
             return (
-                <div className="SearchAddEdit">
-                    <form onSubmit={this.editPlace} className="EditForm">
-                        <h3>Add your review below!</h3>
-                        <div className="addNameAndType">
-                            <input onChange={this.changePlace} type="text" id="NewPlace" value={this.state.place} />
-                            <select className="Dropdown Type" id="Dropdown" onChange={this.changeType}>
-                                <option defaultValue={this.state.type}>{this.state.type}</option>
-                               
-                            </select>
-                            <select className="starDropdown" value={this.state.stars} onChange={this.changeStars} required> 
-                        <option value="">{this.props.defaultStars}</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                <div className="FaveReviewFormContainer">
+                    <form onSubmit={this.editPlace} className="FaveReviewForm">
+                        <h3>Add your review!</h3>
+                        <div className="addFaveReviewInput">
+                            <input onChange={this.changePlace} type="text" id="NewFaveReview" value={this.state.place} />
+                            <div className="typeAndStars">
+                                <select className="DropdownFaveReviewType Type" id="FaveDropDown" onChange={this.changeType}>
+                                    <option defaultValue={this.state.type}>{this.state.type}</option>
+                                </select>
+                                <select className="faveReviewStarDropdown" value={this.state.stars} onChange={this.changeStars} required> 
+                                    <option value="5">Stars</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
                         </div>
-                        <div className="addReview">
-                            <textarea onChange={this.changeReview} value={this.state.review} id="NewText"></textarea>
+                        <div className="addFaveReview">
+                            <textarea onChange={this.changeReview} value={this.state.review} id="NewFaveReviewText"></textarea>
                         </div>
                         <Button type="submit" className="submitButton">Add</Button>
                     </form>

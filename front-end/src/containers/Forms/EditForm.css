@@ -8,7 +8,7 @@ h2 {
 }
 
 .EditFormContainer{
-    margin: 2rem 2rem;
+    margin-top: 12vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -90,7 +90,7 @@ h2 {
     .editNameAndType {
         flex-direction: row;
         justify-content: center;
-        align-items: center;
+        /* align-items: center; */
     }
 
     #editPlace {
@@ -102,7 +102,7 @@ h2 {
     }
 
     #editText {
-        margin-top: 0.5rem;
+        margin-top: 1rem;
     }
 
 }
@@ -134,8 +134,7 @@ h2 {
 
     #editText {
         width: 23rem;
-        height: 2rem;
-        margin: 0.5rem auto;
+        margin-top: 1rem;
     }
 }
 
@@ -159,7 +158,6 @@ h2 {
 
     #editText {
         width: 26rem;
-        height: 3rem;
         margin: 0.5rem auto;
     }
 }

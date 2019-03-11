@@ -3,10 +3,19 @@
 .addFormContainer{
     width: 30rem;
     margin: 1rem 2rem;
+    /* background-color:#87cab0; */
+}
+
+.addFormTitle {
+    color: #333745;
+    font-family: 'Bad Script', cursive;
+    margin-top: 3rem;
+    margin: 3rem auto 1rem;
 }
 
 .addForm{
     margin: 0 auto;
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -77,11 +86,6 @@
 }
 
 @media screen and (min-width: 600px) {
-    .addNameAndType {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
 
     #NewPlace {
         margin: 0.5rem;
@@ -99,15 +103,14 @@
 
 /* min 900px */
 @media screen and (min-width: 900px) {
+    .addFormContainer {
+        width: 30rem;
+        margin: 2rem auto;
+    }
+    
     .addForm {
         width: 22rem;
         margin: 1rem;
-    }
-
-    .addNameAndType {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
     }
 
     #NewPlace {
@@ -123,8 +126,8 @@
     }
 
     #NewText {
-        width: 23rem;
-        height: 2rem;
+        width: 18rem;
+        height: 3rem;
         margin: 0.5rem auto;
     }
 }
