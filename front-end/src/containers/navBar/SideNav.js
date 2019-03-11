@@ -3,7 +3,12 @@ import { Link } from "react-router-dom";
 import './SideNav.css';
 
 class SideNav extends Component {
-
+    constructor(){
+        super()
+        this.state = {
+            
+        }
+    }
     render() {
         return (
 

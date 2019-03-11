@@ -1,32 +1,30 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import CategoryHomeLayout from '../CategoryHomeLayout';
+import ActiveTodo from './todo/ActiveTodo';
+import ActiveFavorites from './favorites/ActiveFavorites';
+import ActiveReviews from './reviews/ActiveReviews';
+import EditForm from '../../Forms/EditForm';
+import FaveReviewForm from '../../Forms/FaveReviewForm'
+
 import "../categoryHome.css";
+
 
 class Active extends Component {
 
     render() {
         return (
-
-            <div className="optionsMenu">
-                <div className="optionsMenuText">
-                    <h1>Adventure time!</h1>
-                </div>
-                <div className="optionsCircleContainer">
-                    <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/active/todo"><div className="toDoCircle"><p>To Do</p></div></Link>
-                    </div>
-                    <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/active/favorites"><div className="favoritesCircle"><p>Favorite</p></div></Link>
-                    </div>
-                    <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/active/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
-                    </div>
-                    {/* <div>
-                            
-                        </div> */}
-                </div>
-
-            </div>
+            <Router>
+                <CategoryHomeLayout>
+                    {/* <Route exact path="/userHome/culture" component={CultureExplore} /> */}
+                    <Route exact path="/userHome/active/todo" component={ActiveTodo} />
+                    <Route exact path="/userHome/active/favorites" component={ActiveFavorites} />
+                    <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
+                    <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
+                    <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
+                </CategoryHomeLayout>
+            </Router>
         )
     }
 }
