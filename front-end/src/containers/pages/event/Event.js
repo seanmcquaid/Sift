@@ -1,35 +1,36 @@
-import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import CategoryHomeLayout from '../CategoryHomeLayout';
+import EventTodo from './todo/EventTodo';
+import EventFavorites from './favorites/EventFavorites';
+import EventReviews from './reviews/EventReviews';
+import EditForm from '../../Forms/EditForm';
+import FaveReviewForm from '../../Forms/FaveReviewForm';
+import EventFaveReviewForm from '../../Forms/EventFaveReviewForm';
+
 import "../categoryHome.css";
+
 
 class Event extends Component {
 
-    render(){
-        return(
-
-            <div className="optionsMenu">
-                 <div className="optionsMenuText">
-                    <h1>Happenings around town...</h1>
-                </div>
-                <div className="optionsCircleContainer">
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/event/todo"><div className="toDoCircle"><p>To Do</p></div></Link>
-                        </div>
-                        <div>    
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/event/favorites"><div className="favoritesCircle"><p>Favorite</p></div></Link>
-                        </div>
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/event/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
-                        </div>
-                        {/* <div>
-                            
-                        </div> */}
-                </div>
-
-            </div>
+    render() {
+        return (
+            <Router>
+                <CategoryHomeLayout>
+                    {/* home page for explore!? */}
+                    <Route exact path="/userHome/event/todo" component={EventTodo} />
+                    <Route exact path="/userHome/event/favorites" component={EventFavorites} />
+                    <Route exact path="/userHome/event/reviews" component={EventReviews} />
+                    <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
+                    <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
+                    <Route exact path="/userHome/:category/eventReviews/:section/:place" component={EventFaveReviewForm} />
+                </CategoryHomeLayout>
+            </Router>
         )
     }
 }
+
 
 
 export default Event;
