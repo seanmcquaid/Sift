@@ -1,0 +1,306 @@
+/* mobile first! */
+.sideNav {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 0;
+    margin: 1rem auto;
+    display: flex;
+    /* justify-content: flex-start; */
+    align-items: center;
+}
+
+.circleContainer{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    height: auto;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.toDoCircle, .favoritesCircle , .reviewsCircle, .exploreCircle  {
+
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    height:50px;
+    width:50px;
+    margin:0.5rem;
+    border-radius:100%;
+    background-color: #87cab0;
+    border: 3px white solid;
+    text-align:center;
+    vertical-align: middle;
+    font-family:'Bad Script',cursive;
+    text-decoration:none;
+    text-decoration-line: none;
+    font-size:1rem;
+    font-weight: 800;
+    transition: transform 2s;
+    transform: scale(1) 
+
+}
+
+.toDoCircle p, .favoritesCircle p, .reviewsCircle p, .exploreCircle p{
+    opacity: 0;
+    color: #333745;
+    transition: all 2s;
+    font-size:1.5rem;
+    font-weight: 800;
+    transition-property:opacity;
+    transition: opacity(0) 2s;
+    text-decoration:none;
+
+}
+
+.toDoCircle{
+    background-image: url('/images/icons/toDoIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.favoritesCircle{
+    background-image: url('/images/icons/favoritesIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.reviewsCircle{
+    background-image: url('/images/icons/reviewIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.exploreCircle {
+    background-image: url('/images/icons/exploreIcon.png');
+    background-size:60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
+    transform:scale(.75);
+    transition: 2s all;
+    background-color: rgb(135,202,176,0.75);
+
+}
+
+.toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
+    opacity: 1;
+    transition: 2s all;
+    
+}
+
+
+@media screen and (min-width: 550px) {
+
+    .sideNav {
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin: 1rem 0;
+        display: flex;
+        /* justify-content: flex-start; */
+        align-items: center;
+    }
+
+    .circleContainer{
+        /* background-color: aquamarine; */
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        height: auto;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .toDoCircle, .favoritesCircle , .reviewsCircle, .exploreCircle  {
+
+        display: flex;
+        justify-content:center;
+        align-content:center;
+        flex-direction:column;
+        height:100px;
+        width:100px;
+        margin:0.5rem;
+        border-radius:100%;
+        background-color: #87cab0;
+        border: 5px white solid;
+        text-align:center;
+        vertical-align: middle;
+        font-family:'Bad Script',cursive;
+        text-decoration:none;
+        text-decoration-line: none;
+        font-size:1rem;
+        font-weight: 800;
+        transition: transform 2s;
+        transform: scale(1) 
+
+    }
+
+    .toDoCircle p, .favoritesCircle p, .reviewsCircle p, .exploreCircle p{
+        opacity: 0;
+        color: #333745;
+        transition: all 2s;
+        font-size:1.5rem;
+        font-weight: 800;
+        transition-property:opacity;
+        transition: opacity(0) 2s;
+        text-decoration:none;
+
+    }
+
+    .toDoCircle{
+        background-image: url('/images/icons/toDoIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .favoritesCircle{
+        background-image: url('/images/icons/favoritesIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .reviewsCircle{
+        background-image: url('/images/icons/reviewIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .exploreCircle {
+        background-image: url('/images/icons/exploreIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
+    .toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
+        transform:scale(.75);
+        transition: 2s all;
+        background-color: rgb(135,202,176,0.75);
+
+    }
+
+    .toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
+        opacity: 1;
+        transition: 2s all;
+        
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .sideNav {
+        width: 12rem;
+        height: 80%;
+        position: fixed;
+        left: 0;
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circleContainer{
+        /* background-color: aquamarine; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        margin: 1rem auto;
+        padding: 1rem;
+    }
+
+    .toDoCircle, .favoritesCircle , .reviewsCircle, .exploreCircle  {
+
+        display: flex;
+        justify-content:center;
+        align-content:center;
+        flex-direction:column;
+        height:100px;
+        width:100px;
+        margin:0.5rem;
+        border-radius:100%;
+        background-color: #87cab0;
+        border: 5px white solid;
+        text-align:center;
+        vertical-align: middle;
+        font-family:'Bad Script',cursive;
+        text-decoration:none;
+        text-decoration-line: none;
+        font-size:1rem;
+        font-weight: 800;
+        transition: transform 2s;
+        transform: scale(1) 
+
+    }
+
+    .toDoCircle p, .favoritesCircle p, .reviewsCircle p, .exploreCircle p{
+        opacity: 0;
+        color: #333745;
+        transition: all 2s;
+        font-size:1.5rem;
+        font-weight: 800;
+        transition-property:opacity;
+        transition: opacity(0) 2s;
+        text-decoration:none;
+    
+    }
+
+    .toDoCircle{
+        background-image: url('/images/icons/toDoIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .favoritesCircle{
+        background-image: url('/images/icons/favoritesIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .reviewsCircle{
+        background-image: url('/images/icons/reviewIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .exploreCircle {
+        background-image: url('/images/icons/exploreIcon.png');
+        background-size:60%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+
+    .toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
+        transform:scale(.75);
+        transition: 2s all;
+        background-color: rgb(135,202,176,0.75);
+    
+    }
+
+    .toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
+        opacity: 1;
+        transition: 2s all;
+        
+    }
+
+}

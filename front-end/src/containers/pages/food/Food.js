@@ -1,31 +1,26 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
-import "../categoryHome.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import FoodTodo from "./todo/FoodTodo";
+import FoodFavorites from './favorites/FoodFavorites'
+import FoodReviews from "./reviews/FoodReviews";
+import FoodExplore from "./explore/FoodExplore";
+
+import CategoryHomeLayout from '../CategoryHomeLayout'
+import '../categoryHome.css'
 
 class Food extends Component {
 
     render(){
         return(
-
-            <div className="optionsMenu">
-                 <div className="optionsMenuText">
-                    <h1>Yummy treats!</h1>
-                </div>
-                <div className="optionsCircleContainer">
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/todo"><div className="toDoCircle"><p>To Do</p></div></Link>
-                        </div>
-                        <div>    
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/favorites"><div className="favoritesCircle"><p>Favorite</p></div></Link>
-                        </div>
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
-                        </div>
-                        <div>
-                            <Link style={{ textDecoration: 'none' }} to="/userHome/food/explore"><div className="exploreCircle"><p>Explore</p></div></Link>
-                        </div>
-                </div>
-            </div>
+            <Router>
+                <CategoryHomeLayout>
+                    <Route exact path="/userHome/food/" component={FoodExplore} />
+                    <Route exact path="/userHome/food/todo" component={FoodTodo} />
+                    <Route exact path="/userHome/food/favorites" component={FoodFavorites} />
+                    <Route exact path="/userHome/food/reviews" component={FoodReviews} />
+                </CategoryHomeLayout>
+            </Router>
         )
     }
 }

@@ -1,15 +1,16 @@
 .filterBox {
     display: flex;
     flex-direction: row;
-    width: 300px;
+    width: 18rem;
     justify-content: center;
     align-items: center;
-    margin: 0.5rem auto;
-    /* background-color: #ffa094; */
+    margin: 0;
+    padding: 1rem 1rem 0rem 1rem;
+    background-color: #ffa094;
 }
 
 .filterDropDown {
-    width: 7rem;
+    width: 6rem;
     font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
@@ -18,13 +19,15 @@
 
 @media screen and (min-width: 400px) {
     .filterBox{
+        width: 20rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .filterBox{
         display: flex;
         flex-direction: row;
-        width: 400px;
-        justify-content: center;
-        align-items: center;
-        margin: 1rem;
-        padding: 0.5rem;
+        width: 22rem;
 }
 
     .filterDropDown {
@@ -33,3 +36,10 @@
     }
 }
 
+@media screen and (min-width: 1000px) {
+    .filterBox{
+        display: flex;
+        flex-direction: row;
+        width: 25rem;
+    }
+}

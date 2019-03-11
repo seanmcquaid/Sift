@@ -46,7 +46,6 @@ class EventTodo extends Component {
                 eventname: event,
                 type: type,
                 date: date,
-                
                 note: text,
                 email: this.props.login.email
             }
