@@ -1,18 +1,15 @@
-/* .Favorites{
-    margin-top: 7rem;
+.Favorites {
     text-align: center;
 }
 
 h2 {
     color: #333745;
+    margin-top: 3rem;
     font-family: 'Bad Script', cursive;
-    font-size: 22pt; */
-    /* margin-top: 3rem;
-    margin: 3rem auto 1rem; */
-/* } */
+}
 
  /* list styling */
-/* .faveBody {
+.faveBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,18 +28,40 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+    margin-top: 1rem;
+}
 
 /* card styling */
-/* .placeCards{
+.placeCards{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+    background-color:#ffa094;
+    padding: 1rem;
+    width: 18rem;
+}
 
+.placeCard{
+    background-color: #fff1cb;
+    padding: 1rem;
+    margin: 0.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 16rem;
+}
 
-/* h4 {
+.cardLeft {
+    width: 11rem;
+    margin-left: 0.5rem;
+}
+
+.cardRight {
+    width: 4rem;
+}
+
+h4 {
     font-weight: bold;
     font-size: 1rem;
     margin:0.5rem 0;
@@ -52,10 +71,10 @@ h2 {
 p {
     font-size: 0.75rem;
     color: #333745;
-} */
+}
 
 /* Button container */
-/* .buttonContainer{
+.buttonContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,13 +82,16 @@ p {
 
 .buttonContainer button{
     margin: 0.25rem;
-} */
+}
 
 /* larger phones and tablet portraits */
-/* @media screen and (min-width: 400px) {
+@media screen and (min-width: 400px) {
+    .placeCards {
+        width: 20rem;
+    }
 
     .placeCard {
-        width: 20rem;
+        width: 18rem;
     }
     
     .cardLeft {
@@ -80,36 +102,64 @@ p {
     .cardRight {
         width: 6rem;
     }
-} */
+}
+
+@media screen and (min-width: 800px) {
+     h2 {
+        margin-top: 0rem;
+    }
+
+    .placeCards{
+        width: 22rem
+    }
+
+    .placeCard {
+        width: 20rem;
+    }
+}
 
 /* desktop and tablet landscape */
-/* @media screen and (min-width: 1000px){
+@media screen and (min-width: 1000px){
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .faveBody{
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
         align-items: flex-start;
+    
     }
 
     .faveLeft{
-        width: 24rem;
-        margin: 0rem 2rem;
-        padding: 0rem 1rem;
+        width: auto;
+        height: auto;
+        padding: 1rem;
+        margin: 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .faveRight{
-        width: 24rem;
+        width: auto;
+        height: auto;
         padding: 0rem 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin: 1rem 2rem;
-    } */
+    }
 
     /* card styling */
-    /* .placeCard {
+    .placeCards{
+        width: 25rem
+    }
+
+    .placeCard {
         width: 22rem;
     }
 
@@ -117,28 +167,44 @@ p {
         width: 80%;
         margin-left: 0.5rem;
     }
-} */
+}
 
 /* xl screenz */
- /* @media screen and (min-width: 1200px){ 
+ @media screen and (min-width: 1200px){ 
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .faveBody {
         display: flex;
         flex-direction: row;
+    }
+
+    .faveLeft{
+        width: auto;
+        margin: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
+    }
+
+    .faveRight{
+        width: auto;
+        padding: 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .placeCards{
+        width: 25rem
     }
 
     .placeCard {
-        width: 24rem;
+        width: 22rem;
     }
 
-    .faveLeft {
-        width: 26rem;
-        margin: 0rem 3rem;
-    }
-
-    .faveRight {
-        width: 26rem;
-        margin: 1rem 3rem;
-    } 
- } */
+ }
