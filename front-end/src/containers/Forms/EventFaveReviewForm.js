@@ -107,18 +107,19 @@ class EventFaveReviewForm extends Component {
                     <h2>Add your review below!</h2>
                         <div className="addEventReviewNameTypeDate">
                             <input onChange={this.changePlace} type="text" id="NewFaveReviewEvent" value={this.state.place} />
-                            <select id="NewFaveReviewEventType" onChange={this.changeType}>
-                                <option defaultValue={this.state.type}>{this.state.type}</option>
-
-                            </select>
-                            <select id="NewFaveReviewEventStars" value={this.state.stars} onChange={this.changeStars} required> 
-                                <option value="">{this.props.defaultStars}</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                            <div className="NewFaveReviewEventTypeStars">
+                                <select id="NewFaveReviewEventType" onChange={this.changeType}>
+                                    <option defaultValue={this.state.type}>{this.state.type}</option>
+                                </select>
+                                <select id="NewFaveReviewEventStars" value={this.state.stars} onChange={this.changeStars} required> 
+                                    <option value="">{this.props.defaultStars}</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
                     <input onChange={this.changeDate} type="text" id="NewFaveReviewEventDate" value={this.state.date} />
                         </div>
                         <div className="addNewEventReview">
