@@ -9,6 +9,7 @@ import Home from "./containers/home/Home"
 import Splash from "./components/splash/Splash";
 import Login from "./containers/users/login/Login";
 import Register from "./containers/users/register/Register";
+import Account from "./containers/users/account/Account";
 
 import Food from "./containers/pages/food/Food";
 import FoodTodo from "./containers/pages/food/todo/FoodTodo";
@@ -43,6 +44,7 @@ class App extends Component {
           <Route exact path="/" component={Splash}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
+          <Route exact path="/account" component={Account} />
 
           <Route exact path="/userHome" component={Home}/>
           

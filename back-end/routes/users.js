@@ -68,4 +68,25 @@ router.post('/login', function(req, res, next) {
   })
 });
 
+
+router.post("/account", (req,res,next)=>{
+  console.log(req.body)
+  const email = req.body.email;
+  const password = req.body.password;
+  const selectUserQuery = `SELECT id from users where email = $1;`;
+  db.query(selectUserQuery, [email]).then((results)=>{
+      const uid = results[0].id;
+      console.log(uid, email)
+      const updateUserQuery = `UPDATE users
+            SET hash = $1
+            WHERE id = $2 and email =$3;`;
+      const hash = bcrypt.hashSync(password);
+      console.log(hash)
+      db.query(updateUserQuery, [hash, uid, email])
+      res.json('Yay, Updated')
+  }).catch((error)=>{
+    if(error){throw error};
+  })
+})
+
 module.exports = router;
