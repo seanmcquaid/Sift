@@ -1,19 +1,15 @@
-/* mobile shared */
-
-/* .Reviews {
-    margin-top: 7rem;
-    text-align:center;
+.Reviews {
+    text-align: center;
 }
 
 h2 {
     color: #333745;
+    margin-top: 3rem;
     font-family: 'Bad Script', cursive;
-    font-size: 22pt;
-   
-} */
+}
 
- /* reviews styling */
-/* .reviewBody {
+ /* list styling */
+.reviewBody {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,27 +25,43 @@ h2 {
 .reviewRight {
     width: 22rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
 }
 
-.reviews {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align:center;
-    width: 100%;
-} */
-
 /* card styling */
-/* .placeCards{
+.placeCards{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
+    background-color:#ffa094;
+    padding: 1rem;
+    width: 18rem;
+}
 
-/* h4 {
+.placeCard{
+    background-color: #fff1cb;
+    padding: 1rem;
+    margin: 0.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    width: 16rem;
+}
+
+.cardLeft {
+    width: 11rem;
+    margin-left: 0.5rem;
+}
+
+.cardRight {
+    width: 4rem;
+}
+
+h4 {
     font-weight: bold;
     font-size: 1rem;
     margin:0.5rem 0;
@@ -59,10 +71,10 @@ h2 {
 p {
     font-size: 0.75rem;
     color: #333745;
-} */
+}
 
 /* Button container */
-/* .buttonContainer{
+.buttonContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,13 +82,16 @@ p {
 
 .buttonContainer button{
     margin: 0.25rem;
-} */
+}
 
 /* larger phones and tablet portraits */
-/* @media screen and (min-width: 1000px) {
+@media screen and (min-width: 400px) {
+    .placeCards {
+        width: 20rem;
+    }
 
     .placeCard {
-        width: 20rem;
+        width: 18rem;
     }
     
     .cardLeft {
@@ -87,37 +102,66 @@ p {
     .cardRight {
         width: 6rem;
     }
-} */
+}
+
+@media screen and (min-width: 800px) {
+    .reviewBody {
+        justify-content: space-evenly;
+    }
+     h2 {
+        margin-top: 0rem;
+    }
+
+    .placeCards{
+        width: 22rem
+    }
+
+    .placeCard {
+        width: 20rem;
+    }
+}
 
 /* desktop and tablet landscape */
-/* @media screen and (min-width: 900px){
+@media screen and (min-width: 1000px){
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .reviewBody{
         width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: flex-start;
-        margin-top: 1rem;
+    
     }
 
     .reviewLeft{
-        width: 24rem;
-        margin: 0rem 2rem;
+        width: auto;
+        height: auto;
         padding: 1rem;
+        margin: 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .reviewRight{
-        width: 24rem;
-        padding: 1rem;
+        width: auto;
+        height: auto;
+        padding: 0rem 1rem;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        margin: 1rem 2rem;
-    } */
+    }
 
     /* card styling */
-    /* .placeCard {
+    .placeCards{
+        width: 25rem
+    }
+
+    .placeCard {
         width: 22rem;
     }
 
@@ -125,29 +169,44 @@ p {
         width: 80%;
         margin-left: 0.5rem;
     }
-} */
+}
 
 /* xl screenz */
- /* @media screen and (min-width: 1200px){ 
+ @media screen and (min-width: 1200px){ 
+
+    h2 {
+        margin-top: 0rem;
+    }
+
     .reviewBody {
-        margin-top: 1rem;
         display: flex;
         flex-direction: row;
+    }
+
+    .reviewLeft{
+        width: auto;
+        margin: 1rem;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
+    }
+
+    .reviewRight{
+        width: auto;
+        padding: 0rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .placeCards{
+        width: 25rem
     }
 
     .placeCard {
-        width: 24rem;
+        width: 22rem;
     }
 
-    .reviewLeft {
-        width: 26rem;
-        margin: 0rem 3rem;
-    }
-
-    .reviewRight {
-        width: 26rem;
-        margin: 1rem 3rem;
-    } 
- } */
+ }

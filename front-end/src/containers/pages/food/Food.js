@@ -8,6 +8,9 @@ import FoodExplore from "./explore/FoodExplore";
 
 import CategoryHomeLayout from '../CategoryHomeLayout'
 import '../categoryHome.css'
+import EditForm from '../../Forms/EditForm';
+import FaveReviewForm from '../../Forms/FaveReviewForm';
+import EventFaveReviewForm from '../../Forms/EventFaveReviewForm';
 
 class Food extends Component {
 
@@ -19,6 +22,9 @@ class Food extends Component {
                     <Route exact path="/userHome/food/todo" component={FoodTodo} />
                     <Route exact path="/userHome/food/favorites" component={FoodFavorites} />
                     <Route exact path="/userHome/food/reviews" component={FoodReviews} />
+                    <Route exact path="/userHome/:category/edit/:section/:place" component={EditForm} />
+                    <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
+                    <Route exact path="/userHome/:category/eventReviews/:section/:place" component={EventFaveReviewForm} />
                 </CategoryHomeLayout>
             </Router>
         )
