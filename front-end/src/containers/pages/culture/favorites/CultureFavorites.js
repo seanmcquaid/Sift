@@ -103,6 +103,7 @@ class CultureFavorites extends Component {
             let section = "favorites";
 
             if (this.state.list.data !== undefined) {
+                document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
                 var favorites = this.state.list.data.map((culture, i) => {
                     return (
                         <div key={i} className="placeCard">
