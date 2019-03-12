@@ -134,7 +134,7 @@ class FoodExplore extends Component {
             })
         return (
             <div className="Explore">
-                <h2>Explore That Food therrreeeee</h2>
+                <h2>Explore Food</h2>
                 <div className="exploreBody">
                     <div className="exploreLeft">
                         <ExploreForm
