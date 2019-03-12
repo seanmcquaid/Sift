@@ -14,7 +14,7 @@ class SideNav extends Component {
         let todoLink = `/userHome/${this.props.category}/todo`
         let faveLink = `/userHome/${this.props.category}/favorites`
         let reviewsLink = `/userHome/${this.props.category}/reviews`
-
+        
         return (
             <div className="sideNav">
                 <div className="circleContainer">

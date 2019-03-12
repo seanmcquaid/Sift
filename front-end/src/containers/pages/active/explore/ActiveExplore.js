@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
+import {Redirect} from 'react-router-dom';
 import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -119,6 +120,7 @@ class ActiveExplore extends Component {
             if(type === undefined){
                 type = "Outdoor"
             }
+            
             
             return (
                 <div key={i} className="placeCard">

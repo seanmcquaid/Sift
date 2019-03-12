@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
+import {Redirect} from 'react-router-dom';
 import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -133,23 +134,30 @@ class CultureExplore extends Component {
                 </div>
                 )
             })
-        return (
-            <div className="Explore">
-                <h2>Explore Culture</h2>
-                <div className="exploreBody">
-                    <div className="exploreLeft">
-                        <ExploreForm
-                        searchPlaceholder="What would you like to do?"
-                        locationPlaceholder="Enter city and state"
-                        exploreRequest={this.exploreRequest}
-                        />
-                    </div>
-                    <div className="exploreRight">
-                        <PlaceCards cards={exploreResults} />
+
+        if(this.props.login.length === 0){
+            return(
+            <Redirect to="/login"/>
+            )
+        } else {
+            return (
+                <div className="Explore">
+                    <h2>Explore Culture</h2>
+                    <div className="exploreBody">
+                        <div className="exploreLeft">
+                            <ExploreForm
+                            searchPlaceholder="What would you like to do?"
+                            locationPlaceholder="Enter city and state"
+                            exploreRequest={this.exploreRequest}
+                            />
+                        </div>
+                        <div className="exploreRight">
+                            <PlaceCards cards={exploreResults} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
