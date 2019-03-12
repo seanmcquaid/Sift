@@ -10,7 +10,7 @@ router.post('/getFoodList', (req, res, next)=>{
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         console.log(uid);
-        const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
+        const getFoodToDoQuery = `SELECT placename, note, type FROM food WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
         db.query(getFoodToDoQuery,[uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
@@ -35,7 +35,7 @@ router.post('/addFood', (req, res, next)=>{
         const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite, reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
         db.query(insertFoodQuery, [uid, place, type, note, true, false, false]).then(() => {
-            const getFoodToDoQuery = `SELECT placename, note FROM food WHERE todo = true AND uid = $1;`;
+            const getFoodToDoQuery = `SELECT placename, note, type FROM food WHERE todo = true AND uid = $1;`;
             db.query(getFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             })
@@ -56,7 +56,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
         const updateQuery = `UPDATE food SET todo = false, favorite = true WHERE uid = $1
         AND placename = $2;`
         db.query(updateQuery, [uid, placename]).then((results)=>{
-            const selectFoodToDoQuery = ` SELECT placename, note FROM food WHERE uid =$1 AND 
+            const selectFoodToDoQuery = ` SELECT placename, note, type FROM food WHERE uid =$1 AND 
             todo = true AND favorite = false;`;
             db.query(selectFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
@@ -179,7 +179,7 @@ router.post("/filter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM food WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false;`;
+        const filterQuery = `SELECT placename, note, type FROM food WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
@@ -198,7 +198,7 @@ router.post('/getFoodFaveList', (req,res,next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const getFavesQuery = `SELECT placename, note FROM food WHERE todo = false AND favorite = true AND uid = $1;`;
+        const getFavesQuery = `SELECT placename, note,type FROM food WHERE todo = false AND favorite = true AND uid = $1;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
@@ -222,7 +222,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
         const insertFoodQuery = `INSERT INTO food (uid, placename, type, note, todo, favorite,reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
         db.query(insertFoodQuery, [uid, place, type, note, false, true, false]).then(() => {
-            const getFoodToDoQuery = `SELECT placename, note FROM food WHERE favorite = true AND uid = $1;`;
+            const getFoodToDoQuery = `SELECT placename, note,type FROM food WHERE favorite = true AND uid = $1;`;
             db.query(getFoodToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             })
@@ -248,7 +248,7 @@ router.post("/deleteFavePlace/:placename", (req,res,next)=>{
         }).catch((error) => {
             if (error) { throw error };
         })
-        const selectFoodToDoQuery = `SELECT placename, note FROM food WHERE uid =$1 AND 
+        const selectFoodToDoQuery = `SELECT placename, note, type FROM food WHERE uid =$1 AND 
         todo = false AND favorite = true`;
         db.query(selectFoodToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
@@ -271,7 +271,7 @@ router.post("/faveFilter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM food WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false;`;
+        const filterQuery = `SELECT placename, note, type FROM food WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)

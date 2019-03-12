@@ -100,10 +100,11 @@ class FoodFavorites extends Component {
             let section = "favorites";
             if (this.state.list.data !== undefined) {
                 var favorites = this.state.list.data.map((food, i) => {
+                    // console.log(food)
                     return (
                         <div key={i} className="placeCard">
                             <div className="cardLeft">
-                                <h4>{food.placename}</h4>
+                                <h4>{food.placename} : {food.type} </h4>
                                 <p>{food.note}</p>
                             </div>
                             <div className="buttonContainer">

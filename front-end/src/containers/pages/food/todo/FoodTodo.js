@@ -6,10 +6,10 @@ import 'sweetalert/dist/sweetalert.css';
 import { Link, Redirect } from 'react-router-dom';
 
 import AddForm from '../../../Forms/AddForm';
-import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
-import Button from '../../../../components/utility/button/Button'
+import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
+import Button from '../../../../components/utility/button/Button';
 import Filter from '../../../../components/utility/filterDropDown/Filter';
-import '../../todo.css'
+import '../../todo.css';
 
 class FoodTodo extends Component {
     constructor() {
@@ -122,7 +122,7 @@ class FoodTodo extends Component {
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
-                            <h4>{food.placename}</h4>
+                            <h4>{food.placename} : {food.type}</h4>
                             <div>
                                 <p>{food.note}</p>
                             </div>
