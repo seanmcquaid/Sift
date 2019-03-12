@@ -68,7 +68,7 @@ class ActiveExplore extends Component {
         const email = this.props.login.email;
         axios({
             method: 'POST',
-            url: `${window.apiHost}/food/addExploreTodo`,
+            url: `${window.apiHost}/active/addExploreTodo`,
             data: {
                 place,
                 type,
@@ -77,7 +77,7 @@ class ActiveExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/food/todo")
+                this.props.history.push("/userHome/active/todo")
             }
         })
     }
@@ -86,7 +86,7 @@ class ActiveExplore extends Component {
         const email = this.props.login.email;
         axios({
             method: 'POST',
-            url: `${window.apiHost}/food/addExploreFavorite`,
+            url: `${window.apiHost}/active/addExploreFavorite`,
             data: {
                 place,
                 type,
@@ -95,7 +95,7 @@ class ActiveExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/food/favorites")
+                this.props.history.push("/userHome/active/favorites")
             }
         })
 

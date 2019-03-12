@@ -154,7 +154,8 @@ class CultureExplore extends Component {
 
 function mapStateToProps(state) {
     return {
-        login: state.login
+        login: state.login,
+        category : state.category
     }
 }
 
