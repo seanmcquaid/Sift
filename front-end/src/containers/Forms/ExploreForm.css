@@ -1,0 +1,143 @@
+/* mobile shared */
+body {
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+.ExploreFormContainer{
+    margin-top: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.ExploreForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editNameAndType {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#NewSearchPlace {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 1rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+#NewSearchLocation {
+    font-size: 0.75rem;
+    width: 14rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    border-radius: 20px;
+    border: 1px solid rgb(165, 165, 165);
+    margin: 1rem;
+    padding: 0.5rem;
+    outline:none;
+}
+
+
+/* min 400px */
+@media screen and (min-width: 400px){
+    .editForm {
+        width: 24rem;
+    }
+
+    #NewSearchPlace{
+        width: 16rem;
+        font-size: 1rem
+    }
+
+    #NewSearchLocation{
+        width: 16rem;
+        font-size: 1rem
+    }
+
+
+}
+
+@media screen and (min-width: 600px) {
+    .editNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
+    #NewSearchPlacePlace {
+        margin: 0.5rem;
+    }
+
+    #NewSearchLocation{
+        margin:0.5rem;
+    }
+
+
+
+}
+
+/* min 900px */
+@media screen and (min-width: 900px) {
+    .editForm {
+        width: 22rem;
+        margin: 1rem;
+    }
+
+    .editNameAndType {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #NewSearchPlace {
+        width: 14rem;
+        margin: 0.5rem;
+        font-size: 1rem
+    }
+
+    #NewSearchLocation{
+        width: 14rem;
+        margin: 0.5rem;
+        font-size: 1rem
+    }
+
+
+}
+
+@media screen and (min-width: 1200px){
+    .editForm {
+        width: 26rem;
+        margin-bottom: 1rem;
+    }
+
+    #NewSearchPlace {
+        width: 16rem;
+        margin: 1rem;
+        font-size: 1rem;
+    }
+
+    #NewSearchLocation{
+        width: 16rem;
+        margin: 1rem;
+        font-size: 1rem
+    }
+
+}
+
