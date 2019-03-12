@@ -70,7 +70,6 @@ class AddEventForm extends Component {
         let maxDate = '2030-03-10'
         return(
             <div className="AddEventFormContainer">
-                <h3>Add an event!</h3>
                 <form onSubmit={this.addNewEvent} className="AddEventForm">
                     <div className="addEventName">
                         <input onChange={this.changeEvent} type="text" id="NewAddEvent" placeholder={this.props.placeholder} value={this.state.events} />

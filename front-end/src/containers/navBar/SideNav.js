@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+// import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import './SideNav.css';
 
 class SideNav extends Component {
     constructor(){
         super()
-        this.state = {
-            
-        }
     }
-    render() {
-        return (
 
+    render() {
+        let catHome = `/userHome/${this.props.category}`
+        let todoLink = `/userHome/${this.props.category}/todo`
+        let faveLink = `/userHome/${this.props.category}/favorites`
+        let reviewsLink = `/userHome/${this.props.category}/reviews`
+
+        return (
             <div className="sideNav">
-                {/* <div className="sideNavText">
-                    <h1>Yummy treats!</h1>
-                </div> */}
                 <div className="circleContainer">
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/food/"><div className="exploreCircle"><p>Explore</p></div></Link>
+                        <Link style={{ textDecoration: 'none' }} to={catHome}><div className="exploreCircle"><p>Explore</p></div></Link>
                     </div>
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/food/todo"><div className="toDoCircle"><p>To Do</p></div></Link>
+                        <Link style={{ textDecoration: 'none' }} to={todoLink}><div className="toDoCircle"><p>To Do</p></div></Link>
                     </div>
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/food/favorites"><div className="favoritesCircle"><p>Favorite</p></div></Link>
+                        <Link style={{ textDecoration: 'none' }} to={faveLink}><div className="favoritesCircle"><p>Favorite</p></div></Link>
                     </div>
                     <div>
-                        <Link style={{ textDecoration: 'none' }} to="/userHome/food/reviews"><div className="reviewsCircle"><p>Reviews</p></div></Link>
+                        <Link style={{ textDecoration: 'none' }} to={reviewsLink}><div className="reviewsCircle"><p>Reviews</p></div></Link>
                     </div>
                 </div>
             </div>
@@ -36,4 +37,10 @@ class SideNav extends Component {
 }
 
 
-export default SideNav;
+function mapStateToProps(state) {
+    return {
+        category: state.category
+    }
+}
+
+export default connect(mapStateToProps, null)(SideNav);

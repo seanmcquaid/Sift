@@ -5,6 +5,7 @@ import Footer from "../utility/footer/Footer";
 import Aux from "../../hoc/Aux";
 
 function Layout(props){
+    console.log(props.children)
     return(
         <Aux>
             <Nav/>

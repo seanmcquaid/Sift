@@ -4,6 +4,7 @@ import {Link, Redirect} from "react-router-dom";
 import logoutAction from "../../actions/logoutAction"
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import setCategory from '../../actions/setCategory';
 
 class Nav extends Component{
     // need logic to see if logged in, change route on left to user home
@@ -18,8 +19,9 @@ class Nav extends Component{
         }
     }
 
-    navRightLoggedInToggle = (event)=>{
+    navRightLoggedInToggle = (event, cat)=>{
         event.preventDefault();
+        this.props.setCategory(cat)
         if(document.querySelector(".nav-right-dropdown-logged-in").style.display === "none"){
             document.querySelector(".nav-right-dropdown-logged-in").style.display = "inline";
         } else {
@@ -63,21 +65,21 @@ class Nav extends Component{
             navLeft = <div className="logo"><Link to="/userHome">Logo Placeholder</Link></div>;
             navRight = <div className="nav-right">
                             <div className="nav-right-links">
-                                <div className="category-link"><Link to="/userHome/food">Food</Link></div>
-                                <div className="category-link"><Link to="/userHome/active">Active</Link></div>
-                                <div className="category-link"><Link to="/userHome/culture">Culture</Link></div>
-                                <div className="category-link"><Link to="/userHome/event">Events</Link></div>
+                                <div className="category-link"><Link onClick={()=>{this.props.setCategory('food')}} to="/userHome/food">Food</Link></div>
+                                <div className="category-link"><Link onClick={()=>{this.props.setCategory('active')}}  to="/userHome/active">Active</Link></div>
+                                <div className="category-link"><Link onClick={()=>{this.props.setCategory('culture')}}  to="/userHome/culture">Culture</Link></div>
+                                <div className="category-link"><Link onClick={()=>{this.props.setCategory('event')}}  to="/userHome/event">Events</Link></div>
                             </div>
-                            <div className="nav-toggle-icon" onClick={this.navRightLoggedInToggle}>
+                            <div className="nav-toggle-icon" onClick={(event)=>{this.navRightLoggedInToggle(event, 'none')}}>
                                 <i className="fas fa-bars"></i>
                             </div>
                             <div className="nav-right-dropdown-logged-in">
                                 <div className="nav-right-dropdown-link" onClick={this.navRightLoggedInToggle}><Link to="/account">Account</Link></div>
                                 <div className="nav-right-dropdown-link nav-logout" onClick={this.handleLogout}>Log Out</div>
-                                <div className="nav-right-dropdown-link nav-category" onClick={this.navRightLoggedInToggle}><Link to="/userHome/food">Food</Link></div>
-                                <div className="nav-right-dropdown-link nav-category" onClick={this.navRightLoggedInToggle}><Link to="/userHome/active">Active</Link></div>
-                                <div className="nav-right-dropdown-link nav-category" onClick={this.navRightLoggedInToggle}><Link to="/userHome/culture">Culture</Link></div>
-                                <div className="nav-right-dropdown-link nav-category" onClick={this.navRightLoggedInToggle}><Link to="/userHome/event">Events</Link></div>
+                                <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'food')}}><Link to="/userHome/food">Food</Link></div>
+                                <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'active')}}><Link to="/userHome/active">Active</Link></div>
+                                <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'culture')}}><Link to="/userHome/culture">Culture</Link></div>
+                                <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'event')}}><Link to="/userHome/event">Events</Link></div>
                             </div>
                         </div>;
         }
@@ -94,13 +96,14 @@ class Nav extends Component{
 
 function mapStateToProps(state){
     return{
-        login : state.login
+        login : state.login,
     }
 }
 
 function mapDispatchToProps(dispatcher){
     return bindActionCreators({
-        logoutAction : logoutAction
+        logoutAction : logoutAction,
+        setCategory : setCategory
     }, dispatcher)
 }
 

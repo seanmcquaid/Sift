@@ -31,7 +31,7 @@
     width:50px;
     margin:0.5rem;
     border-radius:100%;
-    background-color: #87cab0;
+    background-color: #eba937;
     border: 3px white solid;
     text-align:center;
     vertical-align: middle;
@@ -89,7 +89,7 @@
 .toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
     transform:scale(.75);
     transition: 2s all;
-    background-color: rgb(135,202,176,0.75);
+    /* background-color: rgb(135,202,176,0.75); */
 
 }
 
@@ -133,7 +133,7 @@
         width:100px;
         margin:0.5rem;
         border-radius:100%;
-        background-color: #87cab0;
+        /* background-color: #87cab0; */
         border: 5px white solid;
         text-align:center;
         vertical-align: middle;
@@ -191,7 +191,7 @@
     .toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
         transform:scale(.75);
         transition: 2s all;
-        background-color: rgb(135,202,176,0.75);
+        /* background-color: rgb(135,202,176,0.75); */
 
     }
 
@@ -235,7 +235,7 @@
         width:100px;
         margin:0.5rem;
         border-radius:100%;
-        background-color: #87cab0;
+        /* background-color: #87cab0; */
         border: 5px white solid;
         text-align:center;
         vertical-align: middle;
@@ -293,7 +293,7 @@
     .toDoCircle:hover, .favoritesCircle:hover, .reviewsCircle:hover, .exploreCircle:hover{
         transform:scale(.75);
         transition: 2s all;
-        background-color: rgb(135,202,176,0.75);
+        /* background-color: rgb(135,202,176,0.75); */
     
     }
 
