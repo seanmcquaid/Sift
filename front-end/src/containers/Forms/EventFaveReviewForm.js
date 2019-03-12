@@ -104,7 +104,6 @@ class EventFaveReviewForm extends Component {
             return (
                 <div className="EventFaveReviewFormContainer">
                     <form onSubmit={this.editPlace} className="EventFaveReviewForm">
-                    <h2>Add your review below!</h2>
                         <div className="addEventReviewNameTypeDate">
                             <input onChange={this.changePlace} type="text" id="NewFaveReviewEvent" value={this.state.place} />
                             <div className="NewFaveReviewEventTypeStars">

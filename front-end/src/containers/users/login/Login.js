@@ -64,7 +64,7 @@ class Login extends Component {
                 </div>
                 <div className="login-title">
                     <h1 className="title">Login</h1>
-                    <p className="instructions">Please enter your email and password below!</p>
+                    <p className="instructions">Please enter your email and password</p>
                 </div>
                 <SweetAlert
                         show={this.state.showAlert}

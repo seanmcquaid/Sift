@@ -73,7 +73,6 @@ class AddEventReviewForm extends Component {
         let maxDate = '2030-03-10'
         return(
             <div className="AddEventReviewForm">
-                <h3>Add your review below!</h3>
                 <form onSubmit={this.addNewReview} className="eventReviewForm">
                 <div className="eventInput">
                     <input type="text" placeholder="Enter your place to review here!" value={this.state.place} id="newEvent" onChange={this.changePlace} required/>
