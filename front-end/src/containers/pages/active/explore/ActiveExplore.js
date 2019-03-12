@@ -61,6 +61,7 @@ class ActiveExplore extends Component {
                 })
             });
         })
+        document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
     }
 
     addExploreTodo = (place, type, text) => {
