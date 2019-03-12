@@ -304,3 +304,10 @@
     }
 
 }
+
+@media screen and (max-width: 34.375rem){
+
+    .toDoCircle:hover p, .favoritesCircle:hover p, .reviewsCircle:hover p, .exploreCircle:hover p{
+        display:none;
+    }
+}
