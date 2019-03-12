@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import "./FoodExplore.css"
+import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
 
