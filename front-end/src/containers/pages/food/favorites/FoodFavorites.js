@@ -139,7 +139,7 @@ class FoodFavorites extends Component {
                                     addNewPlace={this.addNewPlace}
                                     placeholder="Add new..."
                                     textType="Add note..."
-                                    defaultType="Restaurant"
+                                    defaultType="Choose type!"
                                     types={typeArray}
                                 />
                             </div>
