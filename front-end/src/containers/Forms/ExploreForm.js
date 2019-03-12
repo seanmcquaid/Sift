@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 import Button from "../../components/utility/button/Button";
+import './ExploreForm.css'
 
 class ExploreForm extends Component {
     constructor() {

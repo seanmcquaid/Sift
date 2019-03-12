@@ -134,20 +134,20 @@ class FoodExplore extends Component {
             })
         return (
             <div className="Explore">
-                    <h2>Explore That Food therrreeeee</h2>
-                    <div className="exploreBody">
-                        <div className="exploreLeft">
-                            <ExploreForm
-                            searchPlaceholder="What would you like to eat?"
-                            locationPlaceholder="Enter city and state"
-                            exploreRequest={this.exploreRequest}
-                            />
-                        </div>
-                        <div className="exploreRight">
-                            <PlaceCards cards={exploreResults} />
-                        </div>
+                <h2>Explore That Food therrreeeee</h2>
+                <div className="exploreBody">
+                    <div className="exploreLeft">
+                        <ExploreForm
+                        searchPlaceholder="What would you like to eat?"
+                        locationPlaceholder="Enter city and state"
+                        exploreRequest={this.exploreRequest}
+                        />
+                    </div>
+                    <div className="exploreRight">
+                        <PlaceCards cards={exploreResults} />
                     </div>
                 </div>
+            </div>
         )
     }
 }
