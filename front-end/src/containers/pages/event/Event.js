@@ -10,6 +10,7 @@ import FaveReviewForm from '../../Forms/FaveReviewForm';
 import EventFaveReviewForm from '../../Forms/EventFaveReviewForm';
 
 import "../categoryHome.css";
+import EventExplore from './explore/EventExplore';
 
 
 class Event extends Component {
@@ -18,7 +19,7 @@ class Event extends Component {
         return (
             <Router>
                 <CategoryHomeLayout>
-                    {/* home page for explore!? */}
+                    <Route exact path="/userHome/event" component={EventExplore} />
                     <Route exact path="/userHome/event/todo" component={EventTodo} />
                     <Route exact path="/userHome/event/favorites" component={EventFavorites} />
                     <Route exact path="/userHome/event/reviews" component={EventReviews} />

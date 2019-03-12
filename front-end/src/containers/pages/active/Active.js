@@ -9,6 +9,7 @@ import EditForm from '../../Forms/EditForm';
 import FaveReviewForm from '../../Forms/FaveReviewForm'
 
 import "../categoryHome.css";
+import ActiveExplore from './explore/ActiveExplore';
 
 
 class Active extends Component {
@@ -17,7 +18,7 @@ class Active extends Component {
         return (
             <Router>
                 <CategoryHomeLayout>
-                    {/* <Route exact path="/userHome/culture" component={CultureExplore} /> */}
+                    <Route exact path="/userHome/active" component={ActiveExplore} />
                     <Route exact path="/userHome/active/todo" component={ActiveTodo} />
                     <Route exact path="/userHome/active/favorites" component={ActiveFavorites} />
                     <Route exact path="/userHome/active/reviews" component={ActiveReviews} />
