@@ -19,9 +19,19 @@ function Splash(props){
                 </p>
                 <h1>How Does It Work?</h1>
                 <div className="boxContainer">
-                    <div className="box"></div>
-                    <div className="box"></div>
-                    <div className="box"></div>
+                    <div className="singleBoxContainer">
+                        <div className="box1"></div>
+                        <p>Choose an activity</p>
+                    </div>
+                    <div className="singleBoxContainer">
+                        <div className="box2"></div>
+                        <p>Search nearby options</p>
+                    </div>
+                    <div className="singleBoxContainer">
+                        <div className="box3"></div>
+                        <p>Review your favorites</p>
+                    </div>
+                    
                 </div>
                 <h1>Intereste<span className="questionMark">d?</span></h1>
                 <p><Link to="../../register">Register</Link> today and start planning your next adventure.</p>
