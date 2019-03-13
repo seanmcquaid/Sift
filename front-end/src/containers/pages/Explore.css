@@ -40,8 +40,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ffebaf;
-    /* background-color:#ffa094; */
+    background-color:#ffa094;
     padding: 1rem;
     width: 18rem;
 }

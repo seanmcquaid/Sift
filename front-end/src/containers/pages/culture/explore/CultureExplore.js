@@ -62,7 +62,7 @@ class CultureExplore extends Component {
                 })
             });
         })
-        document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     addExploreTodo = (place, type, text) => {

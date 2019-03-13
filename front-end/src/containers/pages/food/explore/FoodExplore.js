@@ -62,7 +62,7 @@ class FoodExplore extends Component {
                 })
             });
         })
-        document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     addExploreTodo = (place, type, text) => {
@@ -102,8 +102,8 @@ class FoodExplore extends Component {
         })
 
     }
-
     render(){
+        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
