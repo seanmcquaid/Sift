@@ -18,7 +18,8 @@ function Carousel(props){
     return(
         <div className="carouselWrapper">
             <div className="carouselText">
-                <h1>Sift</h1>
+                <img className="mainLogo" src='../../../images/logo/logoOutline2.png' alt="logo" />
+                <h1>sift</h1>
             </div>
             <Slider {...settings} className="carouselImageRow" >
                     <div className="slick-image">

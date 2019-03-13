@@ -2,7 +2,7 @@
     width: 100%;
     top: 0;
     background-color: #ffa094;
-    padding: 1rem 0 1rem 0;
+    padding: 0.5rem 0 0.5rem 0;
     box-shadow:0 1px 6px rgba(2, 15, 7, 0.502);
     position: fixed;
     display: flex;
@@ -15,7 +15,18 @@
 .logo {
     width: 50%;
     margin-left: 0.5rem;
+    z-index: 25;
 }
+
+.logoImg {
+    width: 2.5rem;
+    z-index: 26;
+    margin: 0 0.25rem;
+}
+/* 
+img {
+    width: 3rem;
+} */
 
 .nav-right {
     width: 50%;

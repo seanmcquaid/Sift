@@ -46,7 +46,7 @@ class Nav extends Component{
         let navLeft;
         let navRight;
         if(this.props.login.length === 0){
-            navLeft = <div className="logo"><Link to="/">Logo Placeholder</Link></div>;
+            navLeft = <div className="logo"><Link to="/"><img className="logoImg" src='../../../../images/logo/logoDarkGray.png' alt='logo'/></Link></div>;
             navRight = <div className="nav-right-login">
                             <div className="nav-right-login-links">
                                 <div className="login-link"><Link to="/login">Login</Link></div>
