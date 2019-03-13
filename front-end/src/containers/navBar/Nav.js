@@ -62,7 +62,7 @@ class Nav extends Component{
                         </div>;
             
         } else {
-            navLeft = <div className="logo"><Link to="/userHome">Logo Placeholder</Link></div>;
+            navLeft = <div className="logo"><Link to="/userHome"><img className="logoImg" src='../../../../images/logo/logoDarkGray.png' alt='logo'/></Link></div>;
             navRight = <div className="nav-right">
                             <div className="nav-right-links">
                                 <div className="category-link"><Link onClick={()=>{this.props.setCategory('food')}} to="/userHome/food">Food</Link></div>
