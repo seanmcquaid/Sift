@@ -8,12 +8,12 @@ import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
 
-class FoodExplore extends Component {
+class CultureExplore extends Component {
     constructor(){
         super()
         this.state = {
             exploreResults : [],
-            types: ['Restaurant','Cafe', 'Bar', 'Diner'],
+            types: ['Music', 'Art', 'Theater', 'Learning'],
         }
     }
 
@@ -70,7 +70,7 @@ class FoodExplore extends Component {
         const email = this.props.login.email;
         axios({
             method: 'POST',
-            url: `${window.apiHost}/food/addExploreTodo`,
+            url: `${window.apiHost}/culture/addExploreTodo`,
             data: {
                 place,
                 type,
@@ -79,7 +79,7 @@ class FoodExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/food/todo")
+                this.props.history.push("/userHome/culture/todo")
             }
         })
     }
@@ -88,7 +88,7 @@ class FoodExplore extends Component {
         const email = this.props.login.email;
         axios({
             method: 'POST',
-            url: `${window.apiHost}/food/addExploreFavorite`,
+            url: `${window.apiHost}/culture/addExploreFavorite`,
             data: {
                 place,
                 type,
@@ -97,14 +97,14 @@ class FoodExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/food/favorites")
+                this.props.history.push("/userHome/culture/favorites")
             }
         })
 
     }
 
     render(){
-        // console.log(this.state)
+        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -118,7 +118,7 @@ class FoodExplore extends Component {
             }
             
             if(type === undefined){
-                type = "Restaurant"
+                type = "Learning"
             }
             
             return (
@@ -134,36 +134,38 @@ class FoodExplore extends Component {
                 </div>
                 )
             })
-            if(this.props.login.length === 0){
-                return(
-                <Redirect to="/login"/>
-                )
-            } else {
-                return (
-                    <div className="Explore">
-                        <h2>Explore Food</h2>
-                        <div className="exploreBody">
-                            <div className="exploreLeft">
-                                <ExploreForm
-                                searchPlaceholder="What would you like to eat?"
-                                locationPlaceholder="Enter city and state"
-                                exploreRequest={this.exploreRequest}
-                                />
-                            </div>
-                            <div className="exploreRight">
-                                <PlaceCards cards={exploreResults} />
-                            </div>
+
+        if(this.props.login.length === 0){
+            return(
+            <Redirect to="/login"/>
+            )
+        } else {
+            return (
+                <div className="Explore">
+                    <h2>Explore Culture</h2>
+                    <div className="exploreBody">
+                        <div className="exploreLeft">
+                            <ExploreForm
+                            searchPlaceholder="What would you like to do?"
+                            locationPlaceholder="Enter city and state"
+                            exploreRequest={this.exploreRequest}
+                            />
+                        </div>
+                        <div className="exploreRight">
+                            <PlaceCards cards={exploreResults} />
                         </div>
                     </div>
-                )
-            }
+                </div>
+            )
+        }
     }
 }
 
 function mapStateToProps(state) {
     return {
-        login: state.login
+        login: state.login,
+        category : state.category
     }
 }
 
-export default connect(mapStateToProps, null)(FoodExplore);
+export default connect(mapStateToProps, null)(CultureExplore);

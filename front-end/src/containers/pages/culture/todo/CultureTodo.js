@@ -121,6 +121,7 @@ class CultureToDo extends Component {
         let category = "culture";
         let section = "todo";
         if (this.state.list.data !== undefined) {
+            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var cultureToDo = this.state.list.data.map((culture, i) => {
                 console.log(culture)
                 return (

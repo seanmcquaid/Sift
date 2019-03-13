@@ -74,6 +74,7 @@ class CultureReviews extends Component {
         let category = "culture";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
+            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var cultureReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">

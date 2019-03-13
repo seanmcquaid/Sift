@@ -73,6 +73,7 @@ class ActiveReviews extends Component {
         let category = "active";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
+            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var activeReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">
