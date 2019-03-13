@@ -83,7 +83,6 @@ class FoodReviews extends Component {
                         </div>
                         <div className="cardRight">
                             <div className="buttonContainer">
-                                <Button className="shareButton">Share</Button>
                                 <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.placename} >Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
                             </div>

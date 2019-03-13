@@ -92,7 +92,6 @@ class EventReviews extends Component {
 
                         <div className="cardRight">
                             <div className="buttonContainer">
-                                <Button className="shareButton">Share</Button>
                                 <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
                             </div>
