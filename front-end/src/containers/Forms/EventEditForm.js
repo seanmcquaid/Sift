@@ -141,8 +141,9 @@ class EditForm extends Component {
                 <div className="EditFormContainer">
                     <form onSubmit={this.editevent} className="editForm">
                     <h2>Make your edits below!</h2>
+                    <input onChange={this.changeevent} type="text" id="editPlace" defaultValue={this.state.event} />
                         <div className="editNameAndType">
-                            <input onChange={this.changeevent} type="text" id="editevent" defaultValue={this.state.event} />
+                            
                             <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
                                 <option defaultValue={this.state.type}>{this.state.type}</option>
                                 {typeArray}
