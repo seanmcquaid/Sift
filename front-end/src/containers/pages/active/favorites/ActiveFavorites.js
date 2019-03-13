@@ -65,7 +65,6 @@ class ActiveFavorites extends Component {
 
 
     removePlace = (activity) => {
-        console.log(this.props.login.email)
         axios({
             method: "POST",
             url: `${window.apiHost}/active/deleteFavePlace/${activity}`,

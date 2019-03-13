@@ -38,9 +38,7 @@ class FaveReviewForm extends Component {
                 category : category,
                 type : responseFromDB.data.type,
             })
-            
         })
-        console.log(this.state)
     }
 
     editPlace = (event)=>{
@@ -85,8 +83,6 @@ class FaveReviewForm extends Component {
 
 
     render() {
-        console.log(this.state.redirect)
-        console.log(this.state)
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
@@ -106,7 +102,7 @@ class FaveReviewForm extends Component {
                                     <option defaultValue={this.state.type}>{this.state.type}</option>
                                 </select>
                                 <select className="faveReviewStarDropdown" value={this.state.stars} onChange={this.changeStars} required> 
-                                    <option value="5">Stars</option>
+                                    <option value="">Stars</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>

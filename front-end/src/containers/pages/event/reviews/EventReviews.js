@@ -103,13 +103,6 @@ class EventReviews extends Component {
             })
         } 
         
-        // console.log(document.querySelector(".placeCards").style.backgroundColor)
-        // if (this.state.list.length === 0){
-        //     document.querySelector(".placeCards").style.backgroundColor = "#ffebaf";
-        // } else {
-            
-        // }
-        console.log(this.state.list)
         const typeArray = this.state.types.map((type, i)=>{
             return (<option key={i} value={type}>{type}</option>)
         });

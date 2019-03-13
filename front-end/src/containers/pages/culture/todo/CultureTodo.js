@@ -71,7 +71,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse,
                 msg: "Success! Added to favorites",
@@ -88,7 +87,6 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            console.log(backEndResponse)
             this.setState({
                 list: backEndResponse
             })
@@ -130,7 +128,6 @@ class CultureToDo extends Component {
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var cultureToDo = this.state.list.data.map((culture, i) => {
-                console.log(culture)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
@@ -165,10 +162,10 @@ class CultureToDo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Culture To Do!</h2>
+                    <h2>Expanding horizons...</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title={this.state.swTitle}
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />

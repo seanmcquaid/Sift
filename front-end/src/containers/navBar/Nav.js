@@ -74,7 +74,7 @@ class Nav extends Component{
                                 <i className="fas fa-bars"></i>
                             </div>
                             <div className="nav-right-dropdown-logged-in">
-                                <div className="nav-right-dropdown-link" onClick={this.navRightLoggedInToggle}><Link to="/account">Account</Link></div>
+                                <div className="nav-right-dropdown-link" onClick={(event) => {this.navRightLoggedInToggle(event, 'none')}}><Link to="/account">Account</Link></div>
                                 <div className="nav-right-dropdown-link nav-logout" onClick={this.handleLogout}>Log Out</div>
                                 <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'food')}}><Link to="/userHome/food">Food</Link></div>
                                 <div className="nav-right-dropdown-link nav-category" onClick={(event)=>{this.navRightLoggedInToggle(event, 'active')}}><Link to="/userHome/active">Active</Link></div>

@@ -47,8 +47,8 @@ class CultureExplore extends Component {
             let searchResults = [];
             service.textSearch(request, (results, status)=> {
                 let loopLength;
-                if (10 < results.length){
-                    loopLength = 10
+                if (20 < results.length){
+                    loopLength = 20
                 } else {
                     loopLength = results.length
                 }
@@ -104,7 +104,6 @@ class CultureExplore extends Component {
     }
 
     render(){
-        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -142,7 +141,7 @@ class CultureExplore extends Component {
         } else {
             return (
                 <div className="Explore">
-                    <h2>Explore Culture</h2>
+                    <h2>Explore your options...</h2>
                     <div className="exploreBody">
                         <div className="exploreLeft">
                             <ExploreForm

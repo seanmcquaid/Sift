@@ -104,7 +104,6 @@ class FoodExplore extends Component {
     }
 
     render(){
-        // console.log(this.state)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -142,7 +141,7 @@ class FoodExplore extends Component {
             } else {
                 return (
                     <div className="Explore">
-                        <h2>Explore Food</h2>
+                        <h2>Explore your palette...</h2>
                         <div className="exploreBody">
                             <div className="exploreLeft">
                                 <ExploreForm
