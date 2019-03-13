@@ -27,23 +27,23 @@ class Protected extends Component {
         }
         if(pathMatch){
             return(
-                <div>
+                <span>
                     <Route exact path="/" component={Splash}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
-                </div>
+                </span>
             )
         } else {
             if(this.props.login.length !== 0){   
                 return(
-                    <div>
+                    <span>
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/userHome" component={Home}/>
                         <Route path="/userHome/food" component={Food} />
                         <Route path="/userHome/culture" component={Culture} />
                         <Route path="/userHome/event" component={Event} />
                         <Route path="/userHome/active" component={Active}/>
-                    </div>
+                    </span>
                 )
             } else {
                 return(
@@ -61,19 +61,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, null)(Protected);
-
-// always allowed routes
-{/* <Route exact path="/" component={Splash}/>
-<Route exact path="/login" component={Login}/>
-<Route exact path="/register" component={Register}/> */}
-
-// logged in routes
-
-{/* <Route exact path="/account" component={Account} />
-<Route exact path="/userHome" component={Home}/>
-<Route path="/userHome/food" component={Food} />
-<Route path="/userHome/culture" component={Culture} />
-<Route path="/userHome/event" component={Event} />
-<Route path="/userHome/active" component={Active}/> */}
-
-// if not in any of these, redirect
