@@ -11,8 +11,8 @@
     align-content: center;
     align-items: center;
     position: absolute;
-    top: 3rem;
-    left: 15%;
+    /* top: 3rem; */
+    width: 100%;
     z-index: 20;
 }
 
@@ -165,80 +165,142 @@
 
 /* =====CAROUSEL*/
 
-@media screen and (min-width:300px) and (max-width:350px){
-    .carouselText h1{
-        font-size: 2rem;
-        margin-top: 2.25rem;
+@media screen and (min-width:250px) and (max-width:300px){
+    .mainLogo{
+        width: 3.5rem;
+        margin-top: .75rem;
       }
 }
 
-@media screen and (min-width:350px) and (max-width:450px){
-    .carouselText h1{
-        font-size: 3rem;
-        margin-top: 3rem;
+@media screen and (min-width:300px) and (max-width:390px){
+    .mainLogo{
+        width: 4.5rem;
+        margin-top: .75rem;
       }
 }
 
-@media screen and (min-width:450px) and (max-width:550px){
-    .carouselText h1{
-        font-size: 4rem;
-        margin-top: 4rem;
+@media screen and (min-width:390px) and (max-width:450px){
+    .mainLogo{
+        width: 6rem;
+        margin-top: .8rem;
       }
 }
 
-@media screen and (min-width:550px) and (max-width:650px){
-    .carouselText h1{
-        font-size: 5.5rem;
-        margin-top: 5.25rem;
+@media screen and (min-width:450px) and (max-width:520px){
+    .mainLogo{
+        width: 7rem;
+        margin-top: .8rem;
       }
 }
 
-@media screen and (min-width:650px) and (max-width:800px){
-    .carouselText h1{
-        font-size: 6.25rem;
-        margin-top: 7rem;
+@media screen and (min-width:520px) and (max-width:600px){
+    .mainLogo{
+        width: 8rem;
+        margin-top: 1rem;
       }
 }
 
-@media screen and (min-width:800px) and (max-width:950px){
-    .carouselText h1{
-        font-size: 7.5rem;
-        margin-top: 8.5rem;
+@media screen and (min-width:600px) and (max-width:650px){
+    .mainLogo{
+        width: 9rem;
+        margin-top: 1.25rem;
       }
 }
 
-@media screen and (min-width:950px) and (max-width:1150px){
-    .carouselText h1{
-        font-size: 8rem;
-        margin-top: 10rem;
+@media screen and (min-width:650px) and (max-width:775px){
+    .mainLogo{
+        width: 10rem;
+        margin-top: 1.25rem;
       }
 }
 
-@media screen and (min-width:1150px) and (max-width:1250px){
-    .carouselText h1{
-        font-size: 9rem;
-        margin-top: 13rem;
-      }
-
-}
-
-@media screen and (min-width:1250px) and (max-width:1360px){
-    .carouselText h1{
-        font-size: 9rem;
-        margin-top: 14rem;
+@media screen and (min-width:775px) and (max-width:900px){
+    .mainLogo{
+        width: 12rem;
+        margin-top: 1.25rem;
       }
 }
 
-@media screen and (min-width:1360px) and (max-width:1500px){
-  .carouselText h1{
-    font-size: 11rem;
-    margin-top: 15rem;
+@media screen and (min-width:900px) and (max-width:1000px){
+    .mainLogo{
+        width: 14rem;
+        margin-top: 1.25rem;
+      }
+}
+
+@media screen and (min-width:1000px) and (max-width:1150px){
+    .mainLogo{
+        width: 16rem;
+        margin-top: 1.25rem;
+      }
+}
+
+
+@media screen and (min-width:1150px) and (max-width:1300px){
+    .mainLogo{
+        width: 18rem;
+        margin-top: 1.5rem;
+      }
+}
+
+@media screen and (min-width:1300px) and (max-width:1400px){
+    .mainLogo{
+        width: 20rem;
+        margin-top: 2rem;
+      }
+}
+
+@media screen and (min-width:1400px) and (max-width:1600px){
+  .mainLogo{
+    width: 22rem;
+    margin-top: 2rem;
   }
 }
 
-@media screen and (min-width:1500px){
-    .carouselText h1{
-        font-size: 13rem;
-        margin-top: 17rem;
+@media screen and (min-width:1600px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 25rem;
+        
+      }
+}
+
+@media screen and (min-width:1800px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 28rem;
+        
+      }
+}
+
+@media screen and (min-width:2000px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 30rem;
+        
+      }
+}
+
+@media screen and (min-width:2200px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 32rem;
+        
+      }
+}
+
+@media screen and (min-width:2350px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 35rem;
+        
+      }
+}
+
+@media screen and (min-width:2500px){
+    .mainLogo{
+        margin-top:2.5rem;
+        width: 38rem;
+        
       }
 }
