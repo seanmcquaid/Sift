@@ -122,7 +122,6 @@ class EditForm extends Component {
 
 
     render() {
-        const category = this.props.match.params.category;
         let typeArray;
   
             typeArray = this.state.eventTypes.map((type, i) => {
