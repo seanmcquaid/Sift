@@ -46,6 +46,7 @@ router.post('/getEventList', (req, res, next)=>{
 })
 
 
+router.post("/addEvent", (req,res,next)=> {
     const eventname = req.body.eventname;
     const type = req.body.type;
     const readabledate = req.body.readabledate;
