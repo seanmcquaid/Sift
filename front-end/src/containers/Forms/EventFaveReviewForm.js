@@ -106,12 +106,12 @@ class EventFaveReviewForm extends Component {
                 <div className="EventFaveReviewFormContainer">
                     <form onSubmit={this.editPlace} className="EventFaveReviewForm">
                         <div className="addEventReviewNameTypeDate">
-                            <input onChange={this.changePlace} type="text" id="NewFaveReviewEvent" value={this.state.place} />
+                            <input onChange={this.changePlace} type="text" id="NewFaveReviewEvent" value={this.state.place} required />
                             <div className="NewFaveReviewEventTypeStars">
                                 <select id="NewFaveReviewEventType" onChange={this.changeType}>
                                     <option defaultValue={this.state.type}>{this.state.type}</option>
                                 </select>
-                                <select id="NewFaveReviewEventStars" value={this.state.stars} onChange={this.changeStars} required> 
+                                <select id="NewFaveReviewEventStars" value={this.state.stars} onChange={this.changeStars} required > 
                                     <option value="">{this.props.defaultStars}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -120,7 +120,7 @@ class EventFaveReviewForm extends Component {
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                    <input onChange={this.changeDate} type="text" id="NewFaveReviewEventDate" value={this.state.readabledate} />
+                    <input onChange={this.changeDate} type="text" id="NewFaveReviewEventDate" value={this.state.readabledate} required />
                         </div>
                         <div className="addNewEventReview">
                             <textarea onChange={this.changeReview} value={this.state.review} id="NewFaveReviewEventReview"></textarea>

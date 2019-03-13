@@ -90,7 +90,7 @@ class AddEventReviewForm extends Component {
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <input onChange={this.changeDate} id="eventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date}/>
+                    <input onChange={this.changeDate} id="eventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date} required/>
                 </div>
                 <div className="addEventReview">
                     <textarea onChange={this.changeReview} id="newEventReview" placeholder={this.props.placeholder} value={this.state.review} required></textarea>

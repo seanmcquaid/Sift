@@ -137,7 +137,7 @@ class ActiveExplore extends Component {
             })
         return (
             <div className="Explore">
-                <h2>Explore The Outdoors!</h2>
+                <h2>Explore the world around you!</h2>
                 <div className="exploreBody">
                     <div className="exploreLeft">
                         <ExploreForm

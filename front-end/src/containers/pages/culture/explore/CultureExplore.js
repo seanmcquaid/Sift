@@ -142,7 +142,7 @@ class CultureExplore extends Component {
         } else {
             return (
                 <div className="Explore">
-                    <h2>Explore Culture</h2>
+                    <h2>Explore your options...</h2>
                     <div className="exploreBody">
                         <div className="exploreLeft">
                             <ExploreForm
