@@ -55,7 +55,7 @@ class AddEventForm extends Component {
             readabledate: publishDate,
             date: date
         })
-        console.log(new Date())
+        // console.log(new Date())
     }
 
     changeText = (event) => {
@@ -65,7 +65,6 @@ class AddEventForm extends Component {
     }
     
     render(){
-        console.log(this.state)
         let minDate = new Date().toISOString().slice(0,10);
         let maxDate = '2030-03-10'
         return(

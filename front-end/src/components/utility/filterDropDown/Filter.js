@@ -28,7 +28,6 @@ class Filter extends Component{
         this.setState({
             filter: event.target.value
         })
-        console.log('changed filter')
     }
 
     render(){

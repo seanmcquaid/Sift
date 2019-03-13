@@ -38,8 +38,6 @@ class ActiveTodo extends Component {
     }
 
     addNewActive = (activity, type, text) => {
-        // possibly, api call will go here with autocomplete to add name, location to DB
-        // console.log(place, type)
         axios({
             method: 'POST',
             url: `${window.apiHost}/active/addActive`,
@@ -129,7 +127,6 @@ class ActiveTodo extends Component {
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var activeTodo = this.state.list.data.map((activity, i) => {
-                console.log(activity)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">

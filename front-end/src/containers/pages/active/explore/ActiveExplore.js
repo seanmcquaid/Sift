@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -104,7 +104,6 @@ class ActiveExplore extends Component {
     }
 
     render(){
-        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
