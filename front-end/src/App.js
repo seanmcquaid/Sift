@@ -22,7 +22,7 @@ class App extends Component {
       <Router>
          <Layout>
            <Route path="/" component={Protected}/>
-          <Route exact path="/" component={Splash}/>
+          {/* <Route exact path="/" component={Splash}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
           <Route exact path="/account" component={Account} />
@@ -31,7 +31,7 @@ class App extends Component {
           <Route path="/userHome/food" component={Food} />
           <Route path="/userHome/culture" component={Culture} />
           <Route path="/userHome/event" component={Event} />
-          <Route path="/userHome/active" component={Active}/>
+          <Route path="/userHome/active" component={Active}/> */}
 
         </Layout>
       </Router>

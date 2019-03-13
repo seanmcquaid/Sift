@@ -18,9 +18,14 @@ import Event from "../pages/event/Event";
 class Protected extends Component {
     render(){
         let pathArray = ["/login", "/register", "/"];
-        let currentPath = ()=>this.props.location.pathname;
-        // console.log(currentPath())
-        if(pathArray.findIndex(currentPath) !== -1){
+        let currentPath = this.props.location.pathname;
+        let pathMatch = false;
+        for(let i =0; i < pathArray.length; i++){
+            if(pathArray[i] === currentPath){
+                pathMatch = true
+            }
+        }
+        if(pathMatch){
             return(
                 <div>
                     <Route exact path="/" component={Splash}/>
@@ -29,7 +34,7 @@ class Protected extends Component {
                 </div>
             )
         } else {
-            if(this.props.login.length !== 0){
+            if(this.props.login.length !== 0){   
                 return(
                     <div>
                         <Route exact path="/account" component={Account} />
@@ -42,7 +47,7 @@ class Protected extends Component {
                 )
             } else {
                 return(
-                    <Redirect to="/" />
+                    <Redirect to="/"/>
                 )
             }
         }
