@@ -60,7 +60,7 @@ class Login extends Component {
         return(
             <div className="login">
                 <div className="login-header-image">
-                    <img className="header-image" src="../../../../images/food/bread.jpeg" alt="loginImage"/>
+                    <img className="header-image" src="../../../../images/headerImages/8.jpeg" alt="loginImage"/>
                 </div>
                 <div className="login-title">
                     <h1 className="title">Login</h1>
