@@ -10,6 +10,10 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    position: absolute;
+    top: 3rem;
+    left: 15%;
+    z-index: 20;
 }
 
 .carouselText h1{
@@ -19,8 +23,12 @@
     color: white;
     text-shadow:3px 4px 5px #ffa094;
     position: absolute;
-    margin-top: 10rem;
+    margin-top: 2rem;
     z-index: 3;
+}
+
+.mainLogo {
+    width: 20rem;
 }
 
 .carouselImageRow{
