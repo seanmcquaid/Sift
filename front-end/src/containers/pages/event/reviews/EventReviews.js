@@ -79,7 +79,7 @@ class EventReviews extends Component {
     }
 
     render() {
-        let category = "events";
+        let category = "event";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
