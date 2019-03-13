@@ -17,38 +17,35 @@ import Event from "../pages/event/Event";
 
 class Protected extends Component {
     render(){
-        let pathArray = ["/login", "/register", "/"]
-        for(let i = 0; i < pathArray.length; i++){
-            if(pathArray[i] === this.props.location.pathname){
+        let pathArray = ["/login", "/register", "/"];
+        let currentPath = ()=>this.props.location.pathname;
+        // console.log(currentPath())
+        if(pathArray.findIndex(currentPath) !== -1){
+            return(
+                <div>
+                    <Route exact path="/" component={Splash}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route exact path="/register" component={Register}/>
+                </div>
+            )
+        } else {
+            if(this.props.login.length !== 0){
                 return(
                     <div>
-                        <Route exact path="/" component={Splash}/>
-                        <Route exact path="/login" component={Login}/>
-                        <Route exact path="/register" component={Register}/>
+                        <Route exact path="/account" component={Account} />
+                        <Route exact path="/userHome" component={Home}/>
+                        <Route path="/userHome/food" component={Food} />
+                        <Route path="/userHome/culture" component={Culture} />
+                        <Route path="/userHome/event" component={Event} />
+                        <Route path="/userHome/active" component={Active}/>
                     </div>
                 )
             } else {
-                console.log(this.props)
-                if(this.props.length !== 0){
-                    console.log("shrim not shrimp")
-                    return (
-                        <div>
-                            <Route exact path="/account" component={Account} />
-                            <Route exact path="/userHome" component={Home}/>
-                            <Route path="/userHome/food" component={Food} />
-                            <Route path="/userHome/culture" component={Culture} />
-                            <Route path="/userHome/event" component={Event} />
-                            <Route path="/userHome/active" component={Active}/>
-                        </div>
-                    )
-                }else {
-                    return(
-                        <Redirect to="/"/>
-                    )
-                }
+                return(
+                    <Redirect to="/" />
+                )
             }
         }
-        return <h1>shit</h1>
     }
 }
 
@@ -59,3 +56,19 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps, null)(Protected);
+
+// always allowed routes
+{/* <Route exact path="/" component={Splash}/>
+<Route exact path="/login" component={Login}/>
+<Route exact path="/register" component={Register}/> */}
+
+// logged in routes
+
+{/* <Route exact path="/account" component={Account} />
+<Route exact path="/userHome" component={Home}/>
+<Route path="/userHome/food" component={Food} />
+<Route path="/userHome/culture" component={Culture} />
+<Route path="/userHome/event" component={Event} />
+<Route path="/userHome/active" component={Active}/> */}
+
+// if not in any of these, redirect
