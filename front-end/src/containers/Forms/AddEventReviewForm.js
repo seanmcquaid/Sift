@@ -10,14 +10,14 @@ class AddEventReviewForm extends Component {
             type:'',
             review: "",
             date:'',
-            readableDate:'',
+            readabledate:'',
             stars: ""
         }
     }
 
     addNewReview = (event)=>{
         event.preventDefault();
-        this.props.addReview(this.state.events,this.state.type, this.state.review, this.state.readableDate, this.state.stars);
+        this.props.addReview(this.state.events, this.state.type, this.state.review, this.state.date, this.state.readabledate, this.state.stars);
         document.getElementsByClassName('type').value = this.props.defaultType;
         document.getElementsByClassName("starDropdown").value = this.props.defaultStars;
         this.setState({
@@ -25,6 +25,7 @@ class AddEventReviewForm extends Component {
             type:'',
             review: "",
             date:'',
+            readabledate:'',
             stars: ""
         })
     }
@@ -43,14 +44,13 @@ class AddEventReviewForm extends Component {
 
     changeDate = (event) => {
         var date= event.target.value
-        
         var currDate = (date).toString().slice(0,10)
         var currYear = currDate.slice(0,4)
         var currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
         var publishDate = `${currMonDay}-${currYear}`
 
         this.setState({
-            readableDate: publishDate,
+            readabledate: publishDate,
             date: date
         })
         
