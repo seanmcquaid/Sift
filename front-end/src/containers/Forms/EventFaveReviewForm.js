@@ -15,7 +15,6 @@ class EventFaveReviewForm extends Component {
             review:'',
             type: '',
             stars: '',
-            date:'',
             redirect : false
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
@@ -40,6 +39,7 @@ class EventFaveReviewForm extends Component {
                 category : category,
                 type : responseFromDB.data.type,
                 date : responseFromDB.data.date,
+                readabledate: responseFromDB.data.readabledate
             })
             
         })
@@ -93,6 +93,7 @@ class EventFaveReviewForm extends Component {
     render() {
         console.log(this.state.redirect)
         console.log(this.state)
+        console.log(this.state.readabledate)
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
@@ -119,7 +120,7 @@ class EventFaveReviewForm extends Component {
                                     <option value="5">5</option>
                                 </select>
                             </div>
-                    <input onChange={this.changeDate} type="text" id="NewFaveReviewEventDate" value={this.state.date} />
+                    <input onChange={this.changeDate} type="text" id="NewFaveReviewEventDate" value={this.state.readabledate} />
                         </div>
                         <div className="addNewEventReview">
                             <textarea onChange={this.changeReview} value={this.state.review} id="NewFaveReviewEventReview"></textarea>

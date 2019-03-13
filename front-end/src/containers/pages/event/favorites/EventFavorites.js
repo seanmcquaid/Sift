@@ -15,6 +15,8 @@ class EventFavorites extends Component {
         this.state = {
             list: [],
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
+            date:'',
+            readabledate:'',
             msg: "",
             showAlert: false,
         }
@@ -34,7 +36,7 @@ class EventFavorites extends Component {
             })
     }
 
-    addNewEvent = (event, type, date, text) => {
+    addNewEvent = (event, type, date, readabledate, text) => {
         //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
@@ -43,6 +45,7 @@ class EventFavorites extends Component {
                 eventname: event,
                 type: type,
                 date: date,
+                readabledate:readabledate,
                 note: text,
                 email: this.props.login.email
             }
@@ -107,11 +110,11 @@ class EventFavorites extends Component {
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
                             <h4>{event.eventname}</h4>
-                            <p>{event.date}</p>
+                            <p>{event.readabledate}</p>
                             <p>{event.note}</p>
                         </div>
                         <div className="buttonContainer">
-                        <Button className="reviewButton"><Link to={"/userHome/"+ category + "/eventReviews/" + section + "/" + event.eventname} >Review</Link></Button>
+                            <Button className="reviewButton"><Link to={"/userHome/"+ category + "/eventReviews/" + section + "/" + event.eventname} >Review</Link></Button>
                             <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + event.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                         </div>   

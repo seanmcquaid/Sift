@@ -10,10 +10,10 @@ router.post('/getEventList', (req, res, next)=>{
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         console.log(uid);
-        const getEventToDoQuery = `SELECT eventname, date, note FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
+        const getEventToDoQuery = `SELECT eventname, readabledate, note FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 ORDER BY date DESC NULLS LAST;`;
         db.query(getEventToDoQuery,[uid]).then((results2) => {
             res.json(results2)
-            // console.log(results2)
+            console.log(results2)
         }).catch((error2) => {
             if (error2) { throw error2 }
         })
@@ -26,18 +26,19 @@ router.post('/addEvent', (req, res, next)=>{
     console.log(req.body)
     const eventname = req.body.eventname;
     const type = req.body.type;
+    const readabledate = req.body.readabledate;
     const date = req.body.date;
     const note = req.body.note;
     const email = req.body.email;
-    // console.log(place, type)
+    console.log(date, readabledate)
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         // console.log(results)
         const uid = results[0].id;
-        const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed) VALUES
-        ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        db.query(insertEventQuery, [uid, eventname, type, date, note, true, false, false]).then(() => {
-            const getEventQuery = `SELECT eventname, note FROM events WHERE todo = true AND uid = $1;`;
+        const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed, readabledate) VALUES
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        db.query(insertEventQuery, [uid, eventname, type, date, note, true, false, false, readabledate]).then(() => {
+            const getEventQuery = `SELECT eventname, readabledate, note FROM events WHERE todo = true AND uid = $1 ORDER BY date DESC NULLS LAST;`;
             db.query(getEventQuery, [uid]).then((results2) => {
                 res.json(results2)
                 // console.log(results2)
@@ -59,10 +60,10 @@ router.post('/addFave/:eventname', (req, res, next)=>{
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id
         const updateQuery = `UPDATE events SET todo = false, favorite = true WHERE uid = $1
-        AND eventname = $2;`
+        AND eventname = $2 ;`
         db.query(updateQuery, [uid, eventname]).then((results)=>{
-            const selectEventToDoQuery = ` SELECT eventname, date, note FROM events WHERE uid =$1 AND 
-            todo = true AND favorite = false;`;
+            const selectEventToDoQuery = ` SELECT eventname, readabledate, note FROM events WHERE uid =$1 AND 
+            todo = true AND favorite = false ORDER BY date DESC NULLS LAST;`;
             db.query(selectEventToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             }).catch((error2) => {
@@ -88,8 +89,8 @@ router.post("/deleteEvent/:eventname", (req,res,next)=>{
         }).catch((error) => {
             if (error) { throw error };
         })
-        const selectEventToDoQuery = `SELECT eventname, date, note FROM events WHERE uid =$1 AND 
-        todo = true AND favorite = false`;
+        const selectEventToDoQuery = `SELECT eventname, readabledate, note FROM events WHERE uid =$1 AND 
+        todo = true AND favorite = false ORDER BY date DESC NULLS LAST;`;
         db.query(selectEventToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)
@@ -111,7 +112,7 @@ router.post("/filter/:filter", (req, res, next) => {
         console.log(results)
         const uid = results[0].id;
 
-        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false;`;
+        const filterQuery = `SELECT eventname, readabledate, note FROM events WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false ORDER BY date DESC NULLS LAST;`;
 
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
@@ -131,11 +132,14 @@ router.post('/getEventFaveList', (req,res,next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-        const getFavesQuery = `SELECT eventname, date, note FROM events WHERE todo = false AND favorite = true AND uid = $1;`;
+        const getFavesQuery = `SELECT eventname, readabledate, note FROM events WHERE todo = false AND favorite = true AND uid = $1 ORDER BY date DESC NULLS LAST;`;
         db.query(getFavesQuery,[uid]).then((results2) => {
             res.json(results2)
-            // console.log(results2)
+            console.log(results2)
         }).catch((error2) => {
+
+
+
             if (error2) { throw error2 }
         })
     }).catch((error)=>{
@@ -151,15 +155,16 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
     console.log(date)
     const note = req.body.note;
     const email = req.body.email;
+    const readabledate = req.body.readabledate;
     // console.log(place, type)
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         // console.log(results)
         const uid = results[0].id;
-        const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed) VALUES
-        ($1, $2, $3, $4, $5, $6, $7, $8);`;
-        db.query(insertEventQuery, [uid, eventname, type, date, note, false, true, false]).then(() => {
-            const getEventQuery = `SELECT eventname, date, note FROM events WHERE favorite = true AND uid = $1;`;
+        const insertEventQuery = `INSERT INTO events (uid, eventname, type, date, note, todo, favorite, reviewed, readabledate) VALUES
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
+        db.query(insertEventQuery, [uid, eventname, type, date, note, false, true, false, readabledate]).then(() => {
+            const getEventQuery = `SELECT eventname, readabledate, note FROM events WHERE favorite = true AND uid = $1 ORDER BY date DESC NULLS LAST;`;
             db.query(getEventQuery, [uid]).then((results2) => {
                 res.json(results2)
                 // console.log(results2)
@@ -179,7 +184,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
 router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
     const eventname = req.params.eventname;
     const email = req.body.email;
-    console.log(req.body.email)
+    // console.log(req.body.email)
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id
@@ -190,8 +195,8 @@ router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
         }).catch((error) => {
             if (error) { throw error };
         })
-        const selectEventToDoQuery = `SELECT eventname, note FROM events WHERE uid =$1 AND 
-        todo = false AND favorite = true`;
+        const selectEventToDoQuery = `SELECT eventname, readabledate, note FROM events WHERE uid =$1 AND 
+        todo = false AND favorite = true ORDER BY date DESC NULLS LAST`;
         db.query(selectEventToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)
@@ -212,7 +217,7 @@ router.post("/faveFilter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT eventname, note FROM events WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false;`;
+        const filterQuery = `SELECT eventname, readabledate, note FROM events WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false ORDER BY date DESC NULLS LAST;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
@@ -233,7 +238,7 @@ router.post("/getEventReviews", (req,res,next)=>{
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const selectReviewsQuery = `SELECT eventname, type, date, stars, review from events WHERE uid = $1 AND reviewed = true;`;
+        const selectReviewsQuery = `SELECT eventname, type, readabledate, stars, review from events WHERE uid = $1 AND reviewed = true ORDER BY date DESC NULLS LAST;`;
         db.query(selectReviewsQuery,[uid]).then((results2)=>{
             // console.log(results2);
             res.json(results2);
@@ -252,6 +257,7 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
     const eventname = req.params.eventname;
     const type = req.body.type;
     const date = req.body.date
+    const readabledate = req.body.readabledate
     // console.log(req.body.date,req.body.type)
     const stars = req.body.stars;
     const review = req.body.review;
@@ -262,10 +268,10 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
         db.query(selectEventQuery, [uid, eventname]).then((results2)=>{
             console.log(results2)
             if(results2.length === 0){
-                const insertReviewQuery = `INSERT INTO events (uid, eventname, type, date, todo, favorite, reviewed, stars, review) 
-                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`
-                db.query(insertReviewQuery,[uid, eventname, type, date, false, false, true, stars, review]).then((results3)=>{
-                    const selectReviewsQuery = `SELECT eventname, type, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
+                const insertReviewQuery = `INSERT INTO events (uid, eventname, type, date, todo, favorite, reviewed, stars, review, readabledate) 
+                VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`
+                db.query(insertReviewQuery,[uid, eventname, type, date, false, false, true, stars, review, readabledate]).then((results3)=>{
+                    const selectReviewsQuery = `SELECT eventname, type, review, readabledate, stars from events WHERE uid = $1 AND reviewed = true ORDER BY date DESC NULLS LAST;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
                         // console.log(results4);
                         res.json(results4);
@@ -279,7 +285,7 @@ router.post("/addEventReview/:eventname", (req,res,next)=>{
                 const updateEventQuery = `UPDATE events SET reviewed = true, review = $1, stars = $2 WHERE uid = $3
                 AND eventname = $4;`
                 db.query(updateEventQuery,[review, stars, uid,eventname]).then((results5)=>{
-                    const selectReviewsQuery = `SELECT eventname, type, review, date, stars from events WHERE uid = $1 AND reviewed = true;`;
+                    const selectReviewsQuery = `SELECT eventname, type, review, readabledate, stars from events WHERE uid = $1 AND reviewed = true ORDER BY date DESC NULLS LAST;`;
                     db.query(selectReviewsQuery,[uid]).then((results6)=>{
                         // console.log(results6);
                         res.json(results6);
@@ -308,7 +314,7 @@ router.post("/deleteEventReview/:eventname", (req,res,next)=>{
         const uid = results[0].id;
         const deleteReviewQuery = `UPDATE events SET reviewed = false WHERE eventname = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[eventname,uid]).then((results2)=>{
-            const selectReviewsQuery = `SELECT * FROM events where reviewed = true AND uid = $1;`;
+            const selectReviewsQuery = `SELECT * FROM events where reviewed = true AND uid = $1 ORDER BY date DESC NULLS LAST;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
                 res.json(results3)
             }).catch((error3)=>{
@@ -329,7 +335,7 @@ router.post('/:section/getFaveToReview/:eventname',(req, res, next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-                const getEventFavoriteQuery = `SELECT eventname, type, date FROM events WHERE todo = false AND favorite = true AND uid = $1 AND eventname = $2;`;
+                const getEventFavoriteQuery = `SELECT eventname, type, readabledate FROM events WHERE todo = false AND favorite = true AND uid = $1 AND eventname = $2 ORDER BY date DESC NULLS LAST;`;
                 db.query(getEventFavoriteQuery,[uid,eventname]).then((results2)=>{
                     const favoriteResult = results2[0];
                     console.log(favoriteResult)
@@ -371,7 +377,7 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
         if(section == "todo"){
-            const getEventToDoQuery = `SELECT eventname, type, note, date FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 AND eventname = $2;`;
+            const getEventToDoQuery = `SELECT eventname, type, note, FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 AND eventname = $2;`;
             db.query(getEventToDoQuery, [uid, placename]).then((results2)=>{
                 const todoResult = results2[0]
                 res.json(todoResult)
@@ -379,7 +385,7 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
                 if(error2){throw error2}
             })
         } else if (section == "favorites"){
-            const getEventFavoriteQuery = `SELECT eventname, type, note, date FROM events WHERE todo = false AND favorite = true AND uid = $1 AND eventname = $2;`;
+            const getEventFavoriteQuery = `SELECT eventname, type, note, FROM events WHERE todo = false AND favorite = true AND uid = $1 AND eventname = $2;`;
             db.query(getEventFavoriteQuery,[uid,placename]).then((results3)=>{
                 const favoriteResult = results3[0];
                 res.json(favoriteResult)
@@ -387,7 +393,7 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
                 if(error3){throw error3};
             })
         } else if (section == "reviews"){
-            const getEventReviewQuery = `SELECT eventname, type, review, date FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
+            const getEventReviewQuery = `SELECT eventname, type, review, FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
             db.query(getEventReviewQuery,[uid,placename]).then((results3)=>{
                 const reviewResult = results3[0];
                 res.json(reviewResult)
