@@ -38,11 +38,11 @@ class EventFaveReviewForm extends Component {
             this.setState({
                 place : responseFromDB.data.eventname,
                 type : responseFromDB.data.type,
-                readabledate: responseFromDB.data.readabledate
+                readabledate: responseFromDB.data.readabledate,
+                category : category
             })
             
         })
-        console.log(this.state)
     }
 
     editPlace = (event)=>{
@@ -64,7 +64,8 @@ class EventFaveReviewForm extends Component {
             this.setState({
                 stars:'',
                 review: "",
-                redirect: true
+                redirect: true,
+                category : category
             })
         })
     }
