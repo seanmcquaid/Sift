@@ -5,20 +5,15 @@ const db = require('../database');
 // ================================================================ middleware for checking for duplicates
 
 router.use((req, res, next) => {
-    console.log("Just checked who they are.", req.body.email, req.body.placename)
-
     if ((req.body.email) && (req.body.placename)) {
         const selectUserQuery = `SELECT id from users where email = $1;`;
         db.query(selectUserQuery, [req.body.email]).then((results) => {
-            console.log("Just checked who they are.", req.body.email, req.body.placename)
             res.locals.uid = results[0].id;
             const compareQuery = `SELECT placename from active WHERE uid = $1 AND placename = $2 AND reviewed = false;`;
             db.query(compareQuery, [res.locals.uid, req.body.placename]).then((compareResults) => {
                 if (compareResults.length > 0) {
                     res.json([])
-                    console.log('duplicate')
                 } else {
-                    console.log('next')
                     next();
                 }
             })
@@ -37,7 +32,6 @@ router.post('/getActiveList', (req, res, next) => {
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
         const uid = results[0].id;
-        console.log(uid);
         const getActiveToDoQuery = `SELECT placename, note FROM active WHERE todo = true AND favorite = false AND uid = $1 ORDER BY id DESC;`;
         db.query(getActiveToDoQuery, [uid]).then((results2) => {
             res.json(results2)
@@ -50,7 +44,6 @@ router.post('/getActiveList', (req, res, next) => {
 })
 
 router.post('/addActive', (req, res, next) => {
-    console.log(req.body)
     const activity = req.body.placename;
     const type = req.body.type;
     const note = req.body.note;
@@ -98,7 +91,6 @@ router.post('/addFave/:activity', (req, res, next) => {
 router.post("/deleteActive/:activity", (req, res, next) => {
     const activity = req.params.activity;
     const email = req.body.email;
-    console.log(req.body.email)
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
         const uid = results[0].id
@@ -122,15 +114,11 @@ router.post("/deleteActive/:activity", (req, res, next) => {
 router.post("/filter/:filter", (req, res, next) => {
     const email = req.body.email;
     const filter = req.params.filter
-    console.log(filter)
-    console.log(req.params)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
-        console.log(results)
         const uid = results[0].id;
         const filterQuery = `SELECT placename, note FROM active WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false ORDER BY id DESC;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
-            console.log(results2)
             res.json(results2)
         }).catch((error2)=>{
             if(error2){throw error2}
@@ -186,13 +174,11 @@ router.post('/addFaveInFavorites', (req, res, next) => {
 router.post("/deleteFavePlace/:activity", (req, res, next) => {
     const activity = req.params.activity;
     const email = req.body.email;
-    console.log(req.body.email)
     const selectUserQuery = `SELECT * FROM users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
         const uid = results[0].id
         const deleteActiveQuery = `DELETE FROM active where placename = $1 and uid = $2;`;
         db.query(deleteActiveQuery, [activity, uid]).then((results) => {
-            console.log(results)
         }).catch((error) => {
             if (error) { throw error };
         })
@@ -211,15 +197,11 @@ router.post("/deleteFavePlace/:activity", (req, res, next) => {
 router.post("/faveFilter/:filter", (req, res, next) => {
     const email = req.body.email;
     const filter = req.params.filter
-    console.log(filter)
-    console.log(req.params)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
-        console.log(results)
         const uid = results[0].id;
         const filterQuery = `SELECT placename, note FROM active WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false ORDER BY id DESC;`
         db.query(filterQuery, [uid, filter]).then((results2) => {
-            console.log(results2)
             res.json(results2)
         }).catch((error2) => {
             if (error2) { throw error2 }
@@ -259,14 +241,12 @@ router.post("/addActiveReview/:activity", (req, res, next) => {
         const uid = results[0].id;
         const selectActiveQuery = `SELECT placename FROM active WHERE uid = $1 AND placename = $2;`;
         db.query(selectActiveQuery, [uid, activity]).then((results2) => {
-            console.log(results2)
             if (results2.length === 0) {
                 const insertReviewQuery = `INSERT INTO active (uid, placename, type, todo, favorite, reviewed, stars, review) 
                 VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
                 db.query(insertReviewQuery, [uid, activity, type, false, false, true, stars, review]).then((results3) => {
                     const selectReviewsQuery = `SELECT placename, review, stars FROM active WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery, [uid]).then((results4) => {
-                        // console.log(results4);
                         res.json(results4);
                     }).catch((error4) => {
                         if (error4) { throw error4 };
@@ -280,7 +260,6 @@ router.post("/addActiveReview/:activity", (req, res, next) => {
                 db.query(updateActiveQuery, [review, stars, uid, placename]).then((results5) => {
                     const selectReviewsQuery = `SELECT placename, review, stars from active WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery, [uid]).then((results6) => {
-                        // console.log(results6);
                         res.json(results6);
                     }).catch((error6) => {
                         if (error6) { throw error6 };
@@ -330,7 +309,6 @@ router.post('/:section/getFaveToReview/:placename',(req, res, next)=>{
                 const getActiveFavoriteQuery = `SELECT placename, type FROM active WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2;`;
                 db.query(getActiveFavoriteQuery,[uid,placename]).then((results2)=>{
                     const favoriteResult = results2[0];
-                    console.log(favoriteResult)
                     res.json(favoriteResult)
                 }).catch((error2)=>{
                     if(error2){throw error2};
@@ -345,9 +323,6 @@ router.post("/favorites/reviewFave/:placename", (req,res,next)=>{
     const placename = req.params.placename;
     const stars = req.body.updatedStars;
     const review = req.body.updatedReview;
-    console.log(placename)
-    console.log(stars)
-    console.log(review)
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
@@ -401,7 +376,6 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
 router.post("/:section/editPlace/:placename", (req,res,next)=>{
     const email = req.body.email;
     const section = req.params.section;
-    // console.log(section)
     const oldPlacename = req.params.placename;
     const newPlacename = req.body.updatedPlacename;
     const newType = req.body.updatedType;
@@ -434,7 +408,6 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
 })
 
 router.post("/addExploreTodo", (req,res,next)=>{
-    console.log(req.body)
     const placename = req.body.place;
     const type = req.body.type;
     const note = req.body.text;
@@ -456,7 +429,6 @@ router.post("/addExploreTodo", (req,res,next)=>{
 
 
 router.post("/addExploreFavorite", (req,res,next)=>{
-    console.log(req.body)
     const placename = req.body.place;
     const type = req.body.type;
     const note = req.body.text;
