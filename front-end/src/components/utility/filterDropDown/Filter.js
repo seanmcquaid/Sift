@@ -20,7 +20,7 @@ class Filter extends Component{
         this.props.clearFilter()
         document.getElementById('filterDropDown').value = this.props.defaultValue
         this.setState({
-            filter: ''
+            filter: this.props.defaultValue
         })
     }
 
