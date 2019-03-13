@@ -2,6 +2,32 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
+// ================================================================ middleware for checking for duplicates
+
+router.use((req, res, next) => {
+    console.log("Just checked who they are.", req.body.email, req.body.placename)
+
+    if ((req.body.email) && (req.body.placename)) {
+        const selectUserQuery = `SELECT id from users where email = $1;`;
+        db.query(selectUserQuery, [req.body.email]).then((results) => {
+            console.log("Just checked who they are.", req.body.email, req.body.placename)
+            res.locals.uid = results[0].id;
+            const compareQuery = `SELECT placename from culture WHERE uid = $1 AND placename = $2 AND reviewed = false;`;
+            db.query(compareQuery, [res.locals.uid, req.body.placename]).then((compareResults) => {
+                if (compareResults.length > 0) {
+                    res.json([])
+                    console.log('duplicate')
+                } else {
+                    console.log('next')
+                    next();
+                }
+            })
+        })
+    } else {
+        next();
+    }
+})
+
 // ================================================================== To Do
 
 router.post('/getCultureList', (req, res, next)=>{
