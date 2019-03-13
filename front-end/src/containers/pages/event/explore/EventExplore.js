@@ -97,7 +97,7 @@ class EventExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/events/favorites")
+                this.props.history.push("/userHome/event/favorites")
             }
         })
 

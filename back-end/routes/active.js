@@ -38,7 +38,7 @@ router.post('/getActiveList', (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         const uid = results[0].id;
         console.log(uid);
-        const getActiveToDoQuery = `SELECT placename, note FROM active WHERE todo = true AND favorite = false AND uid = $1 ORDER BY id DESC;`;
+        const getActiveToDoQuery = `SELECT placename, type, note FROM active WHERE todo = true AND favorite = false AND uid = $1 ORDER BY id DESC;`;
         db.query(getActiveToDoQuery, [uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
@@ -461,7 +461,7 @@ router.post("/addExploreFavorite", (req,res,next)=>{
     const type = req.body.type;
     const note = req.body.text;
     const email = req.body.email;
-    const selectUserQuery = `SELECT id from active where email = $1;`;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         const insertExploreFavoriteQuery = `INSERT INTO active (uid, placename, type, note, todo, favorite, reviewed, location)
