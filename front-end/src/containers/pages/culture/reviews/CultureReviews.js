@@ -53,6 +53,7 @@ class CultureReviews extends Component {
                 showAlert: true,
             })
         })
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     removeReview = (place)=>{

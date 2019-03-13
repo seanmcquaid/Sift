@@ -61,6 +61,7 @@ class EventReviews extends Component {
                 showAlert: true,
             })
         })
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     removeReview = (event)=>{
