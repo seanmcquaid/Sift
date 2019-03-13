@@ -109,6 +109,8 @@
     
     .AddEventFormContainer {
         margin: 0 auto;
+        margin-right:1rem;
+        margin-left:1rem;
         padding: 0.5rem 0;
     }
 

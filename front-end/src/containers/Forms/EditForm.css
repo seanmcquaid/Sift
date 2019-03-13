@@ -47,6 +47,16 @@ h2 {
     font-size: 1rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
+    margin-bottom:1rem;
+}
+
+#NewEventDateDropdown{
+    width: 10rem;
+    /* border-radius:15px; */
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin-bottom:1rem;
 }
 
 #editText {
@@ -61,6 +71,7 @@ h2 {
     border: 1px solid rgb(165, 165, 165);
     outline:none;
     resize: none;
+    margin-bottom:1rem;
 }
 
 
@@ -101,6 +112,10 @@ h2 {
         margin: 0.5rem;
     }
 
+    #NewEventDateDropdown{
+        margin:0.5rem;
+    }
+
     #editText {
         margin-top: 1rem;
     }
@@ -132,6 +147,10 @@ h2 {
         margin: 0.5rem;
     }
 
+    #NewEventDateDropdown{
+        margin:0.5rem;
+    }
+
     #editText {
         width: 23rem;
         margin-top: 1rem;
@@ -153,6 +172,10 @@ h2 {
     #DropDownEdit {
         width: 10rem;
         font-size: 1rem;
+        margin: 1rem;
+    }
+
+    #NewEventDateDropdown{
         margin: 1rem;
     }
 
