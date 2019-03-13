@@ -127,12 +127,13 @@ class EventTodo extends Component {
     }
 
     render() {
-        let category = "events";
+        let category = "event";
         let section = "todo";
+
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var eventToDo = this.state.list.data.map((events, i) => {
-
+                console.log(events.eventname)
                 return (
                     <div key={i} className="placeCard">
                          <div className="cardLeft">
@@ -142,7 +143,7 @@ class EventTodo extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button clicked={() => this.addToFavorites(events.eventname)} className="faveButton">Fave</Button>
-                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + events.eventname} >Edit</Link></Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/editEvent/" + section + "/" + events.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(events.eventname)} className="deleteButton">Remove</Button>
                         </div>
                         
