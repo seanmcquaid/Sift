@@ -9,8 +9,8 @@ class AddEventForm extends Component {
         this.state = {
             events: '',
             type: '',
-            readableDate:'',
             date:'',
+            readabledate:'',
             text: '',
             filter: '',
            
@@ -19,14 +19,15 @@ class AddEventForm extends Component {
 
     addNewEvent = (event) => {
         event.preventDefault(event)
-        this.props.addNewEvent(this.state.events, this.state.type, this.state.readableDate, this.state.text)
+        this.props.addNewEvent(this.state.events, this.state.type, this.state.date, this.state.readabledate, this.state.text)
         document.getElementById('NewEventTypeDropdown').value = this.props.defaultType;
         this.setState({
             events: '',
             type: '',
-            readableDate:'',
+            date:'',
+            readabledate:'',
             text: '',
-            
+           
         })
     }
 
@@ -51,7 +52,7 @@ class AddEventForm extends Component {
         var publishDate = `${currMonDay}-${currYear}`
 
         this.setState({
-            readableDate: publishDate,
+            readabledate: publishDate,
             date: date
         })
         console.log(new Date())
@@ -64,8 +65,7 @@ class AddEventForm extends Component {
     }
     
     render(){
-        // const typeArray = this.props.types
-        // console.log(typeArray)
+        console.log(this.state)
         let minDate = new Date().toISOString().slice(0,10);
         let maxDate = '2030-03-10'
         return(

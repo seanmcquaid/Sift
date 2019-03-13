@@ -18,7 +18,8 @@ class EventReviews extends Component {
             list : [],
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
             date:"",
-
+            readabledate:'',
+            stars:'',
             msg : "",
             showAlert: false,
         }
@@ -39,7 +40,7 @@ class EventReviews extends Component {
     }
 
 
-    addReview = (event, type, review, date, stars) =>{
+    addReview = (event, type, review, date, readabledate, stars) =>{
 
         axios({
             method : "POST",
@@ -50,6 +51,7 @@ class EventReviews extends Component {
                 type,
                 review,
                 date,
+                readabledate,
                 stars
             }
         }).then((responseFromDB)=>{
@@ -85,7 +87,7 @@ class EventReviews extends Component {
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
                             <h4>{review.eventname} - {review.stars} Stars </h4>
-                            {review.date}
+                            <p>{review.readabledate}</p>
                             <p>{review.review}</p>
                         </div>
 

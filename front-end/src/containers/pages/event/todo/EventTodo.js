@@ -17,8 +17,8 @@ class EventTodo extends Component {
         this.state = {
             list: [],
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
+            readabledate:'',
             date:'',
-            readableDate:'',
             msg: "",
             showAlert: false,
         }
@@ -38,13 +38,14 @@ class EventTodo extends Component {
         })
     }
 
-    addNewEvent = (event, type, date,  text) => {
+    addNewEvent = (event, type, date, readabledate,  text) => {
         axios({
             method: 'POST',
             url: `${window.apiHost}/events/addEvent`,
             data: {
                 eventname: event,
                 type: type,
+                readabledate: readabledate,
                 date: date,
                 note: text,
                 email: this.props.login.email
@@ -119,6 +120,7 @@ class EventTodo extends Component {
     render() {
         let category = "events";
         let section = "todo";
+        console.log(this.state)
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var eventToDo = this.state.list.data.map((events, i) => {
@@ -127,7 +129,7 @@ class EventTodo extends Component {
                     <div key={i} className="placeCard">
                          <div className="cardLeft">
                             <h4>{events.eventname}</h4>
-                            <p>{events.date}</p>
+                            <p>{events.readabledate}</p>
                             <p>{events.note}</p>
                         </div>
                         <div className="buttonContainer">
