@@ -15,6 +15,7 @@ class EventFaveReviewForm extends Component {
             review:'',
             type: '',
             stars: '',
+            readabledate:'',
             redirect : false
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
@@ -29,16 +30,14 @@ class EventFaveReviewForm extends Component {
     
         axios({
             method: 'POST',
-            url: `${window.apiHost}/${category}/${section}/getFaveToReview/${placename}`,
+            url: `${window.apiHost}/events/${section}/getFaveToReview/${placename}`,
             data: {
                 email: this.props.login.email
             }
         }).then((responseFromDB) => {
             this.setState({
                 place : responseFromDB.data.eventname,
-                category : category,
                 type : responseFromDB.data.type,
-                date : responseFromDB.data.date,
                 readabledate: responseFromDB.data.readabledate
             })
             
@@ -55,7 +54,7 @@ class EventFaveReviewForm extends Component {
         const updatedStars = this.state.stars;
         axios({
             method: 'POST',
-            url: `${window.apiHost}/${category}/${section}/reviewFave/${placename}`,
+            url: `${window.apiHost}/events/${section}/reviewFave/${placename}`,
             data: {
                 email: this.props.login.email,
                 updatedReview,

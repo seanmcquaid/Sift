@@ -29,6 +29,7 @@ import EventTodo from './containers/pages/event/todo/EventTodo';
 import EventFavorites from './containers/pages/event/favorites/EventFavorites';
 import EventReviews from './containers/pages/event/reviews/EventReviews';
 import EventFaveReviewForm from './containers/Forms/EventFaveReviewForm'
+import EventEditForm from './containers/Forms/EventEditForm'
 
 import Active from "./containers/pages/active/Active";
 import ActiveTodo from "./containers/pages/active/todo/ActiveTodo";

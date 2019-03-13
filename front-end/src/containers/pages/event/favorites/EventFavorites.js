@@ -15,8 +15,8 @@ class EventFavorites extends Component {
         this.state = {
             list: [],
             types: ['Festival','Arts-Movies-Music', 'Sporting Events', 'Educational'],
-            date:'',
             readabledate:'',
+            date:'',
             msg: "",
             showAlert: false,
         }
@@ -44,8 +44,8 @@ class EventFavorites extends Component {
             data: {
                 eventname: event,
                 type: type,
-                date: date,
                 readabledate:readabledate,
+                date: date,
                 note: text,
                 email: this.props.login.email
             }
@@ -102,11 +102,13 @@ class EventFavorites extends Component {
   
        
     render() {
-        let category = "events";
+        let category = "event";
         let section = "favorites";
         if (this.state.list.data !== undefined) {
+            
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
-            var favorites = this.state.list.data.map((event, i) => {                 
+            var favorites = this.state.list.data.map((event, i) => {     
+                console.log(event)            
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
@@ -116,7 +118,7 @@ class EventFavorites extends Component {
                         </div>
                         <div className="buttonContainer">
                             <Button className="reviewButton"><Link to={"/userHome/"+ category + "/eventReviews/" + section + "/" + event.eventname} >Review</Link></Button>
-                            <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + event.eventname} >Edit</Link></Button>
+                            <Button className="editButton"><Link to={"/userHome/" + category + "/editEvent/" + section + "/" + event.eventname} >Edit</Link></Button>
                             <Button clicked={() => this.removeEvent(event.eventname)} className="deleteButton">Remove</Button>
                         </div>   
                     </div>
