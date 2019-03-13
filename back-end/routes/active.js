@@ -26,7 +26,6 @@ router.use((req, res, next) => {
 // ================================================ To Do
 
 
-
 router.post('/getActiveList', (req, res, next) => {
     const email = req.body.email;
     const selectUserQuery = `SELECT id from users where email = $1;`;
@@ -433,7 +432,7 @@ router.post("/addExploreFavorite", (req,res,next)=>{
     const type = req.body.type;
     const note = req.body.text;
     const email = req.body.email;
-    const selectUserQuery = `SELECT id from active where email = $1;`;
+    const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         const insertExploreFavoriteQuery = `INSERT INTO active (uid, placename, type, note, todo, favorite, reviewed, location)
