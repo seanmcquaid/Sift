@@ -70,7 +70,7 @@ class Register extends Component {
         return(
             <div className="register">
                 <div className="register-header-image">
-                    <img className="header-image" src="../../../../images/food/bread.jpeg" alt="registerImage"/>
+                    <img className="header-image" src="../../../../images/headerImages/15.jpeg" alt="registerImage"/>
                 </div>
                 <div className="register-title">
                     <h1 className="title">Register</h1>
@@ -86,7 +86,7 @@ class Register extends Component {
                     <form onSubmit={this.handleRegister} className="register-form">
                         <input onChange={this.inputEmail} id="email-input" type="email" placeholder="Email"/>
                         <input onChange={this.inputPassword} id="password-input" type="password" placeholder="Password"/>
-                        <input onChange={this.inputTestPassword} id="password-input" type="password" placeholder="Re-type password"/>
+                        <input onChange={this.inputTestPassword} id="password-input2" type="password" placeholder="Re-type password"/>
                         <button id="register-button" type="submit">Register</button>
                     </form>
                 </div>
