@@ -81,7 +81,6 @@ class EventReviews extends Component {
         let category = "events";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
-            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var EventReviews = this.state.list.data.map((review, i) => {
                 return (
                     <div key={i} className="placeCard">
@@ -102,8 +101,15 @@ class EventReviews extends Component {
                     </div>
                 )
             })
-        }
-
+        } 
+        
+        // console.log(document.querySelector(".placeCards").style.backgroundColor)
+        // if (this.state.list.length === 0){
+        //     document.querySelector(".placeCards").style.backgroundColor = "#ffebaf";
+        // } else {
+            
+        // }
+        console.log(this.state.list)
         const typeArray = this.state.types.map((type, i)=>{
             return (<option key={i} value={type}>{type}</option>)
         });
