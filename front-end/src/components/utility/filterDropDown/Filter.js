@@ -18,7 +18,7 @@ class Filter extends Component{
     viewAll = (event) => {
         event.preventDefault(event)
         this.props.clearFilter()
-        document.getElementById('filterDropDown').value = this.props.defaultFilter;
+        document.getElementById('filterDropDown').value = this.props.defaultValue
         this.setState({
             filter: ''
         })

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { Link, Redirect } from 'react-router-dom';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 import AddForm from '../../../Forms/AddForm';
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards'
@@ -18,6 +20,7 @@ class CultureFavorites extends Component {
                 msg: "",
                 types: ['Music', 'Art', 'Theater', 'Learning'],
                 showAlert: false,
+                swTitle: ''
             }
         }
     
@@ -36,8 +39,6 @@ class CultureFavorites extends Component {
         }
     
         addNewPlace = (place, type, text) => {
-            //api call will go here with autocomplete to add name, location to DB
-            // console.log(place, type)
             axios({
                 method: 'POST',
                 url: `${window.apiHost}/culture/addFaveInFavorites`,
@@ -48,9 +49,17 @@ class CultureFavorites extends Component {
                     email: this.props.login.email
                 }
             }).then((backEndResponse) => {
-                this.setState({
-                    list: backEndResponse
-                })
+                if (backEndResponse.data.length === 0) {
+                    this.setState({
+                        showAlert: true,
+                        swTitle: "Whoops!",
+                        msg: "This is already in one of your lists!"
+                    })
+                } else {
+                    this.setState({
+                        list: backEndResponse,
+                    })
+                }
             })
         }
     

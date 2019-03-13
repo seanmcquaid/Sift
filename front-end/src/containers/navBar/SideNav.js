@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 import './SideNav.css';
 
 class SideNav extends Component {
-    constructor(){
-        super()
-    }
 
     render() {
         let catHome = `/userHome/${this.props.category}`

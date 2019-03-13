@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 import { Link, Redirect } from 'react-router-dom';
 
 import AddForm from '../../../Forms/AddForm';
@@ -17,6 +19,7 @@ class ActiveFavorites extends Component {
             list: [],
             types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             msg: "",
+            swTitle: "",
             showAlert: false,
         }
     }
@@ -36,7 +39,6 @@ class ActiveFavorites extends Component {
     }
 
     addNewActive = (activity, type, text) => {
-        //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
             url: `${window.apiHost}/active/addFaveInFavorites`,
@@ -47,11 +49,20 @@ class ActiveFavorites extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0) {
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            } else {
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
+
 
     removePlace = (activity) => {
         console.log(this.props.login.email)
@@ -138,7 +149,13 @@ class ActiveFavorites extends Component {
         } else {
             return (
                 <div className="Favorites">
-                    <h2>Favorites</h2>
+                    <h2>Favorite adventures!</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title={this.state.swTitle}
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
                     <div className="faveBody">
                         <div className="faveLeft">
                             <AddForm

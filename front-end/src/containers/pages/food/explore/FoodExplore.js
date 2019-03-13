@@ -138,7 +138,7 @@ class FoodExplore extends Component {
                 <div className="exploreBody">
                     <div className="exploreLeft">
                         <ExploreForm
-                        searchPlaceholder="What would you like to eat?"
+                        searchPlaceholder="What would you like to try?"
                         locationPlaceholder="Enter city and state"
                         exploreRequest={this.exploreRequest}
                         />

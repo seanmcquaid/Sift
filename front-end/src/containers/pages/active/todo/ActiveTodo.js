@@ -19,6 +19,7 @@ class ActiveTodo extends Component {
             types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             msg: "",
             showAlert: false,
+            swTitle: "Added to Faves!"
         }
     }
 
@@ -49,9 +50,17 @@ class ActiveTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0) {
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            } else {
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
 
@@ -154,10 +163,10 @@ class ActiveTodo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Active To Do!</h2>
+                    <h2>Adventurous!</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title={this.state.swTitle}
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />

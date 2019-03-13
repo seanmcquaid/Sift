@@ -33,7 +33,7 @@ class ExploreForm extends Component {
         return (
             <div className="ExploreFormContainer">
                 <form onSubmit={this.exploreSearch} className="ExploreForm">
-                    {/* <h3 className="addFormTitle">{this.props.title}</h3> */}
+                    <h3>Search!</h3>
                     <div className="addNameAndType">
                         <input onChange={this.changeSearchPlace} type="text" id="NewSearchPlace" placeholder={this.props.searchPlaceholder} value={this.state.searchPlace} required />
                         <input onChange={this.changeSearchLocation} type="text" id="NewSearchLocation" placeholder={this.props.locationPlaceholder} value={this.state.searchLocation} required />

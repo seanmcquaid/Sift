@@ -19,6 +19,7 @@ class FoodTodo extends Component {
             types: ['Restaurant', 'Cafe', 'Bar', 'Diner'],
             msg: "",
             showAlert: false,
+            swTitle: "Added to Faves!"
         }
     }
 
@@ -37,8 +38,6 @@ class FoodTodo extends Component {
     }
 
     addNewPlace = (place, type, text) => {
-        // possibly, api call will go here with autocomplete to add name, location to DB
-        // console.log(place, type)
         axios({
             method: 'POST',
             url: `${window.apiHost}/food/addFood`,
@@ -49,9 +48,17 @@ class FoodTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0){
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            }else{
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
 
@@ -117,7 +124,8 @@ class FoodTodo extends Component {
     render() {
         let category = "food";
         let section = "todo";
-        if (this.state.list.data !== undefined) {
+ 
+        if(this.state.list.data !== undefined) {
             var foodToDo = this.state.list.data.map((food, i) => {
                 return (
                     <div key={i} className="placeCard">
@@ -154,7 +162,7 @@ class FoodTodo extends Component {
                     <h2>Yummy treats!</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title={this.state.swTitle}
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />
