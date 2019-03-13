@@ -124,8 +124,9 @@ class FoodTodo extends Component {
     render() {
         let category = "food";
         let section = "todo";
- 
-        if(this.state.list.data !== undefined) {
+
+        if (this.state.list.data !== undefined) {
+            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var foodToDo = this.state.list.data.map((food, i) => {
                 return (
                     <div key={i} className="placeCard">

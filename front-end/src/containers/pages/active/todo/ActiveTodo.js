@@ -127,6 +127,7 @@ class ActiveTodo extends Component {
         let category = "active";
         let section = "todo";
         if (this.state.list.data !== undefined) {
+            document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var activeTodo = this.state.list.data.map((activity, i) => {
                 console.log(activity)
                 return (
