@@ -1,28 +1,15 @@
 /* mobile shared */
-/* body {
+
+.addEventReview{
     margin: 0 auto;
-} */
-
-h2 {
-    text-align: center;
-}
-
-.AddEventReviewForm{
-    width: 30rem;
-    margin: 1rem 2rem;
-}
-
-.eventReviewForm{
-    margin: 0 auto;
+    padding-top: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.addEventReview {
-    width: 24rem;
-    margin: 0 auto;
+.typeStarDateInput {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,17 +23,40 @@ h2 {
     color: #333745;
     border-radius: 20px;
     border: 1px solid rgb(165, 165, 165);
-    margin: 0.5rem;
+    margin: 1rem;
     padding: 0.5rem;
     outline:none;
 }
 
+#eventTypeDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.25rem;
+}
+
+#eventStarDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.25rem;
+}
+
+#eventDateDropdown {
+    width: 8rem;
+    font-size: 0.75rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
+    margin: 0.75rem;
+}
+
 #newEventReview {
     width: 16rem;
-    height: 4rem;
-    margin: 0.5rem;
+    height: 2rem;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-family: 'Montserrat', sans-serif;
     color: #333745;
     border-radius: 20px;
@@ -55,119 +65,124 @@ h2 {
     resize: none;
 }
 
-#eventTypeDropdown {
-    width: 8rem;
-    font-size: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #333745;
-    margin: 0.5rem;
-}
-
-#eventStarDropdown {
-    width: 8rem;
-    font-size: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #333745;
-    margin: 0.5rem;
-}
-
-#eventDateDropdown {
-    width: 8rem;
-    font-size: 0.75rem;
-    font-family: 'Montserrat', sans-serif;
-    color: #333745;
-    margin: 0.5rem;
-}
 
 /* min 400px */
 @media screen and (min-width: 400px){
-    .addEventReview {
-        width: 24rem;
-    }
 
-    #newEvent{
-        width: 18rem;
+    #newEvent {
+        width: 16rem;
+        font-size: 1rem
     }
 
     #eventTypeDropdown {
-        width: 10rem;
-        font-size: 0.85rem;
+        width: 9rem;
+        font-size: 0.75rem;
     }
 
     #eventStarDropdown {
-        width: 10rem;
-        font-size: 0.85rem;
-    }
-
-    #starDropDown {
-        width: 10rem;
-        font-size: 0.85rem;
+        width: 9rem;
+        font-size: 0.75rem;
     }
 
     #eventDateDropdown {
-        width: 10rem;
-        font-size: 0.85rem;
+        width: 9rem;
+        font-size: 0.75rem;
     }
 
     #newEventReview {
-        width: 21rem;
+        width: 18rem;
+        font-size: 1rem;
     }
 }
 
-/* min 900px */
-@media screen and (min-width: 900px) {
-    .addEventReview {
-        width: 26rem;
-        margin-bottom: 1rem;
-    }
+@media screen and (min-width: 600px) {
 
     #newEvent {
-        width: 20rem;
-        margin-bottom: 1rem;
-        font-size: 1rem;
+        margin: 0.5rem;
     }
 
     #eventTypeDropdown {
-        width: 11rem;
+        margin: 0.5rem;
+        font-size: 0.75rem;
+        width: 9rem;
+    }
+
+    #eventStarDropdown {
+        margin: 0.5rem;
+        font-size: 0.75rem;
+        width: 9rem;
+    }
+
+    #eventDateDropdown {
+        margin: 0.5rem;
+        font-size: 0.75rem;
+        width: 9rem;
+    }
+
+    #newEventReview {
+        margin-top: 0.5rem;
+    }
+
+}
+
+/* min 900px */
+@media screen and (min-width: 1000px) {
+
+    
+    .AddEventReviewForm {
+        margin: 0 auto;
+        padding: 0.5rem 0;
+    }
+
+    #newEvent {
+        width: 16rem;
+        margin: 0.5rem;
         font-size: 1rem;
     }
 
     #eventStarDropdown {
-        width: 11rem;
-        font-size: 1rem;
+        width: 8rem;
+        font-size: 0.75rem;
+        margin: 0.5rem;
+    }
+
+    #eventTypeDropdown {
+        width: 8rem;
+        font-size: 0.75rem;
+        margin: 0.5rem;
     }
 
     #eventDateDropdown {
-        width: 11rem;
-        font-size: 1rem;
+        width: 8rem;
+        font-size: 0.75rem;
+        margin: 0.5rem;
     }
 
     #newEventReview {
-        width: 23rem;
-        height: 5rem;
-        margin: 1rem auto;
+        width: 14rem;
+        height: 4rem;
+        margin: 0.5rem auto;
     }
 }
 
 @media screen and (min-width: 1200px){
     .addEventReview {
-        width: 28rem;
+        /* width: 26rem; */
         margin-bottom: 1rem;
     }
 
     #newEvent {
-        width: 20rem;
-        margin-bottom: 1rem;
-        font-size: 1rem;
-    }
-
-    #eventTypeDropDown {
-        width: 12rem;
+        width: 16rem;
         font-size: 1rem;
     }
 
     #eventStarDropdown {
-        width: 12rem;
+        width: 11rem;
+        font-size: 1rem;
+    }
+
+    #eventTypeDropdown {
+        width: 11rem;
         font-size: 1rem;
     }
 
@@ -177,8 +192,8 @@ h2 {
     }
 
     #newEventReview {
-        width: 26rem;
-        height: 5rem;
-        margin: 1rem auto;
+        width: 18rem;
+        height: 4rem;
+        margin: 0.5rem auto;
     }
 }

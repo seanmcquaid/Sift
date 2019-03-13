@@ -62,12 +62,12 @@ h2 {
 
     #NewSearchPlace{
         width: 16rem;
-        font-size: 1rem
+        font-size: 0.75rem
     }
 
     #NewSearchLocation{
         width: 16rem;
-        font-size: 1rem
+        font-size: 0.75rem
     }
 
 
@@ -108,13 +108,13 @@ h2 {
     #NewSearchPlace {
         width: 14rem;
         margin: 0.5rem;
-        font-size: 1rem
+        font-size: 0.75rem;
     }
 
     #NewSearchLocation{
         width: 14rem;
         margin: 0.5rem;
-        font-size: 1rem
+        font-size: 0.75rem;
     }
 
 
@@ -127,13 +127,13 @@ h2 {
     }
 
     #NewSearchPlace {
-        width: 16rem;
+        width: 17rem;
         margin: 1rem;
         font-size: 1rem;
     }
 
     #NewSearchLocation{
-        width: 16rem;
+        width: 17rem;
         margin: 1rem;
         font-size: 1rem
     }
