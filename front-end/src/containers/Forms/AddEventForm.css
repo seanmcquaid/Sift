@@ -121,14 +121,14 @@
     }
 
     #NewEventTypeDropdown {
-        width: 10rem;
-        font-size: 1rem;
+        width: 9rem;
+        font-size: 0.75rem;
         margin: 0.5rem;
     }
 
     #NewEventDateDropdown {
-        width: 10rem;
-        font-size: 1rem;
+        width: 9rem;
+        font-size: 0.75rem;
         margin: 0.5rem;
     }
 
@@ -161,7 +161,7 @@
     }
 
     #AddNewEventText {
-        width: 18rem;
+        width: 14rem;
         height: 4rem;
         margin: 0.5rem auto;
     }

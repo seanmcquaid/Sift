@@ -61,6 +61,7 @@ class EventReviews extends Component {
                 showAlert: true,
             })
         })
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     removeReview = (event)=>{
@@ -92,8 +93,7 @@ class EventReviews extends Component {
 
                         <div className="cardRight">
                             <div className="buttonContainer">
-                                <Button className="shareButton">Share</Button>
-                                <Button className="editButton"><Link to={"/userHome/"+ category + "/editEvent/" + section + "/" + review.eventname} >Edit</Link></Button>
+                                <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
                             </div>
                         </div>  
@@ -103,13 +103,6 @@ class EventReviews extends Component {
             })
         } 
         
-        // console.log(document.querySelector(".placeCards").style.backgroundColor)
-        // if (this.state.list.length === 0){
-        //     document.querySelector(".placeCards").style.backgroundColor = "#ffebaf";
-        // } else {
-            
-        // }
-        console.log(this.state.list)
         const typeArray = this.state.types.map((type, i)=>{
             return (<option key={i} value={type}>{type}</option>)
         });

@@ -29,7 +29,6 @@ class CultureReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))
@@ -54,6 +53,7 @@ class CultureReviews extends Component {
                 showAlert: true,
             })
         })
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     removeReview = (place)=>{
@@ -84,7 +84,6 @@ class CultureReviews extends Component {
                         </div>
                         <div className="cardRight">
                             <div className="buttonContainer">
-                                <Button className="shareButton">Share</Button>
                                 <Button className="editButton"><Link to={"/userHome/" + category + "/edit/" + section + "/" + review.placename}>Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.placename)} className="deleteButton">Remove</Button>
                             </div>

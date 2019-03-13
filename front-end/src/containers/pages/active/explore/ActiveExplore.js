@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import {Redirect} from 'react-router-dom';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
+// import {Redirect} from 'react-router-dom';
 import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
 import PlaceCards from "../../../../components/Lists/PlaceCards/PlaceCards";
@@ -14,6 +16,8 @@ class ActiveExplore extends Component {
         this.state = {
             exploreResults : [],
             types: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
+            showAlert: false,
+
         }
     }
 
@@ -47,8 +51,8 @@ class ActiveExplore extends Component {
             let searchResults = [];
             service.textSearch(request, (results, status)=> {
                 let loopLength;
-                if (10 < results.length){
-                    loopLength = 10
+                if (20 < results.length){
+                    loopLength = 20
                 } else {
                     loopLength = results.length
                 }
@@ -62,11 +66,10 @@ class ActiveExplore extends Component {
                 })
             });
         })
-        document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     addExploreTodo = (place, type, text) => {
-        //api call will go here with autocomplete to add name, location to DB
         const email = this.props.login.email;
         axios({
             method: 'POST',
@@ -104,7 +107,6 @@ class ActiveExplore extends Component {
     }
 
     render(){
-        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -118,7 +120,7 @@ class ActiveExplore extends Component {
             }
             
             if(type === undefined){
-                type = "Outdoor"
+                type = "Outdoors"
             }
             
             
@@ -137,7 +139,13 @@ class ActiveExplore extends Component {
             })
         return (
             <div className="Explore">
-                <h2>Explore The Outdoors!</h2>
+                <h2>Explore the world around you!</h2>
+                <SweetAlert
+                    show={this.state.showAlert}
+                    title={this.state.swTitle}
+                    text={this.state.msg}
+                    onConfirm={() => this.setState({ showAlert: false })}
+                />
                 <div className="exploreBody">
                     <div className="exploreLeft">
                         <ExploreForm

@@ -78,19 +78,21 @@ class AddEventReviewForm extends Component {
                     <input type="text" placeholder="Enter your place to review here!" value={this.state.place} id="newEvent" onChange={this.changePlace} required/>
                 </div>
                 <div className="typeStarDateInput">
-                <select className="type" id="eventTypeDropdown" onChange={this.changeType} value={this.state.type} required>
-                        <option value="">{this.props.defaultType}</option>
-                        {this.props.types}
-                    </select>
-                    <select id="eventStarDropdown" value={this.state.stars} onChange={this.changeStars} required> 
-                        <option value="">{this.props.defaultStars}</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <input onChange={this.changeDate} id="eventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date}/>
+                    <div className="eventStarTypeDropdowns">
+                        <select className="type" id="eventTypeDropdown" onChange={this.changeType} value={this.state.type} required>
+                            <option value="">{this.props.defaultType}</option>
+                            {this.props.types}
+                        </select>
+                        <select id="eventStarDropdown" value={this.state.stars} onChange={this.changeStars} required> 
+                            <option value="">{this.props.defaultStars}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <input onChange={this.changeDate} id="eventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date} required/>
                 </div>
                 <div className="addEventReview">
                     <textarea onChange={this.changeReview} id="newEventReview" placeholder={this.props.placeholder} value={this.state.review} required></textarea>

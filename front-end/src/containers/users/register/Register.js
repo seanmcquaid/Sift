@@ -19,7 +19,6 @@ class Register extends Component {
     }
 
     componentWillReceiveProps(newProps){
-        console.log(newProps)
         if(newProps.login.msg === "userAdded"){
             this.props.history.push('/userHome');
         } else if(newProps.login.msg === "userExists"){

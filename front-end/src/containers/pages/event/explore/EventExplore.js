@@ -62,7 +62,7 @@ class EventExplore extends Component {
                 })
             });
         })
-        document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     addExploreTodo = (place, type, text) => {
@@ -97,14 +97,13 @@ class EventExplore extends Component {
             }
         }).then((backEndResponse) => {
             if(backEndResponse.data.msg === "added"){
-                this.props.history.push("/userHome/events/favorites")
+                this.props.history.push("/userHome/event/favorites")
             }
         })
 
     }
 
     render(){
-        console.log(this.state.exploreResults)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -141,11 +140,11 @@ class EventExplore extends Component {
         } else {
             return (
                 <div className="Explore">
-                    <h2>Explore Events</h2>
+                    <h2>Explore local events</h2>
                     <div className="exploreBody">
                         <div className="exploreLeft">
                             <ExploreForm
-                            searchPlaceholder="What would you like to do?"
+                            searchPlaceholder="What events are you looking for?"
                             locationPlaceholder="Enter city and state"
                             exploreRequest={this.exploreRequest}
                             />
