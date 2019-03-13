@@ -2,6 +2,32 @@ var express = require('express');
 var router = express.Router();
 const db = require('../database');
 
+// ================================================================ middleware for checking for duplicates
+
+router.use((req, res, next) => {
+    console.log("Just checked who they are.", req.body.email, req.body.placename)
+
+    if ((req.body.email) && (req.body.placename)) {
+        const selectUserQuery = `SELECT id from users where email = $1;`;
+        db.query(selectUserQuery, [req.body.email]).then((results) => {
+            console.log("Just checked who they are.", req.body.email, req.body.placename)
+            res.locals.uid = results[0].id;
+            const compareQuery = `SELECT placename from culture WHERE uid = $1 AND placename = $2 AND reviewed = false;`;
+            db.query(compareQuery, [res.locals.uid, req.body.placename]).then((compareResults) => {
+                if (compareResults.length > 0) {
+                    res.json([])
+                    console.log('duplicate')
+                } else {
+                    console.log('next')
+                    next();
+                }
+            })
+        })
+    } else {
+        next();
+    }
+})
+
 // ================================================================== To Do
 
 router.post('/getCultureList', (req, res, next)=>{
@@ -10,7 +36,7 @@ router.post('/getCultureList', (req, res, next)=>{
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
         console.log(uid);
-        const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1;`;
+        const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 ORDER BY id DESC;`;
         db.query(getCultureToDoQuery,[uid]).then((results2) => {
             res.json(results2)
         }).catch((error2) => {
@@ -35,7 +61,7 @@ router.post('/addCulture', (req, res, next)=>{
         const insertCultureQuery = `INSERT INTO culture (uid, placename, type, note, todo, favorite,reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
         db.query(insertCultureQuery, [uid, place, type, note, true, false, false]).then(() => {
-            const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE todo = true AND uid = $1;`;
+            const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE todo = true AND uid = $1 ORDER BY id DESC;`;
             db.query(getCultureToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             })
@@ -57,7 +83,7 @@ router.post('/addFave/:placename', (req, res, next)=>{
         AND placename = $2;`
         db.query(updateQuery, [uid, placename]).then((results)=>{
             const selectCultureToDoQuery = ` SELECT placename, note FROM culture WHERE uid =$1 AND 
-            todo = true AND favorite = false;`;
+            todo = true AND favorite = false ORDER BY id DESC;`;
             db.query(selectCultureToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             }).catch((error2) => {
@@ -84,7 +110,7 @@ router.post("/deletePlace/:placename", (req,res,next)=>{
             if (error) { throw error };
         })
         const selectCultureToDoQuery = `SELECT placename, note FROM culture WHERE uid =$1 AND 
-        todo = true AND favorite = false AND reviewed = false`;
+        todo = true AND favorite = false AND reviewed = false ORDER BY id DESC`;
         db.query(selectCultureToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)
@@ -105,7 +131,7 @@ router.post("/filter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM culture WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false;`;
+        const filterQuery = `SELECT placename, note FROM culture WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false ORDER BY id DESC;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
@@ -147,7 +173,7 @@ router.post('/addFaveInFavorites', (req, res, next)=>{
         const insertCultureQuery = `INSERT INTO culture (uid, placename, type, note, todo, favorite,reviewed) VALUES
         ($1, $2, $3, $4, $5, $6, $7);`;
         db.query(insertCultureQuery, [uid, place, type, note, false, true, false]).then(() => {
-            const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE favorite = true AND uid = $1;`;
+            const getCultureToDoQuery = `SELECT placename, note FROM culture WHERE favorite = true AND uid = $1 ORDER BY id DESC;`;
             db.query(getCultureToDoQuery, [uid]).then((results2) => {
                 res.json(results2)
             })
@@ -174,7 +200,7 @@ router.post("/deleteFavePlace/:placename", (req,res,next)=>{
             if (error) { throw error };
         })
         const selectCultureToDoQuery = `SELECT placename, note FROM culture WHERE uid =$1 AND 
-        todo = false AND favorite = true`;
+        todo = false AND favorite = true ORDER BY id DESC`;
         db.query(selectCultureToDoQuery, [uid]).then((results2)=>{
             console.log(results2);
             res.json(results2)
@@ -195,7 +221,7 @@ router.post("/faveFilter/:filter", (req, res, next) => {
     db.query(selectUserQuery, [email]).then((results) => {
         console.log(results)
         const uid = results[0].id;
-        const filterQuery = `SELECT placename, note FROM culture WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false;`
+        const filterQuery = `SELECT placename, note FROM culture WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false ORDER BY id DESC;`
         db.query(filterQuery, [uid, filter]).then((results2) => {
             console.log(results2)
             res.json(results2)
@@ -243,7 +269,6 @@ router.post("/addCultureReview/:placename", (req,res,next)=>{
                 db.query(insertReviewQuery,[uid, placename, type, false, false, true, stars, review]).then((results3)=>{
                     const selectReviewsQuery = `SELECT placename, review, stars from culture WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results4)=>{
-                        // console.log(results4);
                         res.json(results4);
                     }).catch((error4)=>{
                         if(error4){throw error4};
@@ -257,7 +282,6 @@ router.post("/addCultureReview/:placename", (req,res,next)=>{
                 db.query(updateCultureQuery,[review, stars, uid,placename]).then((results5)=>{
                     const selectReviewsQuery = `SELECT placename, review, stars from culture WHERE uid = $1 AND reviewed = true;`;
                     db.query(selectReviewsQuery,[uid]).then((results6)=>{
-                        // console.log(results6);
                         res.json(results6);
                     }).catch((error6)=>{
                         if(error6){throw error6};
@@ -284,7 +308,7 @@ router.post("/deleteCultureReview/:placename", (req,res,next)=>{
         const uid = results[0].id;
         const deleteReviewQuery = `UPDATE culture SET reviewed = false WHERE placename = $1 and  uid = $2;`;
         db.query(deleteReviewQuery,[placename,uid]).then((results2)=>{
-            const selectReviewsQuery = `SELECT * FROM culture where reviewed = true AND uid = $1;`;
+            const selectReviewsQuery = `SELECT * FROM culture where reviewed = true AND uid = $1 ORDER BY id DESC;`;
             db.query(selectReviewsQuery, [uid]).then((results3)=>{
                 res.json(results3)
             }).catch((error3)=>{
@@ -305,7 +329,7 @@ router.post('/:section/getFaveToReview/:placename',(req, res, next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id;
-        const getCultureFavoriteQuery = `SELECT placename, type FROM culture WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2;`;
+        const getCultureFavoriteQuery = `SELECT placename, type FROM culture WHERE todo = false AND favorite = true AND uid = $1 AND placename = $2 ORDER BY id DESC;`;
         db.query(getCultureFavoriteQuery,[uid,placename]).then((results2)=>{
             const favoriteResult = results2[0];
             console.log(favoriteResult)

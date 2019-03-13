@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { Link, Redirect } from 'react-router-dom';
+import SweetAlert from 'sweetalert-react';
+import 'sweetalert/dist/sweetalert.css';
 
 import AddEventForm from '../../../Forms/AddEventForm'
 import PlaceCards from '../../../../components/Lists/PlaceCards/PlaceCards';
@@ -19,6 +21,7 @@ class EventFavorites extends Component {
             readabledate:'',
             msg: "",
             showAlert: false,
+            swTitle: ''
         }
     }
 
@@ -37,7 +40,6 @@ class EventFavorites extends Component {
     }
 
     addNewEvent = (event, type, date, readabledate, text) => {
-        //api call will go here with autocomplete to add name, location to DB
         axios({
             method: 'POST',
             url: `${window.apiHost}/events/addFaveInFavorites`,
@@ -50,9 +52,17 @@ class EventFavorites extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0) {
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            } else {
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
 
@@ -138,7 +148,13 @@ class EventFavorites extends Component {
         } else {
             return (
                 <div className="Favorites">
-                    <h2>Favorites</h2>
+                    <h2>Favorite events!</h2>
+                    <SweetAlert
+                        show={this.state.showAlert}
+                        title={this.state.swTitle}
+                        text={this.state.msg}
+                        onConfirm={() => this.setState({ showAlert: false })}
+                    />
                     <div className="faveBody">
                         <div className="faveLeft">
                             <AddEventForm

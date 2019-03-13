@@ -72,14 +72,14 @@ class AddEventForm extends Component {
             <div className="AddEventFormContainer">
                 <form onSubmit={this.addNewEvent} className="AddEventForm">
                     <div className="addEventName">
-                        <input onChange={this.changeEvent} type="text" id="NewAddEvent" placeholder={this.props.placeholder} value={this.state.events} />
+                        <input onChange={this.changeEvent} type="text" id="NewAddEvent" placeholder={this.props.placeholder} value={this.state.events} required />
                     </div>
                     <div className="addEventTypeAndDate">
-                        <select className="Dropdown Type" id="NewEventTypeDropdown" onChange={this.changeType}>
+                        <select className="Dropdown Type" id="NewEventTypeDropdown" onChange={this.changeType} required>
                             <option value="">{this.props.defaultType}</option>
                             {this.props.types}
                         </select>
-                        <input onChange={this.changeDate} id="NewEventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date}/>
+                        <input onChange={this.changeDate} id="NewEventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date} required />
                     </div>
                     <div className="AddNewEventNote">
                         <textarea onChange={this.changeText} id="AddNewEventText" placeholder={this.props.textType} value={this.state.text}></textarea>

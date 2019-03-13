@@ -142,7 +142,7 @@ class FoodExplore extends Component {
             } else {
                 return (
                     <div className="Explore">
-                        <h2>Explore Food</h2>
+                        <h2>Explore your palette...</h2>
                         <div className="exploreBody">
                             <div className="exploreLeft">
                                 <ExploreForm

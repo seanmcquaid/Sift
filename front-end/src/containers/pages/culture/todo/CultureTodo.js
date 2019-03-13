@@ -165,10 +165,10 @@ class CultureToDo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Culture To Do!</h2>
+                    <h2>Expanding horizons...</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title={this.state.swTitle}
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />

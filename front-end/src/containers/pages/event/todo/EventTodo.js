@@ -21,6 +21,7 @@ class EventTodo extends Component {
             date:'',
             msg: "",
             showAlert: false,
+            swTitle: "Added to Faves!"
         }
     }
 
@@ -51,9 +52,18 @@ class EventTodo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0) {
+                console.log('extra')
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            } else {
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
 
@@ -158,10 +168,10 @@ class EventTodo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Event To Do!</h2>
+                    <h2>Happenings around town...</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title={this.state.swTitle}
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />

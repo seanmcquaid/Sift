@@ -147,7 +147,13 @@ class CultureFavorites extends Component {
             } else {
                 return (
                     <div className="Favorites">
-                        <h2>Favorites</h2>
+                        <h2>Truly sublime</h2>
+                        <SweetAlert
+                            show={this.state.showAlert}
+                            title={this.state.swTitle}
+                            text={this.state.msg}
+                            onConfirm={() => this.setState({ showAlert: false })}
+                        />
                         <div className="faveBody">
                             <div className="faveLeft">
                                 <AddForm

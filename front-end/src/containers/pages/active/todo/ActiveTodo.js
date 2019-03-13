@@ -164,7 +164,7 @@ class ActiveTodo extends Component {
         } else {
             return (
                 <div className="ToDo">
-                    <h2>Adventurous!</h2>
+                    <h2>Hike up a mountain!</h2>
                     <SweetAlert
                         show={this.state.showAlert}
                         title={this.state.swTitle}

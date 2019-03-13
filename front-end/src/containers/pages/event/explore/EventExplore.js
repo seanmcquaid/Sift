@@ -141,11 +141,11 @@ class EventExplore extends Component {
         } else {
             return (
                 <div className="Explore">
-                    <h2>Explore Events</h2>
+                    <h2>Explore local events</h2>
                     <div className="exploreBody">
                         <div className="exploreLeft">
                             <ExploreForm
-                            searchPlaceholder="What would you like to do?"
+                            searchPlaceholder="What events are you looking for?"
                             locationPlaceholder="Enter city and state"
                             exploreRequest={this.exploreRequest}
                             />
