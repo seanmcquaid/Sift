@@ -96,7 +96,7 @@ class EventFaveReviewForm extends Component {
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
-            const category = this.props.match.params.category;
+            // const category = this.props.match.params.category;
             return(
                 <Redirect to={`/userHome/event/${section}`}/>
             )

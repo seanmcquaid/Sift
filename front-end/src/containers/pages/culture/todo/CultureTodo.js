@@ -20,6 +20,7 @@ class CultureToDo extends Component {
             types: ['Music', 'Art', 'Theater', 'Learning'],
             msg: "",
             showAlert: false,
+            swTitle: "Added to Faves!"
         }
     }
 
@@ -38,8 +39,6 @@ class CultureToDo extends Component {
     }
 
     addNewPlace = (place, type, text) => {
-        // possibly, api call will go here with autocomplete to add name, location to DB
-        // console.log(place, type)
         axios({
             method: 'POST',
             url: `${window.apiHost}/culture/addCulture`,
@@ -50,9 +49,17 @@ class CultureToDo extends Component {
                 email: this.props.login.email
             }
         }).then((backEndResponse) => {
-            this.setState({
-                list: backEndResponse
-            })
+            if (backEndResponse.data.length === 0) {
+                this.setState({
+                    showAlert: true,
+                    swTitle: "Whoops!",
+                    msg: "This is already in one of your lists!"
+                })
+            } else {
+                this.setState({
+                    list: backEndResponse,
+                })
+            }
         })
     }
 

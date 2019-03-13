@@ -134,6 +134,7 @@ class FoodExplore extends Component {
                 </div>
                 )
             })
+
             if(this.props.login.length === 0){
                 return(
                 <Redirect to="/login"/>
