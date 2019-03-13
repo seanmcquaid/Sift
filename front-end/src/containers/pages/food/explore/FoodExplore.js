@@ -104,7 +104,6 @@ class FoodExplore extends Component {
     }
 
     render(){
-        // console.log(this.state)
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;

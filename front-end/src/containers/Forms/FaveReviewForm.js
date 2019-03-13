@@ -38,9 +38,7 @@ class FaveReviewForm extends Component {
                 category : category,
                 type : responseFromDB.data.type,
             })
-            
         })
-        console.log(this.state)
     }
 
     editPlace = (event)=>{
@@ -85,8 +83,6 @@ class FaveReviewForm extends Component {
 
 
     render() {
-        console.log(this.state.redirect)
-        console.log(this.state)
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;

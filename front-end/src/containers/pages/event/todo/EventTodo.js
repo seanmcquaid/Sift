@@ -53,7 +53,6 @@ class EventTodo extends Component {
             }
         }).then((backEndResponse) => {
             if (backEndResponse.data.length === 0) {
-                console.log('extra')
                 this.setState({
                     showAlert: true,
                     swTitle: "Whoops!",
@@ -130,7 +129,6 @@ class EventTodo extends Component {
     render() {
         let category = "events";
         let section = "todo";
-        console.log(this.state)
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var eventToDo = this.state.list.data.map((events, i) => {

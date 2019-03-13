@@ -29,7 +29,6 @@ class CultureReviews extends Component {
                 email : this.props.login.email
             }
         }).then((reviewListFromDB)=>{
-            console.log(reviewListFromDB)
             this.setState(({
                 list : reviewListFromDB
             }))

@@ -112,7 +112,6 @@ class FoodFavorites extends Component {
             if (this.state.list.data !== undefined) {
                 document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
                 var favorites = this.state.list.data.map((food, i) => {
-                    // console.log(food)
                     return (
                         <div key={i} className="placeCard">
                             <div className="cardLeft">
