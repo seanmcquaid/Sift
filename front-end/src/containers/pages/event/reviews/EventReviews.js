@@ -61,6 +61,7 @@ class EventReviews extends Component {
                 showAlert: true,
             })
         })
+        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     removeReview = (event)=>{
@@ -78,7 +79,7 @@ class EventReviews extends Component {
     }
 
     render() {
-        let category = "events";
+        let category = "event";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
@@ -92,7 +93,6 @@ class EventReviews extends Component {
 
                         <div className="cardRight">
                             <div className="buttonContainer">
-                                <Button className="shareButton">Share</Button>
                                 <Button className="editButton"><Link to={"/userHome/"+ category + "/edit/" + section + "/" + review.eventname} >Edit</Link></Button>
                                 <Button clicked={() => this.removeReview(review.eventname)} className="deleteButton">Remove</Button>
                             </div>

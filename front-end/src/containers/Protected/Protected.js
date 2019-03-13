@@ -27,23 +27,23 @@ class Protected extends Component {
         }
         if(pathMatch){
             return(
-                <span>
+                <div>
                     <Route exact path="/" component={Splash}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
-                </span>
+                </div>
             )
         } else {
             if(this.props.login.length !== 0){   
                 return(
-                    <span>
+                    <div>
                         <Route exact path="/account" component={Account} />
                         <Route exact path="/userHome" component={Home}/>
                         <Route path="/userHome/food" component={Food} />
                         <Route path="/userHome/culture" component={Culture} />
                         <Route path="/userHome/event" component={Event} />
                         <Route path="/userHome/active" component={Active}/>
-                    </span>
+                    </div>
                 )
             } else {
                 return(
