@@ -4,6 +4,7 @@ class PlaceCards extends Component {
 
     render(){
         let styles;
+        console.log(this.props.cards)
         if(this.props.cards){
             styles = {visibility : "hidden"}
         } else {
@@ -18,9 +19,3 @@ class PlaceCards extends Component {
 }
 
 export default PlaceCards;
-
-    
-
-
-
-
