@@ -47,8 +47,8 @@ class CultureExplore extends Component {
             let searchResults = [];
             service.textSearch(request, (results, status)=> {
                 let loopLength;
-                if (20 < results.length){
-                    loopLength = 20
+                if (15 < results.length){
+                    loopLength = 15
                 } else {
                     loopLength = results.length
                 }

@@ -47,8 +47,8 @@ class FoodExplore extends Component {
             let searchResults = [];
             service.textSearch(request, (results, status)=> {
                 let loopLength;
-                if (10 < results.length){
-                    loopLength = 10
+                if (15 < results.length){
+                    loopLength = 15
                 } else {
                     loopLength = results.length
                 }

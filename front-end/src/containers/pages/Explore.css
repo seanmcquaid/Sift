@@ -30,7 +30,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 1rem;
+    margin-top: 1rem 0rem;
 }
 
 /* card styling */
@@ -43,6 +43,7 @@ h2 {
     background-color:#ffa094;
     padding: 1rem;
     width: 18rem;
+    margin-bottom: 1rem;
 }
 
 .placeCard{
