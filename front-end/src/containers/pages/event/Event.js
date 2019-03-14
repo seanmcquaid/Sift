@@ -22,7 +22,7 @@ class Event extends Component {
                 <Route exact path="/userHome/event/reviews" component={EventReviews} />
                 <Route exact path="/userHome/:category/reviews/:section/:place" component={FaveReviewForm} />
                 <Route exact path="/userHome/:category/eventReviews/:section/:place" component={EventFaveReviewForm} />
-                <Route exact path="/userHome/:category/editevent/:section/:place" component={EventEditForm}/>
+                <Route exact path="/userHome/:category/edit/:section/:place" component={EventEditForm}/>
             </CategoryHomeLayout>
         )
     }

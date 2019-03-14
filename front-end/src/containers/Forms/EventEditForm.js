@@ -17,7 +17,8 @@ class EditForm extends Component {
             date:'',
             readabledate:'',
             eventTypes: ['Festival', 'Arts-Movies-Music', 'Sporting Events', 'Educational'],
-            redirect : false
+            redirect : false,
+            stars: ""
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
         }
@@ -40,15 +41,16 @@ class EditForm extends Component {
             let textFromDB = responseFromDB.data.note || responseFromDB.data.review
             let eventFromDB = responseFromDB.data.eventname || responseFromDB.data.eventname
             let convertedDate = responseFromDB.data.date.toString().slice(0,10)
-            console.log(convertedDate)
+            let starsFromDB = responseFromDB.data.stars 
             this.setState({
                 event : eventFromDB,
                 category : category,
                 type : responseFromDB.data.type,
                 date: convertedDate,
-                text : textFromDB
+                text : textFromDB,
+                stars : starsFromDB
             })
-            // console.log(this.state)
+            console.log(this.state.stars)
         })
     
     }
@@ -62,6 +64,7 @@ class EditForm extends Component {
         const updatedDate = this.state.date;
         const updatedReadableDate = this.state.readabledate
         const updatedText = this.state.text;
+        const updatedStars = this.state.stars
         axios({
             method: 'POST',
             url: `${window.apiHost}/events/${section}/editevent/${eventname}`,
@@ -71,7 +74,8 @@ class EditForm extends Component {
                 updatedType,
                 updatedDate,
                 updatedReadableDate,
-                updatedText
+                updatedText,
+                updatedStars
             }
         }).then((responseFromDB) => {
             this.setState({
@@ -80,7 +84,8 @@ class EditForm extends Component {
                 date: '',
                 readabledate:'',
                 text : "",
-                redirect: true
+                redirect: true,
+                stars : ""
             })
         })
     }
@@ -120,6 +125,12 @@ class EditForm extends Component {
         })
     }
 
+    changeStars = (event) =>{
+        this.setState({
+            stars : event.target.value
+        })
+    }
+
 
     render() {
         let typeArray;
@@ -127,6 +138,19 @@ class EditForm extends Component {
             typeArray = this.state.eventTypes.map((type, i) => {
                 return (<option key={i} value={type}>{type}</option>)
             })
+
+        let starDropdown;
+        if(this.props.match.params.section === "reviews"){
+            starDropdown = 
+            <select id="EditReviewStars" value={this.state.stars} onChange={this.changeStars} required > 
+                <option value="">{this.state.stars}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>;
+        }
         
 
         if(this.state.redirect === true){
@@ -149,6 +173,7 @@ class EditForm extends Component {
                             </select>
                             <input onChange={this.changeDate} id="NewEventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date}/>
                         </div>
+                        {starDropdown}
                         <div className="editNote">
                             <textarea onChange={this.changeText} value={this.state.text} id="editText"></textarea>
                         </div>

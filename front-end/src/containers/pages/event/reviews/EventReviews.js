@@ -78,11 +78,28 @@ class EventReviews extends Component {
         })
     }
 
+    changeDate = (event) => {
+        var date= event.target.value
+        
+        var currDate = (date).toString().slice(0,10)
+        var currYear = currDate.slice(0,4)
+        var currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+        var publishDate = `${currMonDay}-${currYear}`
+
+        this.setState({
+            readabledate: publishDate,
+            date: date
+        })
+        console.log(new Date())
+    }
+
+
     render() {
         let category = "event";
         let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
+                console.log(review)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">

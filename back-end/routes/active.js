@@ -359,7 +359,7 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
                 if(error3){throw error3};
             })
         } else if (section == "reviews"){
-            const getActiveReviewQuery = `SELECT placename, type, review FROM active WHERE reviewed = true AND uid = $1 AND placename = $2;`;
+            const getActiveReviewQuery = `SELECT placename, type, review, stars FROM active WHERE reviewed = true AND uid = $1 AND placename = $2;`;
             db.query(getActiveReviewQuery,[uid,placename]).then((results3)=>{
                 const reviewResult = results3[0];
                 res.json(reviewResult)
@@ -379,6 +379,7 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
     const newPlacename = req.body.updatedPlacename;
     const newType = req.body.updatedType;
     const newText = req.body.updatedText;
+    const stars = req.body.updatedStars
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
@@ -395,10 +396,10 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
             db.query(updateActiveFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
             res.json("updated")
         }else if(section == "reviews"){
-            const updateActiveFavoriteQuery = `UPDATE active 
-            SET placename = $1, type = $2, review = $3
+            const updateActiveReviewQuery = `UPDATE active 
+            SET placename = $1, type = $2, review = $3, stars = $4
             WHERE uid = $4 AND placename = $5 AND reviewed = true;`
-            db.query(updateActiveFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            db.query(updateActiveReviewQuery, [newPlacename, newType, newText, stars, uid, oldPlacename])
             res.json("updated")
         }
     }).catch((error)=>{

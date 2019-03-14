@@ -103,9 +103,10 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
                 if(error3){throw error3};
             })
         } else if (section == "reviews"){
-            const getFoodReviewQuery = `SELECT placename, type, review FROM food WHERE reviewed = true AND uid = $1 AND placename = $2 ORDER BY id DESC;`;
+            const getFoodReviewQuery = `SELECT placename, type, review, stars FROM food WHERE reviewed = true AND uid = $1 AND placename = $2 ORDER BY id DESC;`;
             db.query(getFoodReviewQuery,[uid,placename]).then((results3)=>{
                 const reviewResult = results3[0];
+                console.log(reviewResult)
                 res.json(reviewResult)
             }).catch((error3)=>{
                 if(error3){throw error3};
@@ -123,6 +124,7 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
     const newPlacename = req.body.updatedPlacename;
     const newType = req.body.updatedType;
     const newText = req.body.updatedText;
+    const stars = req.body.updatedStars;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
@@ -140,9 +142,9 @@ router.post("/:section/editPlace/:placename", (req,res,next)=>{
             res.json("updated")
         }else if(section == "reviews"){
             const updateFoodFavoriteQuery = `UPDATE food 
-            SET placename = $1, type = $2, review = $3
-            WHERE uid = $4 AND placename = $5 AND reviewed = true;`
-            db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, uid, oldPlacename])
+            SET placename = $1, type = $2, review = $3, stars = $4
+            WHERE uid = $5 AND placename = $6 AND reviewed = true;`
+            db.query(updateFoodFavoriteQuery, [newPlacename, newType, newText, stars, uid, oldPlacename])
             res.json("updated")
         }
     }).catch((error)=>{
