@@ -107,7 +107,7 @@ class ActiveReviews extends Component {
                     <h2>Reviews</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title="Review Added!"
                         text={this.state.msg}
                         onConfirm={() => this.setState({ showAlert: false })}
                     />
