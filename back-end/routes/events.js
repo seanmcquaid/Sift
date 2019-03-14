@@ -406,9 +406,10 @@ router.post('/:section/getEventToEdit/:eventname',(req, res, next)=>{
                 if(error2){throw error2}
             })
         } else if (section == "reviews"){
-            const getEventToDoQuery = `SELECT eventname, type, date, review FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
+            const getEventToDoQuery = `SELECT eventname, type, date, review, stars FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
             db.query(getEventToDoQuery, [uid, eventname]).then((results2)=>{
                 const reviewResult = results2[0]
+                console.log(reviewResult)
                 res.json(reviewResult)
             }).catch((error2)=>{
                 if(error2){throw error2}
@@ -426,11 +427,11 @@ router.post("/:section/editevent/:eventname", (req,res,next)=>{
     console.log(req.body)
     const oldEventname = req.params.eventname;
     const newEventName = req.body.updatedEventName;
-
     const newType = req.body.updatedType;
     const newDate = req.body.updatedDate;
     const newReadableDate = req.body.updatedReadableDate;
     const newText = req.body.updatedText;
+    const stars = req.body.updatedStars;
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
@@ -448,9 +449,9 @@ router.post("/:section/editevent/:eventname", (req,res,next)=>{
             res.json("updated")
         }else if(section == "reviews"){
             const updateEventTodoQuery = `UPDATE events
-            SET eventname = $1, type = $2, date = $3, readabledate = $4, review = $5
-            WHERE uid = $6 AND eventname = $7 AND reviewed = true;`
-            db.query(updateEventTodoQuery, [newEventName, newType, newDate, newReadableDate, newText, uid, oldEventname])
+            SET eventname = $1, type = $2, date = $3, stars = $4, readabledate = $5, review = $6
+            WHERE uid = $7 AND eventname = $8 AND reviewed = true;`
+            db.query(updateEventTodoQuery, [newEventName, newType, newDate, stars, newReadableDate, newText, uid, oldEventname])
             res.json("updated")
         }
     }).catch((error)=>{

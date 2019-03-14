@@ -30,6 +30,13 @@ h2 {
     align-items: center;
 }
 
+.EditDropdowns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 #editPlace {
     font-size: 0.75rem;
     width: 14rem;
@@ -57,6 +64,14 @@ h2 {
     font-family: 'Montserrat', sans-serif;
     color: #333745;
     margin-bottom:1rem;
+}
+
+#EditReviewStars{
+    width: 10rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #333745;
 }
 
 #editText {

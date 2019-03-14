@@ -18,7 +18,8 @@ class EditForm extends Component {
             activeTypes: ['Outdoors', 'Fitness', 'Sports', 'Trips'],
             cultureTypes: ['Music', 'Art', 'Theater', 'Festival'],
             eventTypes: ['Festival', 'Arts-Movies-Music', 'Sporting Events', 'Educational'],
-            redirect : false
+            redirect : false,
+            stars: ""
             // date: '', we may need another component just for events, 
             // unless we can figure out how to conditionally render a date field on only certain pages
         }
@@ -28,6 +29,8 @@ class EditForm extends Component {
         const placename = this.props.match.params.place;
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
+        console.log(category)
+        console.log(section)
         axios({
             method: 'POST',
             url: `${window.apiHost}/${category}/${section}/getPlaceToEdit/${placename}`,
@@ -37,13 +40,16 @@ class EditForm extends Component {
         }).then((responseFromDB) => {
             let textFromDB = responseFromDB.data.note || responseFromDB.data.review
             let placeFromDB = responseFromDB.data.placename || responseFromDB.data.eventname
+            let starsFromDB = responseFromDB.data.stars 
             this.setState({
                 place : placeFromDB,
                 category : category,
                 type : responseFromDB.data.type,
-                text : textFromDB
+                text : textFromDB,
+                stars: starsFromDB
             })
         })
+        console.log(this.state.stars)
     }
 
     editPlace = (event)=>{
@@ -54,6 +60,7 @@ class EditForm extends Component {
         const updatedPlacename = this.state.place;
         const updatedType = this.state.type;
         const updatedText = this.state.text;
+        const updatedStars = this.state.stars;
         axios({
             method: 'POST',
             url: `${window.apiHost}/${category}/${section}/editPlace/${placename}`,
@@ -61,7 +68,8 @@ class EditForm extends Component {
                 email: this.props.login.email,
                 updatedPlacename,
                 updatedType,
-                updatedText
+                updatedText,
+                updatedStars
             }
         }).then((responseFromDB) => {
             this.setState({
@@ -100,8 +108,15 @@ class EditForm extends Component {
         })
     }
 
+    changeStars = (event) => {
+        this.setState({
+            stars : event.target.value
+        })
+    }
+
 
     render() {
+        console.log(this.state.stars)
         const category = this.props.match.params.category;
         let typeArray;
         if(category === "food"){
@@ -121,6 +136,18 @@ class EditForm extends Component {
                 return (<option key={i} value={type}>{type}</option>)
             })
         }
+        let starDropdown;
+        if(this.props.match.params.section === "reviews"){
+            starDropdown = 
+            <select id="EditReviewStars" value={this.state.stars} onChange={this.changeStars} required > 
+                <option value={this.state.stars}>{this.state.stars}</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>;
+        }
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
@@ -136,10 +163,13 @@ class EditForm extends Component {
                     <h2>Make your edits below!</h2>
                         <div className="editNameAndType">
                             <input onChange={this.changePlace} type="text" id="editPlace" defaultValue={this.state.place} />
-                            <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
-                                <option defaultValue={this.state.type}>{this.state.type}</option>
-                                {typeArray}
-                            </select>
+                            <div className="EditDropdowns">
+                                <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
+                                    <option defaultValue={this.state.type}>{this.state.type}</option>
+                                    {typeArray}
+                                </select>
+                                {starDropdown}
+                            </div>
                         </div>
                         <div className="editNote">
                             <textarea onChange={this.changeText} value={this.state.text} id="editText"></textarea>
