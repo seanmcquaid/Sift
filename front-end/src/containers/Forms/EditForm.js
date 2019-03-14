@@ -163,13 +163,13 @@ class EditForm extends Component {
                     <h2>Make your edits below!</h2>
                         <div className="editNameAndType">
                             <input onChange={this.changePlace} type="text" id="editPlace" defaultValue={this.state.place} />
-                            <div className="EditDropdowns">
-                                <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
-                                    <option defaultValue={this.state.type}>{this.state.type}</option>
-                                    {typeArray}
-                                </select>
-                                {starDropdown}
-                            </div>
+                        </div>
+                        <div className="EditDropdowns">
+                            <select className="DropDownEdit Type" id="DropDownEdit" onChange={this.changeType}>
+                                <option defaultValue={this.state.type}>{this.state.type}</option>
+                                {typeArray}
+                            </select>
+                            {starDropdown}
                         </div>
                         <div className="editNote">
                             <textarea onChange={this.changeText} value={this.state.text} id="editText"></textarea>
