@@ -72,7 +72,8 @@ class FoodTodo extends Component {
         }).then((backEndResponse) => {
             this.setState({
                 list: backEndResponse,
-                msg: "Success! Added to favorites",
+                msg: "Added to favorites!",
+                swTitle: "Yum!",
                 showAlert: true
             })
         })
