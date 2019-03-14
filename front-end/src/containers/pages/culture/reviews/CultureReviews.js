@@ -107,7 +107,7 @@ class CultureReviews extends Component {
                     <h2>Reviews</h2>
                     <SweetAlert
                         show={this.state.showAlert}
-                        title="Added to Faves"
+                        title="Review added!"
                         text={this.state.msg}
                         confirmBtnBsStyle="danger"
                         onConfirm={() => this.setState({ showAlert: false })}

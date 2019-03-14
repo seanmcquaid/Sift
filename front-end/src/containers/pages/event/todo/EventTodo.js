@@ -77,6 +77,7 @@ class EventTodo extends Component {
             this.setState({
                 list: backEndResponse,
                 msg: "Success! Added to favorites",
+                swTitle: "Added to Faves!",
                 showAlert: true
             })
         })
