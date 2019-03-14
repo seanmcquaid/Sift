@@ -10,8 +10,9 @@ class Nav extends Component{
     // need logic to see if logged in, change route on left to user home
     // and on right, display categories and hamburger with profile/logout
 
-    navRightLoginToggle = (event)=>{
+    navRightLoginToggle = (event, cat)=>{
         event.preventDefault();
+        this.props.setCategory(cat)
         if(document.querySelector(".nav-right-dropdown").style.display === "none"){
             document.querySelector(".nav-right-dropdown").style.display = "inline";
         } else {
@@ -52,12 +53,12 @@ class Nav extends Component{
                                 <div className="login-link"><Link to="/login">Login</Link></div>
                                 <div className="register-link"><Link to="/register">Register</Link></div>
                             </div>
-                            <div className="nav-toggle-icon-login" onClick={this.navRightLoginToggle}>
+                            <div className="nav-toggle-icon-login" onClick={(event)=>{this.navRightLoginToggle(event, 'none')}}>
                                 <i className="fas fa-bars"></i>
                             </div>
                             <div className="nav-right-dropdown">
-                                <div className="nav-right-dropdown-link"><Link to="/login">Login</Link></div>
-                                <div className="nav-right-dropdown-link"><Link to="/register">Register</Link></div>
+                                <div className="nav-right-dropdown-link" onClick={(event)=>{this.navRightLoginToggle(event, 'none')}}><Link to="/login">Login</Link></div>
+                                <div className="nav-right-dropdown-link" onClick={(event)=>{this.navRightLoginToggle(event, 'none')}}><Link to="/register">Register</Link></div>
                             </div>
                         </div>;
             
