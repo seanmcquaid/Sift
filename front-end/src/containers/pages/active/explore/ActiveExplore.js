@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import ExploreForm from "../../../Forms/ExploreForm";
 import axios from "axios";
 import config from "../../../../config";
-import SweetAlert from 'sweetalert-react';
-import 'sweetalert/dist/sweetalert.css';
 // import {Redirect} from 'react-router-dom';
 import '../../Explore.css'
 import Button from "../../../../components/utility/button/Button";
@@ -140,12 +138,6 @@ class ActiveExplore extends Component {
         return (
             <div className="Explore">
                 <h2>Explore the world around you!</h2>
-                <SweetAlert
-                    show={this.state.showAlert}
-                    title={this.state.swTitle}
-                    text={this.state.msg}
-                    onConfirm={() => this.setState({ showAlert: false })}
-                />
                 <div className="exploreBody">
                     <div className="exploreLeft">
                         <ExploreForm
