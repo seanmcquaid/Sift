@@ -62,7 +62,6 @@ class FoodExplore extends Component {
                 })
             });
         })
-        document.querySelector(".placeCards").style.visibility = "visible";
     }
 
     addExploreTodo = (place, type, text) => {
@@ -103,7 +102,7 @@ class FoodExplore extends Component {
 
     }
     render(){
-        console.log(this.state.exploreResults)
+       
         const exploreResults = this.state.exploreResults.map((place, i)=>{
             const typeArray = this.state.types;
             const exploreTypeArray = place.types;
@@ -141,6 +140,9 @@ class FoodExplore extends Component {
             } else {
                 return (
                     <div className="Explore">
+                    {
+                        
+                    }
                         <h2>Explore your palette...</h2>
                         <div className="exploreBody">
                             <div className="exploreLeft">
