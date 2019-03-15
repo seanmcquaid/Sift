@@ -61,7 +61,7 @@ Sift is a PERN stack web application that allows users to organize their leisure
     ```
 
 * Reusable Routing / Redirect Issues - Sean
-    * Previously, we only knew how to handle redirects in Express. Now with the React Router, we were able to create dynamic routes that would use params so our backend could be more flexible between categories. In addition, we used the Redirect component to handle if the user was not logged in and tried to access a page that should only be available to a logged in user.
+    * Previously, we only knew how to handle redirects and reusable routes in Express. Now with the React Router, we were able to create dynamic routes that would use params so our backend could be more flexible between categories. In addition, we used the Redirect component to handle if the user was not logged in and tried to access a page that should only be available to a logged in user.
     * Front End:
     ```
     <Link to={"/userHome/"+ category + "/edit/" + section + "/" + food.placename} >Edit</Link>
@@ -69,29 +69,63 @@ Sift is a PERN stack web application that allows users to organize their leisure
     * Back End: 
     ```
     router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
-        ....
+        ...
     }
     ```
 
 * Events - Greg
-    *
+    * For the events category, it is necessary for the user to include a date as these activities may take place on specific days. Separate forms and individualized conditions were created to accommodate this option across the categories functionality. Additionally, it was necessary to store both computer and user readable dates in the database; this allowed the application to format dates in order when categories were selected, and to display them in a format consistent for Western readers. Parameters were also added to the input form making it easier for users to navigate setting dates and reducing user typos.
+    ```
+    changeDate = (event) => {
+       var date= event.target.value
+
+       var currDate = (date).toString().slice(0,10)
+       var currYear = currDate.slice(0,4)
+       var currMonDay = (currDate.slice(6,10)).replace(/-0+/g, '-');
+       var publishDate = `${currMonDay}-${currYear}`
+       this.setState({
+           readabledate: publishDate,
+           date: date
+       })
+    }
+
+    render(){
+        let minDate = new Date().toISOString().slice(0,10);
+        let maxDate = '2030-03-10'
+        return(
+            <div className="AddEventFormContainer">
+                <form onSubmit={this.addNewEvent} className="AddEventForm">
+                    <div className="addEventName">
+                        <input onChange={this.changeEvent} type="text" id="NewAddEvent" placeholder={this.props.placeholder} value={this.state.events} required />
+                    </div>
+                    <div className="addEventTypeAndDate">
+                        <select className="Dropdown Type" id="NewEventTypeDropdown" onChange={this.changeType} required>
+                            <option value="">{this.props.defaultType}</option>
+                            {this.props.types}
+                        </select>
+                        <input onChange={this.changeDate} id="NewEventDateDropdown" type="date" min={minDate} max={maxDate} value={this.state.date} required />
+                    </div>
+        }
+        ```
 
 * UI/UX Overhaul - Katie
     *
 
 * Debugging - ALL 
-    *
-
-* Deploying - ALL 
-    *
-
+    * Due to how massive this project became, we had to debug as went along. Sometimes, if we changed one route in a category, we would have to comb through each file within the other categories to make sure that it would align with previous changes. We dedicated roughly an hour to two hours a day to just debug previous code we had written as we implemented more features. 
 
 ## MVP
-- Food 
+* Create a PERN stack app that would allow users to search for new restaurants, create todo lists with notes about restaurants, maintain a list of favorite restaurants and write personal reviews
+* Requirements:
+    * User's login information is stored within a PostGreSQL database
+    * User should be able to search for recommendations based on location and what they want to search for
+    * User can create todo lists of places they've never been or want to try
+    * User can favorite places they've gone before or recently tried 
+    * User is able to write reviews about places they've gone previously 
 
 
 ## Stretch Goals
-- Implement more categories - Active, Culture and Events
+* Implement more categories with the same features as Food - Active, Culture and Events
 
 
 ## Authors
