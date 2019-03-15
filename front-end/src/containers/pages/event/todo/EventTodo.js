@@ -134,7 +134,6 @@ class EventTodo extends Component {
         if (this.state.list.data !== undefined) {
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
             var eventToDo = this.state.list.data.map((events, i) => {
-                console.log(events.eventname)
                 return (
                     <div key={i} className="placeCard">
                          <div className="cardLeft">

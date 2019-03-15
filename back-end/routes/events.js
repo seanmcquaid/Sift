@@ -30,13 +30,9 @@ router.post('/getEventList', (req, res, next)=>{
     const selectUserQuery = `SELECT id from users where email = $1;`;
     db.query(selectUserQuery, [email]).then((results)=>{
         const uid = results[0].id;
-
-        // console.log(uid);
         const getEventToDoQuery = `SELECT eventname, readabledate, note FROM events WHERE todo = true AND favorite = false AND reviewed = false AND uid = $1 ORDER BY date DESC NULLS LAST;`;
         db.query(getEventToDoQuery,[uid]).then((results2) => {
             res.json(results2)
-            // console.log(results2)
-
         }).catch((error2) => {
             if (error2) { throw error2 }
         })
@@ -125,14 +121,9 @@ router.post("/deleteEvent/:eventname", (req,res,next)=>{
 
 router.post("/filter/:filter", (req, res, next) => {
     const email = req.body.email;
-
     const filter = req.params.filter
-    // console.log(filter)
-    // console.log(req.params)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
-        // console.log(results)
-
         const uid = results[0].id;
         const filterQuery = `SELECT eventname, readabledate, note FROM events WHERE uid = $1 AND type = $2 AND todo = true AND favorite = false ORDER BY date DESC NULLS LAST;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
@@ -165,13 +156,9 @@ router.post('/getEventFaveList', (req,res,next)=>{
 })
 
 router.post('/addFaveInFavorites', (req, res, next)=>{
-
-    // console.log(req.body)
     const eventname = req.body.eventname;
     const type = req.body.type;
     const date = req.body.date;
-    // console.log(date)
-
     const note = req.body.note;
     const email = req.body.email;
     const readabledate = req.body.readabledate;
@@ -204,11 +191,7 @@ router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
     db.query(selectUserQuery,[email]).then((results)=>{
         const uid = results[0].id
         const deleteEventQuery = `DELETE FROM events where eventname = $1 and uid = $2;`;
-
-        // console.log(eventname)
         db.query(deleteEventQuery, [eventname, uid]).then((results)=>{
-            // console.log(results)
-
         }).catch((error) => {
             if (error) { throw error };
         })
@@ -228,17 +211,11 @@ router.post("/deleteFaveEvent/:eventname", (req,res,next)=>{
 router.post("/faveFilter/:filter", (req, res, next) => {
     const email = req.body.email;
     const filter = req.params.filter
-
-    // console.log(filter)
-    // console.log(req.params)
     const selectUserQuery = `SELECT * FROM users WHERE email = $1;`;
     db.query(selectUserQuery, [email]).then((results) => {
-        // console.log(results)
         const uid = results[0].id;
         const filterQuery = `SELECT eventname, readabledate, note FROM events WHERE uid = $1 AND type = $2 AND favorite = true AND todo = false AND reviewed = false ORDER BY date DESC NULLS LAST;`;
         db.query(filterQuery, [uid, filter]).then((results2) => {
-            // console.log(results2)
-
             res.json(results2)
         }).catch((error2)=>{
             if(error2){throw error2}
@@ -382,7 +359,6 @@ router.post("/:section/reviewFave/:eventname", (req,res,next)=>{
 })
     
 router.post('/:section/getEventToEdit/:eventname',(req, res, next)=>{
-    console.log(req.body)
     const section = req.params.section;
     const eventname = req.params.eventname;
     const email = req.body.email;
@@ -409,7 +385,6 @@ router.post('/:section/getEventToEdit/:eventname',(req, res, next)=>{
             const getEventToDoQuery = `SELECT eventname, type, date, review, stars FROM events WHERE reviewed = true AND uid = $1 AND eventname = $2;`;
             db.query(getEventToDoQuery, [uid, eventname]).then((results2)=>{
                 const reviewResult = results2[0]
-                console.log(reviewResult)
                 res.json(reviewResult)
             }).catch((error2)=>{
                 if(error2){throw error2}
@@ -423,8 +398,6 @@ router.post('/:section/getEventToEdit/:eventname',(req, res, next)=>{
 router.post("/:section/editevent/:eventname", (req,res,next)=>{
     const email = req.body.email;
     const section = req.params.section;
-
-    console.log(req.body)
     const oldEventname = req.params.eventname;
     const newEventName = req.body.updatedEventName;
     const newType = req.body.updatedType;

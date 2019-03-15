@@ -24,7 +24,6 @@ class EventFaveReviewForm extends Component {
 
     componentDidMount() {
         const placename = this.props.match.params.place;
-        console.log(placename)
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
     
@@ -91,10 +90,6 @@ class EventFaveReviewForm extends Component {
 
 
     render() {
-        console.log(this.state.redirect)
-        console.log(this.state)
-        console.log(this.state.readabledate)
-
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
             // const category = this.props.match.params.category;

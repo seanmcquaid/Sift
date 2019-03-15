@@ -55,7 +55,6 @@ class AddEventForm extends Component {
             readabledate: publishDate,
             date: date
         })
-        // console.log(new Date())
     }
 
     changeText = (event) => {

@@ -28,7 +28,6 @@ class EditForm extends Component {
         const eventname = this.props.match.params.place;
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
-        console.log(this.props.match)
         // const eventname = this.props.match.params.
         axios({
             method: 'POST',
@@ -37,7 +36,6 @@ class EditForm extends Component {
                 email: this.props.login.email
             }
         }).then((responseFromDB) => {
-            console.log(responseFromDB)
             let textFromDB = responseFromDB.data.note || responseFromDB.data.review
             let eventFromDB = responseFromDB.data.eventname || responseFromDB.data.eventname
             let convertedDate = responseFromDB.data.date.toString().slice(0,10)
@@ -50,7 +48,6 @@ class EditForm extends Component {
                 text : textFromDB,
                 stars : starsFromDB
             })
-            console.log(this.state.stars)
         })
     
     }
@@ -116,7 +113,6 @@ class EditForm extends Component {
             readabledate: publishDate,
             date: date
         })
-        console.log(new Date())
     }
 
     changeText = (event) => {
@@ -155,7 +151,6 @@ class EditForm extends Component {
 
         if(this.state.redirect === true){
             const section = this.props.match.params.section;
-            console.log(section)
                 return <Redirect to={`/userHome/event/${section}`}/>
         } else {
             let minDate = new Date().toISOString().slice(0,10);

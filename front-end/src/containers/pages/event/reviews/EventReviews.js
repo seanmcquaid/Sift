@@ -89,7 +89,6 @@ class EventReviews extends Component {
             readabledate: publishDate,
             date: date
         })
-        console.log(new Date())
     }
 
 
@@ -98,7 +97,6 @@ class EventReviews extends Component {
         let section = "reviews";
         if (this.state.list.data !== undefined) {
             var EventReviews = this.state.list.data.map((review, i) => {
-                console.log(review)
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">
