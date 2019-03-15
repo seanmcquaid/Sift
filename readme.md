@@ -143,11 +143,18 @@ Sift is a PERN stack web application that allows users to organize their leisure
   * [GitHub Profile](https://github.com/gregroques)
 
 ## Screenshots
+* Splash Page
 
 ![Splash Page](./screenshots/1.png)
 
+* User Home Page
+
 ![User Home Page](./screenshots/2.png)
 
+* Review Page
+
 ![Reviews Page](./screenshots/3.png)
+
+* Explore Page
 
 ![Explore Page](./screenshots/4.png)
