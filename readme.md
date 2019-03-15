@@ -1,6 +1,4 @@
-# capstoneProject : Sean, Katie, Greg
-
-# TBD
+# Sift
 
 * Description
 * Technologies
@@ -10,7 +8,7 @@
 * Authors
 
 # Description
-TBD is a UI for everything you want to do. This application uses PostgresQL, Express, React & Node to create a friendly and easy-to-use interface that allows users to 
+Sift is a PERN stack web application that allows users to organize their leisure acitivities by category. Once the user is in that category, they are able to create to do lists with notes, create favorite lists and write their own personal reviews.
 
 
 # Technologies
@@ -22,15 +20,40 @@ TBD is a UI for everything you want to do. This application uses PostgresQL, Exp
 
 
 # Challenges & Solutions
-- File Structure:
- 
+- CSS unification - Katie
+- Consolidated files for todo,favorites, reviews for all cat, and forms
+
+- Reusable Components - Katie
+
+- Reusable Routing - Sean
+- 
+
+- Creating accurate responsive design - Greg
+
+- Visibility Issue - sean
+
+- Events - greg
+
+- Debugging - ALL 
+
+- Redirect issues - Sean
+
+- Edit - Katie and Sean
+
+- Deploying - ALL 
+
+- UI/UX - Katie and Greg
+
+- Filter - Katie
+
+- API Implementation - sean
 
 # MVP
-Sift is an application that allows users to create lists of places they'd like to visit or activities they'd like to try. Categories include: Food, Active, Culture, and Events. Within each category, they have a to-do list, a favorites list, and options to write and save personal reviews. Our goal is to simplify and streamline all of the ways in which you can explore the world around you.
+- Food 
 
 
 # Stretch Goals
-
+- Implement more categories - Active, Culture and Events
 
 # Screenshots
 
@@ -47,5 +70,3 @@ Sift is an application that allows users to create lists of places they'd like t
 - Greg Roques
   - Contributions: Wireframes, designs, and style guide, mark-up and CSS for splash and home pages, CSS animations, router debugging, front and backend code for 'Favorites' list and 'Event' section,
   - [GitHub Profile](https://github.com/gregroques)
-
-  
