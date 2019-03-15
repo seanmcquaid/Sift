@@ -35,5 +35,10 @@ app.use("/active", activeRouter);
 app.use('/events', eventsRouter);
 app.use("/culture", cultureRouter);
 
+app.use((req, res)=>{
+	console.log(req.path);
+	res.redirect(`/?route=${req.path}`);
+});
+
 
 module.exports = app;

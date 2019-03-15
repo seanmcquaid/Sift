@@ -17,6 +17,11 @@ import Event from "../pages/event/Event";
 
 class Protected extends Component {
     render(){
+        const routeSplit = this.props.location.search.split("=");
+        const route = routeSplit[1];
+        if(route){
+            return <Redirect to={route}/>
+        }
         let pathArray = ["/login", "/register", "/"];
         let currentPath = this.props.location.pathname;
         let pathMatch = false;
