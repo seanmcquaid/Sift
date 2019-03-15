@@ -109,7 +109,7 @@ Sift is a PERN stack web application that allows users to organize their leisure
         ```
 
 * UI/UX Overhaul - Katie
-    *
+    * After nearly completing our project, we realized that the UI wasn't as conducive to a good UX. Upon this realization, we reworked the CSS to consolidated files for each section and also redid positioning and responsiveness to allow for less clicking around for the user. The navbar was also integral in allowing our uses to easily navigate the different categories of the app. 
 
 * Debugging - ALL 
     * Due to how massive this project became, we had to debug as went along. Sometimes, if we changed one route in a category, we would have to comb through each file within the other categories to make sure that it would align with previous changes. We dedicated roughly an hour to two hours a day to just debug previous code we had written as we implemented more features. 
@@ -131,7 +131,7 @@ Sift is a PERN stack web application that allows users to organize their leisure
 
 ## Authors
 * Sean McQuaid
-  * Contributions: Login and registration connection, implementation of Redux, implentation of Router, routing for redirects, responsive design, mobile navigation,front and backend code for 'Reviews' list and 'Culture' section, API Implementation
+  * Contributions: Login and registration connection, Implementation of Redux, implentation of Router, routing for redirects, responsive design, mobile navigation,front and backend code for 'Reviews' list and 'Culture' section, API Implementation
   * [GitHub Profile](https://github.com/seanmcquaid)
 
 * Katie Duane
