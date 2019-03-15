@@ -126,11 +126,12 @@ Sift is a PERN stack web application that allows users to organize their leisure
 
 ## Stretch Goals
 * Implement more categories with the same features as Food - Active, Culture and Events
+    * Status: Complete
 
 
 ## Authors
 * Sean McQuaid
-  * Contributions: Login and registration connection, implementation of Redux, implentation of Router, routing for redirects, responsive design, mobile navigation,front and backend code for 'Reviews' list and 'Culture' section,
+  * Contributions: Login and registration connection, implementation of Redux, implentation of Router, routing for redirects, responsive design, mobile navigation,front and backend code for 'Reviews' list and 'Culture' section, API Implementation
   * [GitHub Profile](https://github.com/seanmcquaid)
 
 * Katie Duane
