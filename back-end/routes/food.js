@@ -106,7 +106,6 @@ router.post('/:section/getPlaceToEdit/:placename',(req, res, next)=>{
             const getFoodReviewQuery = `SELECT placename, type, review, stars FROM food WHERE reviewed = true AND uid = $1 AND placename = $2 ORDER BY id DESC;`;
             db.query(getFoodReviewQuery,[uid,placename]).then((results3)=>{
                 const reviewResult = results3[0];
-                console.log(reviewResult)
                 res.json(reviewResult)
             }).catch((error3)=>{
                 if(error3){throw error3};

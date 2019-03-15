@@ -117,8 +117,7 @@ class EventFavorites extends Component {
         if (this.state.list.data !== undefined) {
             
             document.querySelector(".placeCards").style.backgroundColor = "#ffa094";
-            var favorites = this.state.list.data.map((event, i) => {     
-                console.log(event)            
+            var favorites = this.state.list.data.map((event, i) => {               
                 return (
                     <div key={i} className="placeCard">
                         <div className="cardLeft">

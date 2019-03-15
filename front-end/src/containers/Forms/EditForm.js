@@ -29,8 +29,6 @@ class EditForm extends Component {
         const placename = this.props.match.params.place;
         const section = this.props.match.params.section;
         const category = this.props.match.params.category;
-        console.log(category)
-        console.log(section)
         axios({
             method: 'POST',
             url: `${window.apiHost}/${category}/${section}/getPlaceToEdit/${placename}`,
@@ -49,7 +47,6 @@ class EditForm extends Component {
                 stars: starsFromDB
             })
         })
-        console.log(this.state.stars)
     }
 
     editPlace = (event)=>{
@@ -116,7 +113,6 @@ class EditForm extends Component {
 
 
     render() {
-        console.log(this.state.stars)
         const category = this.props.match.params.category;
         let typeArray;
         if(category === "food"){

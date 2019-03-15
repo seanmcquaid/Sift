@@ -32,6 +32,34 @@ Sift is a PERN stack web application that allows users to organize their leisure
 
 
 ## Challenges & Solutions
+* Edit - Katie and Sean
+    * We struggled to come up with a solution that allowed us to pass data to the Edit page so the form would autopopulate with the selected place to edit without using Redux. We knew that using Redux wasn't necessarily needed or appropriate in this situation. So after doing a bit of research, we discovered that you could use Params on the Front End in Link components. This was an aboslute game changer and allowed us to easily create a way to grab information about the specified place to edit.
+    ```
+    componentDidMount() {
+        const placename = this.props.match.params.place;
+        const section = this.props.match.params.section;
+        const category = this.props.match.params.category;
+        axios({
+            method: 'POST',
+            url: `${window.apiHost}/${category}/${section}/getPlaceToEdit/${placename}`,
+            data: {
+                email: this.props.login.email
+            }
+        }).then((responseFromDB) => {
+            let textFromDB = responseFromDB.data.note || responseFromDB.data.review
+            let placeFromDB = responseFromDB.data.placename || responseFromDB.data.eventname
+            let starsFromDB = responseFromDB.data.stars 
+            this.setState({
+                place : placeFromDB,
+                category : category,
+                type : responseFromDB.data.type,
+                text : textFromDB,
+                stars: starsFromDB
+            })
+        })
+    }
+    ```
+
 * Reusable Routing / Redirect Issues - Sean
     * Previously, we only knew how to handle redirects in Express. Now with the React Router, we were able to create dynamic routes that would use params so our backend could be more flexible between categories. In addition, we used the Redirect component to handle if the user was not logged in and tried to access a page that should only be available to a logged in user.
     * Front End:
@@ -49,9 +77,6 @@ Sift is a PERN stack web application that allows users to organize their leisure
     *
 
 * UI/UX Overhaul - Katie
-    *
-
-* Edit - Katie and Sean
     *
 
 * Debugging - ALL 
