@@ -1,6 +1,5 @@
 import React from 'react';
 import './Splash.css'
-import Carousel from './Carousel';
 import {Link} from 'react-router-dom';
 
 function Splash(props){
