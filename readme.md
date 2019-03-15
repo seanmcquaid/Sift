@@ -1,4 +1,6 @@
 # Sift
+![Main Page](./screenshots/main.png)
+
 
 * Description
 * Technologies
