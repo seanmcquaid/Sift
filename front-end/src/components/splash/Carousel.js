@@ -1,10 +1,9 @@
 import React from 'react'
 import './Splash.css'
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
-function Carousel(props){
+function CarouselFunc(props){
     const settings = {
         accessibility: false,
         arrows:false,
@@ -21,7 +20,7 @@ function Carousel(props){
                 <img className="mainLogo" src='../../../images/logo/logoOutline.png' alt="logo" />
                 {/* <h1>sift</h1> */}
             </div>
-            <Slider {...settings} className="carouselImageRow" >
+            <Carousel {...settings} className="carouselImageRow" >
                     <div className="slick-image">
                         <img src="/images/carousel/1.jpg" alt="carouselImage"/>
                     </div>
@@ -40,10 +39,10 @@ function Carousel(props){
                     <div className="slick-image">
                         <img src="/images/carousel/6.jpg" alt="carouselImage"/>
                     </div>
-            </Slider>
+            </Carousel>
         </div>
       
     )
 }
 
-export default Carousel;
+export default CarouselFunc;
