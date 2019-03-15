@@ -8,8 +8,17 @@ function Splash(props){
     return(
         <div>
             <div>
-                <Carousel/>
+                <div className="carouselWrapper">
+                    <div className="carouselText">
+                        <img className="mainLogo" src='../../../images/logo/logoOutline.png' alt="logo" />
+                    </div>
+                <div className="splash-header"/>
+                    <div className="splashHeaderImage">
+                         <img className="splash-image" src="/images/montage.jpg" alt="carouselImage"/>
+                    </div>
+                </div>
             </div>
+        
             <div className="splashTextContent">
                 <h1>What Is Sift?</h1>
                 <p>Sift is an application that allows users to create lists 
