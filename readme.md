@@ -10,7 +10,7 @@
 * Authors
 
 ## Description
-Sift is a PERN stack web application that allows users to organize their leisure acitivities by category. Once the user is in that category, they are able to create to do lists with notes, create favorite lists and write their own personal reviews.
+Sift is a PERN stack web application that allows users to organize their leisure activities by category. Once the user is in that category, they are able to create to do lists with notes, create favorite lists and write their own personal reviews.
 
 
 ## Features
