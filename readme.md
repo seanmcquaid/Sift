@@ -131,15 +131,15 @@ Sift is a PERN stack web application that allows users to organize their leisure
 
 ## Authors
 * Sean McQuaid
-  * Contributions: Login and registration connection, Implementation of Redux, Implentation of React Router, Routing for redirects in Protected Component, Mobile Responsiveness, Mobile and Desktop Navigation, Front End and Back End code for "Reviews" and "Culture" sections, Google Places API Implementation, Edit Logic, Reusable Routing, Debugging
+  * Contributions: Login and registration connection, Implementation of Redux, Implentation of React Router, Routing for redirects in Protected Component, Mobile Responsiveness, Mobile and Desktop Navigation, Front End and Back End code for "Reviews" and "Culture" sections, Google Places API Implementation, Edit Logic, Reusable Routing, Debugging, Route creation middleware for deployment redirects
   * [GitHub Profile](https://github.com/seanmcquaid)
 
 * Katie Duane
-  * Contributions: Logo Design, Database Schema and Set-up, Responsive Design, Creation of re-usable React Components for each category, Initialized database connection, CSS debugging, Front End and Back End code for "To-Do" list and "Active" sections, Edit Logic, UI/UX overhaul, Debugging, Mobile Responsiveness
+  * Contributions: Logo Design, Database Schema and Set-up, Responsive Design, Creation of re-usable React Components for each category, Initialized database connection, CSS debugging, Front End and Back End code for "To-Do" list and "Active" sections, Edit Logic, UI/UX overhaul, Debugging, Mobile Responsiveness, Middleware creation for User Id, Higher order component implementation
   * [GitHub Profile](https://github.com/katiejduane)
   
 * Greg Roques
-  * Contributions: Wireframes, Style Guide and Designs, Mark-up and CSS for Splash and User Home pages, CSS animations, Router debugging, Front End and Back End code for "Favorites" list and "Event" sections, Debugging, Mobile Responsiveness
+  * Contributions: Wireframes, Creation of Splash Page Background Image, Style Guide and Designs, Mark-up and CSS for Splash and User Home pages, CSS animations, Router debugging, Front End and Back End code for "Favorites" list and "Event" sections, Front End and Back End code for Events forms, Debugging, Mobile Responsiveness
   * [GitHub Profile](https://github.com/gregroques)
 
 ## Screenshots
