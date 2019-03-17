@@ -109,7 +109,7 @@ Sift is a PERN stack web application that allows users to organize their leisure
         ```
 
 * UI/UX Overhaul
-    * After nearly completing our project, we realized that the UI wasn't as conducive to a good UX. Upon this realization, we reworked the CSS to consolidated files for each section and also redid positioning and responsiveness to allow for less clicking around for the user. The navbar was also integral in allowing our uses to easily navigate the different categories of the app. 
+    * After nearly completing our project, we realized that the UI wasn't as conducive to a good UX as we desired. Upon this realization, we restructured some of the components, reworked the CSS to consolidate files for each section and also redid positioning and responsiveness to require less clicking around for the user. The side navigation was also introduced and integrated with Redux, and quickly became integral in allowing our users to easily navigate the different categories of the app. 
 
 * Debugging
     * Due to how massive this project became, we had to debug as went along. Sometimes, if we changed one route in a category, we would have to comb through each file within the other categories to make sure that it would align with previous changes. We dedicated roughly an hour to two hours a day to just debug previous code we had written as we implemented more features. 
