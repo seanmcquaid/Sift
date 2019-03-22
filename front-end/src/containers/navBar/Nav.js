@@ -46,7 +46,8 @@ class Nav extends Component{
     render(){
         let navLeft;
         let navRight;
-        if(this.props.login.length === 0 || this.props.login.msg === "badUser"){
+        console.log(this.props.login)
+        if(this.props.login.length === 0 || this.props.login.msg === "badUser" || this.props.login.msg === "userExists"){
             navLeft = <div className="logo"><Link to="/"><img className="logoImg" src='../../../../images/logo/logoDarkGray.png' alt='logo'/></Link></div>;
             navRight = <div className="nav-right-login">
                             <div className="nav-right-login-links">
